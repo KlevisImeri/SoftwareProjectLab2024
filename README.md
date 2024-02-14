@@ -11,8 +11,17 @@ This is the github page of the project of the team:
 
 for the Software Project Lab 2024 at BME.
 
+
+## Meetings
+| Day       | Time   |
+|-----------|--------|
+| Wednesday | 19:00  |
+| Saturday  | 14:00  |
+
+on the meetings
+
 ## Links
 - [Webpage of the course](https://www.iit.bme.hu/oktatas/tanszeki_targyak/BMEVIIIAB02)
 - [Deadlines](https://www.iit.bme.hu/targyak/BMEVIIIAB02/schedule)
-
+- [Discord](https://discord.gg/MafdhMrd)
 
