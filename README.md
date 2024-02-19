@@ -2,14 +2,15 @@
 
 ## Description
 
-This is the github page of the project of the team:
-- [Klevis Imeri](https://github.com/KlevisImeri)
-- [Mean Diamand](https://github.com/MeanDiamand)
-- [Mousavi Hossein](https://github.com/mousavi-hn/)
-- [Taher Mured Abdulghani](https://github.com/Murad915/)
-- [Ibrakhim Tolobekov](https://github.com/Tolobekov/)
+This is the github page of the project of the team _**main(String)**_ :
 
-for the Software Project Lab 2024 at BME.
+| Name                  | GitHub Profile                                | Code          | Email                   |
+|-----------------------|-----------------------------------------------|---------------|-------------------------|
+| Klevis Imeri          | [KlevisImeri](https://github.com/KlevisImeri) | T4XGKO        | klevisimeri11@gmail.com |
+| Mean Diamand          | [MeanDiamand](https://github.com/MeanDiamand) | KSG25Z        |                         |
+| Mousavi Hossein       | [mousavi-hn](https://github.com/mousavi-hn/)  | XQ9SE7        |                         |
+| Taher Mured Abdulghani| [Murad915](https://github.com/Murad915/)      | B6RXU1        |                         |
+| Ibrakhim Tolobekov    | [Tolobekov](https://github.com/Tolobekov/)    | GQ1UJJ        |                         |
 
 
 ## Meetings
@@ -18,7 +19,7 @@ for the Software Project Lab 2024 at BME.
 | Wednesday | 19:00  |
 | Saturday  | 14:00  |
 
-on the meetings
+on the meetings channel in dicord.
 
 ## Links
 - [Webpage of the course](https://www.iit.bme.hu/oktatas/tanszeki_targyak/BMEVIIIAB02)
