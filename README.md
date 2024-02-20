@@ -28,7 +28,7 @@ Team Name: main(String)
 Professor: Balla Katalin,
 Team:
 Klevis Imeri (T4XGKO) klevisimeri11@gmail.com
-Mean Diamand (KSG25Z)
+Mean Diamand (KSG25Z) diamondmean09@gmail.com
 Mousavi Hossein (XQ9SE7) mousavi.hn@gmail.com  
 Taher Mured Abdulghani (B6RXU1) murad.abdalghani7@gmail.com
 Ibrakhim Tolobekov (GQ1UJJ) ibrakhim1908@gmail.com
