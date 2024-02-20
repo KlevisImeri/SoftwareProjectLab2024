@@ -1,5 +1,8 @@
 # SoftwareProjectLab2024
 
+## Document Links
+- [Project Definition](https://docs.google.com/document/d/1UcgfCvedrqtRvM-0aPniAHs13E5yTa5pBhLOkXDJq9U/edit?usp=sharing)
+
 ## Description
 
 
@@ -29,8 +32,8 @@ Mean Diamand (KSG25Z)
 Mousavi Hossein (XQ9SE7) mousavi.hn@gmail.com  
 Taher Mured Abdulghani (B6RXU1) murad.abdalghani7@gmail.com
 Ibrakhim Tolobekov (GQ1UJJ) ibrakhim1908@gmail.com
-- Deadlines for each week is on _**Monday 14:30**_
 ```
+- Deadlines for each week is on _**Monday 14:30**_
 
 ## Meetings
 | Day       | Time   |
