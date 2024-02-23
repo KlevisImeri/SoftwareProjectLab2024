@@ -2,7 +2,7 @@
 
 ## Document Links
 - [Project Definition](https://docs.google.com/document/d/1UcgfCvedrqtRvM-0aPniAHs13E5yTa5pBhLOkXDJq9U/edit?usp=sharing)
-  - [Project definition](https://www.iit.bme.hu/targyak/BMEVIIIAB02/problem-definition)
+  - [Problem Definition](https://www.iit.bme.hu/targyak/BMEVIIIAB02/problem-definition)
 ## Description
 
 
