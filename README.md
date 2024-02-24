@@ -55,7 +55,8 @@ Ibrakhim Tolobekov (GQ1UJJ) ibrakhim1908@gmail.com
 ```
 
 ## Deadlines
-- Deadlines for each week is on _**Monday 14:30**_
+> [!CAUTION]
+> Deadlines for each week is on _**Monday 14:30**_
 
 ## Meetings
 | Day       | Time   |
