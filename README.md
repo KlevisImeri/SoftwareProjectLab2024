@@ -3,6 +3,21 @@
 ## Document Links
 - [Project Definition](https://docs.google.com/document/d/1UcgfCvedrqtRvM-0aPniAHs13E5yTa5pBhLOkXDJq9U/edit?usp=sharing)
   - [Problem Definition](https://www.iit.bme.hu/targyak/BMEVIIIAB02/problem-definition)
+
+## Compiling and Running 
+> Maven should be installed
+
+You can build the project by:
+```shell
+mvn compile
+```
+You can now run the project by:
+```shell
+mvn exec:java
+```
+If you project is setup in VsCode then you can just open the `Main.java` and press `FN5`. 
+VsCode should compile and run the code.
+
 ## Description
 
 
