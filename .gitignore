@@ -1,0 +1,26 @@
+# Maven specific
+/target/
+*.iml
+.idea/
+logs/
+/build/
+/out/
+/dependency-reduced-pom.xml
+/.mvn/
+
+# Ignore Maven wrapper jar file if generated
+/mvnw
+/mvnw.cmd
+
+# Ignore Eclipse files
+.classpath
+.project
+.settings/
+
+# Ignore NetBeans files
+/nb-configuration.xml
+
+# Ignore IntelliJ IDEA files
+*.ipr
+*.iws
+*.iws.iml

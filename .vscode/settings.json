@@ -1,0 +1,5 @@
+{
+  //this setting is than when you update the pom.xml 
+  //vscode also updates tiself with the changes of the file
+  "java.configuration.updateBuildConfiguration": "automatic"
+}
