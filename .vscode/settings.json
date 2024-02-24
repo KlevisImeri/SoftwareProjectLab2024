@@ -1,10 +1,10 @@
 {
-  //this is so VsCode uses the Goodgle Java Style
+  // this is so VsCode uses the Goodgle Java Style
   "java.format.settings.url": "https://raw.githubusercontent.com/google/styleguide/gh-pages/eclipse-java-google-style.xml",
-  //this is so the editor used the identation of Google Java Style
-  //and not the one it detecs on the file
+  // this is so the editor used the identation of Google Java Style
+  // and not the one it detecs on the file
   "editor.detectIndentation": false,
-  //this setting is than when you update the pom.xml 
-  //vscode also updates tiself with the changes of the file
+  // this setting is than when you update the pom.xml 
+  // vscode also updates tiself with the changes of the file
   "java.configuration.updateBuildConfiguration": "automatic"
 }
