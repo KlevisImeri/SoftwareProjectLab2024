@@ -18,9 +18,13 @@ This is the github page of the project of the team _**main(String)**_  under the
 
 
 ## Email
-Subject:  
+Subject Normal:  
 ```
 projlab=main(String)
+```
+Subject Submission:
+```
+main(String) -- document title here
 ```
 End:
 ```
