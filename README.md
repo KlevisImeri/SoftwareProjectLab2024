@@ -43,7 +43,7 @@ Ibrakhim Tolobekov (GQ1UJJ) ibrakhim1908@gmail.com
 |-----------|--------|
 | Saturday  | 14:00  |
 
-on the meetings channel in dicord.
+on the meetings channel in discord.
 
 ## Links
 - [Webpage of the course](https://www.iit.bme.hu/oktatas/tanszeki_targyak/BMEVIIIAB02)
