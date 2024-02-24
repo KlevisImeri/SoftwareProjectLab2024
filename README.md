@@ -17,12 +17,13 @@ This is the github page of the project of the team _**main(String)**_  under the
 | Ibrakhim Tolobekov    | [Tolobekov](https://github.com/Tolobekov/)    | GQ1UJJ        | ibrakhim1908@gmail.com      |
 
 
-## Deadlines
-- Send email that the the material was uploaded.
-Email form at the end:
+## Email
+Subject:  
 ```
-Subject:  projlab=main(String)
-
+projlab=main(String)
+```
+End:
+```
 Best regards, 
 Team Name: main(String)
 Professor: Balla Katalin,
@@ -33,12 +34,13 @@ Mousavi Hossein (XQ9SE7) mousavi.hn@gmail.com
 Taher Mured Abdulghani (B6RXU1) murad.abdalghani7@gmail.com
 Ibrakhim Tolobekov (GQ1UJJ) ibrakhim1908@gmail.com
 ```
+
+## Deadlines
 - Deadlines for each week is on _**Monday 14:30**_
 
 ## Meetings
 | Day       | Time   |
 |-----------|--------|
-| Wednesday | 19:00  |
 | Saturday  | 14:00  |
 
 on the meetings channel in dicord.
@@ -46,5 +48,6 @@ on the meetings channel in dicord.
 ## Links
 - [Webpage of the course](https://www.iit.bme.hu/oktatas/tanszeki_targyak/BMEVIIIAB02)
 - [Deadlines](https://www.iit.bme.hu/targyak/BMEVIIIAB02/schedule)
+- [Document Templates](https://www.iit.bme.hu/file/1006/document-templates)
 - [Discord](https://discord.gg/MafdhMrd)
 
