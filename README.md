@@ -3,6 +3,21 @@
 ## Document Links
 - [Project Definition](https://docs.google.com/document/d/1UcgfCvedrqtRvM-0aPniAHs13E5yTa5pBhLOkXDJq9U/edit?usp=sharing)
   - [Problem Definition](https://www.iit.bme.hu/targyak/BMEVIIIAB02/problem-definition)
+
+## Compiling and Running 
+> Maven should be installed
+
+You can build the project by:
+```shell
+mvn compile
+```
+You can now run the project by:
+```shell
+mvn exec:java
+```
+If you project is setup in VsCode then you can just open the `Main.java` and press `FN5`. 
+VsCode should compile and run the code.
+
 ## Description
 
 
@@ -18,9 +33,13 @@ This is the github page of the project of the team _**main(String)**_  under the
 
 
 ## Email
-Subject:  
+Subject Normal:  
 ```
 projlab=main(String)
+```
+Subject Submission:
+```
+main(String) -- document title here
 ```
 End:
 ```
@@ -36,14 +55,15 @@ Ibrakhim Tolobekov (GQ1UJJ) ibrakhim1908@gmail.com
 ```
 
 ## Deadlines
-- Deadlines for each week is on _**Monday 14:30**_
+> [!CAUTION]
+> Deadlines for each week is on _**Monday 14:30**_
 
 ## Meetings
 | Day       | Time   |
 |-----------|--------|
 | Saturday  | 14:00  |
 
-on the meetings channel in dicord.
+on the meetings channel in discord.
 
 ## Links
 - [Webpage of the course](https://www.iit.bme.hu/oktatas/tanszeki_targyak/BMEVIIIAB02)
