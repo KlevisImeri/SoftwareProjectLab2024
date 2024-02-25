@@ -1,7 +1,8 @@
 # SoftwareProjectLab2024
 
 ## Document Links
-- [Project Definition](https://docs.google.com/document/d/1UcgfCvedrqtRvM-0aPniAHs13E5yTa5pBhLOkXDJq9U/edit?usp=sharing)
+- [ ] [Cover](https://docs.google.com/document/d/1yr9KOXCJYXueDPjdYyfCzAHDawjVuId_Yf1yBsS7_Cc/edit)
+- [ ] [Project Definition](https://docs.google.com/document/d/1UcgfCvedrqtRvM-0aPniAHs13E5yTa5pBhLOkXDJq9U/edit?usp=sharing)
   - [Problem Definition](https://www.iit.bme.hu/targyak/BMEVIIIAB02/problem-definition)
 
 ## Compiling and Running 
