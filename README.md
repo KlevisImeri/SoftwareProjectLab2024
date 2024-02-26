@@ -1,7 +1,7 @@
 # SoftwareProjectLab2024
 
 ## Document Links
-- [ ] [Cover](https://docs.google.com/document/d/1yr9KOXCJYXueDPjdYyfCzAHDawjVuId_Yf1yBsS7_Cc/edit)
+- [ ] [Cover](https://docs.google.com/document/d/1Mn_KRn84DfLSgG2iLk20jxYhJ6C5N9aymsou-fHc8No/edit?usp=sharing)
 - [ ] [Project Definition](https://docs.google.com/document/d/1UcgfCvedrqtRvM-0aPniAHs13E5yTa5pBhLOkXDJq9U/edit?usp=sharing)
   - [Problem Definition](https://www.iit.bme.hu/targyak/BMEVIIIAB02/problem-definition)
 
