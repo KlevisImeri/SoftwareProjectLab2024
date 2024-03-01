@@ -4,7 +4,7 @@ import mainstring.dev.Elements.Pipe;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class Pump extends ActiveElement {
+public class Pump2 extends ActiveElement {
   //Local Definitions
   public enum PumpState {
     HEALTHY, BROKEN
@@ -39,7 +39,7 @@ public class Pump extends ActiveElement {
   }
   
   //public functions
-  public Pump() {
+  public Pump2() {
     schedulePipeBreak();
   }
   public void connectPipe(Pipe pipe) {}
