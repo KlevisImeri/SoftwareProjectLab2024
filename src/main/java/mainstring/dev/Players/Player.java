@@ -28,13 +28,16 @@ public abstract class Player {
     public abstract void selectTeams();
 
     // Abstract method for moving the player to a new location on the game map.
-    public abstract void move(ActiveElement newLocation);
+    public void move(ActiveElement newLocation) {
+        this.location = newLocation;
+    }
 
     // Method for changing the direction of a pump
     public abstract void changePumpDirection(ActiveElement pump);
 
     // This trigger the calculation of the final score and clean up the game state.
     // - Or just the player exits the game
+    // I don't actually know what this triggers, I just assumed
     public abstract void endGame();
 
     // Getters and setters for name and location
