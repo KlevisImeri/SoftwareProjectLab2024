@@ -1,9 +1,10 @@
 # SoftwareProjectLab2024
 
 ## Document Links
-- [ ] [Cover](https://docs.google.com/document/d/1yr9KOXCJYXueDPjdYyfCzAHDawjVuId_Yf1yBsS7_Cc/edit)
-- [ ] [Project Definition](https://docs.google.com/document/d/1UcgfCvedrqtRvM-0aPniAHs13E5yTa5pBhLOkXDJq9U/edit?usp=sharing)
+- [ ] [0.Cover](https://docs.google.com/document/d/1Mn_KRn84DfLSgG2iLk20jxYhJ6C5N9aymsou-fHc8No/edit?usp=sharing)
+- [ ] [2.Project Definition](https://docs.google.com/document/d/1UcgfCvedrqtRvM-0aPniAHs13E5yTa5pBhLOkXDJq9U/edit?usp=sharing)
   - [Problem Definition](https://www.iit.bme.hu/targyak/BMEVIIIAB02/problem-definition)
+- [ ] [3.Analysis model](https://docs.google.com/document/d/1u3uKtd4znwaEGchfAY2f_T9UO5kV2lVStRdBYzOEVvc/edit?usp=sharing)
 
 ## Compiling and Running 
 > Maven should be installed
