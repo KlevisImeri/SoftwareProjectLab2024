@@ -3,7 +3,7 @@ package mainstring.dev.Players;
 import mainstring.dev.Elements.ActiveElements.ActiveElement;
 
 public abstract class Player {
-    // Nested enum Role inside the Player class
+
     public enum Role {
         PLUMBER, SABOTEUR
     }
@@ -34,7 +34,7 @@ public abstract class Player {
     public abstract void changePumpDirection(ActiveElement pump);
 
     // This trigger the calculation of the final score and clean up the game state.
-    // Or just the player exits the game
+    // - Or just the player exits the game
     public abstract void endGame();
 
     // Getters and setters for name and location
