@@ -10,7 +10,6 @@ public class Cistern extends ActiveElement {
   List<Pump> pumps;
   private Timer timerPipe = new Timer();
   private Timer timerPump = new Timer();
-  private Random random = new Random();
   private CisternGUI gui = new CisternGUI();
 
   //Private Functions
