@@ -6,7 +6,8 @@ public abstract class Player {
   int ID;
   protected String name;
   protected ActiveElement location;
-
+  
+  public Player(){}
   public Player(String name, ActiveElement location, int ID) {
     this.name = name;
     this.location = location;

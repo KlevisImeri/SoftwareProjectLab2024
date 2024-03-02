@@ -1,13 +1,11 @@
 package mainstring.dev.Menu;
 
-import java.awt.event.ActionEvent;
-import mainstring.dev.UI.GUI.MenuGUI;
+import java.awt.event.ActionListener;
 
 public class Menu {
-  MenuGUI gui = new MenuGUI((ActionEvent e)->startGame(), (ActionEvent e)->changeSettings());
-  Settings Settings = new Settings();
-
-
-  void startGame(){}
-  void changeSetting(){}
+  public Settings settings = new Settings();
+  public ActionListener startGame;
+  public void setStartGameFunction(ActionListener startGame){
+    this.startGame=startGame;
+  }
 }

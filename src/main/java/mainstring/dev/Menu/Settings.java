@@ -1,7 +1,7 @@
 package mainstring.dev.Menu;
 
 public class Settings {
-  int endTime;
-  int playerTime;
-  int pipeCapacity;
+  public int endTime = 5; //minutes
+  public int playerTime = 30; //secound
+  public int pipeCapacity = 5; 
 }
