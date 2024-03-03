@@ -6,6 +6,11 @@ public abstract class Player {
   int ID;
   protected String name;
   protected ActiveElement location;
+  PlayerState state = PlayerState.PASSIVE;
+  
+  public enum PlayerState {
+    ACTIVE, PASSIVE
+  }
   
   public Player(){}
   public Player(String name, ActiveElement location, int ID) {

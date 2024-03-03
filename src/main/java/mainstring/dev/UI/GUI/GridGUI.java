@@ -1,5 +1,7 @@
 package mainstring.dev.UI.GUI;
 
-public class GridGUI {
+import javax.swing.JComponent;
+
+public class GridGUI extends JComponent {
   
 }

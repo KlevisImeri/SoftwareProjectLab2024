@@ -8,6 +8,7 @@ import mainstring.dev.UI.GUI.CisternGUI;
 public class Cistern extends ActiveElement {
   //Fields
   List<Pump> pumps;
+  int waterAmount;
   private Timer timerPipe = new Timer();
   private Timer timerPump = new Timer();
   private CisternGUI gui = new CisternGUI();

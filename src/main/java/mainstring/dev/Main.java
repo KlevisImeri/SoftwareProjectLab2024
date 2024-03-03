@@ -1,6 +1,7 @@
 package mainstring.dev;
 
 import mainstring.dev.Menu.*;
+import mainstring.dev.Players.PlayersCollection;
 import mainstring.dev.UI.GUI.*;
 /**
  * The Main class represents the entry point of the application.
@@ -23,6 +24,39 @@ public class Main {
     frame.getContentPane().removeAll();
     frame.revalidate();
     frame.repaint();
-    System.out.println("Hello");
+
+    
+    // PlayersCollection players = new PlayersCollection();
+    // frame.add(new PlayersCollectionGUI(players));
+
+    // frame.getContentPane().removeAll();
+    // frame.revalidate();
+    // frame.repaint();
+
+    // Grid grid = new Grid(players);
+    // frame.add(new GridGUI(grid));
+
+    // while(THe timer does not end){
+    //   mainLoop();
+    // }
+
   }
+  public static void mainLoop(){
+    /* select player randomly
+     * make player active 
+     *  - now all the kewboarad input are turn on for that player
+     *  - this is becuase the UI checks if player active
+     * Every time you click on pipe the GUI sets the curentpipe in the grid
+     * while(timer for player is not over){
+     *  he select pipe.
+     *  he preses kewboard input.
+     * }
+    */ 
+  }
+
 }
+
+//Teams
+//TeamsGUI
+//Grid takes the teams in the constructor
+//The grid is setup with the grid ui

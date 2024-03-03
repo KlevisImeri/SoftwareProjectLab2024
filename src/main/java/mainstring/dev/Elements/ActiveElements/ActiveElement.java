@@ -4,11 +4,11 @@ import java.util.List;
 import java.util.Random;
 import mainstring.dev.Elements.Element;
 import mainstring.dev.Elements.Pipe;
-import mainstring.dev.Players.Player;
+import mainstring.dev.Players.PlayersCollection;
 
 public abstract class ActiveElement extends Element {
   //Fields
-  protected List<Player> players; //The players stading at that active element
+  protected PlayersCollection players;
   protected List<Pipe> pipes;
   protected Pipe in;
   protected Pipe out;

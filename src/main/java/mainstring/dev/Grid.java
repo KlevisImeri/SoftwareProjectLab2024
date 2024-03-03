@@ -10,11 +10,15 @@ public class Grid {
   Cistern cistern = new Cistern();
   Spring spring = new Spring();
   List<Pump> pumps;
+  int waterInDesert;
+  Pipe currentPipe;
+  
 
   //Public Functions
-  public void connectPipe(Plumber plumber, Pipe pipe, ActiveElement Destination){}
-	public void puncturePipe(Saboteur Saboteur, Pipe pipe){}
-	public void changePipeDirection(Player player, Pipe pipe){}
+  public void connectPipe(Plumber plumber, ActiveElement Destination){}
+	public void puncturePipe(Saboteur Saboteur){}
+	public void changePipeDirection(Player player){}
 	public void moveToLocation(Player player, ActiveElement Destination){}
-  public void insertPump(Plumber plumber, Pipe pipe){}
+  public void insertPump(Plumber plumber){}
+  public void caculateFlow(){}
 }
