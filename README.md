@@ -5,7 +5,7 @@
 - [ ] [2.Project Definition](https://docs.google.com/document/d/1UcgfCvedrqtRvM-0aPniAHs13E5yTa5pBhLOkXDJq9U/edit?usp=sharing)
   - [Problem Definition](https://www.iit.bme.hu/targyak/BMEVIIIAB02/problem-definition)
 - [ ] [3.1Analysis model](https://docs.google.com/document/d/1GQjKXtnZAlzHJznduEUlyZGJ1P08df4gseJaO8MnlUI/edit?usp=sharing)
-  - [ ] [3.0Analysis model](https://docs.google.com/document/d/1u3uKtd4znwaEGchfAY2f_T9UO5kV2lVStRdBYzOEVvc/edit?usp=sharing)
+  - [3.0Analysis model](https://docs.google.com/document/d/1u3uKtd4znwaEGchfAY2f_T9UO5kV2lVStRdBYzOEVvc/edit?usp=sharing)
 
 ## Compiling and Running 
 > Maven should be installed
