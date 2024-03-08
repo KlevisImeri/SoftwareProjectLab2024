@@ -12,6 +12,8 @@ public class Grid {
   List<Pump> pumps;
   int waterInDesert;
   Pipe currentPipe;
+  Pipe currentPump;
+  Pipe currentPlayer;
   
 
   //Public Functions

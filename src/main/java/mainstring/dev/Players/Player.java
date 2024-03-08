@@ -1,17 +1,27 @@
 package mainstring.dev.Players;
 
+import java.awt.event.*;
 import mainstring.dev.Elements.ActiveElements.ActiveElement;
+import mainstring.dev.UI.GUI.*;
 
-public abstract class Player {
+//Controller of Player
+public abstract class Player implements MouseListener, KeyListener {
+  //Data
   int ID;
-  protected String name;
   protected ActiveElement location;
-  PlayerState state = PlayerState.PASSIVE;
+  String name;
   
-  public enum PlayerState {
-    ACTIVE, PASSIVE
-  }
-  
+  //GUI
+  PlayerGUI gui = new PlayerGUI();
+    
+
+  public void mousePressed(MouseEvent e){}
+  public void mouseReleased(MouseEvent e){}
+  public void mouseEntered(MouseEvent e){}
+  public void keyTyped(KeyEvent e){}
+  public void keyPressed(KeyEvent e){}
+  public void keyReleased(KeyEvent e){}
+
   public Player(){}
   public Player(String name, ActiveElement location, int ID) {
     this.name = name;
@@ -20,16 +30,21 @@ public abstract class Player {
   }
 
 
-  // Abstract method for moving the player to a new location on the game map.
   public void moveToLocation(ActiveElement newLocation) {
-    this.location = newLocation;
+    
   }
   // Method for changing the direction of a pump
-  public void changePumpDirection(ActiveElement pump){}
-  public void endGame(){}
+  public void changePumpDirection(ActiveElement pump){
 
+  }
 
+  public void active(){
+    gui.setEnabled(true);
+  }
 
+  public void passive(){
+    gui.setEnabled(false);
+  }
 
   // Getters and setters for name and location
   // public String getName() {

@@ -48,3 +48,20 @@ public class Pump extends ActiveElement {
   public void setOutPipe(Pipe pipe) {}
   public void fixPump() {}
 }
+
+// //controller Example
+// public class PumpController {
+//   Pump pump;
+//   PumpGUI gui;
+//   GridController grid;
+// p
+//   controsutn(pump,gui){}
+
+//   public void connectPipe(Pipe pipe) {
+//       grid.connecPipe((plumber)grid.currentPlayer)
+//   }
+//   public void removePipe(Pipe pipe) {}
+//   public void setInPipe(Pipe pipe) {}
+//   public void setOutPipe(Pipe pipe) {}
+//   public void fixPump() {}
+// }
