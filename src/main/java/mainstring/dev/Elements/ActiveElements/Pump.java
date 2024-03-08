@@ -1,10 +1,13 @@
 package mainstring.dev.Elements.ActiveElements;
 
 import mainstring.dev.Elements.Pipe;
+import mainstring.dev.UI.GUI.PumpGUI;
+import java.awt.event.ActionListener;
+import java.awt.event.MouseListener;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class Pump extends ActiveElement {
+public class Pump extends ActiveElement implements MouseListener {
   //Local Definitions
   public enum PumpState {
     HEALTHY, BROKEN
@@ -28,6 +31,10 @@ public class Pump extends ActiveElement {
   PumpState state = PumpState.HEALTHY;
   Reservoir reservoir;
   int capacity;
+  Grid grid;
+  Pump gui = new PumpGUI();
+
+
   private Timer timer = new Timer();
 
   //private functions
@@ -39,9 +46,15 @@ public class Pump extends ActiveElement {
   }
   
   //public functions
-  public Pump() {
+  public Pump(Grid grid) {
     schedulePipeBreak();
+    this.grid = grid;
   }
+
+  public void oneMouseClik(){
+    grid.selectedPump = this;
+  }
+  
   public void connectPipe(Pipe pipe) {}
   public void removePipe(Pipe pipe) {}
   public void setInPipe(Pipe pipe) {}
