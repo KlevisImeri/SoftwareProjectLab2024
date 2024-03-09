@@ -32,8 +32,8 @@ public class Pump extends ActiveElement implements MouseListener {
   //Fields
   PumpState state = PumpState.HEALTHY;
   Reservoir reservoir;
-  int capacity;
-  Grid grid;
+  private Pipe in;
+  private Pipe out;
   private Timer timer = new Timer();
 
   //private functions
@@ -45,17 +45,15 @@ public class Pump extends ActiveElement implements MouseListener {
   }
   
   //public functions
-  public Pump(Grid grid) {
+  public Pump() {
     schedulePipeBreak();
-    this.grid = grid;
-    gui = new PumpGUI();
   }
 
-  public void onMouseClik(){
-    grid.selectedPump = this;
+  public void onMouseClick(){
+    grid.setSelectedPump(this);
   } //used
-  public void setInPipe(Pipe pipe) {} //used 
-  public void setOutPipe(Pipe pipe) {} //used
+  public void setInPipe(Pipe pipe) {this.in = pipe;} //used 
+  public void setOutPipe(Pipe pipe) {this.out = pipe;} //used
   public void fix() {} //used
   public void changeDirection() {} //used
 }

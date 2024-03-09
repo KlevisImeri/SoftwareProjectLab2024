@@ -1,5 +1,3 @@
 package mainstring.dev.Elements.ActiveElements;
 
-public class Spring {
-  
-}
+public class Spring extends ActiveElement {}

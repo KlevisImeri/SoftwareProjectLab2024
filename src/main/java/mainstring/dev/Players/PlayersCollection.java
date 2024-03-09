@@ -1,13 +1,32 @@
 package mainstring.dev.Players;
 
 import java.util.List;
+import java.util.Random;
+import mainstring.dev.UI.GUI.PlayersCollectionGUI;
 
 public class PlayersCollection {
-  List<Plumber> plumbers;
-  List<Saboteur> saboteurs;
-<<<<<<< HEAD
+  private List<Player> players;
+  int minCapacity;
+  int maxiCapacity;
 
-  public Player selectRandom(){ return plumbers.get(0);}
-=======
->>>>>>> 17009d7572ce844971ba7b68cba66b41ae960ca0
+  PlayersCollectionGUI gui = new PlayersCollectionGUI();
+
+  public void add(Player player) {
+    //check maxiCapacity
+    players.add(player);
+  }
+
+  public void remove(Player player) {
+    //check minCapacity;
+    players.remove(player);
+  }
+
+  public Player selectRandom() {
+    if (players.isEmpty())
+      return null;
+
+    Random random = new Random();
+    int index = random.nextInt(players.size());
+    return players.get(index);
+  }
 }

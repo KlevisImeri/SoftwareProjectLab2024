@@ -1,8 +1,13 @@
 package mainstring.dev.Players;
 
-public class Saboteur {
+import mainstring.dev.Elements.Pipe;
+
+public class Saboteur extends Player {
   public void puncturePipe(){
-    //getSelctedPipe
-    //location.isConnected(pipe)
+    if(location instanceof Pipe){
+      ((Pipe)location).puncture();
+    }else{
+      System.out.println("You can only punctire Pipes!");
+    }
   }
 }
