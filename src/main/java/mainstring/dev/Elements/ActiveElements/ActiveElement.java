@@ -14,6 +14,8 @@ public abstract class ActiveElement extends Element {
   protected Pipe out;
   protected Random random = new Random();
 
+  public void addPlayer(Player player){}
+  public void removePlayer(Player player){}
   public boolean isConnected(Pipe pipe) {} //used
   public boolean isConnected(Pump pump) {}
   public void connectPipe(Pipe pipe) {} //used

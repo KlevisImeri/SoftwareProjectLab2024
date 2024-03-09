@@ -29,10 +29,10 @@ public abstract class Player  {
 
 
   public void move() {
-    // List<ActiveElements> = location.getNeighbords();
-    // if(selected.pump is insise  List<ActiveElements>){
-    //   //rempove the player actiove elmenmt
-    //   //add the player to the selected active elemnet
+    // if(locatation.isConnected(grid.getCurrentActiveElement())){
+    //   location.removePlayer(this);
+    //   grid.getCurrentActiveElement().addPlayer(this);
+    //   location=ActiveElement
     // }else{
     //   System.err.println("To far away");
     // }
