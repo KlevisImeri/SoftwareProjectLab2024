@@ -12,12 +12,13 @@ public class Grid {
   int waterInDesert;
   Pipe selectedPipe;
   ActiveElement selectedActiveElement;
-  // Pipe selectedPlayer; ???
   
   
   public void setSelectedPipe(Pipe pipe){} //used
   public void getSelectedPipe(){} //used
   public void setSelectedActiveElement(ActiveElement activeElement){} //used
   public void getSelectedActiveElement(){} //used
-  public void caculateFlow(){}
+  public void caculateFlow(){
+    
+  }
 } 

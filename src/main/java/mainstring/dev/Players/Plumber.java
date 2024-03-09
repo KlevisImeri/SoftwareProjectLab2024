@@ -47,11 +47,11 @@ public class Plumber extends Player {
      *  if(location.isConencted(grid.getSelectedPipe())){
      *      Pipe newPipe = new Pipe();
      *      newPipe.addVertex(carryPump)
-     *      AcitveElement theOtherVertex = selectdPipe.getTheOtherVertex(location)l
-     *      newPipe.addVertex(theOtherVertex);
+     *      AcitveElement next = selectdPipe.getNext(location)l
+     *      newPipe.addVertex(next);
      *      carryPump.setInPipe(selectedPipe);
      *      carryPump.setOutPipe(newPipe);
-     *      selectdPipe.removeVertex(theOtherVertex)
+     *      selectdPipe.removeVertex(next)
      *      selectdPipe.addVertex(carryPump)       
      *      carryPump=null;
      *  }

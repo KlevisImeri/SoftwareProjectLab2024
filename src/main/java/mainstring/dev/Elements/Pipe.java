@@ -14,5 +14,5 @@ public class Pipe extends Element {
   public void fix() {} //used
   public void addVertex(ActiveElement activeElement){} //used
   public void removeVertex(ActiveElement activeElement){}//used
-  public ActiveElement getTheOtherVertex(ActiveElement activeElement){} //used
+  public ActiveElement getNext(ActiveElement activeElement){} //used
 }
