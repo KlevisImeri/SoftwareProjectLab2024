@@ -10,8 +10,7 @@ public class Pipe extends Element {
   int capacity;
   int state;
 	List<ActiveElement> vertices;
-	public void changeDirection(){} //used
-  public void puncurePipe(){}
+  public void puncture(){} //used
   public void fix() {} //used
   public void addVertex(ActiveElement activeElement){} //used
   public void removeVertex(ActiveElement activeElement){}//used

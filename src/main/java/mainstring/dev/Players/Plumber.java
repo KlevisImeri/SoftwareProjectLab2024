@@ -64,7 +64,7 @@ public class Plumber extends Player {
     // if (location instanceof Cistern)){
     //   carryPump = location.getPump();
     // }else {
-    //    "You are not at the cistern"
+    //    "You are not at the cistern!"
     // }
   }
   public void keyTyped(KeyEvent e){
@@ -74,5 +74,6 @@ public class Plumber extends Player {
     // e.getCharType()="r" -> fixPipe()
     // d -> changePumpDirection()
     // i -> insertPump()
+    // p -> pickPump()
   }
 } 

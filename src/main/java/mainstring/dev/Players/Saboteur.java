@@ -1,5 +1,8 @@
 package mainstring.dev.Players;
 
 public class Saboteur {
-  public void puncturePipe(){}
+  public void puncturePipe(){
+    //getSelctedPipe
+    //location.isConnected(pipe)
+  }
 }
