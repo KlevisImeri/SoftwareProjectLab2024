@@ -1,5 +1,7 @@
 package mainstring.dev.Elements.ActiveElements;
 
+
+import mainstring.dev.Grid;
 import mainstring.dev.Elements.Pipe;
 import mainstring.dev.UI.GUI.PumpGUI;
 import java.awt.event.ActionListener;
@@ -32,9 +34,6 @@ public class Pump extends ActiveElement implements MouseListener {
   Reservoir reservoir;
   int capacity;
   Grid grid;
-  Pump gui = new PumpGUI();
-
-
   private Timer timer = new Timer();
 
   //private functions
@@ -49,17 +48,16 @@ public class Pump extends ActiveElement implements MouseListener {
   public Pump(Grid grid) {
     schedulePipeBreak();
     this.grid = grid;
+    gui = new PumpGUI();
   }
 
-  public void oneMouseClik(){
+  public void onMouseClik(){
     grid.selectedPump = this;
-  }
-  
-  public void connectPipe(Pipe pipe) {}
-  public void removePipe(Pipe pipe) {}
-  public void setInPipe(Pipe pipe) {}
-  public void setOutPipe(Pipe pipe) {}
-  public void fixPump() {}
+  } //used
+  public void setInPipe(Pipe pipe) {} //used 
+  public void setOutPipe(Pipe pipe) {} //used
+  public void fix() {} //used
+  public void changeDirection() {} //used
 }
 
 // //controller Example

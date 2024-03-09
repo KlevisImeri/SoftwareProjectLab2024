@@ -2,7 +2,6 @@ package mainstring.dev;
 
 import java.util.List;
 import mainstring.dev.Elements.ActiveElements.*;
-import mainstring.dev.Players.*;
 import mainstring.dev.Elements.*;
 
 public class Grid {
@@ -11,17 +10,14 @@ public class Grid {
   Spring spring = new Spring();
   List<Pump> pumps; //here the pipes are also stored
   int waterInDesert;
-  Pipe currentPipe;
-  Pipe currentPump;
-  Pipe currentPlayer;
+  Pipe selectedPipe;
+  ActiveElement selectedActiveElement;
+  // Pipe selectedPlayer; ???
   
   
-  //Public Functions
-  // public void connectPipe(Plumber plumber, ActiveElement Destination){}
-	// public void puncturePipe(Saboteur Saboteur){}
-	// public void changePipeDirection(Player player){}
-	// public void moveToLocation(Player player, ActiveElement Destination){}
-  // public void insertPump(Plumber plumber){}
-
+  public void setSelectedPipe(Pipe pipe){} //used
+  public void getSelectedPipe(){} //used
+  public void setSelectedActiveElement(ActiveElement activeElement){} //used
+  public void getSelectedActiveElement(){} //used
   public void caculateFlow(){}
-}
+} 

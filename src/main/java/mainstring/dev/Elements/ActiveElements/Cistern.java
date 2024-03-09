@@ -24,5 +24,5 @@ public class Cistern extends ActiveElement {
     schedulePipeCreation();
     schedulePumpCreation();
   }
-  public Pump getPump() { return pumps.remove(pumps.size()-1);} //We have to check if no pumps
+  public Pump getPump() { return pumps.remove(pumps.size()-1);} //used //We have to check if no pumps
 }
