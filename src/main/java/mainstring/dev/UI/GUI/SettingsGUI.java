@@ -2,6 +2,7 @@ package mainstring.dev.UI.GUI;
 
 import mainstring.dev.Menu.Settings;
 import javax.swing.*;
+import java.awt.Container;
 
 public class SettingsGUI extends JPanel {
     private Settings settings;
@@ -11,18 +12,30 @@ public class SettingsGUI extends JPanel {
     JTextField playerTimeField;
     JLabel pipeCapacityLabel = new JLabel("Pipe Capacity:");
     JTextField pipeCapacityField;
+    JButton closeSettingsButton = new JButton("Close");
 
     public SettingsGUI(Settings settings) {
         this.settings = settings;
 
         setLabels();
-        
+    
         add(endTimeLabel);
         add(endTimeField);
         add(playerTimeLabel);
         add(playerTimeField);
         add(pipeCapacityLabel);
         add(pipeCapacityField);
+        closeSettingsButton.addActionListener((e)->{
+          Container parent = getParent();
+          parent.remove(SettingsGUI.this);
+          parent.revalidate();
+          parent.repaint();
+          
+          settings.endTime = Integer.parseInt(endTimeField.getText());
+          settings.playerTime = Integer.parseInt(playerTimeField.getText());
+          settings.pipeCapacity = Integer.parseInt(pipeCapacityField.getText());
+        });
+        add(closeSettingsButton);
       }
       
       private void setLabels(){

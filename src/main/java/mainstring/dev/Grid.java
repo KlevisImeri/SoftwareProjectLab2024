@@ -60,11 +60,7 @@ public class Grid {
     activeElements.add(pump);
   }
 
-  public void caculateFlow() {
-    for (ActiveElement activeElement : activeElements) {
-      activeElement.Flow();
-    }
-  }
+
   public void addWaterToDesert(){
     this.waterInDesert++;
   }

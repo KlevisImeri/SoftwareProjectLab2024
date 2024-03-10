@@ -27,9 +27,10 @@ public class Main {
     frame.revalidate();
     frame.repaint();
 
+    System.out.println("The game started");
     
-    // PlayersCollection players = new PlayersCollection();
-    // frame.add(new PlayersCollectionGUI(players));
+    PlayersCollection players = new PlayersCollection();
+    frame.add(new PlayersCollectionGUI(players));
 
     // frame.getContentPane().removeAll();
     // frame.revalidate();
@@ -47,7 +48,6 @@ public class Main {
     Player player =  playersCollection.selectRandom();
     player.active();
     //while(timer not ended){}
-    player.passive();
   }
 
 }

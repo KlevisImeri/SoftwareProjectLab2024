@@ -4,14 +4,11 @@ import java.util.Set;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
-import mainstring.dev.UI.GUI.PlayersCollectionGUI;
 
 public class PlayersCollection {
   private Set<Player> players;
   int minCapacity;
   int maxCapacity;
-
-  PlayersCollectionGUI gui = new PlayersCollectionGUI();
 
   public void add(Player player) {
     //check maxiCapacity

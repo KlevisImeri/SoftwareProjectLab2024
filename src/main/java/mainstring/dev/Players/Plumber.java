@@ -9,6 +9,10 @@ public class Plumber extends Player {
   Pump carryPump;
   Pipe carryPipe;
 
+  public Plumber(String name){
+    this.name = name;
+  }
+  
   public void connectPipe() throws Exception { //used 
       //check if the Selected pipe is connected at the locatoin of player and
       //check that the selected pump is a neighbor of the location:

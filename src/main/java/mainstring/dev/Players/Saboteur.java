@@ -3,6 +3,10 @@ package mainstring.dev.Players;
 import mainstring.dev.Elements.Pipe;
 
 public class Saboteur extends Player {
+
+  public Saboteur(String name){
+    this.name = name;
+  }
   public void puncturePipe(){
     if(location instanceof Pipe){
       ((Pipe)location).puncture();
