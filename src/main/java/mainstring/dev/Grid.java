@@ -8,7 +8,7 @@ public class Grid {
   // Fieldsp
   private List<ActiveElement> activeElements; // here the pipes are also stored
 
-  private int waterInDesert;
+  private int waterInDesert=0;
 
   private Element selectedElement;
   private ActiveElement selectedActiveElement;
@@ -64,5 +64,8 @@ public class Grid {
     for (ActiveElement activeElement : activeElements) {
       activeElement.Flow();
     }
+  }
+  public void addWaterToDesert(){
+    this.waterInDesert++;
   }
 }

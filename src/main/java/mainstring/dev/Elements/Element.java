@@ -1,8 +1,9 @@
 package mainstring.dev.Elements;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Set;
 import mainstring.dev.Grid;
-import mainstring.dev.Elements.ActiveElements.ActiveElement;
 import mainstring.dev.Players.Player;
 import mainstring.dev.Players.PlayersCollection;
 
@@ -10,7 +11,7 @@ public abstract class Element {
   protected Grid grid;
   protected PlayersCollection players; //here you can set the capacity
   protected Class<?> neighborType;
-  Set<Element> neighbors;
+  protected Set<Element> neighbors;
   int capacityOfNeighbors;
   public void addPlayer(Player player)throws Exception{
     players.add(player);
@@ -28,6 +29,6 @@ public abstract class Element {
    if(neighbors.contains(element)) return true;
    return false;
   }
-  public List<Element> getNeighbors() throws Exception{return neighbors;}
+  public List<Element> getNeighbors() {return new ArrayList<>(neighbors);}
   public boolean isSecoundNeighbor(Element element){ return true;}
 }

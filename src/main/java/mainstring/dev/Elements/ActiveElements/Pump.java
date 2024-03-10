@@ -1,24 +1,26 @@
 package mainstring.dev.Elements.ActiveElements;
 
 
-import mainstring.dev.Grid;
+// import mainstring.dev.Grid;
 import mainstring.dev.Elements.Pipe;
-import mainstring.dev.UI.GUI.PumpGUI;
-import java.awt.event.ActionListener;
-import java.awt.event.MouseListener;
+// import mainstring.dev.UI.GUI.PumpGUI;
+// import java.awt.event.ActionListener;
+// import java.awt.event.MouseListener;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class Pump extends ActiveElement implements MouseListener {
-  //Local Definitions
+//implements mouseListerner
+public class Pump extends ActiveElement {
   public enum PumpState {
     HEALTHY, BROKEN
   }
+  
   class Reservoir {
     int capacity;
     int totalWater;
 
-    void addWater(int value) {}
+    void addWater() {totalWater++;}
+    void removeWater() {capacity++;}
   }
   private class PipeBreakTask extends TimerTask {
     @Override
@@ -58,7 +60,14 @@ public class Pump extends ActiveElement implements MouseListener {
   public void changeDirection() {} //used
   @Override
   public void Flow(){
-    
+    if(in.isFull()){
+      if(state==PumpState.BROKEN){
+        reservoir.addWater();
+      }else{
+        out.fill();
+      }
+      in.empty();
+    }
   }
 }
 
