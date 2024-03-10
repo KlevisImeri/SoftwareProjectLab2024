@@ -60,6 +60,7 @@ public class Plumber extends Player {
         newPipe.addNeighbor(carryPump); 
         newPipe.addNeighbor(pumps.get(1));
         location = carryPump;
+        grid.addPump(carryPump);
         carryPump=null;
       }else{
         System.out.println("You cant insert a Pump here!"); 

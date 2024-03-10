@@ -5,10 +5,8 @@ import mainstring.dev.Elements.ActiveElements.*;
 import mainstring.dev.Elements.*;
 
 public class Grid {
-  // Fields
-  private Cistern cistern = new Cistern();
-  private Spring spring = new Spring();
-  private List<Pump> pumps; // here the pipes are also stored
+  // Fieldsp
+  private List<ActiveElement> activeElements; // here the pipes are also stored
 
   private int waterInDesert;
 
@@ -16,6 +14,11 @@ public class Grid {
   private ActiveElement selectedActiveElement;
   private Pipe selectedPipe;
   private Pump selectedPump;
+
+  public Grid(){
+    activeElements.add(new Spring());
+    activeElements.add(new Cistern());
+  }
 
   public Element getSelectedElement() {
     return selectedElement;
@@ -53,7 +56,13 @@ public class Grid {
     this.selectedPump = selectedPump;
   }
 
+  public void addPump(Pump pump){
+    activeElements.add(pump);
+  }
+
   public void caculateFlow() {
-    
+    for (ActiveElement activeElement : activeElements) {
+      activeElement.Flow();
+    }
   }
 }

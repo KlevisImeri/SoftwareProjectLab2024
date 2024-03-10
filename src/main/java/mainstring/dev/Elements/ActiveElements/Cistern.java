@@ -27,4 +27,8 @@ public class Cistern extends ActiveElement {
   }
   public Pump getPump() { return newPumps.remove(newPumps.size()-1);} //used //We have to check if no pumps
   public Pipe getPipe() { return newPipes.remove(newPipes.size()-1);} //used //We have to check if no pumps
+  @Override
+  public void Flow(){
+    
+  }
 }

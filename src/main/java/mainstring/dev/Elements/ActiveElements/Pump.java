@@ -56,6 +56,10 @@ public class Pump extends ActiveElement implements MouseListener {
   public void setOutPipe(Pipe pipe) {this.out = pipe;} //used
   public void fix() {} //used
   public void changeDirection() {} //used
+  @Override
+  public void Flow(){
+    
+  }
 }
 
 // //controller Example

@@ -1,6 +1,6 @@
 package mainstring.dev.Elements;
 
-import java.util.List;
+import java.util.Set;
 import mainstring.dev.Grid;
 import mainstring.dev.Elements.ActiveElements.ActiveElement;
 import mainstring.dev.Players.Player;
@@ -10,10 +10,10 @@ public abstract class Element {
   protected Grid grid;
   protected PlayersCollection players; //here you can set the capacity
   protected Class<?> neighborType;
-  List<Element> neighbors;
+  Set<Element> neighbors;
   int capacityOfNeighbors;
   public void addPlayer(Player player)throws Exception{
-    players.addPlayer(player);
+    players.add(player);
   }
   public void removePlayer(Player player) throws Exception {}
   public void addNeighbor(Element neighbor) throws Exception {
