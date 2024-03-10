@@ -12,7 +12,7 @@ public abstract class Element {
   protected PlayersCollection players; //here you can set the capacity
   protected Class<?> neighborType;
   protected Set<Element> neighbors;
-  int capacityOfNeighbors;
+  protected int capacityOfNeighbors;
   public void addPlayer(Player player)throws Exception{
     players.add(player);
   }

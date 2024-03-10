@@ -21,6 +21,4 @@ public class Pipe extends Element {
     if(flowState==PipeFlowState.FULL) return true;
     return false;
   }
-  //public PipeHealthState getHealthStatus() {return healthState;}
-  //public Element getNext(Element element){return element;} //used ?? not implmented
 }

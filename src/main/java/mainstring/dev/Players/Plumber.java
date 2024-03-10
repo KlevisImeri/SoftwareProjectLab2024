@@ -6,8 +6,8 @@ import java.awt.event.*;
 import java.util.List;
 
 public class Plumber extends Player {
-  Pump carryPump;
-  Pipe carryPipe;
+  private Pump carryPump;
+  private Pipe carryPipe;
 
   public Plumber(String name){
     this.name = name;

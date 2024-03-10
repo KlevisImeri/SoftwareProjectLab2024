@@ -16,11 +16,11 @@ public class Pump extends ActiveElement {
   }
   
   class Reservoir {
-    int capacity;
-    int totalWater;
+    public int capacity;
+    public int totalWater;
 
-    void addWater() {totalWater++;}
-    void removeWater() {capacity++;}
+    public void addWater() {totalWater++;}
+    public void removeWater() {totalWater--;}
   }
   private class PipeBreakTask extends TimerTask {
     @Override
@@ -67,6 +67,11 @@ public class Pump extends ActiveElement {
         out.fill();
       }
       in.empty();
+    }else{
+      if(state!=PumpState.BROKEN && reservoir.capacity!=reservoir.totalWater){
+        reservoir.removeWater();
+        out.fill();
+      }
     }
   }
 }

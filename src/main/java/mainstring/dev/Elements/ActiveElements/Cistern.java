@@ -7,12 +7,12 @@ import mainstring.dev.Elements.*;
 
 public class Cistern extends ActiveElement {
   //Fields
-  List<Pump> newPumps; //this are the pumps created
-  List<Pipe> newPipes;
-  int waterAmount;
-  private Timer timerPipe = new Timer();
-  private Timer timerPump = new Timer();
-  private CisternGUI gui = new CisternGUI();
+  protected List<Pump> newPumps; //this are the pumps created
+  protected List<Pipe> newPipes;
+  protected int waterAmount;
+  protected Timer timerPipe = new Timer();
+  protected Timer timerPump = new Timer();
+  protected CisternGUI gui = new CisternGUI();
 
   //Private Functions
   private void schedulePipeCreation(){ createPipe();}
