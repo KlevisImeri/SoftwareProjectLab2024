@@ -10,8 +10,8 @@ public class SettingsGUI extends JPanel {
     JTextField endTimeField;
     JLabel playerTimeLabel = new JLabel("Player Time (seconds):");
     JTextField playerTimeField;
-    JLabel pipeCapacityLabel = new JLabel("Pipe Capacity:");
-    JTextField pipeCapacityField;
+    // JLabel pipeCapacityLabel = new JLabel("Pipe Capacity:");
+    // JTextField pipeCapacityField;
     JButton closeSettingsButton = new JButton("Close");
 
     public SettingsGUI(Settings settings) {
@@ -23,8 +23,8 @@ public class SettingsGUI extends JPanel {
         add(endTimeField);
         add(playerTimeLabel);
         add(playerTimeField);
-        add(pipeCapacityLabel);
-        add(pipeCapacityField);
+        // add(pipeCapacityLabel);
+        // add(pipeCapacityField);
         closeSettingsButton.addActionListener((e)->{
           Container parent = getParent();
           parent.remove(SettingsGUI.this);
@@ -33,7 +33,7 @@ public class SettingsGUI extends JPanel {
           
           settings.endTime = Integer.parseInt(endTimeField.getText());
           settings.playerTime = Integer.parseInt(playerTimeField.getText());
-          settings.pipeCapacity = Integer.parseInt(pipeCapacityField.getText());
+          // settings.pipeCapacity = Integer.parseInt(pipeCapacityField.getText());
         });
         add(closeSettingsButton);
       }
@@ -45,7 +45,7 @@ public class SettingsGUI extends JPanel {
         playerTimeField = new JTextField(Integer.toString(settings.playerTime), 5);
         playerTimeField.addActionListener((e)->settings.playerTime = Integer.parseInt(playerTimeField.getText()));
   
-        pipeCapacityField = new JTextField(Integer.toString(settings.pipeCapacity), 5);
-        pipeCapacityField.addActionListener((e)->settings.pipeCapacity = Integer.parseInt(pipeCapacityField.getText()));
+        // pipeCapacityField = new JTextField(Integer.toString(settings.pipeCapacity), 5);
+        // pipeCapacityField.addActionListener((e)->settings.pipeCapacity = Integer.parseInt(pipeCapacityField.getText()));
     }
 }

@@ -6,9 +6,11 @@ import mainstring.dev.Elements.*;
 
 public class Grid {
   // Fieldsp
+  private Cistern cistern;
   private List<ActiveElement> activeElements; // here the pipes are also stored
 
   private int waterInDesert=0;
+ 
 
   private Element selectedElement;
   private ActiveElement selectedActiveElement;
@@ -17,7 +19,8 @@ public class Grid {
 
   public Grid(){
     activeElements.add(new Spring());
-    activeElements.add(new Cistern());
+    cistern = new Cistern();
+    activeElements.add(cistern);
   }
 
   public Element getSelectedElement() {
@@ -64,4 +67,7 @@ public class Grid {
   public void addWaterToDesert(){
     this.waterInDesert++;
   }
+
+  public int getWaterAtDesert(){return this.waterInDesert;}
+  public int getWaterAtCistner(){return this.cistern.getWaterAmount();}
 }

@@ -49,5 +49,8 @@ public class Main {
     player.active();
     //while(timer not ended){}
   }
+  
+  public static void endGame(){}
 
+  public static void displayResults(){}
 }

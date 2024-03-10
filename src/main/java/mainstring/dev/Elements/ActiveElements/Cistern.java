@@ -38,4 +38,5 @@ public class Cistern extends ActiveElement {
     } 
     for(int i=0; i<newPipes.size(); i++){removewater();}
   }
+  public int getWaterAmount() {return this.waterAmount;}
 }
