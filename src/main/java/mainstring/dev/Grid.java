@@ -15,7 +15,7 @@ public class Grid {
   private Element selectedElement;
   private ActiveElement selectedActiveElement;
   private Pipe selectedPipe;
-  private Pump selectedPump;
+  // private Pump selectedPump;
 
   public Grid(){
     activeElements.add(new Spring());
@@ -49,15 +49,15 @@ public class Grid {
     this.selectedPipe = selectedPipe;
   }
 
-  public Pump getSelectedPump() {
-    return selectedPump;
-  }
+  // public Pump getSelectedPump() {
+  //   return selectedPump;
+  // }
 
-  public void setSelectedPump(Pump selectedPump) {
-    this.selectedElement = selectedPump;
-    this.selectedActiveElement = selectedPump;
-    this.selectedPump = selectedPump;
-  }
+  // public void setSelectedPump(Pump selectedPump) {
+  //   this.selectedElement = selectedPump;
+  //   this.selectedActiveElement = selectedPump;
+  //   this.selectedPump = selectedPump;
+  // }
 
   public void addPump(Pump pump){
     activeElements.add(pump);

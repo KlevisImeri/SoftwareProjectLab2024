@@ -44,6 +44,8 @@ public class Main {
     // }
 
   }
+  public static void selectTeams(){}
+
   public static void mainLoop(){
     Player player =  playersCollection.selectRandom();
     player.active();

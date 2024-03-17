@@ -11,7 +11,7 @@ public class Saboteur extends Player {
     if(location instanceof Pipe){
       ((Pipe)location).puncture();
     }else{
-      System.out.println("You can only punctire Pipes!");
+      System.out.println("You can only puncture Pipes!");
     }
   }
 }

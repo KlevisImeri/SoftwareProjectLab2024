@@ -33,6 +33,7 @@ public abstract class Player {
   }
 
   protected void move(Element element) {}
+  
   public void move() {
     try{
       if (location.isConnected(grid.getSelectedElement())) {

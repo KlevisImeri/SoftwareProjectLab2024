@@ -51,8 +51,8 @@ public class Pump extends ActiveElement {
     schedulePipeBreak();
   }
 
-  public void onMouseClick(){
-    grid.setSelectedPump(this);
+  public void onMouseClick(){ //== Select 
+    grid.setSelectedActiveElement(this);
   } //used
   public void setInPipe(Pipe pipe) {this.in = pipe;} //used 
   public void setOutPipe(Pipe pipe) {this.out = pipe;} //used

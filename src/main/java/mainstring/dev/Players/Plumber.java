@@ -9,39 +9,39 @@ public class Plumber extends Player {
   private Pump carryPump;
   private Pipe carryPipe;
 
-  public Plumber(String name){
+  public Plumber(String name) {
     this.name = name;
   }
-  
-  public void connectPipe() throws Exception { //used 
-      //check if the Selected pipe is connected at the locatoin of player and
-      //check that the selected pump is a neighbor of the location:
-      boolean isPipeClose = location.isConnected(grid.getSelectedPipe()); 
-      boolean isPumpClose = location.isSecoundNeighbor(grid.getSelectedActiveElement());
-      if(isPipeClose && isPumpClose){
-         //connect the end at location of the selcted pipe ot the new selected pump
-         location.removeNeighbor(grid.getSelectedPipe());
-         grid.getSelectedPump().addNeighbor(grid.getSelectedPipe());
-         //move the player to the selected pump
-         move(grid.getSelectedPump());//(grid.getSelectedActiveElement is in neighbors)) can also be checked here
-      }else{
-         System.out.println("Pipe is to far away");
-     }
+
+  public void disconnectPipe() throws Exception {
+    Pipe sp = grid.getSelectedPipe();
+    if (location.isConnected(sp)) {
+      if (carryPipe != null) {
+        location.removeNeighbor(sp);
+        sp.removeNeighbor(location);
+        carryPipe = sp;
+      } else {
+        System.out.println("You are already carrying  a pipe!");
+      }
+    } else {
+      System.out.println("The pipe is too far away!");
+    }
   }
-  public void connectNewPipe() throws Exception {
-    if(location instanceof ActiveElement){
-      carryPipe.addNeighbor(location); //they should contain each other so it doesn't matter
-      location.addNeighbor(carryPipe);     
-      carryPipe=null;
-    }else{
-      System.out.println("You can connect a New Pipe here!");
+
+  public void connectPipe() throws Exception {
+    if (location instanceof ActiveElement) {
+      carryPipe.addNeighbor(location); // they should contain each other so it doesn't matter
+      location.addNeighbor(carryPipe);
+      carryPipe = null;
+    } else {
+      System.out.println("You can connect a Pipe here!");
     }
   }
 
   public void fix() { // used
     if (location instanceof Pump) {
       ((Pump) location).fix();
-    }else if (location instanceof Pipe) {
+    } else if (location instanceof Pipe) {
       ((Pipe) location).fix();
     } else if (location instanceof Cistern) {
       System.out.println("You can't fix a cistern");
@@ -50,9 +50,9 @@ public class Plumber extends Player {
     }
   }
 
-  public void insertPump() throws Exception{    
-    if(carryPump!=null){
-      if(location instanceof Pipe){
+  public void insertPump() throws Exception {
+    if (carryPump != null) {
+      if (location instanceof Pipe) {
         Pipe newPipe = new Pipe();
         List<Element> pumps = location.getNeighbors();
         carryPump.setOutPipe(newPipe);
@@ -61,31 +61,31 @@ public class Plumber extends Player {
         location.removeNeighbor(pumps.get(1));
         location.addNeighbor(carryPump);
         location.removePlayer(this);
-        newPipe.addNeighbor(carryPump); 
+        newPipe.addNeighbor(carryPump);
         newPipe.addNeighbor(pumps.get(1));
         location = carryPump;
         grid.addPump(carryPump);
-        carryPump=null;
-      }else{
-        System.out.println("You cant insert a Pump here!"); 
+        carryPump = null;
+      } else {
+        System.out.println("You cant insert a Pump here!");
       }
-    }else{
-      System.out.println("You don't have a Pump"); 
+    } else {
+      System.out.println("You don't have a Pump");
     }
   }
 
   public void pickPump() {
-    if (location instanceof Cistern){
-      carryPump = ((Cistern)location).getPump();
-    }else {
+    if (location instanceof Cistern) {
+      carryPump = ((Cistern) location).getPump();
+    } else {
       System.out.println("You are not at the cistern!");
     }
   }
 
   public void pickPipe() {
-    if (location instanceof Cistern){
-      carryPipe = ((Cistern)location).getPipe();
-    }else {
+    if (location instanceof Cistern) {
+      carryPipe = ((Cistern) location).getPipe();
+    } else {
       System.out.println("You are not at the cistern!");
     }
   }
@@ -100,3 +100,21 @@ public class Plumber extends Player {
     // p -> pickPump()
   }
 }
+
+  // Old depricated things
+  // public void connectPipe() throws Exception { //used
+  // //check if the Selected pipe is connected at the locatoin of player and
+  // //check that the selected pump is a neighbor of the location:
+  // boolean isPipeClose = location.isConnected(grid.getSelectedPipe());
+  // boolean isPumpClose = location.isSecoundNeighbor(grid.getSelectedActiveElement());
+  // if(isPipeClose && isPumpClose){
+  // //connect the end at location of the selcted pipe ot the new selected pump
+  // location.removeNeighbor(grid.getSelectedPipe());
+  // grid.getSelectedPump().addNeighbor(grid.getSelectedPipe());
+  // //move the player to the selected pump
+  // move(grid.getSelectedPump());//(grid.getSelectedActiveElement is in neighbors)) can also be
+  // checked here
+  // }else{
+  // System.out.println("Pipe is to far away");
+  // }
+  // }

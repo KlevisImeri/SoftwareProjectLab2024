@@ -14,6 +14,7 @@ public class Pipe extends Element {
       grid.addWaterToDesert();
       return;
     }
+    System.out.println("The pipe is filled");
     flowState=PipeFlowState.FULL;
   }
   public void empty() {flowState=PipeFlowState.EMPTY;}
