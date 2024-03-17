@@ -707,27 +707,3 @@ classDiagram
     Player <|-- Plumber
     Player <|-- Saboteur
 ```
-
-
-
-```The Grid serves as the structural foundation of the Pipe system, intricately connecting springs, pumps, pipes, and cisterns to form a cohesive network designed for the efficient extraction, movement, and collection of water.
-
-Grid can regulate:
-
-- Player Interaction with Pipes: Only one player can interact with a pipe at any given time. Plumbers have the ability to repair damage to pipes or modify the system by cutting a pipe and installing a pump. Conversely, saboteurs can create leaks by puncturing the pipes, disrupting the flow of water.
-
-- Player Interaction with Pumps: Unlike pipes, pumps can be surrounded by any number of players. Both plumbers and saboteurs can alter the direction of water flow through these pumps. Additionally, plumbers can repair pumps if they are found to be BROKEN, ensuring the continuous movement of water through the system.
-
-- Flow Management: The Grid is tasked with overseeing the flow of water throughout the network. This includes regulating the direction and volume of water from springs (the source) to the cistern (the sink), and managing any deviations caused by interactions with players or system failures.
-
-- Network Integrity: It ensures the implementation of game regulations, maintaining the balance between construction and sabotage activities by players. This includes facilitating the addition of both simple (pipes) and active (pumps) elements to the system, and ensuring these additions adhere to the rules of the game.
-
-- Dynamic Interaction: The Grid accommodates dynamic interactions within the network, allowing for the strategic placement of pumps by players, and the resultant alterations in water flow paths.
-
-- Calculation and Display of Water Flow: It calculates the flow of water through each edge (pipe) of the network based on inputs from connected pumps or series of pipes. The Grid also identifies and nullifies the flow through any leaking pipes, preventing their contribution to downstream flow.
-
-- Resource Accounting: By tracking water extracted from springs and water stored in the cistern, the Grid facilitates the calculation of water loss. This measurement is critical for determining the outcome of the game, as the comparison between stored and spilled water forms the basis for winning criteria.
-
-  
-In essence, the Grid is a sophisticated representation of a network flow problem with the added complexity of interactive elements (players) who can influence the system's efficiency and objectives. It orchestrates the flow of resources across the network, ensures compliance with game mechanics, and quantifies the results of these interactions to determine the game's outcome.
-```

@@ -198,7 +198,7 @@ sequenceDiagram
 	    Location-->>Plumber: False
         Plumber-->>-User: "The pipe is too far!"
     end
-```p
+```
 
 ```mermaid
 sequenceDiagram
