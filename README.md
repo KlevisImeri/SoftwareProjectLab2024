@@ -7,6 +7,7 @@
 - [ ] [4.Analysis model](https://docs.google.com/document/d/1GQjKXtnZAlzHJznduEUlyZGJ1P08df4gseJaO8MnlUI/edit?usp=sharing)
   - [3.Analysis model](https://docs.google.com/document/d/1u3uKtd4znwaEGchfAY2f_T9UO5kV2lVStRdBYzOEVvc/edit?usp=sharing)
 - [ ] [5.Plans for the skeleton](https://docs.google.com/document/d/1ualSxL9Me9Omed-CUEuVkHZgmbHVUMaHbaHxVlP3nj4/edit?usp=sharing)
+- [ ] [6.Skeleton program](https://docs.google.com/document/d/1RjkmPktUYhIkYRy5VOlzRi_f1m9iWwFOYq1l3Kscu8A/edit?usp=sharing)
 ## Compiling and Running 
 > Maven should be installed
 
