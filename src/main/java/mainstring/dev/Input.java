@@ -34,7 +34,7 @@ public abstract class Input {
         Output.println(input, Color.LIGHT_RED);
 
         if ("exit".equalsIgnoreCase(input)) {
-          Output.println("|-----------------------Application Exited-----------------------|\n",
+          Output.println("|-------------------------Application Exited--------------------------|\n",
               Color.LIGHT_BLUE);
           System.exit(1);
         }

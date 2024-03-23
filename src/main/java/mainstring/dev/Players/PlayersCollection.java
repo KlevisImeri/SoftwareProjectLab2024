@@ -12,6 +12,10 @@ public class PlayersCollection {
   // int minCapacity;
   // int maxCapacity;
 
+  public PlayersCollection(){
+    System.out.println("PlayersCollection()");
+  }
+
   public void add(Player player) throws Exception {
     System.out.println("addPlayer(" + player.getName() + ")");
     int size = players.size();

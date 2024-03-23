@@ -113,11 +113,12 @@ public class Skeleton {
     Output.println("|------------5.2.1.1 Disconnect pipe from pump Setup------------|",
         Color.LIGHT_BLUE);
 
-    // write this into the system.in so we can emeulate the inputss from the user
-    // 1
-    // P
-    // kelvis
-
+    Input.in("1");
+    Input.in("Klevis");
+    Input.in("Diamond");
+    Input.in("Murad");
+    Input.in("Ibrahim");
+    
     Main main = new Main();
 
     // add plauer
@@ -163,13 +164,15 @@ public class Skeleton {
 
   private static void connectPipe1() {
     /*-----------------------------setup----------------------------*/
-    Output.println("|------------5.2.2.1 Connect pipe with pump Setup------------|",
+    Output.println("|-------------5.2.2.1 Connect pipe with pump Setup-------------|",
         Color.LIGHT_BLUE);
 
-    // write this into the system.in so we can emeulate the inputs from the user
-    // 1
-    // P
-    // kelvis
+    Input.in("1");
+    Input.in("Klevis");
+    Input.in("Diamond");
+    Input.in("Murad");
+    Input.in("Ibrahim");
+
     Main main = new Main();
 
     System.out.println("Does the player carry a pipe? [y]es/[n]o");
@@ -217,10 +220,8 @@ public class Skeleton {
         break;
     }
 
-    // add player
-    // add the elements
-    // add players to elements
-    /*-----------------------------setup----------------------------*/
+    Output.println("|--------------------------------------------------------------------|\n",
+        Color.LIGHT_BLUE);
 
     main(null);
   }
@@ -292,7 +293,7 @@ public class Skeleton {
     Output.println("\n|-----------------5.2.1.1 The user uses the menu ------------------|",
         Color.LIGHT_BLUE);
     Main main = new Main();
-    Output.println("|-------------------------Application Exited--------------------------|\n",
+    Output.println("|--------------------------------------------------------------------|\n",
         Color.LIGHT_BLUE);
 
     main(null);
