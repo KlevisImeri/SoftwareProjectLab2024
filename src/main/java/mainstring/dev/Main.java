@@ -33,19 +33,56 @@ public class Main {
     // while(THe timer does not end){
     // mainLoop();
     // }
+  }
+  /*---------------------------------------------Select Teams------------------------------------------- */
+  int numOfPlumbers = 1;
+  int numOfSaboteurs = 1;
 
+  public void askForPlumber() {
+    while (true) {
+      try {
+        System.out.println("Enter the name of the " + numOfPlumbers + " plumber:");
+        playersCollection.add(new Plumber(Input.getLine()));
+        numOfPlumbers++;
+        break;
+      } catch (Exception e) {
+      }
+    }
+  }
+
+  public void askForSaboteur() {
+    while (true) {
+      try {
+        System.out.println("Enter the name of the " + numOfSaboteurs + " saboteur:");
+        playersCollection.add(new Saboteur(Input.getLine()));
+        numOfSaboteurs++;
+        break;
+      } catch (Exception e) {
+      }
+    }
   }
 
   public void selectTeams() {
-    // System.out.println("Select the team: [P]lumber/[S]aboteur");
-    // switch (Input.getChar()) {
-    //   case 'P':
-    //     // ask for plauer name
-    //     playersCollection.addPlayer(new Plumber(Input.getName()));
-    //   case 'S':
-    //     playersCollection.addPlayer(new Saboteur(Input.getName()));
-    // }
+    System.out.println("selectTeams()");
+    askForPlumber();
+    askForPlumber();
+    askForSaboteur();
+    askForSaboteur();
+    System.out.println("Do you want to add more players? [y]es/[n]o");
+    while (Input.getChar("yn") == 'y') {
+      System.out.println("Select the team: [P]lumber/[S]aboteur");
+      switch (Input.getChar("PS")) {
+        case 'P':
+          askForPlumber();
+          break;
+        case 'S':
+          askForSaboteur();
+          break;
+      }
+      System.out.println("Do you want to add more players? [y]es/[n]o");
+    }
   }
+  /*---------------------------------------------Select Teams------------------------------------------- */
 
   public void mainLoop() {
     Player player = playersCollection.selectRandom();

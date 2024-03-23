@@ -2,21 +2,30 @@ package mainstring.dev.Players;
 
 import java.util.Set;
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
 import java.util.Random;
 
 public class PlayersCollection {
-  private Set<Player> players;
-  int minCapacity;
-  int maxCapacity;
+  private Set<Player> players = new HashSet<>();
+  // int minCapacity;
+  // int maxCapacity;
 
-  public void add(Player player) {
-    //check maxiCapacity
+  public void add(Player player) throws Exception {
+    System.out.println("addPlayer(" + player.getName() + ")");
+    int size = players.size();
     players.add(player);
+    if (size == players.size()) {
+      System.out.println("The player has been added before!");
+      throw new Exception();
+    } else {
+      System.out.println("The player is added.");
+    }
   }
 
   public void remove(Player player) {
-    //check minCapacity;
+    System.out.println("remmove(" + player.getName() + ")");
+    // check minCapacity;
     players.remove(player);
   }
 

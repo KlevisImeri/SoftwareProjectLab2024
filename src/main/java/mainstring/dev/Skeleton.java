@@ -119,10 +119,6 @@ public class Skeleton {
   private static void disconnectPipe1() {
     /*-----------------------------setup----------------------------*/
     System.out.println("|------------5.2.1.1 Disconnect pipe from pump Setup------------|");
-    
-    String input = "1\n";
-    InputStream in = new ByteArrayInputStream(input.getBytes());
-    System.setIn(in);
 
     //write this into the system.in so we can emeulate the inputss from the user
     //1
@@ -236,7 +232,8 @@ public class Skeleton {
   private static void Menu2() {
     System.out.println("\n|---------------5.2.13.2 The user changes the settings --------------|");
     Input.in("2");
-    Input.in("Klevis");
+    Input.in("20");
+    // Input.in("30");
     Main main = new Main();
     System.out.println("|--------------------------------------------------------------------|\n");
 
@@ -251,8 +248,10 @@ public class Skeleton {
   }
 
   private static void selectTeams() {
-    // Implementation for selectTeams
-    System.out.println("Selecting teams...");
+    System.out.println("\n|----------------5.2.13.2 Adding Players into the teams-----------------|");
+    Input.in("1");
+    Main main = new Main();
+    System.out.println("|--------------------------------------------------------------------|\n");
   }
 
   private static void endGame() {

@@ -1,9 +1,9 @@
 package mainstring.dev.Players;
 
 import java.awt.event.*;
+import java.util.Objects;
 import mainstring.dev.Elements.*;
 import mainstring.dev.Elements.ActiveElements.*;
-import mainstring.dev.Elements.ActiveElements.Pump;
 import mainstring.dev.Grid;
 
 // Controller of Player
@@ -13,6 +13,23 @@ public abstract class Player {
   protected Element location;
   protected String name;
   protected Grid grid;
+
+  @Override
+  public int hashCode() {
+    return Objects.hash(name);
+  }
+
+  @Override
+  public boolean equals(Object obj) {
+    if (this == obj) {
+      return true;
+    }
+    if (obj == null || getClass() != obj.getClass()) {
+      return false;
+    }
+    Player other = (Player) obj;
+    return Objects.equals(name, other.name);
+  }
 
   public void keyTyped(KeyEvent e) {}
 
@@ -30,9 +47,9 @@ public abstract class Player {
   }
 
   protected void move(Element element) {}
-  
+
   public void move() {
-    try{
+    try {
       if (location.isConnected(grid.getSelectedElement())) {
         grid.getSelectedElement().addPlayer(this);
         location.removePlayer(this);
@@ -40,16 +57,17 @@ public abstract class Player {
       } else {
         System.out.println("To far away");
       }
-    }catch(Exception e){}
+    } catch (Exception e) {
+    }
   }
 
-  
+
   public void changePumpDirection() {
     if (location instanceof Pump) {
       ((Pump) location).changeDirection();
-    }else if(location instanceof Pipe){
-      System.out.println("You can't change the direction Pipe!"); 
-    }else if (location instanceof Cistern) {
+    } else if (location instanceof Pipe) {
+      System.out.println("You can't change the direction Pipe!");
+    } else if (location instanceof Cistern) {
       System.out.println("You can't change the direction of cistern!");
     } else if (location instanceof Spring) {
       System.out.println("You can't change the direction of spring!");
@@ -58,9 +76,9 @@ public abstract class Player {
 
 
   // Getters and setters for name and location
-  // public String getName() {
-  // return name;
-  // }
+  public String getName() {
+    return name;
+  }
 
   // public ActiveElement getLocation() {
   // return location;
