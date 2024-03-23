@@ -1,26 +1,39 @@
 package mainstring.dev;
 
+import java.util.ArrayList;
 import java.util.List;
 import mainstring.dev.Elements.ActiveElements.*;
+import mainstring.dev.Players.*;
 import mainstring.dev.Elements.*;
 
 public class Grid {
   // Fieldsp
   private Cistern cistern;
-  private List<ActiveElement> activeElements; // here the pipes are also stored
+  private Spring spring;
+  private List<ActiveElement> activeElements = new ArrayList<>(); // here the pipes are also stored
 
-  private int waterInDesert=0;
- 
+  private int waterInDesert = 0;
+
 
   private Element selectedElement;
   private ActiveElement selectedActiveElement;
   private Pipe selectedPipe;
   // private Pump selectedPump;
 
-  public Grid(){
-    activeElements.add(new Spring());
+  public Grid(PlayersCollection players) {
+    System.out.println("Grid(players)");
     cistern = new Cistern();
+    spring = new Spring();
+    for (Player p : players.getPlayers()) {
+      cistern.addPlayer(p);
+    }
     activeElements.add(cistern);
+    activeElements.add(new Spring());
+    /*S    C*/
+    Pipe pipe = new Pipe();
+    pipe.addNeighbor(cistern);
+    pipe.addNeighbor(spring);
+    /*S----C*/
   }
 
   public Element getSelectedElement() {
@@ -50,24 +63,29 @@ public class Grid {
   }
 
   // public Pump getSelectedPump() {
-  //   return selectedPump;
+  // return selectedPump;
   // }
 
   // public void setSelectedPump(Pump selectedPump) {
-  //   this.selectedElement = selectedPump;
-  //   this.selectedActiveElement = selectedPump;
-  //   this.selectedPump = selectedPump;
+  // this.selectedElement = selectedPump;
+  // this.selectedActiveElement = selectedPump;
+  // this.selectedPump = selectedPump;
   // }
 
-  public void addPump(Pump pump){
+  public void addPump(Pump pump) {
     activeElements.add(pump);
   }
 
 
-  public void addWaterToDesert(){
+  public void addWaterToDesert() {
     this.waterInDesert++;
   }
 
-  public int getWaterAtDesert(){return this.waterInDesert;}
-  public int getWaterAtCistner(){return this.cistern.getWaterAmount();}
+  public int getWaterAtDesert() {
+    return this.waterInDesert;
+  }
+
+  public int getWaterAtCistner() {
+    return this.cistern.getWaterAmount();
+  }
 }

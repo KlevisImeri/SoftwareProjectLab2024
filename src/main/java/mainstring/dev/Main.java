@@ -8,29 +8,38 @@ import mainstring.dev.Players.Saboteur;
 
 
 public class Main {
-  private PlayersCollection players = new PlayersCollection();
+  private PlayersCollection players;
   private Grid grid;
-  private Menu menu = new Menu((e) -> startGame());
+  private Menu menu;
 
+  Main() {
+    menu = new Menu((e) -> startGame());
+  }
 
   public void startGame() {
     System.out.println("startGame()");
 
     selectTeams();
 
-    //Grid grid = new Grid(players);
-    // frame.add(new GridGUI(grid));
-    
-    // while(THe timer does not end){
-      // mainLoop();
-    // }
+    Grid grid = new Grid(players);
+    //S----C(p1,p2,p3...)
+
+    System.out.println("Did the game end? [y]es/[n]o");
+    while(Input.getChar("yn")=='n') {
+      mainLoop();
+      System.out.println("Did the game end? [y]es/[n]o");
+    }
+
+    endGame();
   }
+
   /*---------------------------------------------Select Teams------------------------------------------- */
   int numOfPlumbers = 1;
   int numOfSaboteurs = 1;
-  
+
   public void selectTeams() {
     System.out.println("selectTeams()");
+    players = new PlayersCollection();
     askForPlumber();
     askForPlumber();
     askForSaboteur();
@@ -52,32 +61,30 @@ public class Main {
 
   public void askForPlumber() {
     while (true) {
-      try {
-        System.out.println("Enter the name of the " + numOfPlumbers + " plumber:");
-        players.add(new Plumber(Input.getLine()));
+      System.out.println("Enter the name of the " + numOfPlumbers + " plumber:");
+      if (players.add(new Plumber(Input.getLine()))) {
         numOfPlumbers++;
         break;
-      } catch (Exception e) {
       }
     }
   }
 
   public void askForSaboteur() {
     while (true) {
-      try {
-        System.out.println("Enter the name of the " + numOfSaboteurs + " saboteur:");
-        players.add(new Saboteur(Input.getLine()));
+      System.out.println("Enter the name of the " + numOfSaboteurs + " saboteur:");
+      if (players.add(new Saboteur(Input.getLine()))) {
         numOfSaboteurs++;
         break;
-      } catch (Exception e) {
       }
     }
   }
   /*---------------------------------------------Select Teams------------------------------------------- */
 
   public void mainLoop() {
+    System.out.println("mainLoop()");
     Player player = players.selectRandom();
-    // while(timer not ended){}
+    player.active();
+    player.passive();
   }
 
   public void endGame() {}

@@ -1,11 +1,15 @@
 package mainstring.dev.Elements;
 
+import mainstring.dev.Elements.ActiveElements.ActiveElement;
 
 public class Pipe extends Element {
   public enum PipeHealthState {HEALTHY, LEAKING}
   public enum PipeFlowState {FULL, EMPTY}
   PipeHealthState healthState;
   PipeFlowState flowState;
+  public Pipe(){
+    neighborType=ActiveElement.class;
+  }
   public void onMouseClick(){}
   public void puncture(){} //used
   public void fix() {} //used

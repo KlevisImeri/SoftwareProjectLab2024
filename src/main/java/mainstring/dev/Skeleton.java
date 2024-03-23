@@ -173,53 +173,19 @@ public class Skeleton {
     Input.in("Murad");
     Input.in("Ibrahim");
     Input.in("n");
+    Input.in("n");
+    Input.in("Klevis");
+    //pointer is where player is
+    /*
+      S---p---C
+      S-------C
+        \
+          \p
+    */ 
+    Input.in("Klevis");
+
     
     Main main = new Main();
-
-    System.out.println("Does the player carry a pipe? [y]es/[n]o");
-    switch (Input.getChar("yYnN")) {
-      case 'y':
-      case 'Y':
-        System.out.println("Is the location an active element?[y]es/[n]o");
-        switch (Input.getChar("yYnN")) {
-          case 'y':
-          case 'Y':
-            System.out.println("Can more pipes be connected to the location?[y]es/[n]o");
-            switch (Input.getChar("yYnN")) {
-              case 'y':
-              case 'Y':
-                // addNeighbor(Pipe);
-                // addNeighbor(Pump);
-                break;
-
-              case 'n':
-              case 'N':
-                System.out.println("The location is saturated with pipes!");
-                break;
-
-              default:
-                break;
-            }
-            break;
-
-          case 'n':
-          case 'N':
-            System.out.println("You can't connect a pipe to a pipe!");
-            break;
-
-          default:
-            break;
-        }
-        break;
-
-      case 'n':
-      case 'N':
-        System.out.println("You are not carrying a pipe!");
-        break;
-
-      default:
-        break;
-    }
 
     Output.println("|--------------------------------------------------------------------|\n",
         Color.LIGHT_BLUE);

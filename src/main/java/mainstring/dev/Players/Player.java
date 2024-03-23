@@ -74,6 +74,9 @@ public abstract class Player {
     }
   }
 
+  
+  public abstract void active();
+  public abstract void passive();
 
   // Getters and setters for name and location
   public String getName() {

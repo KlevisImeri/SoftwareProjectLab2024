@@ -1,4 +1,6 @@
 package mainstring.dev.Players;
+
+import mainstring.dev.Input;
 import mainstring.dev.Output;
 import mainstring.dev.Output.Color;
 import java.util.Set;
@@ -12,19 +14,20 @@ public class PlayersCollection {
   // int minCapacity;
   // int maxCapacity;
 
-  public PlayersCollection(){
+  public PlayersCollection() {
     System.out.println("PlayersCollection()");
   }
 
-  public void add(Player player) throws Exception {
+  public boolean add(Player player) {
     System.out.println("addPlayer(" + player.getName() + ")");
     int size = players.size();
     players.add(player);
     if (size == players.size()) {
       Output.println("The player has been added before!", Color.LIGHT_RED);
-      throw new Exception();
+      return false;
     } else {
       System.out.println("The player is added.");
+      return true;
     }
   }
 
@@ -35,12 +38,18 @@ public class PlayersCollection {
   }
 
   public Player selectRandom() {
-    if (players.isEmpty())
-      return null;
+    System.out.println("What player you want to return? [name]");
+    while(true){
+      String name = Input.getLine();
+      for (Player player : players) {
+        if (player.getName().equals(name)) {
+          return player;
+        }
+      }
+    }
+  }
 
-    List<Player> playerList = new ArrayList<>(players);
-    Random random = new Random();
-    int index = random.nextInt(playerList.size());
-    return playerList.get(index);
+  public Set<Player> getPlayers() {
+    return players;
   }
 }

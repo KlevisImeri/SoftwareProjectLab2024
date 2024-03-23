@@ -1,6 +1,7 @@
 package mainstring.dev.Players;
 
 import mainstring.dev.Elements.ActiveElements.*;
+import mainstring.dev.Input;
 import mainstring.dev.Elements.*;
 import java.awt.event.*;
 import java.util.List;
@@ -13,7 +14,7 @@ public class Plumber extends Player {
     this.name = name;
   }
 
-  public void disconnectPipe() throws Exception {
+  public void disconnectPipe() {
     Pipe sp = grid.getSelectedPipe();
     if (location.isConnected(sp)) {
       if (carryPipe != null) {
@@ -28,7 +29,8 @@ public class Plumber extends Player {
     }
   }
 
-  public void connectPipe() throws Exception {
+  public void connectPipe() {
+    System.out.println("connectPipe()");
     if (location instanceof ActiveElement) {
       carryPipe.addNeighbor(location); // they should contain each other so it doesn't matter
       location.addNeighbor(carryPipe);
@@ -50,7 +52,7 @@ public class Plumber extends Player {
     }
   }
 
-  public void insertPump() throws Exception {
+  public void insertPump() {
     if (carryPump != null) {
       if (location instanceof Pipe) {
         Pipe newPipe = new Pipe();
@@ -90,31 +92,68 @@ public class Plumber extends Player {
     }
   }
 
-  public void keyTyped(KeyEvent e) {
-    // big stiwch
-    // e.getCharType()="c" -> connectPipe()
-    // e.getCharType()="f" -> fixPump()
-    // e.getCharType()="r" -> fixPipe()
-    // d -> changePumpDirection()
-    // i -> insertPump()
-    // p -> pickPump()
+  @Override
+  public void active() {
+    System.out.println("active()");
+    keyTyped();
+  }
+  
+  @Override
+  public void passive() {
+    System.out.println("passive()");
+  }
+  
+  public void keyTyped() {
+    System.out.println("What does the player do?");
+    System.out.println("KeyTyped()");
+    System.out.println("[d]onnectPipe()");
+    System.out.println("[c]onnectPipe()");
+    System.out.println("[f]ix()");
+    System.out.println("changePump[D]irection()");
+    System.out.println("[i]nsertPump()");
+    System.out.println("[p]ickPump()");
+    System.out.println("[m]ove");
+    switch (Input.getChar("dcfxDipm")) {
+      case 'd':
+        disconnectPipe();
+      case 'c':
+        connectPipe();
+        break;
+      case 'f':
+        fix();
+        break;
+      case 'D':
+        changePumpDirection();
+        break;
+      case 'i':
+        insertPump();
+        break;
+      case 'p':
+        pickPump();
+        break;
+      case 'm':
+        move();
+        break;
+    }
   }
 }
 
-  // Old depricated things
-  // public void connectPipe() throws Exception { //used
-  // //check if the Selected pipe is connected at the locatoin of player and
-  // //check that the selected pump is a neighbor of the location:
-  // boolean isPipeClose = location.isConnected(grid.getSelectedPipe());
-  // boolean isPumpClose = location.isSecoundNeighbor(grid.getSelectedActiveElement());
-  // if(isPipeClose && isPumpClose){
-  // //connect the end at location of the selcted pipe ot the new selected pump
-  // location.removeNeighbor(grid.getSelectedPipe());
-  // grid.getSelectedPump().addNeighbor(grid.getSelectedPipe());
-  // //move the player to the selected pump
-  // move(grid.getSelectedPump());//(grid.getSelectedActiveElement is in neighbors)) can also be
-  // checked here
-  // }else{
-  // System.out.println("Pipe is to far away");
-  // }
-  // }
+
+
+// Old depricated things
+// public void connectPipe() throws Exception { //used
+// //check if the Selected pipe is connected at the locatoin of player and
+// //check that the selected pump is a neighbor of the location:
+// boolean isPipeClose = location.isConnected(grid.getSelectedPipe());
+// boolean isPumpClose = location.isSecoundNeighbor(grid.getSelectedActiveElement());
+// if(isPipeClose && isPumpClose){
+// //connect the end at location of the selcted pipe ot the new selected pump
+// location.removeNeighbor(grid.getSelectedPipe());
+// grid.getSelectedPump().addNeighbor(grid.getSelectedPipe());
+// //move the player to the selected pump
+// move(grid.getSelectedPump());//(grid.getSelectedActiveElement is in neighbors)) can also be
+// checked here
+// }else{
+// System.out.println("Pipe is to far away");
+// }
+// }

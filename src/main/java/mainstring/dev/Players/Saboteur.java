@@ -14,4 +14,6 @@ public class Saboteur extends Player {
       System.out.println("You can only puncture Pipes!");
     }
   }
+  public void active() {}
+  public void passive() {}
 }

@@ -17,6 +17,7 @@ public abstract class Input {
 
   public static void setUpScanner() {
     if (!in.isEmpty()) {
+      Output.println(in.get(0), Color.LIGHT_RED);
       scanner = new Scanner(in.remove(0));
     } else {
       scanner = new Scanner(System.in);
