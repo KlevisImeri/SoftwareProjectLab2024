@@ -1,5 +1,7 @@
 package mainstring.dev;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.util.Scanner;
 import mainstring.dev.Menu.*;
 import mainstring.dev.Players.Player;
@@ -117,12 +119,16 @@ public class Skeleton {
   private static void disconnectPipe1() {
     /*-----------------------------setup----------------------------*/
     System.out.println("|------------5.2.1.1 Disconnect pipe from pump Setup------------|");
-    //setup
+    
+    String input = "1\n";
+    InputStream in = new ByteArrayInputStream(input.getBytes());
+    System.setIn(in);
+
+    //write this into the system.in so we can emeulate the inputss from the user
     //1
+    //P
     //kelvis
-    //diamond
-    // print(System.in, 2);
-    // print(System.in, 3);
+  
     Main main = new Main();
 
     // add plauer
@@ -229,6 +235,8 @@ public class Skeleton {
 
   private static void Menu2() {
     System.out.println("\n|---------------5.2.13.2 The user changes the settings --------------|");
+    Input.in("2");
+    Input.in("Klevis");
     Main main = new Main();
     System.out.println("|--------------------------------------------------------------------|\n");
 

@@ -37,14 +37,14 @@ public class Main {
   }
 
   public void selectTeams() {
-    System.out.println("Select the team: [P]lumber/[S]aboteur");
-    switch (Input.getChar()) {
-      case 'P':
-        // ask for plauer name
-        playersCollection.addPlayer(new Plumber(Input.getName()));
-      case 'S':
-        playersCollection.addPlayer(new Saboteur(Input.getName()));
-    }
+    // System.out.println("Select the team: [P]lumber/[S]aboteur");
+    // switch (Input.getChar()) {
+    //   case 'P':
+    //     // ask for plauer name
+    //     playersCollection.addPlayer(new Plumber(Input.getName()));
+    //   case 'S':
+    //     playersCollection.addPlayer(new Saboteur(Input.getName()));
+    // }
   }
 
   public void mainLoop() {

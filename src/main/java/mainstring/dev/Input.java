@@ -1,5 +1,7 @@
 package mainstring.dev;
 
+import java.io.ByteArrayInputStream;
+import java.io.InputStream;
 import java.util.Scanner;
 
 public abstract class Input {
@@ -25,8 +27,15 @@ public abstract class Input {
 
     return choice;
   }
+  
   public static char getChar(String allowedChars) {
-    reuturn char;
+    return 'i';
+  }
+
+  public static in(String input){
+    // String input = "2\n20\n";
+    // InputStream in = new ByteArrayInputStream(input.getBytes());
+    // System.setIn(in);
   }
 
   public static void clearPreviousLine() {
