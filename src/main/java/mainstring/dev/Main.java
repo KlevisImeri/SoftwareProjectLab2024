@@ -3,39 +3,24 @@ package mainstring.dev;
 import mainstring.dev.Menu.*;
 import mainstring.dev.Players.Player;
 import mainstring.dev.Players.PlayersCollection;
-import mainstring.dev.UI.GUI.*;
 /**
  * The Main class represents the entry point of the application.
  */
 public class Main {
-  
-  private static MainFrame frame = new MainFrame();
-  private static Menu menu = new Menu();
-  private static PlayersCollection playersCollection = new PlayersCollection();
+  private Menu menu;
+  private PlayersCollection playersCollection = new PlayersCollection();
   /*
    * The main method is the entry point of the application.
    * 
    * @param args command-line arguments (not used in this application)
    */
-  public static void main(String[] args) {
-    menu.setStartGameFunction((e)->startGame());
-    frame.add(new MenuGUI(menu));
-    frame.revalidate();
+  Main() {
+    menu = new Menu((e)->startGame());
   }
 
-  public static void startGame(){
-    frame.getContentPane().removeAll();
-    frame.revalidate();
-    frame.repaint();
-
-    System.out.println("The game started");
+  public void startGame(){
+    System.out.println("startGame()");
     
-    PlayersCollection players = new PlayersCollection();
-    frame.add(new PlayersCollectionGUI(players));
-
-    // frame.getContentPane().removeAll();
-    // frame.revalidate();
-    // frame.repaint();
 
     // Grid grid = new Grid(players);
     // frame.add(new GridGUI(grid));
@@ -45,15 +30,14 @@ public class Main {
     // }
 
   }
-  public static void selectTeams(){}
+  public void selectTeams(){}
 
-  public static void mainLoop(){
+  public void mainLoop(){
     Player player =  playersCollection.selectRandom();
-    player.active();
     //while(timer not ended){}
   }
   
-  public static void endGame(){}
+  public void endGame(){}
 
-  public static void displayResults(){}
+  public void displayResults(){}
 }

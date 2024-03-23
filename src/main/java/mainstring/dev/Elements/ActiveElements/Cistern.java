@@ -2,7 +2,6 @@ package mainstring.dev.Elements.ActiveElements;
 
 import java.util.Timer;
 import java.util.List;
-import mainstring.dev.UI.GUI.CisternGUI;
 import mainstring.dev.Elements.*;
 
 public class Cistern extends ActiveElement {
@@ -12,7 +11,6 @@ public class Cistern extends ActiveElement {
   protected int waterAmount;
   protected Timer timerPipe = new Timer();
   protected Timer timerPump = new Timer();
-  protected CisternGUI gui = new CisternGUI();
 
   //Private Functions
   private void schedulePipeCreation(){ createPipe();}

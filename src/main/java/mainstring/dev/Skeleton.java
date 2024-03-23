@@ -4,7 +4,6 @@ import java.util.Scanner;
 import mainstring.dev.Menu.*;
 import mainstring.dev.Players.Player;
 import mainstring.dev.Players.PlayersCollection;
-import mainstring.dev.UI.GUI.*;
 
 /**
  * The Skeleton class represents the entry point of the skeleton application.
@@ -16,37 +15,29 @@ public class Skeleton {
    * @param args command-line arguments (not used in this application)
    */
   public static void main(String[] args) {
-    System.out.println("—Application Started—");
+
+    System.out.println("|----------------------Application Started----------------------|");
     System.out.println("main(String[] args)");
-
     System.out.println("Select function: [1-17]");
-    System.out.println("1. disconnectPipe()");
-    System.out.println("2. connectPipe()");
-    System.out.println("3. fix()");
-    System.out.println("4. changePumpDirection()");
-    System.out.println("5. insertPump()");
-    System.out.println("6. pickPump()");
-    System.out.println("7. pickPipe()");
-    System.out.println("8. puncturePipe()");
-    System.out.println("9. move()");
-    System.out.println("10. fill()");
-    System.out.println("11. flow()");
-    System.out.println("12. calculateFlow()");
-    System.out.println("13. select()");
-    System.out.println("14. Menu()");
-    System.out.println("15. changeSettings()");
-    System.out.println("16. selectTeams()");
-    System.out.println("17. endGame()");
+    System.out.println("5.2.1 disconnectPipe()");
+    System.out.println("5.2.2 connectPipe()");
+    System.out.println("5.2.3 fix()");
+    System.out.println("5.2.4 changePumpDirection()");
+    System.out.println("5.2.5 insertPump()");
+    System.out.println("5.2.6 pickPump()");
+    System.out.println("5.2.7 pickPipe()");
+    System.out.println("5.2.8 puncturePipe()");
+    System.out.println("5.2.9 move()");
+    System.out.println("5.2.10 fill()");
+    System.out.println("5.2.11 flow()");
+    System.out.println("5.2.12 calculateFlow()");
+    System.out.println("5.2.13 select()");
+    System.out.println("5.2.14 Menu()");
+    System.out.println("5.2.15 changeSettings()");
+    System.out.println("5.2.16 selectTeams()");
+    System.out.println("5.2.17 endGame()");
 
-    int choice = 0;
-    try (Scanner scanner = new Scanner(System.in)) {
-      choice = scanner.nextInt();
-    } catch (Exception e) {
-      e.printStackTrace();
-    } 
-
-
-    switch (choice) {
+    switch (Input.getInt(1, 17)) {
       case 1:
         disconnectPipe();
         break;
@@ -98,25 +89,17 @@ public class Skeleton {
       case 17:
         endGame();
         break;
-      default:
-        System.out.println("Invalid choice. Please select a number between 1 and 17.");
     }
   }
 
   // Define methods for each menu option here
   private static void disconnectPipe() {
-    int choice = 0;
-    try (Scanner scanner = new Scanner(System.in)) {
-      System.out.println("Which Setup do you want?");
-      System.out.println("1");
-      System.out.println("2");
-      System.out.println("3");
-      choice = scanner.nextInt();
-    } catch (Exception e) {
-      e.printStackTrace();
-    } 
-
-    switch (choice) {
+    System.out.println("Which Setup do you want? [1-3]");
+    System.out.println("5.2.1.1 Disconnect pipe from pump");
+    System.out.println("5.2.1.2 Disconnect pipe from spring");
+    System.out.println("5.2.1.3 Disconnect pipe from cistern");
+    
+    switch (Input.getInt(1, 3)) {
       case 1:
         disconnectPipe1();
         break;
@@ -134,18 +117,18 @@ public class Skeleton {
   }
 
   private static void disconnectPipe1() {
-    /*-----------------------------setup----------------------------*/ 
-    Main main = new Main(); //create game
-    main.main(null);
-    //add plauer
-    //add the elemetns
-    //add players to elemtns
-    /*-----------------------------setup----------------------------*/ 
+    /*-----------------------------setup----------------------------*/
+    System.out.println("|------------5.2.1.1 Disconnect pipe from pump Setup------------|");
+    Main main = new Main();
 
-    //Call of function
-    saboter.disconnectPipe();
+    // add plauer
+    // add the elemetns
+    // add players to elemtns
+    /*-----------------------------setup----------------------------*/
   }
+
   private static void disconnectPipe2() {}
+
   private static void disconnectPipe3() {}
 
   private static void connectPipe() {
@@ -227,39 +210,4 @@ public class Skeleton {
     // Implementation for endGame
     System.out.println("Ending game...");
   }
-
-  public static void startGame() {
-    frame.getContentPane().removeAll();
-    frame.revalidate();
-    frame.repaint();
-
-    System.out.println("The game started");
-
-    PlayersCollection players = new PlayersCollection();
-    frame.add(new PlayersCollectionGUI(players));
-
-    // frame.getContentPane().removeAll();
-    // frame.revalidate();
-    // frame.repaint();
-
-    // Grid grid = new Grid(players);
-    // frame.add(new GridGUI(grid));
-
-    // while(THe timer does not end){
-    // mainLoop();
-    // }
-
-  }
-
-  public static void selectTeams() {}
-
-  public static void mainLoop() {
-    Player player = playersCollection.selectRandom();
-    player.active();
-    // while(timer not ended){}
-  }
-
-  public static void endGame() {}
-
-  public static void displayResults() {}
 }

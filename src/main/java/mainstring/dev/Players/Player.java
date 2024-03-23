@@ -4,7 +4,6 @@ import java.awt.event.*;
 import mainstring.dev.Elements.*;
 import mainstring.dev.Elements.ActiveElements.*;
 import mainstring.dev.Elements.ActiveElements.Pump;
-import mainstring.dev.UI.GUI.*;
 import mainstring.dev.Grid;
 
 // Controller of Player
@@ -14,8 +13,6 @@ public abstract class Player {
   protected Element location;
   protected String name;
   protected Grid grid;
-
-  protected PlayerGUI gui;
 
   public void keyTyped(KeyEvent e) {}
 
@@ -59,14 +56,6 @@ public abstract class Player {
     }
   }
 
-
-  public void active() {
-    gui.setEnabled(true);
-  }
-
-  public void passive() {
-    gui.setEnabled(false);
-  }
 
   // Getters and setters for name and location
   // public String getName() {
