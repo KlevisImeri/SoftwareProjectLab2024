@@ -25,6 +25,9 @@ public abstract class Input {
 
     return choice;
   }
+  public static char getChar(String allowedChars) {
+    reuturn char;
+  }
 
   public static void clearPreviousLine() {
     System.out.print("\033[A\033[K");

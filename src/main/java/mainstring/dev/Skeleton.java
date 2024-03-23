@@ -117,6 +117,12 @@ public class Skeleton {
   private static void disconnectPipe1() {
     /*-----------------------------setup----------------------------*/
     System.out.println("|------------5.2.1.1 Disconnect pipe from pump Setup------------|");
+    //setup
+    //1
+    //kelvis
+    //diamond
+    // print(System.in, 2);
+    // print(System.in, 3);
     Main main = new Main();
 
     // add plauer
