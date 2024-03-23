@@ -1,7 +1,9 @@
 package mainstring.dev.Players;
 
 import mainstring.dev.Elements.ActiveElements.*;
+import mainstring.dev.Output.Color;
 import mainstring.dev.Input;
+import mainstring.dev.Output;
 import mainstring.dev.Elements.*;
 import java.awt.event.*;
 import java.util.List;
@@ -31,12 +33,20 @@ public class Plumber extends Player {
 
   public void connectPipe() {
     System.out.println("connectPipe()");
-    if (location instanceof ActiveElement) {
-      carryPipe.addNeighbor(location); // they should contain each other so it doesn't matter
-      location.addNeighbor(carryPipe);
-      carryPipe = null;
-    } else {
-      System.out.println("You can connect a Pipe here!");
+    if (carryPipe != null) {
+      if (location instanceof ActiveElement) {
+        System.out.println("The Location is an active element!");
+        System.out.println("addNeighbor(activeElement)");
+        carryPipe.addNeighbor(location); // they should contain each other so it doesn't matter
+        System.out.println("addNeighbor(Pipe)");
+        location.addNeighbor(carryPipe);
+        carryPipe = null;
+      } else {
+        System.out.println("You can't connect a pipe to a pipe!");
+      }
+    }
+    else {
+      Output.println("The plumber is not carrying any pipe!", Color.LIGHT_RED);
     }
   }
 
@@ -53,23 +63,34 @@ public class Plumber extends Player {
   }
 
   public void insertPump() {
+    System.out.println("insertPump()");
     if (carryPump != null) {
       if (location instanceof Pipe) {
+        System.out.println("Pipe()");
         Pipe newPipe = new Pipe();
+        System.out.println("getNeighbors()");
         List<Element> pumps = location.getNeighbors();
-        carryPump.setOutPipe(newPipe);
+        System.out.println("setInPipe()");
         carryPump.setInPipe((Pipe) location);
+        System.out.println("setOutPipe()");
+        carryPump.setOutPipe(newPipe);
+        System.out.println("addPlayer()");
         carryPump.addPlayer(this);
+        System.out.println("removeNeighbor(Element)");
         location.removeNeighbor(pumps.get(1));
+        System.out.println("addNeighbor(carryPump)");
         location.addNeighbor(carryPump);
+        System.out.println("removePlayer(Plumber)");
         location.removePlayer(this);
+        System.out.println("addNeighbor(carryPump)");
         newPipe.addNeighbor(carryPump);
+        System.out.println("addNeighbor(Element)");
         newPipe.addNeighbor(pumps.get(1));
         location = carryPump;
         grid.addPump(carryPump);
         carryPump = null;
       } else {
-        System.out.println("You cant insert a Pump here!");
+        System.out.println("You can't insert a Pump here!");
       }
     } else {
       System.out.println("You don't have a Pump");
@@ -77,7 +98,10 @@ public class Plumber extends Player {
   }
 
   public void pickPump() {
+    System.out.println("pickPump()");
     if (location instanceof Cistern) {
+      System.out.println("The location is a Cistern");
+      System.out.println("getPump()");
       carryPump = ((Cistern) location).getPump();
     } else {
       System.out.println("You are not at the cistern!");
@@ -85,7 +109,9 @@ public class Plumber extends Player {
   }
 
   public void pickPipe() {
+    System.out.println("pickPipe()");
     if (location instanceof Cistern) {
+      System.out.println("The location is a Cistern");
       carryPipe = ((Cistern) location).getPipe();
     } else {
       System.out.println("You are not at the cistern!");

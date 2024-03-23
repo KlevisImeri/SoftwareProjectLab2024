@@ -49,13 +49,18 @@ public abstract class Player {
   protected void move(Element element) {}
 
   public void move() {
+    System.out.println("move()");
     try {
       if (location.isConnected(grid.getSelectedElement())) {
+        System.out.println("isConnected(Element)");
+        System.out.println("getSelectedElement()");
+        System.out.println("addPlayer(Player)");
         grid.getSelectedElement().addPlayer(this);
+        System.out.println("removePlayer(Player)");
         location.removePlayer(this);
         location = grid.getSelectedElement();
       } else {
-        System.out.println("To far away");
+        System.out.println("The destination is too far!");
       }
     } catch (Exception e) {
     }
@@ -63,6 +68,7 @@ public abstract class Player {
 
 
   public void changePumpDirection() {
+
     if (location instanceof Pump) {
       ((Pump) location).changeDirection();
     } else if (location instanceof Pipe) {

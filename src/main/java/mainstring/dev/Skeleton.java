@@ -118,6 +118,17 @@ public class Skeleton {
     Input.in("Diamond");
     Input.in("Murad");
     Input.in("Ibrahim");
+    Input.in("n");
+    Input.in("n");
+    Input.in("Klevis");
+    //pointer is where player is
+    /*
+      S---p---C
+      S-------C
+        \
+          \p
+    */ 
+    Input.in("d");
 
     Main main = new Main();
 
@@ -130,12 +141,54 @@ public class Skeleton {
   }
 
   private static void disconnectPipe2() {
+    Output.println("|------------5.2.1.2 Disconnect pipe from spring Setup------------|",
+        Color.LIGHT_BLUE);
 
+    Input.in("1");
+    Input.in("Klevis");
+    Input.in("Diamond");
+    Input.in("Murad");
+    Input.in("Ibrahim");
+    Input.in("n");
+    Input.in("n");
+    Input.in("Klevis");
+    //pointer is where player is
+    /*
+      S---p---C
+      S-------C
+        \
+          \p
+    */ 
+    Input.in("d");
+
+    Main main = new Main();
 
     main(null);
   }
 
   private static void disconnectPipe3() {
+    Output.println("|------------5.2.1.3 Disconnect pipe from spring Setup------------|",
+        Color.LIGHT_BLUE);
+
+
+    Input.in("1");
+    Input.in("Klevis");
+    Input.in("Diamond");
+    Input.in("Murad");
+    Input.in("Ibrahim");
+    Input.in("n");
+    Input.in("n");
+    Input.in("Klevis");
+    //pointer is where player is
+    /*
+      S---p---C
+      S-------C
+        \
+          \p
+    */ 
+    Input.in("d");
+
+    Main main = new Main();
 
     main(null);
   }
@@ -182,7 +235,7 @@ public class Skeleton {
         \
           \p
     */ 
-    Input.in("m");
+    Input.in("c");
 
     
     Main main = new Main();
@@ -194,10 +247,50 @@ public class Skeleton {
   }
 
   private static void connectPipe2() {
+    /*-----------------------------setup----------------------------*/
+    Output.println("|-------------5.2.2.2 Connect pipe with spring Setup-------------|",
+        Color.LIGHT_BLUE);
+
+    Input.in("1");
+    Input.in("Klevis");
+    Input.in("Diamond");
+    Input.in("Murad");
+    Input.in("Ibrahim");
+    Input.in("n");
+    Input.in("n");
+    Input.in("Klevis");
+    Input.in("c");
+
+    
+    Main main = new Main();
+
+    Output.println("|--------------------------------------------------------------------|\n",
+        Color.LIGHT_BLUE);
+
     main(null);
   }
 
   private static void connectPipe3() {
+    /*-----------------------------setup----------------------------*/
+    Output.println("|-------------5.2.2.3 Connect pipe with cistern Setup-------------|",
+        Color.LIGHT_BLUE);
+
+    Input.in("1");
+    Input.in("Klevis");
+    Input.in("Diamond");
+    Input.in("Murad");
+    Input.in("Ibrahim");
+    Input.in("n");
+    Input.in("n");
+    Input.in("Klevis");
+    Input.in("c");
+
+    
+    Main main = new Main();
+
+    Output.println("|--------------------------------------------------------------------|\n",
+        Color.LIGHT_BLUE);
+
     main(null);
   }
 
@@ -213,26 +306,128 @@ public class Skeleton {
 
   private static void insertPump() {
     // Implementation for insertPump
+    /*-----------------------------setup----------------------------*/
+    Output.println("|-------------5.2.5.1 The Plumber inserts the pump at a pipe Setup-------------|",
+        Color.LIGHT_BLUE);
+
+    Input.in("1");
+    Input.in("Klevis");
+    Input.in("Diamond");
+    Input.in("Murad");
+    Input.in("Ibrahim");
+    Input.in("n");
+    Input.in("n");
+    Input.in("Klevis");
+    Input.in("i");
+
+    Main main = new Main();
+
+    Output.println("|--------------------------------------------------------------------|\n",
+        Color.LIGHT_BLUE);
+
+    main(null);
+
     System.out.println("Inserting pump...");
   }
 
   private static void pickPump() {
     // Implementation for pickPump
+    /*-----------------------------setup----------------------------*/
+    Output.println("|-------------5.2.6.1 The Plumber picks up the pump Setup-------------|",
+        Color.LIGHT_BLUE);
+
+    Input.in("1");
+    Input.in("Klevis");
+    Input.in("Diamond");
+    Input.in("Murad");
+    Input.in("Ibrahim");
+    Input.in("n");
+    Input.in("n");
+    Input.in("Klevis");
+    Input.in("p");
+
+    Main main = new Main();
+
+    Output.println("|--------------------------------------------------------------------|\n",
+        Color.LIGHT_BLUE);
+
+    main(null);
+
     System.out.println("Picking pump...");
   }
 
   private static void pickPipe() {
     // Implementation for pickPipe
+    /*-----------------------------setup----------------------------*/
+    Output.println("|-------------5.2.7.1 The Plumber picks up the pipe Setup-------------|",
+        Color.LIGHT_BLUE);
+
+    Input.in("1");
+    Input.in("Klevis");
+    Input.in("Diamond");
+    Input.in("Murad");
+    Input.in("Ibrahim");
+    Input.in("n");
+    Input.in("n");
+    Input.in("Klevis");
+    Input.in("p");
+
+    Main main = new Main();
+
+    Output.println("|--------------------------------------------------------------------|\n",
+        Color.LIGHT_BLUE);
+
+    main(null);
     System.out.println("Picking pipe...");
   }
 
   private static void puncturePipe() {
     // Implementation for puncturePipe
+    /*-----------------------------setup----------------------------*/
+    Output.println("|-------------5.2.8.1 The Saboteur punctures the pipe Setup-------------|",
+        Color.LIGHT_BLUE);
+
+    Input.in("1");
+    Input.in("Klevis");
+    Input.in("Diamond");
+    Input.in("Murad");
+    Input.in("Ibrahim");
+    Input.in("n");
+    Input.in("n");
+    Input.in("Klevis");
+    Input.in("p");
+
+    Main main = new Main();
+
+    Output.println("|--------------------------------------------------------------------|\n",
+        Color.LIGHT_BLUE);
+
+    main(null);
     System.out.println("Puncturing pipe...");
   }
 
   private static void move() {
     // Implementation for move
+    /*-----------------------------setup----------------------------*/
+    Output.println("|-------------5.2.9.1 The plumber/saboteur moves from pipe to pump/sprin/cistern Setup-------------|",
+        Color.LIGHT_BLUE);
+
+    Input.in("1");
+    Input.in("Klevis");
+    Input.in("Diamond");
+    Input.in("Murad");
+    Input.in("Ibrahim");
+    Input.in("n");
+    Input.in("n");
+    Input.in("Klevis");
+    Input.in("m");
+
+    Main main = new Main();
+
+    Output.println("|--------------------------------------------------------------------|\n",
+        Color.LIGHT_BLUE);
+
+    main(null);
     System.out.println("Moving...");
   }
 
