@@ -9,7 +9,7 @@ import mainstring.dev.Players.Saboteur;
 
 public class Main {
   private PlayersCollection players = new PlayersCollection();
-  private Grid grid = new Grid();
+  private Grid grid;
   private Menu menu = new Menu((e) -> startGame());
 
 

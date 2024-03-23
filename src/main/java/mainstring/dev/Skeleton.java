@@ -118,7 +118,7 @@ public class Skeleton {
     Input.in("Diamond");
     Input.in("Murad");
     Input.in("Ibrahim");
-    
+
     Main main = new Main();
 
     // add plauer
@@ -172,7 +172,8 @@ public class Skeleton {
     Input.in("Diamond");
     Input.in("Murad");
     Input.in("Ibrahim");
-
+    Input.in("n");
+    
     Main main = new Main();
 
     System.out.println("Does the player carry a pipe? [y]es/[n]o");
