@@ -24,7 +24,7 @@ public abstract class Player {
     if (this == obj) {
       return true;
     }
-    if (obj == null || getClass() != obj.getClass()) {
+    if (obj == null) {
       return false;
     }
     Player other = (Player) obj;

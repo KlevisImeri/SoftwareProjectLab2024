@@ -1,5 +1,6 @@
 package mainstring.dev.Players;
-
+import mainstring.dev.Output;
+import mainstring.dev.Output.Color;
 import java.util.Set;
 import java.util.ArrayList;
 import java.util.HashSet;
@@ -16,7 +17,7 @@ public class PlayersCollection {
     int size = players.size();
     players.add(player);
     if (size == players.size()) {
-      System.out.println("The player has been added before!");
+      Output.println("The player has been added before!", Color.LIGHT_RED);
       throw new Exception();
     } else {
       System.out.println("The player is added.");

@@ -1,11 +1,6 @@
 package mainstring.dev;
 
-import java.io.ByteArrayInputStream;
-import java.io.InputStream;
-import java.util.Scanner;
-import mainstring.dev.Menu.*;
-import mainstring.dev.Players.Player;
-import mainstring.dev.Players.PlayersCollection;
+import mainstring.dev.Output.Color;
 
 /**
  * The Skeleton class represents the entry point of the skeleton application.
@@ -18,7 +13,8 @@ public class Skeleton {
    */
   public static void main(String[] args) {
 
-    System.out.println("|----------------------Application Started----------------------|");
+    Output.println("|----------------------Application Started----------------------|",
+        Color.LIGHT_BLUE);
     System.out.println("main(String[] args)");
     System.out.println("Select function: [1-17]");
     System.out.println("5.2.1 disconnectPipe()");
@@ -35,9 +31,8 @@ public class Skeleton {
     System.out.println("5.2.12 calculateFlow()");
     System.out.println("5.2.13 select()");
     System.out.println("5.2.14 Menu()");
-    System.out.println("5.2.15 changeSettings()");
-    System.out.println("5.2.16 selectTeams()");
-    System.out.println("5.2.17 endGame()");
+    System.out.println("5.2.15 selectTeams()");
+    System.out.println("5.2.16 endGame()");
 
     switch (Input.getInt(1, 17)) {
       case 1:
@@ -83,12 +78,9 @@ public class Skeleton {
         Menu();
         break;
       case 15:
-        changeSettings();
-        break;
-      case 16:
         selectTeams();
         break;
-      case 17:
+      case 16:
         endGame();
         break;
     }
@@ -118,13 +110,14 @@ public class Skeleton {
 
   private static void disconnectPipe1() {
     /*-----------------------------setup----------------------------*/
-    System.out.println("|------------5.2.1.1 Disconnect pipe from pump Setup------------|");
+    Output.println("|------------5.2.1.1 Disconnect pipe from pump Setup------------|",
+        Color.LIGHT_BLUE);
 
-    //write this into the system.in so we can emeulate the inputss from the user
-    //1
-    //P
-    //kelvis
-  
+    // write this into the system.in so we can emeulate the inputss from the user
+    // 1
+    // P
+    // kelvis
+
     Main main = new Main();
 
     // add plauer
@@ -170,18 +163,19 @@ public class Skeleton {
 
   private static void connectPipe1() {
     /*-----------------------------setup----------------------------*/
-    System.out.println("|------------5.2.2.1 Connect pipe with pump Setup------------|");
+    Output.println("|------------5.2.2.1 Connect pipe with pump Setup------------|",
+        Color.LIGHT_BLUE);
 
-    //write this into the system.in so we can emeulate the inputs from the user
-    //1
-    //P
-    //kelvis
+    // write this into the system.in so we can emeulate the inputs from the user
+    // 1
+    // P
+    // kelvis
     Main main = new Main();
 
     System.out.println("Does the player carry a pipe? [y]es/[n]o");
     switch (Input.getChar("yYnN")) {
       case 'y':
-      case 'Y':        
+      case 'Y':
         System.out.println("Is the location an active element?[y]es/[n]o");
         switch (Input.getChar("yYnN")) {
           case 'y':
@@ -218,7 +212,7 @@ public class Skeleton {
       case 'N':
         System.out.println("You are not carrying a pipe!");
         break;
-        
+
       default:
         break;
     }
@@ -295,51 +289,23 @@ public class Skeleton {
   }
 
   private static void Menu() {
-    System.out.println("Which Setup do you want? [1-2]");
-    System.out.println("5.2.13.1 The user starts the game");
-    System.out.println("5.2.13.2 The user changes the settings");
-
-    switch (Input.getInt(1, 3)) {
-      case 1:
-        Menu1();
-        break;
-      case 2:
-        Menu2();
-        break;
-    }
-  }
-
-  private static void Menu1() {
-    System.out.println("\n|-----------------5.2.1.1 The user starts the game ------------------|");
+    Output.println("\n|-----------------5.2.1.1 The user uses the menu ------------------|",
+        Color.LIGHT_BLUE);
     Main main = new Main();
-    System.out.println("|--------------------------------------------------------------------|\n");
+    Output.println("|-------------------------Application Exited--------------------------|\n",
+        Color.LIGHT_BLUE);
 
     main(null);
   }
 
-  private static void Menu2() {
-    System.out.println("\n|---------------5.2.13.2 The user changes the settings --------------|");
-    Input.in("2");
-    Input.in("20");
-    // Input.in("30");
-    Main main = new Main();
-    System.out.println("|--------------------------------------------------------------------|\n");
-
-    main(null);
-  }
-
-
-
-  private static void changeSettings() {
-    // Implementation for changeSettings
-    System.out.println("Changing settings...");
-  }
 
   private static void selectTeams() {
-    System.out.println("\n|----------------5.2.13.2 Adding Players into the teams-----------------|");
+    Output.println("\n|----------------5.2.13.2 Adding Players into the teams-----------------|",
+        Color.LIGHT_BLUE);
     Input.in("1");
     Main main = new Main();
-    System.out.println("|--------------------------------------------------------------------|\n");
+    Output.println("|--------------------------------------------------------------------|\n",
+        Color.LIGHT_BLUE);
   }
 
   private static void endGame() {

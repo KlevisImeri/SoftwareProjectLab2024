@@ -1,22 +1,11 @@
 package mainstring.dev;
 
 import java.util.*;
+import mainstring.dev.Output.Color;
 
 public abstract class Input {
 
-  public enum Color {
-    RESET("\u001B[0m"), LIGHT_RED("\u001B[91m");
 
-    private final String code;
-
-    Color(String code) {
-      this.code = code;
-    }
-
-    public String Code() {
-      return code;
-    }
-  }
 
   private static List<String> in = new ArrayList<>();
   private static Scanner scanner;
@@ -28,7 +17,6 @@ public abstract class Input {
 
   public static void setUpScanner() {
     if (!in.isEmpty()) {
-      println(in.get(0), Color.LIGHT_RED); // Print the string in light red
       scanner = new Scanner(in.remove(0));
     } else {
       scanner = new Scanner(System.in);
@@ -38,21 +26,27 @@ public abstract class Input {
   public static int getInt(int lowerBound, int upperBound) {
     setUpScanner();
 
-    int choice;
+    int choice = 0;
     while (true) {
-      choice = 0;
       try {
-        choice = scanner.nextInt();
+        String input = scanner.next();
         clearPreviousLine();
-        println(choice, Color.LIGHT_RED);
-        if (choice >= lowerBound && choice <= upperBound) {
-          break; // Exit the loop if the input is within the bounds
-        } else {
-          clearPreviousLine();
+        Output.println(input, Color.LIGHT_RED);
+
+        if ("exit".equalsIgnoreCase(input)) {
+          Output.println("|-----------------------Application Exited-----------------------|\n",
+              Color.LIGHT_BLUE);
+          System.exit(1);
         }
-      } catch (Exception e) {
-        e.printStackTrace();
-        break;
+
+        choice = Integer.parseInt(input);
+        clearPreviousLine();
+        if (choice >= lowerBound && choice <= upperBound) {
+          Output.println(input, Color.LIGHT_GREEN);
+          break; // Exit the loop if the input is within the bounds
+        }
+      } catch (NumberFormatException e) {
+        clearPreviousLine();
       }
     }
 
@@ -62,15 +56,23 @@ public abstract class Input {
   public static char getChar(String allowedChars) {
     setUpScanner();
 
-    char choice;
+    char choice = '\0';
     while (true) {
-      choice = '\0';
       try {
         String input = scanner.next();
+        clearPreviousLine();
+        Output.println(input, Color.LIGHT_RED);
+
+        if ("exit".equalsIgnoreCase(input)) {
+          Output.println("|---------------------------Application Exited----------------------------|\n",
+              Color.LIGHT_BLUE);
+          System.exit(1);
+        }
+
         if (input.length() == 1 && allowedChars.indexOf(input.charAt(0)) != -1) {
           choice = input.charAt(0);
           clearPreviousLine();
-          println(choice, Color.LIGHT_RED);
+          Output.println(choice, Color.LIGHT_GREEN);
           break; // Exit the loop if the input is within the allowed characters
         } else {
           clearPreviousLine();
@@ -92,7 +94,16 @@ public abstract class Input {
       try {
         input = scanner.nextLine();
         clearPreviousLine();
-        println(input, Color.LIGHT_RED);
+        
+
+        if ("exit".equalsIgnoreCase(input)) {
+          Output.println(input, Color.LIGHT_RED);
+          Output.println("|---------------------------Application Exited----------------------------|\n",
+              Color.LIGHT_BLUE);
+          System.exit(1);
+        }
+        Output.println(input, Color.LIGHT_GREEN);
+
         break; // Exit the loop after successfully reading a line
       } catch (Exception e) {
         e.printStackTrace();
@@ -108,10 +119,6 @@ public abstract class Input {
     System.out.flush();
   }
 
-  public static void println(Object s, Color c) {
-    System.out.print(c.Code());
-    System.out.println(s); // Print the string
-    System.out.print(Color.RESET.Code()); // Reset color to default
-  }
+
 
 }
