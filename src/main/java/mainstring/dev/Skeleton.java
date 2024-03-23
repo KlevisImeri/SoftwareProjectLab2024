@@ -152,7 +152,95 @@ public class Skeleton {
 
   private static void connectPipe() {
     // Implementation for connectPipe
+    System.out.println("Which Setup do you want? [1-3]");
+    System.out.println("5.2.2.1 Connect pipe with pump");
+    System.out.println("5.2.2.2 Connect pipe with spring");
+    System.out.println("5.2.2.3 Connect pipe with cistern");
+
+    switch (Input.getInt(1, 3)) {
+      case 1:
+        connectPipe1();
+        break;
+      case 2:
+        connectPipe2();
+        break;
+      case 3:
+        connectPipe3();
+        break;
+    }
+
     System.out.println("Connecting pipe...");
+  }
+
+  private static void connectPipe1() {
+    /*-----------------------------setup----------------------------*/
+    System.out.println("|------------5.2.2.1 Connect pipe with pump Setup------------|");
+
+    //write this into the system.in so we can emeulate the inputs from the user
+    //1
+    //P
+    //kelvis
+    Main main = new Main();
+
+    System.out.println("Does the player carry a pipe? [y]es/[n]o");
+    switch (Input.getChar("yYnN")) {
+      case 'y':
+      case 'Y':        
+        System.out.println("Is the location an active element?[y]es/[n]o");
+        switch (Input.getChar("yYnN")) {
+          case 'y':
+          case 'Y':
+            System.out.println("Can more pipes be connected to the location?[y]es/[n]o");
+            switch (Input.getChar("yYnN")) {
+              case 'y':
+              case 'Y':
+                // addNeighbor(Pipe);
+                // addNeighbor(Pump);
+                break;
+
+              case 'n':
+              case 'N':
+                System.out.println("The location is saturated with pipes!");
+                break;
+
+              default:
+                break;
+            }
+            break;
+
+          case 'n':
+          case 'N':
+            System.out.println("You can't connect a pipe to a pipe!");
+            break;
+
+          default:
+            break;
+        }
+        break;
+
+      case 'n':
+      case 'N':
+        System.out.println("You are not carrying a pipe!");
+        break;
+        
+      default:
+        break;
+    }
+
+    // add player
+    // add the elements
+    // add players to elements
+    /*-----------------------------setup----------------------------*/
+
+    main(null);
+  }
+
+  private static void connectPipe2() {
+    main(null);
+  }
+
+  private static void connectPipe3() {
+    main(null);
   }
 
   private static void fix() {

@@ -32,7 +32,7 @@ public abstract class Input {
     return 'i';
   }
 
-  public static in(String input){
+  public static void in(String input){
     // String input = "2\n20\n";
     // InputStream in = new ByteArrayInputStream(input.getBytes());
     // System.setIn(in);
