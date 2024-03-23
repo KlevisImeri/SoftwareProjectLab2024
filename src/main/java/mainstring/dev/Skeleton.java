@@ -182,7 +182,7 @@ public class Skeleton {
         \
           \p
     */ 
-    Input.in("Klevis");
+    Input.in("m");
 
     
     Main main = new Main();
