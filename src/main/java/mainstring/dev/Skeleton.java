@@ -98,7 +98,7 @@ public class Skeleton {
     System.out.println("5.2.1.1 Disconnect pipe from pump");
     System.out.println("5.2.1.2 Disconnect pipe from spring");
     System.out.println("5.2.1.3 Disconnect pipe from cistern");
-    
+
     switch (Input.getInt(1, 3)) {
       case 1:
         disconnectPipe1();
@@ -108,8 +108,6 @@ public class Skeleton {
         break;
       case 3:
         disconnectPipe3();
-        break;
-      default:
         break;
     }
 
@@ -125,11 +123,20 @@ public class Skeleton {
     // add the elemetns
     // add players to elemtns
     /*-----------------------------setup----------------------------*/
+
+    main(null);
   }
 
-  private static void disconnectPipe2() {}
+  private static void disconnectPipe2() {
 
-  private static void disconnectPipe3() {}
+
+    main(null);
+  }
+
+  private static void disconnectPipe3() {
+
+    main(null);
+  }
 
   private static void connectPipe() {
     // Implementation for connectPipe
@@ -192,9 +199,37 @@ public class Skeleton {
   }
 
   private static void Menu() {
-    // Implementation for Menu
-    System.out.println("Opening menu...");
+    System.out.println("Which Setup do you want? [1-2]");
+    System.out.println("5.2.13.1 The user starts the game");
+    System.out.println("5.2.13.2 The user changes the settings");
+
+    switch (Input.getInt(1, 3)) {
+      case 1:
+        Menu1();
+        break;
+      case 2:
+        Menu2();
+        break;
+    }
   }
+
+  private static void Menu1() {
+    System.out.println("\n|-----------------5.2.1.1 The user starts the game ------------------|");
+    Main main = new Main();
+    System.out.println("|--------------------------------------------------------------------|\n");
+
+    main(null);
+  }
+
+  private static void Menu2() {
+    System.out.println("\n|---------------5.2.13.2 The user changes the settings --------------|");
+    Main main = new Main();
+    System.out.println("|--------------------------------------------------------------------|\n");
+
+    main(null);
+  }
+
+
 
   private static void changeSettings() {
     // Implementation for changeSettings

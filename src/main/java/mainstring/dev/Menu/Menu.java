@@ -11,13 +11,10 @@ public class Menu {
   public Menu(ActionListener startGame) {
     System.out.println("Menu()");
 
-    String menu = 
-    "Choose:\n" + 
-    "1. Start Game\n" + 
-    "2. Change Settings\n"; 
-
-    System.out.println(menu);
-
+    System.out.println("Choose:");
+    System.out.println("1. Start Game");
+    System.out.println("2. Change Settings");
+    
     switch(Input.getInt(1, 2)){
       case 1:
         startGame.actionPerformed(null);
@@ -25,11 +22,12 @@ public class Menu {
       case 2:
         System.out.println(settings.getSettings().toString());
         System.out.println("Enter the new values:");
-        System.out.println("endTime [5min<=number<=720min]");
+        System.out.println("endTime [5-720 min]");
         int endTime = Input.getInt(5, 720);
-        System.out.println("playerTime [10sec<=number<=180sec]");
+        System.out.println("playerTime [10-180 sec]");
         int playerTime = Input.getInt(10, 180);
         settings.setSettings(endTime, playerTime);
+        System.out.println(settings.getSettings().toString());
         break;
     }
   }

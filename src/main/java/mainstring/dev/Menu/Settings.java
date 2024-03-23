@@ -14,6 +14,7 @@ public class Settings {
   }
 
   public Map<String, Integer> getSettings() {
+    System.out.println("getSettings()");
     Map<String, Integer> settings = new HashMap<>();
     settings.put("endTime", endTime);
     settings.put("playerTime", playerTime);
