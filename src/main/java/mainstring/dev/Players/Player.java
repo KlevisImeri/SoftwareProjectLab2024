@@ -49,8 +49,6 @@ public abstract class Player {
     this.grid = grid;
   }
 
-  protected void move(Element element) {}
-
   public void move() {
     Output.println("|-------------5.2.9 The " + type() + " moves from " + location.type() + " to "
         + grid.getSelectedElement().type() + "-------------|", Color.LIGHT_BLUE);

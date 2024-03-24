@@ -11,8 +11,8 @@ public class Pipe extends Element {
     FULL, EMPTY
   }
 
-  PipeHealthState healthState;
-  PipeFlowState flowState;
+  PipeHealthState healthState = PipeHealthState.HEALTHY;
+  PipeFlowState flowState = PipeFlowState.EMPTY;
 
   public Pipe(Grid grid) {
     super(grid);
@@ -21,13 +21,17 @@ public class Pipe extends Element {
   }
 
 
-  public void puncture() {} // used
+  public void puncture() {
+    System.out.println("puncture()");
+    healthState = PipeHealthState.LEAKING;
+  } 
 
   public void fix() {
     System.out.println("fix()");
   } 
 
   public void fill() {
+    System.out.println("fill()");
     if (healthState == PipeHealthState.LEAKING) {
       grid.addWaterToDesert();
       return;
@@ -42,6 +46,7 @@ public class Pipe extends Element {
   }
 
   public boolean isFull() {
+    System.out.println("isFull()");
     if (flowState == PipeFlowState.FULL)
       return true;
     return false;

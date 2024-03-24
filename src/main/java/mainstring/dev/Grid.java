@@ -28,37 +28,43 @@ public class Grid {
     Output.println("|-----------------------Setting Up the Grid------------------------|",
         Color.LIGHT_BLUE);
     System.out.println("Grid(players)");
-    
+
     System.out.println("Select the setup of the grid? [int]");
-    switch (Input.getInt(0, 9)) {
+    switch (Input.getInt(0, 11)) {
       case 0:
-        setup0(players);  // S-----C*
-      case 1: 
-        setup1(players);  // --*--P
+        setup0(players); // S-----C*
+      case 1:
+        setup1(players); // --*--P
         break;
       case 2:
-        setup2(players);  // --*--C
+        setup2(players); // --*--C
         break;
       case 3:
-        setup3(players);  // --*--S
+        setup3(players); // --*--S
         break;
       case 4:
-        setup4(players);  // ----P*
+        setup4(players); // ----P*
         break;
       case 5:
-        setup5(players);  // ----C*
+        setup5(players); // ----C*
         break;
       case 6:
-        setup6(players);  // ----S*
+        setup6(players); // ----S*
         break;
       case 7:
-        setup7(players);  // --1--P*--2--
+        setup7(players); // --1--P*--2--
         break;
       case 8:
-        setup8(players);  // C*
+        setup8(players); // C*
         break;
       case 9:
-        setup9(players);  // S--*--C 
+        setup9(players); // S--*--C
+        break;
+      case 10:
+        setup10(players); // S--1--P--2--C
+        break;
+      case 11:
+        setup11(players); //desert 13l  C 100l
         break;
     }
 
@@ -74,17 +80,17 @@ public class Grid {
         Color.LIGHT_BLUE);
 
   }
-
+  /*---------------------------------------Setups---------------------------------------------*/
   private void setup0(PlayersCollection players) {
     cistern = new Cistern(this);
     spring = new Spring(this);
     Pipe pipe = new Pipe(this);
     pipe.addNeighbor(cistern);
     pipe.addNeighbor(spring);
-    for( Player p : players.getPlayers()){
+    for (Player p : players.getPlayers()) {
       cistern.addPlayer(p);
     }
-    //S-----C*
+    // S-----C*
   }
 
   private void setup1(PlayersCollection players) {
@@ -96,7 +102,7 @@ public class Grid {
     }
     setSelectedActiveElement(pump);
     /*
-     * --*--P 
+     * --*--P
      */
   }
 
@@ -109,7 +115,7 @@ public class Grid {
     }
     setSelectedActiveElement(cistern);
     /*
-     * --*--C 
+     * --*--C
      */
   }
 
@@ -122,7 +128,7 @@ public class Grid {
     }
     setSelectedActiveElement(spring);
     /*
-     * --*--S 
+     * --*--S
      */
   }
 
@@ -136,7 +142,7 @@ public class Grid {
     }
     setSelectedPipe(pipe);
     /*
-     * ----P* 
+     * ----P*
      */
   }
 
@@ -149,7 +155,7 @@ public class Grid {
     }
     setSelectedPipe(pipe);
     /*
-     * ----C* 
+     * ----C*
      */
   }
 
@@ -195,13 +201,38 @@ public class Grid {
     Pipe pipe = new Pipe(this);
     pipe.addNeighbor(cistern);
     pipe.addNeighbor(spring);
-    for( Player p : players.getPlayers()){
-      //here we all more players in the pipe for demostartion
-      //ths is just for testing
-      pipe.addPlayer(p); 
+    for (Player p : players.getPlayers()) {
+      // here we all more players in the pipe for demostartion
+      // ths is just for testing
+      pipe.addPlayer(p);
     }
-    //S--*--C
+    // S--*--C
   }
+
+  private void setup10(PlayersCollection players) {
+    cistern = new Cistern(this);
+    spring = new Spring(this);
+    Pump pump = new Pump(this);
+    activeElements.add(cistern);
+    activeElements.add(spring);
+    activeElements.add(pump);
+    Pipe pipe1 = new Pipe(this);
+    Pipe pipe2 = new Pipe(this);
+    pump.setInPipe(pipe1);
+    pump.setOutPipe(pipe2);
+    pipe1.addNeighbor(spring);
+    pipe2.addNeighbor(cistern);
+    pipe2.fill();
+    pipe1.puncture();
+    // S--1--P--2--C
+  }
+
+  private void setup11(PlayersCollection players) {
+    cistern = new Cistern(this);
+    this.waterInDesert = 13;
+    cistern.setWaterAmount(100);
+  }
+
 
   private void setupP1(PlayersCollection players) {
     for (Player p : players.getPlayers()) {
@@ -211,7 +242,7 @@ public class Grid {
       }
     }
   }
-
+  /*---------------------------------------Setups---------------------------------------------*/
   public Element getSelectedElement() {
     System.out.println("getSelectedElement()");
     return selectedElement;
@@ -223,10 +254,12 @@ public class Grid {
   }
 
   public ActiveElement getSelectedActiveElement() {
+    System.out.println("getSelectedActiveElement()");
     return selectedActiveElement;
   }
 
   public void setSelectedActiveElement(ActiveElement selectedActiveElement) {
+    System.out.println("setSelectedActiveElement()");
     this.selectedElement = selectedActiveElement;
     this.selectedActiveElement = selectedActiveElement;
   }
@@ -237,25 +270,22 @@ public class Grid {
   }
 
   public void setSelectedPipe(Pipe selectedPipe) {
+    System.out.println("setSelectedPipe()");
     this.selectedElement = selectedPipe;
     this.selectedPipe = selectedPipe;
   }
 
-  public void caculateFlow(){
+  public void caculateFlow() {
+    Output.println(
+        "|-------------------------------5.2.14.1 Calculation of general flow----------------------------|",
+        Color.LIGHT_BLUE);
     System.out.println("cacualteFlow()");
     for (ActiveElement e : activeElements) {
-      e.Flow();      
+      e.Flow();
     }
+    Output.println("|--------------------------------------------------------------------|\n",
+        Color.LIGHT_BLUE);
   }
-  // public Pump getSelectedPump() {
-  // return selectedPump;
-  // }
-
-  // public void setSelectedPump(Pump selectedPump) {
-  // this.selectedElement = selectedPump;
-  // this.selectedActiveElement = selectedPump;
-  // this.selectedPump = selectedPump;
-  // }
 
   public void addPump(Pump pump) {
     System.out.println("addPump(pump)");
@@ -264,14 +294,17 @@ public class Grid {
 
 
   public void addWaterToDesert() {
+    System.out.println("addWaterToDesert()");
     this.waterInDesert++;
   }
 
   public int getWaterAtDesert() {
+    System.out.println("getWaterAtDesert()");
     return this.waterInDesert;
   }
 
-  public int getWaterAtCistner() {
+  public int getWaterAtCistern() {
+    System.out.println("getWaterAtCistern()");
     return this.cistern.getWaterAmount();
   }
 }

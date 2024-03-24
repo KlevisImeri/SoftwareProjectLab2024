@@ -30,10 +30,9 @@ public class Skeleton {
     System.out.println("5.2.12 insertPump()");
     System.out.println("5.2.13 puncturePipe()");
     System.out.println("5.2.14 calculateFlow()");
-    System.out.println("5.2.15 select()");
-    System.out.println("5.2.16 endGame()");
+    System.out.println("5.2.15 endGame()");
 
-    switch (Input.getInt(2, 17)) {
+    switch (Input.getInt(2, 15)) {
       case 2:
         Menu();
         break;
@@ -74,14 +73,15 @@ public class Skeleton {
         calculateFlow();
         break;
       case 15:
-        select();
-        break;
-      case 16:
         endGame();
         break;
     }
 
     Main main = new Main();
+    
+    Output.println("|-------------------------Application Exited--------------------------|\n",
+              Color.LIGHT_BLUE);
+    System.exit(0);
   }
 
   private static void Menu() {}
@@ -380,21 +380,42 @@ public class Skeleton {
     Input.in("p");
   }
 
-
   private static void calculateFlow() {
-    // Implementation for calculateFlow
-    System.out.println("Calculating flow...");
+      // Start game
+      Input.in("1");
+      // Selected Teams
+      Input.in("Klevis");
+      Input.in("Diamond");
+      Input.in("Murad");
+      Input.in("Ibrahim");
+      Input.in("n");
+      // Select Grid Setup
+      Input.in("10");
+      // Setup players
+      Input.in("0");
+      // main loop
+      Input.in("n");
+      Input.in("Klevis");
+      Input.in("P");
   }
-
-  private static void select() {
-    // Implementation for select
-    System.out.println("Selecting...");
-  }
-
-
 
   private static void endGame() {
-    // Implementation for endGame
-    System.out.println("Ending game...");
+    // Start game
+    Input.in("1");
+    // Selected Teams
+    Input.in("Klevis");
+    Input.in("Diamond");
+    Input.in("Murad");
+    Input.in("Ibrahim");
+    Input.in("n");
+    // Select Grid Setup
+    Input.in("11");
+    // Setup players
+    Input.in("1");
+    // main loop
+    Input.in("n");
+    Input.in("Klevis");
+    Input.in("P");
+    Input.in("y");
   }
 }

@@ -20,14 +20,16 @@ public class Pump extends ActiveElement {
   }
 
   class Reservoir {
-    public int capacity;
-    public int totalWater;
+    public int capacity  = 10;
+    public int totalWater = 0;
 
     public void addWater() {
+      System.out.println("addWater()");
       totalWater++;
     }
 
     public void removeWater() {
+      System.out.println("removeWater()");
       totalWater--;
     }
   }
@@ -41,7 +43,7 @@ public class Pump extends ActiveElement {
 
   // Fields
   PumpState state = PumpState.HEALTHY;
-  Reservoir reservoir;
+  Reservoir reservoir = new Reservoir();
   private Pipe in;
   private Pipe out;
   private Timer timer = new Timer();
@@ -86,39 +88,46 @@ public class Pump extends ActiveElement {
     Output.println("|----------------5.2.14.2 Calculation of the flow at a pump-----------------|",
         Color.LIGHT_BLUE);
     System.out.println("Flow()");
-    // this is how the implmentation shoudl have been but here
-    /*
-     * if (in.isFull()) { if (state == PumpState.BROKEN) { reservoir.addWater(); } else {
-     * out.fill(); } in.empty(); } else { if (state != PumpState.BROKEN && reservoir.capacity !=
-     * reservoir.totalWater) { reservoir.removeWater(); out.fill(); } }
-     */
-    // bur we will ask the tester
-    System.out.println(" Is the incoming Pipe full? [y]es\\[n]o");
-    switch (Input.getChar("yn")) {
-      case 'y':
-        System.out.println(" Is the pump broken?  [y]es\\[n]o");
-        switch (Input.getChar("yn")) {
-          case 'y':
-            reservoir.addWater();
-            break;
-          case 'b':
-            out.fill();
-            break;
-        }
-        in.empty();
-        break;
-      case 'n':
-        System.out.println("Is the reservoir empty? [y]es\\[n]o");
-        switch (Input.getChar("yn")) {
-          case 'y':
-            reservoir.removeWater();
-            break;
-          case 'b':
-            out.fill();
-            break;
-        }
-        break;
+    if (in.isFull()) {
+      if (state == PumpState.BROKEN) {
+        reservoir.addWater();
+      } else {
+        out.fill();
+      }
+      in.empty();
+    } else {
+      if (state != PumpState.BROKEN && reservoir.capacity != reservoir.totalWater) {
+        reservoir.removeWater();
+        out.fill();
+      }
     }
+    // This is how it looks if you want to ask the tester
+    // System.out.println(" Is the incoming Pipe full? [y]es\\[n]o");
+    // switch (Input.getChar("yn")) {
+    // case 'y':
+    // System.out.println(" Is the pump broken? [y]es\\[n]o");
+    // switch (Input.getChar("yn")) {
+    // case 'y':
+    // reservoir.addWater();
+    // break;
+    // case 'b':
+    // out.fill();
+    // break;
+    // }
+    // in.empty();
+    // break;
+    // case 'n':
+    // System.out.println("Is the reservoir empty? [y]es\\[n]o");
+    // switch (Input.getChar("yn")) {
+    // case 'y':
+    // reservoir.removeWater();
+    // break;
+    // case 'b':
+    // out.fill();
+    // break;
+    // }
+    // break;
+    // }
     Output.println("|--------------------------------------------------------------------|\n",
         Color.LIGHT_BLUE);
   }

@@ -80,9 +80,10 @@ public class Main {
   }
   /*---------------------------------------------Select Teams------------------------------------------- */
 
+  /*---------------------------------------------main Loop------------------------------------------- */
   public void mainLoop() {
     Output.println("\n|----------------5.2.4.1 The main loop of the game-----------------|",
-    Color.LIGHT_BLUE);
+        Color.LIGHT_BLUE);
     System.out.println("mainLoop()");
     System.out.println("Did the game end? [y]es/[n]o");
     while (Input.getChar("yn") == 'n') {
@@ -95,8 +96,22 @@ public class Main {
     Output.println("|--------------------------------------------------------------------|\n",
         Color.LIGHT_BLUE);
   }
+  /*---------------------------------------------main Loop------------------------------------------- */
 
-  public void endGame() {}
+  /*---------------------------------------------end Game------------------------------------------- */
+  public void endGame() {
+    Output.println("\n|----------5.2.4.1 The game end and the display of results---------|",
+        Color.LIGHT_BLUE);
+    System.out.println("endGame()");
+    displayResults(grid.getWaterAtCistern(),grid.getWaterAtDesert());
+    Output.println("|--------------------------------------------------------------------|\n",
+        Color.LIGHT_BLUE);
+  }
 
-  public void displayResults() {}
+  public void displayResults(int plumberResult, int saboteurResult) {
+    System.out.println("displayResults()");
+    System.out.println("The plumber gathered: "+plumberResult+"liters of water");
+    System.out.println("The saboteurs leaked: "+saboteurResult+"liters of water");
+  }
+  /*---------------------------------------------end Game------------------------------------------- */
 }

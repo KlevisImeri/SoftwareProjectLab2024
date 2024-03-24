@@ -5,10 +5,8 @@ import mainstring.dev.Output.Color;
 
 public abstract class Input {
 
-
-
   private static List<String> in = new ArrayList<>();
-  private static Scanner scanner;
+  public static Scanner scanner;
 
 
   public static void in(String input) {

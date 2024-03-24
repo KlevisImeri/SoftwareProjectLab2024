@@ -115,7 +115,7 @@ public class Plumber extends Player {
     if (location instanceof Cistern) {
       carryPump = ((Cistern) location).getPump();
     } else {
-      System.out.println("You are not at the cistern!");
+      Output.println("You are not at the cistern!", Color.LIGHT_RED);
     }
     Output.println("|--------------------------------------------------------------------|\n",
         Color.LIGHT_BLUE);
@@ -128,7 +128,7 @@ public class Plumber extends Player {
     if (location instanceof Cistern) {
       carryPipe = ((Cistern) location).getPipe();
     } else {
-      System.out.println("You are not at the cistern!");
+      Output.println("You are not at the cistern!", Color.LIGHT_RED);
     }
     Output.println("|--------------------------------------------------------------------|\n",
         Color.LIGHT_BLUE);

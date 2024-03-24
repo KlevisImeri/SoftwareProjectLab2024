@@ -4,6 +4,8 @@ import java.util.Timer;
 import java.util.ArrayList;
 import java.util.List;
 import mainstring.dev.Input;
+import mainstring.dev.Output;
+import mainstring.dev.Output.Color;
 import mainstring.dev.Elements.*;
 import mainstring.dev.Grid;
 
@@ -32,9 +34,13 @@ public class Cistern extends ActiveElement {
     newPipes.add(new Pipe(grid));
   }
 
-  private void addWater() {} // it also checks that water not negative
+  private void addWater() {
+    System.out.println("addWater()");
+  } // it also checks that water not negative
 
-  private void removewater() {} // it also checks that water not negative
+  private void removewater() {
+    System.out.println("removeWater()");
+  } // it also checks that water not negative
   // Public Functions
 
   public Cistern(Grid grid) {
@@ -66,11 +72,13 @@ public class Cistern extends ActiveElement {
         System.out.println("No More Pipes!");
     }
     return null;
-  } 
+  }
 
   @Override
   public void Flow() {
-    
+    Output.println("|----------------5.2.14.2 Calculation of the flow at a cistern-----------------|",
+        Color.LIGHT_BLUE);
+    System.out.println("Flow()");
     for (Element element : neighbors) {
       if (((Pipe) element).isFull()) {
         ((Pipe) element).empty();
@@ -80,13 +88,21 @@ public class Cistern extends ActiveElement {
     for (int i = 0; i < newPipes.size(); i++) {
       removewater();
     }
+    Output.println("|--------------------------------------------------------------------|\n",
+    Color.LIGHT_BLUE);
   }
 
   public int getWaterAmount() {
+    System.out.println("getWaterAmount()");
     return this.waterAmount;
   }
 
-    
+  public int setWaterAmount(int waterAmount) {
+    System.out.println("setWaterAmount()");
+    return this.waterAmount = 20;
+  }
+
+
   public String type() {
     return "cistern";
   }
