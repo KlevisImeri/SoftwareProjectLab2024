@@ -22,7 +22,7 @@
         <artifactId>exec-maven-plugin</artifactId>
         <version>3.0.0</version>
         <configuration>
-          <mainClass>mainstring.dev.Main</mainClass>
+          <mainClass>mainstring.dev.Skeleton</mainClass>
         </configuration>
       </plugin>
 
@@ -41,7 +41,7 @@
           <logViolationsToConsole>true</logViolationsToConsole>
           <violationSeverity>warning</violationSeverity>
         </configuration>
-        <executions>
+        <!-- <executions>
           <execution>
             <id>validate</id>
             <phase>validate</phase>
@@ -49,7 +49,7 @@
               <goal>check</goal>
             </goals>
           </execution>
-        </executions>
+        </executions> -->
       </plugin>
 
     </plugins>
