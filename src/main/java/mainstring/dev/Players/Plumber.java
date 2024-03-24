@@ -5,7 +5,6 @@ import mainstring.dev.Output.Color;
 import mainstring.dev.Input;
 import mainstring.dev.Output;
 import mainstring.dev.Elements.*;
-import java.awt.event.*;
 import java.util.List;
 
 public class Plumber extends Player {
@@ -67,7 +66,7 @@ public class Plumber extends Player {
     if (carryPump != null) {
       if (location instanceof Pipe) {
         System.out.println("Pipe()");
-        Pipe newPipe = new Pipe();
+        Pipe newPipe = new Pipe(grid);
         System.out.println("getNeighbors()");
         List<Element> pumps = location.getNeighbors();
         System.out.println("setInPipe()");
@@ -100,8 +99,6 @@ public class Plumber extends Player {
   public void pickPump() {
     System.out.println("pickPump()");
     if (location instanceof Cistern) {
-      System.out.println("The location is a Cistern");
-      System.out.println("getPump()");
       carryPump = ((Cistern) location).getPump();
     } else {
       System.out.println("You are not at the cistern!");
@@ -111,7 +108,6 @@ public class Plumber extends Player {
   public void pickPipe() {
     System.out.println("pickPipe()");
     if (location instanceof Cistern) {
-      System.out.println("The location is a Cistern");
       carryPipe = ((Cistern) location).getPipe();
     } else {
       System.out.println("You are not at the cistern!");
@@ -131,15 +127,21 @@ public class Plumber extends Player {
   
   public void keyTyped() {
     System.out.println("What does the player do?");
-    System.out.println("KeyTyped()");
+    System.out.println("[m]ove");
+    System.out.println("changePump[D]irection()");
     System.out.println("[d]onnectPipe()");
     System.out.println("[c]onnectPipe()");
     System.out.println("[f]ix()");
-    System.out.println("changePump[D]irection()");
     System.out.println("[i]nsertPump()");
     System.out.println("[p]ickPump()");
-    System.out.println("[m]ove");
-    switch (Input.getChar("dcfxDipm")) {
+    System.out.println("pick[P]ipe()");
+    switch (Input.getChar("DmdcfipP")) {
+      case 'm':
+        move();
+        break;
+      case 'D':
+        changePumpDirection();
+        break;
       case 'd':
         disconnectPipe();
       case 'c':
@@ -148,38 +150,25 @@ public class Plumber extends Player {
       case 'f':
         fix();
         break;
-      case 'D':
-        changePumpDirection();
-        break;
       case 'i':
         insertPump();
         break;
       case 'p':
         pickPump();
         break;
-      case 'm':
-        move();
+      case 'P':
+        pickPipe();
         break;
     }
   }
+  
+  @Override
+  public String toString() {
+    return "Plumber: "+name;
+  }
+
+  public String type() {
+    return "plumber";
+  }
+
 }
-
-
-
-// Old depricated things
-// public void connectPipe() throws Exception { //used
-// //check if the Selected pipe is connected at the locatoin of player and
-// //check that the selected pump is a neighbor of the location:
-// boolean isPipeClose = location.isConnected(grid.getSelectedPipe());
-// boolean isPumpClose = location.isSecoundNeighbor(grid.getSelectedActiveElement());
-// if(isPipeClose && isPumpClose){
-// //connect the end at location of the selcted pipe ot the new selected pump
-// location.removeNeighbor(grid.getSelectedPipe());
-// grid.getSelectedPump().addNeighbor(grid.getSelectedPipe());
-// //move the player to the selected pump
-// move(grid.getSelectedPump());//(grid.getSelectedActiveElement is in neighbors)) can also be
-// checked here
-// }else{
-// System.out.println("Pipe is to far away");
-// }
-// }

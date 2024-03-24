@@ -4,10 +4,8 @@ import mainstring.dev.Input;
 import mainstring.dev.Output;
 import mainstring.dev.Output.Color;
 import java.util.Set;
-import java.util.ArrayList;
 import java.util.HashSet;
-import java.util.List;
-import java.util.Random;
+
 
 public class PlayersCollection {
   private Set<Player> players = new HashSet<>();
@@ -32,13 +30,17 @@ public class PlayersCollection {
   }
 
   public void remove(Player player) {
-    System.out.println("remmove(" + player.getName() + ")");
+    System.out.println("remove(" + player.getName() + ")");
     // check minCapacity;
     players.remove(player);
   }
 
   public Player selectRandom() {
-    System.out.println("What player you want to return? [name]");
+    System.out.println("selectRandom()");
+    System.out.println("What player do you want to return? [name]");
+    for(Player p : players) {
+      System.out.println(p.toString());
+    }
     while(true){
       String name = Input.getLine();
       for (Player player : players) {
@@ -46,6 +48,7 @@ public class PlayersCollection {
           return player;
         }
       }
+      Input.clearPreviousLine();
     }
   }
 

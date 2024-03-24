@@ -1,5 +1,6 @@
 package mainstring.dev;
 
+import mainstring.dev.Output.Color;
 import mainstring.dev.Menu.*;
 import mainstring.dev.Players.Player;
 import mainstring.dev.Players.PlayersCollection;
@@ -22,13 +23,8 @@ public class Main {
     selectTeams();
 
     Grid grid = new Grid(players);
-    //S----C(p1,p2,p3...)
 
-    System.out.println("Did the game end? [y]es/[n]o");
-    while(Input.getChar("yn")=='n') {
-      mainLoop();
-      System.out.println("Did the game end? [y]es/[n]o");
-    }
+    mainLoop();
 
     endGame();
   }
@@ -38,8 +34,10 @@ public class Main {
   int numOfSaboteurs = 1;
 
   public void selectTeams() {
-    System.out.println("selectTeams()");
     players = new PlayersCollection();
+    Output.println("\n|----------------5.2.3.1 Adding Players into the teams-----------------|",
+        Color.LIGHT_BLUE);
+    System.out.println("selectTeams()");
     askForPlumber();
     askForPlumber();
     askForSaboteur();
@@ -57,6 +55,8 @@ public class Main {
       }
       System.out.println("Do you want to add more players? [y]es/[n]o");
     }
+    Output.println("|--------------------------------------------------------------------|\n",
+        Color.LIGHT_BLUE);
   }
 
   public void askForPlumber() {
@@ -81,10 +81,18 @@ public class Main {
   /*---------------------------------------------Select Teams------------------------------------------- */
 
   public void mainLoop() {
+    Output.println("\n|----------------5.2.4.1 The main loop of the game-----------------|",
+    Color.LIGHT_BLUE);
     System.out.println("mainLoop()");
-    Player player = players.selectRandom();
-    player.active();
-    player.passive();
+    System.out.println("Did the game end? [y]es/[n]o");
+    while (Input.getChar("yn") == 'n') {
+      Player player = players.selectRandom();
+      player.active();
+      player.passive();
+      System.out.println("Did the game end? [y]es/[n]o");
+    }
+    Output.println("|--------------------------------------------------------------------|\n",
+        Color.LIGHT_BLUE);
   }
 
   public void endGame() {}

@@ -16,7 +16,11 @@ public class Skeleton {
     Output.println("|----------------------Application Started----------------------|",
         Color.LIGHT_BLUE);
     System.out.println("main(String[] args)");
-    System.out.println("Select function: [1-17]");
+    System.out.println("Select function: [2-17]");
+    System.out.println("5.2.2 Menu()");
+    System.out.println("5.2.3 selectTeams()");
+    System.out.println("5.2.4 mainLoop()");
+    System.out.println("5.2.5 move()");
     System.out.println("5.2.1 disconnectPipe()");
     System.out.println("5.2.2 connectPipe()");
     System.out.println("5.2.3 fix()");
@@ -25,65 +29,190 @@ public class Skeleton {
     System.out.println("5.2.6 pickPump()");
     System.out.println("5.2.7 pickPipe()");
     System.out.println("5.2.8 puncturePipe()");
-    System.out.println("5.2.9 move()");
     System.out.println("5.2.10 fill()");
     System.out.println("5.2.11 flow()");
     System.out.println("5.2.12 calculateFlow()");
     System.out.println("5.2.13 select()");
-    System.out.println("5.2.14 Menu()");
-    System.out.println("5.2.15 selectTeams()");
     System.out.println("5.2.16 endGame()");
 
-    switch (Input.getInt(1, 17)) {
-      case 1:
-        disconnectPipe();
-        break;
+    switch (Input.getInt(2, 17)) {
       case 2:
-        connectPipe();
-        break;
-      case 3:
-        fix();
-        break;
-      case 4:
-        changePumpDirection();
-        break;
-      case 5:
-        insertPump();
-        break;
-      case 6:
-        pickPump();
-        break;
-      case 7:
-        pickPipe();
-        break;
-      case 8:
-        puncturePipe();
-        break;
-      case 9:
-        move();
-        break;
-      case 10:
-        fill();
-        break;
-      case 11:
-        flow();
-        break;
-      case 12:
-        calculateFlow();
-        break;
-      case 13:
-        select();
-        break;
-      case 14:
         Menu();
         break;
-      case 15:
+      case 3:
         selectTeams();
         break;
+      case 4:
+        mainLoop();
+        break;
+      case 5:
+        move();
+        break;
+
       case 16:
         endGame();
         break;
     }
+  }
+
+  private static void Menu() {
+    Main main = new Main();
+    main(null);
+  }
+
+  private static void selectTeams() {
+    // start game
+    Input.in("1");
+    Main main = new Main();
+    main(null);
+  }
+
+  private static void mainLoop() {
+    // start game
+    Input.in("1");
+    // adding players
+    Input.in("Klevis");
+    Input.in("Diamond");
+    Input.in("Murad");
+    Input.in("Ibrahim");
+    Input.in("n");
+    Main main = new Main();
+    main(null);
+  }
+
+  private static void move() {
+  
+    //get all the inputs
+    System.out.println("Which Setup do you want? [1-6]");
+    System.out.println("5.2.5.1/2.1 The plumber/saboteur moves from pipe to pump");
+    System.out.println("5.2.5.1/2.2 The plumber/saboteur moves from pipe to spring");
+    System.out.println("5.2.5.1/2.3 The plumber/saboteur moves from pipe to cistern");
+    System.out.println("5.2.9.1/2.4 The plumber/saboteur moves from pump to pipe");
+    System.out.println("5.2.9.1/2.5 The plumber/saboteur moves from spring to pipe");
+    System.out.println("5.2.9.1/2.6 The plumber/saboteur moves from cistern to pipe");
+    int s = Input.getInt(1, 6);
+    System.out.println("Which player is moving? [P]lumber/[S]aboteur");
+    char c = Input.getChar("PS");
+
+    /*---------setup---------*/
+    // start game
+    Input.in("1");
+    // adding players
+    Input.in("Klevis");
+    Input.in("Diamond");
+    Input.in("Murad");
+    Input.in("Ibrahim");
+    Input.in("n");
+    // Setup the grid
+    Input.in("m");
+    switch (s) {
+      case 1:
+        Input.in("1");
+        Input.in("n");
+        if (c == 'P') {
+          Input.in("Klevis"); // Plumber        
+        } else {
+          Input.in("Ibrahim"); // Saboteur
+        }
+        break;
+      case 2:
+        Input.in("2");
+        Input.in("n");
+        if (c == 'P') { 
+          Input.in("Klevis"); // Plumber
+        } else {
+          Input.in("Ibrahim"); // Saboteur
+        }
+
+        break;
+      case 3:
+        Input.in("3");
+        Input.in("n");
+        if (c == 'P') {
+          Input.in("Klevis"); // Plumber
+        } else {
+          Input.in("Ibrahim"); // Saboteur
+        } 
+        break;
+      case 4:
+        Input.in("4");
+        Input.in("n");
+        if (c == 'P') {
+          Input.in("Klevis"); // Plumber
+        } else {
+          Input.in("Ibrahim"); // Saboteur
+        }
+        Input.in("Ibrahim"); // Saboteur
+        break;
+      case 5:
+        Input.in("5");
+        Input.in("n");
+        if (c == 'P') {
+          Input.in("Klevis"); // Plumber
+        } else {
+          Input.in("Ibrahim"); // Saboteur
+        }
+        break;
+      case 6:
+        Input.in("6");
+        Input.in("n");
+        if (c == 'P') {
+          Input.in("Klevis"); // Plumber
+        } else {
+          Input.in("Ibrahim"); // Saboteur
+        }
+        break;
+    }
+    Input.in("m");
+
+    Main main = new Main();
+
+    main(null);
+  }
+
+  private static void pickPump() {
+    Output.println("|-------------5.2.6.1 The Plumber picks up the pump-------------|",
+        Color.LIGHT_BLUE);
+
+    Input.in("1");
+    Input.in("Klevis");
+    Input.in("Diamond");
+    Input.in("Murad");
+    Input.in("Ibrahim");
+    Input.in("n");
+    Input.in("n");
+    Input.in("Klevis");
+    Input.in("p");
+
+    Main main = new Main();
+
+    Output.println("|--------------------------------------------------------------------|\n",
+        Color.LIGHT_BLUE);
+
+    main(null);
+  }
+
+
+  private static void pickPipe() {
+    Output.println("|-------------5.2.7.1 The Plumber picks up the pipe at Cistern-------------|",
+        Color.LIGHT_BLUE);
+
+    Input.in("1");
+    Input.in("Klevis");
+    Input.in("Diamond");
+    Input.in("Murad");
+    Input.in("Ibrahim");
+    Input.in("n");
+    Input.in("n");
+    Input.in("Klevis");
+    Input.in("P");
+
+    Main main = new Main();
+
+    Output.println("|--------------------------------------------------------------------|\n",
+        Color.LIGHT_BLUE);
+
+    main(null);
   }
 
   // Define methods for each menu option here
@@ -109,39 +238,36 @@ public class Skeleton {
   }
 
   private static void disconnectPipe1() {
-    /*-----------------------------setup----------------------------*/
-    Output.println("|------------5.2.1.1 Disconnect pipe from pump Setup------------|",
-        Color.LIGHT_BLUE);
+    Output.println("|------------5.2.1.1 Disconnect pipe from pump------------|", Color.LIGHT_BLUE);
 
+    // start game
     Input.in("1");
+    // adding players
     Input.in("Klevis");
     Input.in("Diamond");
     Input.in("Murad");
     Input.in("Ibrahim");
     Input.in("n");
+    // main loop
     Input.in("n");
     Input.in("Klevis");
-    //pointer is where player is
-    /*
-      S---p---C
-      S-------C
-        \
-          \p
-    */ 
     Input.in("d");
+
+    // pointer * is where player is
+    /*
+     * S---p*---C S-------C \ \p
+     */
 
     Main main = new Main();
 
-    // add plauer
-    // add the elemetns
-    // add players to elemtns
-    /*-----------------------------setup----------------------------*/
+    Output.println("|--------------------------------------------------------------------|\n",
+        Color.LIGHT_BLUE);
 
     main(null);
   }
 
   private static void disconnectPipe2() {
-    Output.println("|------------5.2.1.2 Disconnect pipe from spring Setup------------|",
+    Output.println("|------------5.2.1.2 Disconnect pipe from spring------------|",
         Color.LIGHT_BLUE);
 
     Input.in("1");
@@ -152,22 +278,21 @@ public class Skeleton {
     Input.in("n");
     Input.in("n");
     Input.in("Klevis");
-    //pointer is where player is
+    // pointer is where player is
     /*
-      S---p---C
-      S-------C
-        \
-          \p
-    */ 
+     * S---p---C S-------C \ \p
+     */
     Input.in("d");
 
     Main main = new Main();
+    Output.println("|--------------------------------------------------------------------|\n",
+        Color.LIGHT_BLUE);
 
     main(null);
   }
 
   private static void disconnectPipe3() {
-    Output.println("|------------5.2.1.3 Disconnect pipe from spring Setup------------|",
+    Output.println("|------------5.2.1.3 Disconnect pipe from spring------------|",
         Color.LIGHT_BLUE);
 
 
@@ -179,22 +304,21 @@ public class Skeleton {
     Input.in("n");
     Input.in("n");
     Input.in("Klevis");
-    //pointer is where player is
+    // pointer is where player is
     /*
-      S---p---C
-      S-------C
-        \
-          \p
-    */ 
+     * S---p---C S-------C \ \p
+     */
     Input.in("d");
 
     Main main = new Main();
+
+    Output.println("|--------------------------------------------------------------------|\n",
+        Color.LIGHT_BLUE);
 
     main(null);
   }
 
   private static void connectPipe() {
-    // Implementation for connectPipe
     System.out.println("Which Setup do you want? [1-3]");
     System.out.println("5.2.2.1 Connect pipe with pump");
     System.out.println("5.2.2.2 Connect pipe with spring");
@@ -211,14 +335,10 @@ public class Skeleton {
         connectPipe3();
         break;
     }
-
-    System.out.println("Connecting pipe...");
   }
 
   private static void connectPipe1() {
-    /*-----------------------------setup----------------------------*/
-    Output.println("|-------------5.2.2.1 Connect pipe with pump Setup-------------|",
-        Color.LIGHT_BLUE);
+    Output.println("|-------------5.2.2.1 Connect pipe with-------------|", Color.LIGHT_BLUE);
 
     Input.in("1");
     Input.in("Klevis");
@@ -228,16 +348,13 @@ public class Skeleton {
     Input.in("n");
     Input.in("n");
     Input.in("Klevis");
-    //pointer is where player is
+    // pointer is where player is
     /*
-      S---p---C
-      S-------C
-        \
-          \p
-    */ 
+     * S---p---C S-------C \ \p
+     */
     Input.in("c");
 
-    
+
     Main main = new Main();
 
     Output.println("|--------------------------------------------------------------------|\n",
@@ -247,7 +364,6 @@ public class Skeleton {
   }
 
   private static void connectPipe2() {
-    /*-----------------------------setup----------------------------*/
     Output.println("|-------------5.2.2.2 Connect pipe with spring Setup-------------|",
         Color.LIGHT_BLUE);
 
@@ -261,7 +377,7 @@ public class Skeleton {
     Input.in("Klevis");
     Input.in("c");
 
-    
+
     Main main = new Main();
 
     Output.println("|--------------------------------------------------------------------|\n",
@@ -285,7 +401,7 @@ public class Skeleton {
     Input.in("Klevis");
     Input.in("c");
 
-    
+
     Main main = new Main();
 
     Output.println("|--------------------------------------------------------------------|\n",
@@ -307,7 +423,8 @@ public class Skeleton {
   private static void insertPump() {
     // Implementation for insertPump
     /*-----------------------------setup----------------------------*/
-    Output.println("|-------------5.2.5.1 The Plumber inserts the pump at a pipe Setup-------------|",
+    Output.println(
+        "|-------------5.2.5.1 The Plumber inserts the pump at a pipe Setup-------------|",
         Color.LIGHT_BLUE);
 
     Input.in("1");
@@ -330,60 +447,9 @@ public class Skeleton {
     System.out.println("Inserting pump...");
   }
 
-  private static void pickPump() {
-    // Implementation for pickPump
-    /*-----------------------------setup----------------------------*/
-    Output.println("|-------------5.2.6.1 The Plumber picks up the pump Setup-------------|",
-        Color.LIGHT_BLUE);
 
-    Input.in("1");
-    Input.in("Klevis");
-    Input.in("Diamond");
-    Input.in("Murad");
-    Input.in("Ibrahim");
-    Input.in("n");
-    Input.in("n");
-    Input.in("Klevis");
-    Input.in("p");
-
-    Main main = new Main();
-
-    Output.println("|--------------------------------------------------------------------|\n",
-        Color.LIGHT_BLUE);
-
-    main(null);
-
-    System.out.println("Picking pump...");
-  }
-
-  private static void pickPipe() {
-    // Implementation for pickPipe
-    /*-----------------------------setup----------------------------*/
-    Output.println("|-------------5.2.7.1 The Plumber picks up the pipe Setup-------------|",
-        Color.LIGHT_BLUE);
-
-    Input.in("1");
-    Input.in("Klevis");
-    Input.in("Diamond");
-    Input.in("Murad");
-    Input.in("Ibrahim");
-    Input.in("n");
-    Input.in("n");
-    Input.in("Klevis");
-    Input.in("p");
-
-    Main main = new Main();
-
-    Output.println("|--------------------------------------------------------------------|\n",
-        Color.LIGHT_BLUE);
-
-    main(null);
-    System.out.println("Picking pipe...");
-  }
 
   private static void puncturePipe() {
-    // Implementation for puncturePipe
-    /*-----------------------------setup----------------------------*/
     Output.println("|-------------5.2.8.1 The Saboteur punctures the pipe Setup-------------|",
         Color.LIGHT_BLUE);
 
@@ -406,30 +472,7 @@ public class Skeleton {
     System.out.println("Puncturing pipe...");
   }
 
-  private static void move() {
-    // Implementation for move
-    /*-----------------------------setup----------------------------*/
-    Output.println("|-------------5.2.9.1 The plumber/saboteur moves from pipe to pump/sprin/cistern Setup-------------|",
-        Color.LIGHT_BLUE);
 
-    Input.in("1");
-    Input.in("Klevis");
-    Input.in("Diamond");
-    Input.in("Murad");
-    Input.in("Ibrahim");
-    Input.in("n");
-    Input.in("n");
-    Input.in("Klevis");
-    Input.in("m");
-
-    Main main = new Main();
-
-    Output.println("|--------------------------------------------------------------------|\n",
-        Color.LIGHT_BLUE);
-
-    main(null);
-    System.out.println("Moving...");
-  }
 
   private static void fill() {
     // Implementation for fill
@@ -451,25 +494,7 @@ public class Skeleton {
     System.out.println("Selecting...");
   }
 
-  private static void Menu() {
-    Output.println("\n|-----------------5.2.1.1 The user uses the menu ------------------|",
-        Color.LIGHT_BLUE);
-    Main main = new Main();
-    Output.println("|--------------------------------------------------------------------|\n",
-        Color.LIGHT_BLUE);
 
-    main(null);
-  }
-
-
-  private static void selectTeams() {
-    Output.println("\n|----------------5.2.13.2 Adding Players into the teams-----------------|",
-        Color.LIGHT_BLUE);
-    Input.in("1");
-    Main main = new Main();
-    Output.println("|--------------------------------------------------------------------|\n",
-        Color.LIGHT_BLUE);
-  }
 
   private static void endGame() {
     // Implementation for endGame

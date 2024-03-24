@@ -8,6 +8,7 @@ import mainstring.dev.Elements.Pipe;
 // import java.awt.event.MouseListener;
 import java.util.Timer;
 import java.util.TimerTask;
+import mainstring.dev.Grid;
 
 //implements mouseListerner
 public class Pump extends ActiveElement {
@@ -47,15 +48,22 @@ public class Pump extends ActiveElement {
   }
   
   //public functions
-  public Pump() {
+  public Pump(Grid grid) {
+    super(grid);
     schedulePipeBreak();
   }
 
   public void onMouseClick(){ //== Select 
     grid.setSelectedActiveElement(this);
   } //used
-  public void setInPipe(Pipe pipe) {this.in = pipe;} //used 
-  public void setOutPipe(Pipe pipe) {this.out = pipe;} //used
+  public void setInPipe(Pipe pipe) {
+    addNeighbor(pipe);
+    this.in = pipe;
+  } //used 
+  public void setOutPipe(Pipe pipe) {
+    addNeighbor(pipe);
+    this.out = pipe;
+  } //used
   public void fix() {} //used
   public void changeDirection() {} //used
   @Override
@@ -74,21 +82,9 @@ public class Pump extends ActiveElement {
       }
     }
   }
+ 
+  public String type() {
+    return "pump";
+  }
 }
 
-// //controller Example
-// public class PumpController {
-//   Pump pump;
-//   PumpGUI gui;
-//   GridController grid;
-// p
-//   controsutn(pump,gui){}
-
-//   public void connectPipe(Pipe pipe) {
-//       grid.connecPipe((plumber)grid.currentPlayer)
-//   }
-//   public void removePipe(Pipe pipe) {}
-//   public void setInPipe(Pipe pipe) {}
-//   public void setOutPipe(Pipe pipe) {}
-//   public void fixPump() {}
-// }

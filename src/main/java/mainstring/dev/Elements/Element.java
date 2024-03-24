@@ -10,19 +10,27 @@ import mainstring.dev.Players.PlayersCollection;
 
 public abstract class Element {
   protected Grid grid;
-  protected PlayersCollection players; // here you can set the capacity
+  protected PlayersCollection players = new PlayersCollection(); // here you can set the capacity
   protected Class<?> neighborType;
   protected Set<Element> neighbors = new HashSet<>();
   protected int capacityOfNeighbors;
 
+  public Element(Grid grid) {
+    this.grid = grid;
+  }
+  
   public void addPlayer(Player player) {
     try {
+      player.setLocation(this);
       players.add(player);
     } catch (Exception e) {
+      e.printStackTrace();
     }
   }
 
-  public void removePlayer(Player player) {}
+  public void removePlayer(Player player) {
+    players.remove(player);
+  }
 
   public void addNeighbor(Element neighbor) /* throws Exception */ {
     if (neighborType.isInstance(neighbor)) {
@@ -38,6 +46,7 @@ public abstract class Element {
   public void removeNeighbor(Element neighbor) {}
 
   public boolean isConnected(Element element) {
+    System.out.println("isConnected("+element.type()+")");
     if (neighbors.contains(element))
       return true;
     return false;
@@ -50,4 +59,6 @@ public abstract class Element {
   public boolean isSecoundNeighbor(Element element) {
     return true;
   }
+
+  public abstract String type();
 }
