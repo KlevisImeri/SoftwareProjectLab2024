@@ -412,9 +412,68 @@ public class Skeleton {
 
   private static void fix() {
     // Implementation for fix
+    System.out.println("select setup[1-2]");
+    System.out.println("5.2.3.1 fix pump");
+    System.out.println("5.2.3.2 fix pipe");
+
+    switch (Input.getInt(1, 2)) {
+        case 1:
+          fixPump();
+          break;
+        case 2:
+          fixPipe();
+          break;
+         
+      }
+
+      
     System.out.println("Fixing...");
+     
+
   }
 
+  private static void fixPipe(){
+    Output.println("|-----------------Fixing Pipe------------------|",
+    Color.LIGHT_BLUE);
+    Input.in("1");
+    Input.in("Klevis");
+    Input.in("Diamond");
+    Input.in("Murad");
+    Input.in("Ibrahim");
+    Input.in("n");
+    Input.in("n");
+    Input.in("Klevis");
+    Input.in("f");
+     Main main = new Main();
+     Output.println("|--------------------------------------------------------------------|\n",
+     Color.LIGHT_BLUE);
+
+
+
+     main(null);
+  }
+
+  private static void fixPump(){
+
+    Output.println("|-----------------Fixing Pump------------------|",
+    Color.LIGHT_BLUE);
+    Input.in("1");
+    Input.in("Klevis");
+    Input.in("Diamond");
+    Input.in("Murad");
+    Input.in("Ibrahim");
+    Input.in("n");
+    Input.in("n");
+    Input.in("Klevis");
+    Input.in("f");
+    Main main = new Main();
+    Output.println("|--------------------------------------------------------------------|\n",
+        Color.LIGHT_BLUE);
+
+
+
+    main(null);
+  }
   private static void changePumpDirection() {
     // Implementation for changePumpDirection
     System.out.println("Changing pump direction...");
