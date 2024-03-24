@@ -20,6 +20,7 @@ public abstract class Element {
   }
   
   public void addPlayer(Player player) {
+    System.out.println("addPlayer()");
     try {
       player.setLocation(this);
       players.add(player);
@@ -29,10 +30,12 @@ public abstract class Element {
   }
 
   public void removePlayer(Player player) {
+    System.out.println("removePlayer("+player.type()+")");
     players.remove(player);
   }
 
   public void addNeighbor(Element neighbor) /* throws Exception */ {
+    System.out.println("addNeighbor("+neighbor.type()+")");
     if (neighborType.isInstance(neighbor)) {
       neighbors.add(neighbor);
       if (!neighbor.isConnected(this)) {
@@ -43,7 +46,10 @@ public abstract class Element {
     }
   }
 
-  public void removeNeighbor(Element neighbor) {}
+  public void removeNeighbor(Element neighbor) {
+    System.out.println("removeNeighbor("+neighbor.type()+")");
+    neighbors.remove(neighbor);
+  }
 
   public boolean isConnected(Element element) {
     System.out.println("isConnected("+element.type()+")");
@@ -53,10 +59,12 @@ public abstract class Element {
   }
 
   public List<Element> getNeighbors() {
+    System.out.println("getNeighbors()");
     return new ArrayList<>(neighbors);
   }
 
   public boolean isSecoundNeighbor(Element element) {
+    System.out.println("isSecoundNeighbor("+element.type()+")");
     return true;
   }
 

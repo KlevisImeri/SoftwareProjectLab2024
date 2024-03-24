@@ -8,17 +8,20 @@ import mainstring.dev.Elements.*;
 import java.util.List;
 
 public class Plumber extends Player {
-  private Pump carryPump;
-  private Pipe carryPipe;
+  public Pump carryPump;
+  public Pipe carryPipe;
 
   public Plumber(String name) {
     this.name = name;
   }
 
   public void disconnectPipe() {
+    Output.println("|-------------5.2.9 Disconnect pipe from " + location.type() + "-------------|",
+        Color.LIGHT_BLUE);
+    System.out.println("disconnectPipe()");
     Pipe sp = grid.getSelectedPipe();
     if (location.isConnected(sp)) {
-      if (carryPipe != null) {
+      if (carryPipe == null) {
         location.removeNeighbor(sp);
         sp.removeNeighbor(location);
         carryPipe = sp;
@@ -31,74 +34,83 @@ public class Plumber extends Player {
   }
 
   public void connectPipe() {
+    Output.println(
+        "|----------------5.2.9 Connect pipe with " + location.type() + "-----------------|",
+        Color.LIGHT_BLUE);
     System.out.println("connectPipe()");
     if (carryPipe != null) {
       if (location instanceof ActiveElement) {
-        System.out.println("The Location is an active element!");
-        System.out.println("addNeighbor(activeElement)");
-        carryPipe.addNeighbor(location); // they should contain each other so it doesn't matter
-        System.out.println("addNeighbor(Pipe)");
-        location.addNeighbor(carryPipe);
-        carryPipe = null;
+        System.out.println("Can more pipes be connected to the location? [y]es/[n]no");
+        switch (Input.getChar("yn")) {
+          case 'y':
+            carryPipe.addNeighbor(location);
+            location.addNeighbor(carryPipe);
+            carryPipe = null;
+            break;
+          case 'n':
+            Output.println("The location is saturated with pipes!", Color.LIGHT_RED);
+            break;
+        }
       } else {
-        System.out.println("You can't connect a pipe to a pipe!");
+        Output.println("You can't connect a pipe to a pipe!", Color.LIGHT_RED);
       }
-    }
-    else {
+    } else {
       Output.println("The plumber is not carrying any pipe!", Color.LIGHT_RED);
     }
+    Output.println("|--------------------------------------------------------------------|\n",
+        Color.LIGHT_BLUE);
   }
 
   public void fix() { // used
+    Output.println(
+        "|-----------------------5.2.11 Fixing " + location.type() + "--------------------------|",
+        Color.LIGHT_BLUE);
     if (location instanceof Pump) {
       ((Pump) location).fix();
     } else if (location instanceof Pipe) {
       ((Pipe) location).fix();
     } else if (location instanceof Cistern) {
-      System.out.println("You can't fix a cistern");
+      Output.println("You can't fix a cistern", Color.LIGHT_RED);
     } else if (location instanceof Spring) {
-      System.out.println("You can't fix a spring");
+      Output.println("You can't fix a spring", Color.LIGHT_RED);
     }
+    Output.println("|--------------------------------------------------------------------|\n",
+        Color.LIGHT_BLUE);
   }
 
   public void insertPump() {
+    Output.println(
+        "|------------------5.2.5.1 The Plumber inserts the pump at a pipe Setup--------------------|",
+        Color.LIGHT_BLUE);
     System.out.println("insertPump()");
     if (carryPump != null) {
       if (location instanceof Pipe) {
-        System.out.println("Pipe()");
         Pipe newPipe = new Pipe(grid);
-        System.out.println("getNeighbors()");
         List<Element> pumps = location.getNeighbors();
-        System.out.println("setInPipe()");
         carryPump.setInPipe((Pipe) location);
-        System.out.println("setOutPipe()");
         carryPump.setOutPipe(newPipe);
-        System.out.println("addPlayer()");
         carryPump.addPlayer(this);
-        System.out.println("removeNeighbor(Element)");
         location.removeNeighbor(pumps.get(1));
-        System.out.println("addNeighbor(carryPump)");
         location.addNeighbor(carryPump);
-        System.out.println("removePlayer(Plumber)");
         location.removePlayer(this);
-        System.out.println("addNeighbor(carryPump)");
         newPipe.addNeighbor(carryPump);
-        System.out.println("addNeighbor(Element)");
         newPipe.addNeighbor(pumps.get(1));
         location = carryPump;
         grid.addPump(carryPump);
         carryPump = null;
       } else {
-        System.out.println("You can't insert a Pump here!");
+        Output.println("You can't insert a Pump here!", Color.LIGHT_RED);
       }
     } else {
-      System.out.println("You don't have a Pump");
+      Output.println("You don't have a Pump", Color.LIGHT_RED);
     }
+    Output.println("|--------------------------------------------------------------------|\n",
+        Color.LIGHT_BLUE);
   }
 
   public void pickPump() {
-    Output.println("|-------------5.2.6.1 The Plumber picks up the pump-------------|",
-    Color.LIGHT_BLUE);
+    Output.println("|-------------5.2.6 The Plumber picks up the pump-------------|",
+        Color.LIGHT_BLUE);
     System.out.println("pickPump()");
     if (location instanceof Cistern) {
       carryPump = ((Cistern) location).getPump();
@@ -111,7 +123,7 @@ public class Plumber extends Player {
 
   public void pickPipe() {
     Output.println("|-------------5.2.7.1 The Plumber picks up the pipe at Cistern-------------|",
-    Color.LIGHT_BLUE);
+        Color.LIGHT_BLUE);
     System.out.println("pickPipe()");
     if (location instanceof Cistern) {
       carryPipe = ((Cistern) location).getPipe();
@@ -127,17 +139,17 @@ public class Plumber extends Player {
     System.out.println("active()");
     keyTyped();
   }
-  
+
   @Override
   public void passive() {
     System.out.println("passive()");
   }
-  
+
   public void keyTyped() {
     System.out.println("What does the player do?");
     System.out.println("[m]ove");
     System.out.println("changePump[D]irection()");
-    System.out.println("[d]onnectPipe()");
+    System.out.println("[d]isnnectPipe()");
     System.out.println("[c]onnectPipe()");
     System.out.println("[f]ix()");
     System.out.println("[i]nsertPump()");
@@ -152,6 +164,7 @@ public class Plumber extends Player {
         break;
       case 'd':
         disconnectPipe();
+        break;
       case 'c':
         connectPipe();
         break;
@@ -169,10 +182,10 @@ public class Plumber extends Player {
         break;
     }
   }
-  
+
   @Override
   public String toString() {
-    return "Plumber: "+name;
+    return "Plumber: " + name;
   }
 
   public String type() {

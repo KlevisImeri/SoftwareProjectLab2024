@@ -1,6 +1,8 @@
 package mainstring.dev.Players;
 
 import mainstring.dev.Input;
+import mainstring.dev.Output;
+import mainstring.dev.Output.Color;
 import mainstring.dev.Elements.Pipe;
 
 public class Saboteur extends Player {
@@ -10,14 +12,17 @@ public class Saboteur extends Player {
   }
 
   public void puncturePipe() {
+    Output.println("|-----------------5.2.8.1 The Saboteur punctures the pipe-------------------|",
+        Color.LIGHT_BLUE);
     System.out.println("puncturePipe()");
     if (location instanceof Pipe) {
-      System.out.println("The saboteur is on the pipe!");
       System.out.println("puncture()");
       ((Pipe) location).puncture();
     } else {
-      System.out.println("You can only puncture Pipes!");
+      Output.println("You can only puncture Pipes!", Color.LIGHT_RED);
     }
+    Output.println("|--------------------------------------------------------------------|\n",
+        Color.LIGHT_BLUE);
   }
 
   @Override
@@ -51,7 +56,7 @@ public class Saboteur extends Player {
 
   @Override
   public String toString() {
-    return "Saboteur: "+name;
+    return "Saboteur: " + name;
   }
 
   public String type() {

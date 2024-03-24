@@ -22,7 +22,7 @@ public class Main {
 
     selectTeams();
 
-    Grid grid = new Grid(players);
+    grid = new Grid(players);
 
     mainLoop();
 
@@ -89,6 +89,7 @@ public class Main {
       Player player = players.selectRandom();
       player.active();
       player.passive();
+      grid.caculateFlow();
       System.out.println("Did the game end? [y]es/[n]o");
     }
     Output.println("|--------------------------------------------------------------------|\n",

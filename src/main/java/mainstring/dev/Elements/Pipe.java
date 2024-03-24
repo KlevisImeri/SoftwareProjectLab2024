@@ -16,14 +16,16 @@ public class Pipe extends Element {
 
   public Pipe(Grid grid) {
     super(grid);
+    System.out.println("Pipe()");
     neighborType = ActiveElement.class;
   }
 
-  public void onMouseClick() {}
 
   public void puncture() {} // used
 
-  public void fix() {} // used
+  public void fix() {
+    System.out.println("fix()");
+  } 
 
   public void fill() {
     if (healthState == PipeHealthState.LEAKING) {
@@ -35,6 +37,7 @@ public class Pipe extends Element {
   }
 
   public void empty() {
+    System.out.println("empty()");
     flowState = PipeFlowState.EMPTY;
   }
 

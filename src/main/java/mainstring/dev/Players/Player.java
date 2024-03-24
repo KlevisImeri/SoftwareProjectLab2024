@@ -52,7 +52,7 @@ public abstract class Player {
   protected void move(Element element) {}
 
   public void move() {
-    Output.println("|-------------5.2.9.1 The " + type() + " moves from " + location.type() + " to "
+    Output.println("|-------------5.2.9 The " + type() + " moves from " + location.type() + " to "
         + grid.getSelectedElement().type() + "-------------|", Color.LIGHT_BLUE);
     System.out.println("move()");
     try {

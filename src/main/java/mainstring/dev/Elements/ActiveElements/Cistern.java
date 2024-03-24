@@ -39,6 +39,7 @@ public class Cistern extends ActiveElement {
 
   public Cistern(Grid grid) {
     super(grid);
+    System.out.println("Cistern()");
     schedulePipeCreation();
     schedulePumpCreation();
   }
@@ -69,6 +70,7 @@ public class Cistern extends ActiveElement {
 
   @Override
   public void Flow() {
+    
     for (Element element : neighbors) {
       if (((Pipe) element).isFull()) {
         ((Pipe) element).empty();

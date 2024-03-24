@@ -7,6 +7,7 @@ import mainstring.dev.*;
 public class Spring extends ActiveElement {
   public Spring(Grid grid) {
     super(grid);
+    System.out.println("Spring()");
   }
   @Override
   public void Flow() {
@@ -16,6 +17,6 @@ public class Spring extends ActiveElement {
   }
 
   public String type() {
-    return "pipe";
+    return "spring";
   }
 }

@@ -25,58 +25,69 @@ public class Grid {
     for (Player p : players.getPlayers()) {
       p.setGrid(this);
     }
-    Output.println("|-----------------------Setting Up the Grid------------------------|",Color.LIGHT_BLUE);
+    Output.println("|-----------------------Setting Up the Grid------------------------|",
+        Color.LIGHT_BLUE);
     System.out.println("Grid(players)");
-    System.out.println("Select the setup of the grid? [char]");
-    System.out.println("[m]ove");
-    System.out.println("changePump[D]irection()");
-    System.out.println("[d]onnectPipe()");
-    System.out.println("[c]onnectPipe()");
-    System.out.println("[f]ix");
-    System.out.println("[i]nsertPump()");
-    System.out.println("[p]ickPump(), pickPipe()");
-
-    switch (Input.getChar("mDdcfip")) {
-      case 'm':
-        System.out.println("Select which move setup? [1-6]");
-        switch (Input.getInt(1, 6)) {
-          case 1:
-            System.out.println("5.2.5.1/2.1 The plumber/saboteur moves from pipe to pump");
-            moveToPump(players);
-            break;
-          case 2:
-            System.out.println("5.2.5.1/2.2 The plumber/saboteur moves from pipe to spring");
-            moveToSpring(players);
-            break;
-          case 3:
-            System.out.println("5.2.5.1/2.3 The plumber/saboteur moves from pipe to cistern");
-            moveToCistern(players);
-            break;
-          case 4:
-            System.out.println("5.2.9.1/2.4 The plumber/saboteur moves from pump to pipe");
-            moveFromPump(players);
-            break;
-          case 5:
-            System.out.println("5.2.9.1/2.5 The plumber/saboteur moves from spring to pipe");
-            moveFromSpring(players);
-            break;
-          case 6:
-            System.out.println("5.2.9.1/2.6 The plumber/saboteur moves from cistern to pipe");
-            moveFromCistern(players);
-            break;
-        }
+    
+    System.out.println("Select the setup of the grid? [int]");
+    switch (Input.getInt(0, 9)) {
+      case 0:
+        setup0(players);  // S-----C*
+      case 1: 
+        setup1(players);  // --*--P
         break;
-      case 'D':
-        changePumpDirection(players);
+      case 2:
+        setup2(players);  // --*--C
         break;
-      case 'p':
-        pickPumpPipe(players);
+      case 3:
+        setup3(players);  // --*--S
+        break;
+      case 4:
+        setup4(players);  // ----P*
+        break;
+      case 5:
+        setup5(players);  // ----C*
+        break;
+      case 6:
+        setup6(players);  // ----S*
+        break;
+      case 7:
+        setup7(players);  // --1--P*--2--
+        break;
+      case 8:
+        setup8(players);  // C*
+        break;
+      case 9:
+        setup9(players);  // S--*--C 
         break;
     }
-    Output.println("|---------------------------------------------------------------------|", Color.LIGHT_BLUE);
+
+    System.out.println("Set up players? [0-1]");
+    switch (Input.getInt(0, 1)) {
+      case 0:
+        break;
+      case 1:
+        setupP1(players);
+        break;
+    }
+    Output.println("|---------------------------------------------------------------------|",
+        Color.LIGHT_BLUE);
+
   }
 
-  private void moveToPump(PlayersCollection players) {
+  private void setup0(PlayersCollection players) {
+    cistern = new Cistern(this);
+    spring = new Spring(this);
+    Pipe pipe = new Pipe(this);
+    pipe.addNeighbor(cistern);
+    pipe.addNeighbor(spring);
+    for( Player p : players.getPlayers()){
+      cistern.addPlayer(p);
+    }
+    //S-----C*
+  }
+
+  private void setup1(PlayersCollection players) {
     Pipe pipe = new Pipe(this);
     Pump pump = new Pump(this);
     pipe.addNeighbor(pump);
@@ -85,24 +96,11 @@ public class Grid {
     }
     setSelectedActiveElement(pump);
     /*
-     * --*--P -> ----P*
+     * --*--P 
      */
   }
 
-  private void moveToSpring(PlayersCollection players) {
-    Pipe pipe = new Pipe(this);
-    spring = new Spring(this);
-    pipe.addNeighbor(spring);
-    for (Player p : players.getPlayers()) {
-      pipe.addPlayer(p);
-    }
-    setSelectedActiveElement(spring);
-    /*
-     * --*--S -> ----S*
-     */
-  }
-
-  private void moveToCistern(PlayersCollection players) {
+  private void setup2(PlayersCollection players) {
     Pipe pipe = new Pipe(this);
     cistern = new Cistern(this);
     pipe.addNeighbor(cistern);
@@ -111,11 +109,25 @@ public class Grid {
     }
     setSelectedActiveElement(cistern);
     /*
-     * --*--C -> ----C*
+     * --*--C 
      */
   }
 
-  private void moveFromPump(PlayersCollection players) {
+  private void setup3(PlayersCollection players) {
+    Pipe pipe = new Pipe(this);
+    spring = new Spring(this);
+    pipe.addNeighbor(spring);
+    for (Player p : players.getPlayers()) {
+      pipe.addPlayer(p);
+    }
+    setSelectedActiveElement(spring);
+    /*
+     * --*--S 
+     */
+  }
+
+
+  private void setup4(PlayersCollection players) {
     Pipe pipe = new Pipe(this);
     Pump pump = new Pump(this);
     pump.addNeighbor(pipe);
@@ -124,11 +136,11 @@ public class Grid {
     }
     setSelectedPipe(pipe);
     /*
-     * ----P* -> --*--P
+     * ----P* 
      */
   }
 
-  private void moveFromCistern(PlayersCollection players) {
+  private void setup5(PlayersCollection players) {
     Pipe pipe = new Pipe(this);
     cistern = new Cistern(this);
     cistern.addNeighbor(pipe);
@@ -137,11 +149,11 @@ public class Grid {
     }
     setSelectedPipe(pipe);
     /*
-     * ----C* -> --*--C
+     * ----C* 
      */
   }
 
-  private void moveFromSpring(PlayersCollection players) {
+  private void setup6(PlayersCollection players) {
     Pipe pipe = new Pipe(this);
     spring = new Spring(this);
     spring.addNeighbor(pipe);
@@ -150,11 +162,11 @@ public class Grid {
     }
     setSelectedPipe(pipe);
     /*
-     * ----S* -> --*--S
+     * ----S*
      */
   }
 
-  private void changePumpDirection(PlayersCollection players) {
+  private void setup7(PlayersCollection players) {
     Pipe pipe1 = new Pipe(this);
     Pipe pipe2 = new Pipe(this);
     Pump pump = new Pump(this);
@@ -163,10 +175,10 @@ public class Grid {
     for (Player p : players.getPlayers()) {
       pump.addPlayer(p);
     }
-    // --1--P--2--
+    // --1--P*--2--
   }
 
-  private void pickPumpPipe(PlayersCollection players) {
+  private void setup8(PlayersCollection players) {
     cistern = new Cistern(this);
     cistern.createPump();
     cistern.createPipe();
@@ -174,6 +186,30 @@ public class Grid {
       cistern.addPlayer(p);
     }
     activeElements.add(cistern);
+    // C*
+  }
+
+  private void setup9(PlayersCollection players) {
+    cistern = new Cistern(this);
+    spring = new Spring(this);
+    Pipe pipe = new Pipe(this);
+    pipe.addNeighbor(cistern);
+    pipe.addNeighbor(spring);
+    for( Player p : players.getPlayers()){
+      //here we all more players in the pipe for demostartion
+      //ths is just for testing
+      pipe.addPlayer(p); 
+    }
+    //S--*--C
+  }
+
+  private void setupP1(PlayersCollection players) {
+    for (Player p : players.getPlayers()) {
+      if (p instanceof Plumber) {
+        ((Plumber) p).carryPipe = new Pipe(this);
+        ((Plumber) p).carryPump = new Pump(this);
+      }
+    }
   }
 
   public Element getSelectedElement() {
@@ -182,6 +218,7 @@ public class Grid {
   }
 
   public void setSelectedElement(Element selectedElement) {
+    System.out.println("setSelectedElement()");
     this.selectedElement = selectedElement;
   }
 
@@ -195,6 +232,7 @@ public class Grid {
   }
 
   public Pipe getSelectedPipe() {
+    System.out.println("getSelectedPipe()");
     return selectedPipe;
   }
 
@@ -203,6 +241,12 @@ public class Grid {
     this.selectedPipe = selectedPipe;
   }
 
+  public void caculateFlow(){
+    System.out.println("cacualteFlow()");
+    for (ActiveElement e : activeElements) {
+      e.Flow();      
+    }
+  }
   // public Pump getSelectedPump() {
   // return selectedPump;
   // }
@@ -214,6 +258,7 @@ public class Grid {
   // }
 
   public void addPump(Pump pump) {
+    System.out.println("addPump(pump)");
     activeElements.add(pump);
   }
 
@@ -230,4 +275,3 @@ public class Grid {
     return this.cistern.getWaterAmount();
   }
 }
-

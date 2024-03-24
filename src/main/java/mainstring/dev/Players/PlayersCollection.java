@@ -13,7 +13,7 @@ public class PlayersCollection {
   // int maxCapacity;
 
   public PlayersCollection() {
-    System.out.println("PlayersCollection()");
+    //System.out.println("PlayersCollection()");
   }
 
   public boolean add(Player player) {
