@@ -56,7 +56,12 @@ public class Pump extends ActiveElement {
   } //used
   public void setInPipe(Pipe pipe) {this.in = pipe;} //used 
   public void setOutPipe(Pipe pipe) {this.out = pipe;} //used
-  public void fix() {} //used
+  public void fix() {
+
+    state=PumpState.HEALTHY;
+    System.out.println("Pump is Fixed");
+
+  } //used
   public void changeDirection() {} //used
   @Override
   public void Flow(){

@@ -12,7 +12,11 @@ public class Pipe extends Element {
   }
   public void onMouseClick(){}
   public void puncture(){} //used
-  public void fix() {} //used
+  public void fix() {
+    healthState=PipeHealthState.HEALTHY;
+    System.out.println("Fixed Pipe");
+
+  } //used
   public void fill() { 
     if(healthState==PipeHealthState.LEAKING){
       grid.addWaterToDesert();
