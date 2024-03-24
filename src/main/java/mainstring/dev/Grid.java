@@ -168,6 +168,8 @@ public class Grid {
 
   private void pickPumpPipe(PlayersCollection players) {
     cistern = new Cistern(this);
+    cistern.createPump();
+    cistern.createPipe();
     for (Player p : players.getPlayers()) {
       cistern.addPlayer(p);
     }

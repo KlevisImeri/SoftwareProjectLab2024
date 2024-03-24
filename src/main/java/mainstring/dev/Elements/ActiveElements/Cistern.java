@@ -1,6 +1,7 @@
 package mainstring.dev.Elements.ActiveElements;
 
 import java.util.Timer;
+import java.util.ArrayList;
 import java.util.List;
 import mainstring.dev.Input;
 import mainstring.dev.Elements.*;
@@ -8,8 +9,8 @@ import mainstring.dev.Grid;
 
 public class Cistern extends ActiveElement {
   // Fields
-  protected List<Pump> newPumps; // this are the pumps created
-  protected List<Pipe> newPipes;
+  protected List<Pump> newPumps = new ArrayList<>(); // this are the pumps created
+  protected List<Pipe> newPipes = new ArrayList<>();
   protected int waterAmount;
   protected Timer timerPipe = new Timer();
   protected Timer timerPump = new Timer();
@@ -23,9 +24,13 @@ public class Cistern extends ActiveElement {
     createPump();
   }
 
-  private void createPump() {}
+  public void createPump() {
+    newPumps.add(new Pump(grid));
+  }
 
-  private void createPipe() {}
+  public void createPipe() {
+    newPipes.add(new Pipe(grid));
+  }
 
   private void addWater() {} // it also checks that water not negative
 
@@ -43,7 +48,7 @@ public class Cistern extends ActiveElement {
     System.out.println("Does the cistern have new pumps?  [y]es/[n]o");
     switch (Input.getChar("yn")) {
       case 'y':
-        return new Pump(grid);
+        return newPumps.get(0);
       case 'n':
         System.out.println("No More Pumps!");
     }
@@ -52,10 +57,10 @@ public class Cistern extends ActiveElement {
 
   public Pipe getPipe() {
     System.out.println("getPipe()");
-    System.out.println("Does the cistern have new pumps?  [y]es/[n]o");
+    System.out.println("Does the cistern have new pipes?  [y]es/[n]o");
     switch (Input.getChar("yn")) {
       case 'y':
-        return new Pipe(grid);
+        return newPipes.get(0);
       case 'n':
         System.out.println("No More Pipes!");
     }

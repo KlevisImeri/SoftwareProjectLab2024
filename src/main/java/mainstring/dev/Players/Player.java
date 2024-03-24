@@ -74,9 +74,9 @@ public abstract class Player {
         Color.LIGHT_BLUE);
   }
 
-
   public void changePumpDirection() {
-
+    Output.println("|--------------5.2.8 The "+type()+" changes the pump direction-------------|", Color.LIGHT_BLUE);
+    System.out.println("changePumpDirection()");
     if (location instanceof Pump) {
       ((Pump) location).changeDirection();
     } else if (location instanceof Pipe) {
@@ -86,11 +86,10 @@ public abstract class Player {
     } else if (location instanceof Spring) {
       System.out.println("You can't change the direction of spring!");
     }
+    Output.println("|--------------------------------------------------------------------|\n",
+    Color.LIGHT_BLUE);
   }
 
-  public void setGrid(Grid grid) {
-    this.grid = grid;
-  }
 
   public abstract void active();
 
@@ -110,6 +109,10 @@ public abstract class Player {
   // public ActiveElement getLocation() {
   // return location;
   // }
+
+  public void setGrid(Grid grid) {
+    this.grid = grid;
+  }
 
   public void setLocation(Element location) {
     this.location = location;

@@ -97,21 +97,29 @@ public class Plumber extends Player {
   }
 
   public void pickPump() {
+    Output.println("|-------------5.2.6.1 The Plumber picks up the pump-------------|",
+    Color.LIGHT_BLUE);
     System.out.println("pickPump()");
     if (location instanceof Cistern) {
       carryPump = ((Cistern) location).getPump();
     } else {
       System.out.println("You are not at the cistern!");
     }
+    Output.println("|--------------------------------------------------------------------|\n",
+        Color.LIGHT_BLUE);
   }
 
   public void pickPipe() {
+    Output.println("|-------------5.2.7.1 The Plumber picks up the pipe at Cistern-------------|",
+    Color.LIGHT_BLUE);
     System.out.println("pickPipe()");
     if (location instanceof Cistern) {
       carryPipe = ((Cistern) location).getPipe();
     } else {
       System.out.println("You are not at the cistern!");
     }
+    Output.println("|--------------------------------------------------------------------|\n",
+        Color.LIGHT_BLUE);
   }
 
   @Override

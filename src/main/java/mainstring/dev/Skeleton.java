@@ -21,13 +21,14 @@ public class Skeleton {
     System.out.println("5.2.3 selectTeams()");
     System.out.println("5.2.4 mainLoop()");
     System.out.println("5.2.5 move()");
+    System.out.println("5.2.6 pickPump()");
+    System.out.println("5.2.7 pickPipe()");
+    System.out.println("5.2.8 changePumpDirection()");
+
     System.out.println("5.2.1 disconnectPipe()");
     System.out.println("5.2.2 connectPipe()");
     System.out.println("5.2.3 fix()");
-    System.out.println("5.2.4 changePumpDirection()");
     System.out.println("5.2.5 insertPump()");
-    System.out.println("5.2.6 pickPump()");
-    System.out.println("5.2.7 pickPipe()");
     System.out.println("5.2.8 puncturePipe()");
     System.out.println("5.2.10 fill()");
     System.out.println("5.2.11 flow()");
@@ -48,23 +49,28 @@ public class Skeleton {
       case 5:
         move();
         break;
-
+      case 6:
+        pickPump();
+        break;
+      case 7:
+        pickPipe();
+        break;
+      case 8:
+        changePumpDirection();
+        break;
       case 16:
         endGame();
         break;
     }
+
+    Main main = new Main();
   }
 
-  private static void Menu() {
-    Main main = new Main();
-    main(null);
-  }
+  private static void Menu() { }
 
   private static void selectTeams() {
     // start game
     Input.in("1");
-    Main main = new Main();
-    main(null);
   }
 
   private static void mainLoop() {
@@ -76,13 +82,11 @@ public class Skeleton {
     Input.in("Murad");
     Input.in("Ibrahim");
     Input.in("n");
-    Main main = new Main();
-    main(null);
   }
 
   private static void move() {
-  
-    //get all the inputs
+
+    // get all the inputs
     System.out.println("Which Setup do you want? [1-6]");
     System.out.println("5.2.5.1/2.1 The plumber/saboteur moves from pipe to pump");
     System.out.println("5.2.5.1/2.2 The plumber/saboteur moves from pipe to spring");
@@ -110,7 +114,7 @@ public class Skeleton {
         Input.in("1");
         Input.in("n");
         if (c == 'P') {
-          Input.in("Klevis"); // Plumber        
+          Input.in("Klevis"); // Plumber
         } else {
           Input.in("Ibrahim"); // Saboteur
         }
@@ -118,7 +122,7 @@ public class Skeleton {
       case 2:
         Input.in("2");
         Input.in("n");
-        if (c == 'P') { 
+        if (c == 'P') {
           Input.in("Klevis"); // Plumber
         } else {
           Input.in("Ibrahim"); // Saboteur
@@ -132,7 +136,7 @@ public class Skeleton {
           Input.in("Klevis"); // Plumber
         } else {
           Input.in("Ibrahim"); // Saboteur
-        } 
+        }
         break;
       case 4:
         Input.in("4");
@@ -164,55 +168,67 @@ public class Skeleton {
         break;
     }
     Input.in("m");
-
-    Main main = new Main();
-
-    main(null);
   }
 
   private static void pickPump() {
-    Output.println("|-------------5.2.6.1 The Plumber picks up the pump-------------|",
-        Color.LIGHT_BLUE);
-
+    // Start game
     Input.in("1");
+    // Selected Teams
     Input.in("Klevis");
     Input.in("Diamond");
     Input.in("Murad");
     Input.in("Ibrahim");
     Input.in("n");
+    // Select Grid Setup
+    Input.in("p");
     Input.in("n");
     Input.in("Klevis");
     Input.in("p");
-
-    Main main = new Main();
-
-    Output.println("|--------------------------------------------------------------------|\n",
-        Color.LIGHT_BLUE);
-
-    main(null);
   }
 
-
   private static void pickPipe() {
-    Output.println("|-------------5.2.7.1 The Plumber picks up the pipe at Cistern-------------|",
-        Color.LIGHT_BLUE);
-
+    // Start game
     Input.in("1");
+    // Selected Teams
     Input.in("Klevis");
     Input.in("Diamond");
     Input.in("Murad");
     Input.in("Ibrahim");
     Input.in("n");
+    // Select Grid Setup
+    Input.in("p");
     Input.in("n");
     Input.in("Klevis");
     Input.in("P");
+  }
 
-    Main main = new Main();
-
-    Output.println("|--------------------------------------------------------------------|\n",
-        Color.LIGHT_BLUE);
-
-    main(null);
+  private static void changePumpDirection() {
+    System.out.println("Which Setup do you want? [1-2]");
+    System.out.println("5.2.4.1 The Plumber changes the pump direction");
+    System.out.println("5.2.4.2 The Saboteur changes the pump direction");
+    int s = Input.getInt(1, 2);
+    // Start game
+    Input.in("1");
+    // Selected Teams
+    Input.in("Klevis");
+    Input.in("Diamond");
+    Input.in("Murad");
+    Input.in("Ibrahim");
+    Input.in("n");
+    // Select Grid Setup
+    Input.in("D");
+    //main
+    Input.in("n");
+    switch (s) {
+      case 1:
+        Input.in("Diamond");    
+        break;
+      case 2:
+      Input.in("Murad");
+      default:
+        break;
+    }
+    Input.in("D");
   }
 
   // Define methods for each menu option here
@@ -417,46 +433,23 @@ public class Skeleton {
     System.out.println("5.2.3.2 fix pipe");
 
     switch (Input.getInt(1, 2)) {
-        case 1:
-          fixPump();
-          break;
-        case 2:
-          fixPipe();
-          break;
-         
-      }
+      case 1:
+        fixPump();
+        break;
+      case 2:
+        fixPipe();
+        break;
 
-      
+    }
+
+
     System.out.println("Fixing...");
-     
+
 
   }
 
-  private static void fixPipe(){
-    Output.println("|-----------------Fixing Pipe------------------|",
-    Color.LIGHT_BLUE);
-    Input.in("1");
-    Input.in("Klevis");
-    Input.in("Diamond");
-    Input.in("Murad");
-    Input.in("Ibrahim");
-    Input.in("n");
-    Input.in("n");
-    Input.in("Klevis");
-    Input.in("f");
-     Main main = new Main();
-     Output.println("|--------------------------------------------------------------------|\n",
-     Color.LIGHT_BLUE);
-
-
-
-     main(null);
-  }
-
-  private static void fixPump(){
-
-    Output.println("|-----------------Fixing Pump------------------|",
-    Color.LIGHT_BLUE);
+  private static void fixPipe() {
+    Output.println("|-----------------Fixing Pipe------------------|", Color.LIGHT_BLUE);
     Input.in("1");
     Input.in("Klevis");
     Input.in("Diamond");
@@ -474,10 +467,28 @@ public class Skeleton {
 
     main(null);
   }
-  private static void changePumpDirection() {
-    // Implementation for changePumpDirection
-    System.out.println("Changing pump direction...");
+
+  private static void fixPump() {
+
+    Output.println("|-----------------Fixing Pump------------------|", Color.LIGHT_BLUE);
+    Input.in("1");
+    Input.in("Klevis");
+    Input.in("Diamond");
+    Input.in("Murad");
+    Input.in("Ibrahim");
+    Input.in("n");
+    Input.in("n");
+    Input.in("Klevis");
+    Input.in("f");
+    Main main = new Main();
+    Output.println("|--------------------------------------------------------------------|\n",
+        Color.LIGHT_BLUE);
+
+
+
+    main(null);
   }
+
 
   private static void insertPump() {
     // Implementation for insertPump

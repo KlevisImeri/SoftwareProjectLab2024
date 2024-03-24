@@ -65,7 +65,9 @@ public class Pump extends ActiveElement {
     this.out = pipe;
   } //used
   public void fix() {} //used
-  public void changeDirection() {} //used
+  public void changeDirection() {
+    System.out.println("changeDirection()");
+  } //used
   @Override
   public void Flow(){
     if(in.isFull()){
