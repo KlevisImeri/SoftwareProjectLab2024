@@ -90,6 +90,7 @@ public class Grid {
     for (Player p : players.getPlayers()) {
       cistern.addPlayer(p);
     }
+    setSelectedActiveElement(spring);
     // S-----C*
   }
 
@@ -181,6 +182,7 @@ public class Grid {
     for (Player p : players.getPlayers()) {
       pump.addPlayer(p);
     }
+    setSelectedActiveElement(pump);
     // --1--P*--2--
   }
 
@@ -192,6 +194,7 @@ public class Grid {
       cistern.addPlayer(p);
     }
     activeElements.add(cistern);
+    setSelectedActiveElement(cistern);
     // C*
   }
 
@@ -206,6 +209,7 @@ public class Grid {
       // ths is just for testing
       pipe.addPlayer(p);
     }
+    setSelectedActiveElement(cistern);
     // S--*--C
   }
 
@@ -224,7 +228,11 @@ public class Grid {
     pipe2.addNeighbor(cistern);
     pipe2.fill();
     pipe1.puncture();
-    // S--1--P--2--C
+    for (Player p : players.getPlayers()) {
+      cistern.addPlayer(p);
+    }
+    setSelectedActiveElement(spring);
+    // S--1--P--2--C*
   }
 
   private void setup11(PlayersCollection players) {
