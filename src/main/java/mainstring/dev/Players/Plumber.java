@@ -7,14 +7,34 @@ import mainstring.dev.Output;
 import mainstring.dev.Elements.*;
 import java.util.List;
 
+/**
+ * Represents a Plumber, a specialized type of player in the game. Plumbers can carry, connect,
+ * disconnect pipes, and insert pumps as well as fix elements within the grid.
+ */
 public class Plumber extends Player {
+  /**
+   * A Pump that the Plumber is currently carrying. Null if no pump is being carried.
+   */
   public Pump carryPump;
+
+  /**
+   * A Pipe that the Plumber is currently carrying. Null if no pipe is being carried.
+   */
   public Pipe carryPipe;
 
+  /**
+   * Constructs a Plumber with a specified name.
+   * 
+   * @param name The name of the Plumber.
+   */
   public Plumber(String name) {
     this.name = name;
   }
 
+  /**
+   * Attempts to disconnect a pipe from its current location. If successful, the Plumber starts
+   * carrying the disconnected pipe.
+   */
   public void disconnectPipe() {
     Output.println("|-------------5.2.9 Disconnect pipe from " + location.type() + "-------------|",
         Color.LIGHT_BLUE);
@@ -33,6 +53,10 @@ public class Plumber extends Player {
     }
   }
 
+  /**
+   * Attempts to connect a pipe to the Plumber's current location. If the Plumber is carrying a
+   * pipe, it connects that pipe to the location.
+   */
   public void connectPipe() {
     Output.println(
         "|----------------5.2.9 Connect pipe with " + location.type() + "-----------------|",
@@ -61,6 +85,9 @@ public class Plumber extends Player {
         Color.LIGHT_BLUE);
   }
 
+  /**
+   * Fixes the element at the Plumber's current location if it is a Pump or Pipe.
+   */
   public void fix() { // used
     Output.println(
         "|-----------------------5.2.11 Fixing " + location.type() + "--------------------------|",
@@ -78,6 +105,10 @@ public class Plumber extends Player {
         Color.LIGHT_BLUE);
   }
 
+  /**
+   * Inserts a pump into the grid at the Plumber's current location if the location is suitable
+   * (i.e., a Pipe) and the Plumber is carrying a pump.
+   */
   public void insertPump() {
     Output.println(
         "|------------------5.2.5.1 The Plumber inserts the pump at a pipe Setup--------------------|",
@@ -108,6 +139,11 @@ public class Plumber extends Player {
         Color.LIGHT_BLUE);
   }
 
+  /**
+   * Represents the action of picking up a pump from the current location, assuming the location is
+   * a Cistern. If the plumber is not at a Cistern or there are no available pumps, an error message
+   * is displayed.
+   */
   public void pickPump() {
     Output.println("|-------------5.2.6 The Plumber picks up the pump-------------|",
         Color.LIGHT_BLUE);
@@ -121,6 +157,11 @@ public class Plumber extends Player {
         Color.LIGHT_BLUE);
   }
 
+  /**
+   * Represents the action of picking up a pipe from the current location, assuming the location is
+   * a Cistern. If the plumber is not at a Cistern or there are no available pipes, an error message
+   * is displayed.
+   */
   public void pickPipe() {
     Output.println("|-------------5.2.7.1 The Plumber picks up the pipe at Cistern-------------|",
         Color.LIGHT_BLUE);
@@ -134,17 +175,31 @@ public class Plumber extends Player {
         Color.LIGHT_BLUE);
   }
 
+  /**
+   * Defines the plumber's active behavior in the game. This method prompts the player to choose an
+   * action from a predefined list of possible actions, including moving, changing pump direction,
+   * and more.
+   */
   @Override
   public void active() {
     System.out.println("active()");
     keyTyped();
   }
 
+  /**
+   * Defines the plumber's passive behavior in the game. Currently, this method does not implement
+   * any specific behavior.
+   */
   @Override
   public void passive() {
     System.out.println("passive()");
   }
 
+  /**
+   * Processes player input to determine the action the plumber should take. This method allows the
+   * player to choose from moving, changing pump direction, disconnecting/connecting pipes, fixing
+   * elements, and more.
+   */
   public void keyTyped() {
     System.out.println("What does the player do?");
     System.out.println("[m]ove");
@@ -183,13 +238,22 @@ public class Plumber extends Player {
     }
   }
 
+  /**
+   * Provides a string representation of the plumber, including their name.
+   * 
+   * @return A string representing the plumber.
+   */
   @Override
   public String toString() {
     return "Plumber: " + name;
   }
 
+  /**
+   * Returns the type of this player, which is "plumber".
+   * 
+   * @return A string indicating the player's type.
+   */
   public String type() {
     return "plumber";
   }
-
 }
