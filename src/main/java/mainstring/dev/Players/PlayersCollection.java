@@ -65,7 +65,7 @@ public class PlayersCollection {
     System.out.println("selectRandom()");
     System.out.println("What player do you want to return? [name]");
     for (Player p : players) {
-      System.out.println(p.toString());
+      Output.println(p.toString(),Color.LIGHT_MAGENTA);
     }
     while (true) {
       String name = Input.getLine();

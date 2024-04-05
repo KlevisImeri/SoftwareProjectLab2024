@@ -6,7 +6,7 @@ import mainstring.dev.Output.Color;
  * The Skeleton class represents the entry point of the skeleton application.
  */
 public class Skeleton {
-  /*
+  /**
    * The main method is the entry point of the application.
    * 
    * @param args command-line arguments (not used in this application)
@@ -199,7 +199,7 @@ public class Skeleton {
     // main loop
     Input.in("n");
     Input.in("Klevis");
-    Input.in("8");
+    Input.in("p");
   }
 
   /**
@@ -232,8 +232,8 @@ public class Skeleton {
    */
   private static void changePumpDirection() {
     System.out.println("Which Setup do you want? [1-2]");
-    System.out.println("5.2.4.1 The Plumber changes the pump direction");
-    System.out.println("5.2.4.2 The Saboteur changes the pump direction");
+    System.out.println("5.2.8.1 The Plumber changes the pump direction");
+    System.out.println("5.2.8.2 The Saboteur changes the pump direction");
     int s = Input.getInt(1, 2);
     // Start game
     Input.in("1");
@@ -267,9 +267,9 @@ public class Skeleton {
    */
   private static void disconnectPipe() {
     System.out.println("Which Setup do you want? [1-3]");
-    System.out.println("5.2.1.1 Disconnect pipe from pump");
-    System.out.println("5.2.1.2 Disconnect pipe from spring");
-    System.out.println("5.2.1.3 Disconnect pipe from cistern");
+    System.out.println("5.2.9.1 Disconnect pipe from pump");
+    System.out.println("5.2.9.2 Disconnect pipe from spring");
+    System.out.println("5.2.9.3 Disconnect pipe from cistern");
     int c = Input.getInt(1, 3);
 
     // start game
@@ -306,9 +306,9 @@ public class Skeleton {
    */
   private static void connectPipe() {
     System.out.println("Which Setup do you want? [1-3]");
-    System.out.println("5.2.2.1 Connect pipe with pump");
-    System.out.println("5.2.2.2 Connect pipe with spring");
-    System.out.println("5.2.2.3 Connect pipe with cistern");
+    System.out.println("5.2.10.1 Connect pipe with pump");
+    System.out.println("5.2.10.2 Connect pipe with cistern");
+    System.out.println("5.2.10.3 Connect pipe with spring");
     int c = Input.getInt(1, 3);
 
     // start game
@@ -345,10 +345,10 @@ public class Skeleton {
    */
   private static void fix() {
     System.out.println("select setup[1-2]");
-    System.out.println("5.2.3.1 Fix pump");
-    System.out.println("5.2.3.2 Fix pipe");
-    System.out.println("5.2.3.3 Fix cistern");
-    System.out.println("5.2.3.4 Fix spring");
+    System.out.println("5.2.11.1 Fix pump");
+    System.out.println("5.2.11.2 Fix pipe");
+    System.out.println("5.2.11.3 Fix cistern");
+    System.out.println("5.2.11.4 Fix spring");
     int s = Input.getInt(1, 4);
 
     // start game
@@ -449,6 +449,7 @@ public class Skeleton {
     Input.in("n");
     Input.in("Klevis");
     Input.in("P");
+    Input.in("n");
   }
 
   /**

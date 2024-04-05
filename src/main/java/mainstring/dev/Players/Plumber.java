@@ -28,6 +28,7 @@ public class Plumber extends Player {
    * @param name The name of the Plumber.
    */
   public Plumber(String name) {
+    System.out.println("Plumber()");
     this.name = name;
   }
 
@@ -46,11 +47,13 @@ public class Plumber extends Player {
         sp.removeNeighbor(location);
         carryPipe = sp;
       } else {
-        System.out.println("You are already carrying  a pipe!");
+        Output.println("You are already carrying  a pipe!", Color.LIGHT_RED);
       }
     } else {
-      System.out.println("The pipe is too far away!");
+      Output.println("The pipe is too far away!", Color.LIGHT_RED);
     }
+    Output.println("|--------------------------------------------------------------------|\n",
+        Color.LIGHT_BLUE);
   }
 
   /**

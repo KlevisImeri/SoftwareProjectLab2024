@@ -98,7 +98,7 @@ public class Cistern extends ActiveElement {
       case 'y':
         return newPumps.get(0);
       case 'n':
-        System.out.println("No More Pumps!");
+        Output.println("No More Pumps!", Color.LIGHT_RED);
     }
     return null;
   }
@@ -117,7 +117,7 @@ public class Cistern extends ActiveElement {
       case 'y':
         return newPipes.get(0);
       case 'n':
-        System.out.println("No More Pipes!");
+        Output.println("No More Pipes!", Color.LIGHT_RED);
         return null;
     }
     return null;

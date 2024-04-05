@@ -145,8 +145,8 @@ public class Main {
    */
   public void displayResults(int plumberResult, int saboteurResult) {
     System.out.println("displayResults()");
-    System.out.println("The plumber gathered: " + plumberResult + "liters of water");
-    System.out.println("The saboteurs leaked: " + saboteurResult + "liters of water");
+    Output.println("The plumber gathered: " + plumberResult + "liters of water", Color.LIGHT_MAGENTA);
+    Output.println("The saboteurs leaked: " + saboteurResult + "liters of water", Color.LIGHT_MAGENTA);
   }
   /*---------------------------------------------end Game------------------------------------------- */
 }

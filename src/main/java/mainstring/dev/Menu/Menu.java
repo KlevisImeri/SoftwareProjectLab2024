@@ -41,14 +41,14 @@ public class Menu {
         startGame.actionPerformed(null);
         break;
       } else if (in == 2) {
-        System.out.println(settings.getSettings().toString());
+        Output.println(settings.getSettings().toString(), Color.LIGHT_MAGENTA);
         System.out.println("Enter the new values:");
         System.out.println("endTime [5-720 min]");
         int endTime = Input.getInt(5, 720);
         System.out.println("playerTime [10-180 sec]");
         int playerTime = Input.getInt(10, 180);
         settings.setSettings(endTime, playerTime);
-        System.out.println(settings.getSettings().toString());
+        Output.println(settings.getSettings().toString(), Color.LIGHT_MAGENTA);
       }
     }
   }

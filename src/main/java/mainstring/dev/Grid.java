@@ -108,6 +108,8 @@ public class Grid {
     Pipe pipe = new Pipe(this);
     pipe.addNeighbor(cistern);
     pipe.addNeighbor(spring);
+    activeElements.add(spring);
+    activeElements.add(cistern);
     for (Player p : players.getPlayers()) {
       cistern.addPlayer(p);
     }

@@ -115,10 +115,10 @@ public abstract class Player {
           location.removePlayer(this);
           location = grid.getSelectedElement();
         } else {
-          System.out.println("The element has to many players standing on it!");
+          Output.println("The element has to many players standing on it!", Color.LIGHT_RED);
         }
       } else {
-        System.out.println("The destination is too far!");
+        Output.println("The destination is too far!", Color.LIGHT_RED);
       }
     } catch (Exception e) {
     }
@@ -139,11 +139,11 @@ public abstract class Player {
     if (location instanceof Pump) {
       ((Pump) location).changeDirection();
     } else if (location instanceof Pipe) {
-      System.out.println("You can't change the direction Pipe!");
+      Output.println("You can't change the direction Pipe!", Color.LIGHT_RED);
     } else if (location instanceof Cistern) {
-      System.out.println("You can't change the direction of cistern!");
+      Output.println("You can't change the direction of cistern!", Color.LIGHT_RED);
     } else if (location instanceof Spring) {
-      System.out.println("You can't change the direction of spring!");
+      Output.println("You can't change the direction of spring!", Color.LIGHT_RED);
     }
     Output.println("|--------------------------------------------------------------------|\n",
         Color.LIGHT_BLUE);

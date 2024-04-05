@@ -19,6 +19,7 @@ public class Saboteur extends Player {
    * @param name The name of the Saboteur.
    */
   public Saboteur(String name) {
+    System.out.println("Saboteur()");
     this.name = name;
   }
 
@@ -31,7 +32,6 @@ public class Saboteur extends Player {
         Color.LIGHT_BLUE);
     System.out.println("puncturePipe()");
     if (location instanceof Pipe) {
-      System.out.println("puncture()");
       ((Pipe) location).puncture();
     } else {
       Output.println("You can only puncture Pipes!", Color.LIGHT_RED);
