@@ -15,18 +15,31 @@ import mainstring.dev.Output.Color;
  * behavior for players, including movement, identification, and interaction within the game grid.
  */
 public abstract class Player {
-  // Unique identifier for the player
-  protected int ID;
+  // Player's name as unique identifier for the player
+  protected String name;
 
   // Current location of the player within the grid
   protected Element location;
 
-  // Player's name
-  protected String name;
-
   // The game grid to which the player belongs
   protected Grid grid;
 
+  /**
+   * Provides a string representation of the player, typically used for debugging purposes.
+   * This is also used as outptu for the tests.
+   * 
+   * @return A string representation of the player, including the player's name and location.
+   */
+  @Override
+  public String toString(){
+    String locationString = (location != null) ? location.toString().replace("\n", "\n  ") : "null";
+    return """ 
+      Player{
+        Name: %s,
+        Location: %s
+      }""".formatted(name,locationString);
+  }
+  
   /**
    * Generates a hash code based on the player's name. This method is overridden to ensure that
    * players can be effectively used in collections that rely on hash codes.
@@ -91,10 +104,9 @@ public abstract class Player {
    * @param ID The unique identifier for the player.
    * @param grid The grid to which the player belongs.
    */
-  public Player(String name, Element location, int ID, Grid grid) {
+  public Player(String name, Element location, Grid grid) {
     this.name = name;
     this.location = location;
-    this.ID = ID;
     this.grid = grid;
   }
 
@@ -176,16 +188,6 @@ public abstract class Player {
    */
   public String getName() {
     return name;
-  }
-
-  /**
-   * Provides a string representation of the player, typically used for debugging purposes.
-   * 
-   * @return A string representation of the player, including the player's name.
-   */
-  @Override
-  public String toString() {
-    return "Player: " + name;
   }
 
   /**

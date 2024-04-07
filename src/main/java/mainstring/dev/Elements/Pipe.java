@@ -26,6 +26,15 @@ public class Pipe extends Element {
   private PipeHealthState healthState; // Current health state of the pipe
   private PipeFlowState flowState; // Current flow state of the pipe
 
+  @Override 
+  public String toString() {
+    return """
+        Pipe{
+          Health State: %s
+          Flow State: %s
+        }""".formatted(healthState,flowState);
+  }
+
   /**
    * Constructs a Pipe element within a specified grid, setting its neighbor type to ActiveElement
    * by default.

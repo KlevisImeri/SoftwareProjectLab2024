@@ -20,6 +20,19 @@ public abstract class Element {
   protected Set<Element> neighbors; // The set of neighboring elements
   protected int capacityOfNeighbors; // Capacity of neighboring elements, not explicitly used
 
+  @Override
+  public String toString() {
+    String playersString = players.toString().replace("\n", "\n  ");
+    String neighborsString = neighbors.toString().replace("\n", "\n  ");
+    return """
+      
+        Element{
+          Players: %s
+          Max Capacity: %s
+          Neighbors: %s
+        }""".formatted(playersString, capacityOfNeighbors, neighborsString);
+  }
+
   /**
    * Constructs a new Element within a specified grid.
    * 

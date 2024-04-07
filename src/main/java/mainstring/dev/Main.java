@@ -67,6 +67,7 @@ public class Main {
       }
       System.out.println("Do you want to add more players? [y]es/[n]o");
     }
+    Output.println(players.toString(), Color.LIGHT_BLUE);
     Output.println("|--------------------------------------------------------------------|\n",
         Color.LIGHT_BLUE);
   }
@@ -145,8 +146,10 @@ public class Main {
    */
   public void displayResults(int plumberResult, int saboteurResult) {
     System.out.println("displayResults()");
-    Output.println("The plumber gathered: " + plumberResult + "liters of water", Color.LIGHT_MAGENTA);
-    Output.println("The saboteurs leaked: " + saboteurResult + "liters of water", Color.LIGHT_MAGENTA);
+    Output.println("The plumber gathered: " + plumberResult + "liters of water",
+        Color.LIGHT_MAGENTA);
+    Output.println("The saboteurs leaked: " + saboteurResult + "liters of water",
+        Color.LIGHT_MAGENTA);
   }
   /*---------------------------------------------end Game------------------------------------------- */
 }

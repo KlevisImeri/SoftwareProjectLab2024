@@ -12,6 +12,20 @@ import mainstring.dev.Elements.Pipe;
  * interactions like puncturing pipes.
  */
 public class Saboteur extends Player {
+  /**
+   * Provides a string representation of the saboteur, including their name.
+   * 
+   * @return A string representing the saboteur.
+   */
+  @Override
+  public String toString() {
+    String superString = super.toString().replace("\n", "\n  ");
+    return """
+      
+      Saboteur{
+        %s
+      }""".formatted(superString);
+  }
 
   /**
    * Constructs a Saboteur with a specified name.
@@ -80,16 +94,6 @@ public class Saboteur extends Player {
         puncturePipe();
         break;
     }
-  }
-
-  /**
-   * Provides a string representation of the saboteur, including their name.
-   * 
-   * @return A string representing the saboteur.
-   */
-  @Override
-  public String toString() {
-    return "Saboteur: " + name;
   }
 
   /**

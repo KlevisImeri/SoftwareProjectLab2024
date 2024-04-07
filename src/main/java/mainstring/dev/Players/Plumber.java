@@ -23,6 +23,27 @@ public class Plumber extends Player {
   public Pipe carryPipe;
 
   /**
+   * Provides a string representation of the plumber, including their name, the pump and pipe they
+   * are carrying.
+   * 
+   * @return A string representing the plumber.
+   */
+  @Override
+  public String toString() {
+    String superString = super.toString().replace("\n", "\n  ");
+    String pipeString = (carryPipe != null) ? carryPipe.toString().replace("\n", "\n  ") : "null";
+    String pumpString = (carryPump != null) ? carryPump.toString().replace("\n", "\n  ") : "null";
+    return """
+      
+        Plumber{
+          %s,
+          carryPump: %s,
+          carryPipe: %s
+        }""".formatted(superString, pipeString, pumpString);
+  }
+
+
+  /**
    * Constructs a Plumber with a specified name.
    * 
    * @param name The name of the Plumber.
@@ -241,15 +262,6 @@ public class Plumber extends Player {
     }
   }
 
-  /**
-   * Provides a string representation of the plumber, including their name.
-   * 
-   * @return A string representing the plumber.
-   */
-  @Override
-  public String toString() {
-    return "Plumber: " + name;
-  }
 
   /**
    * Returns the type of this player, which is "plumber".

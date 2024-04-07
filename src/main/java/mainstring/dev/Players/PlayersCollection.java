@@ -16,6 +16,11 @@ public class PlayersCollection {
   // int minCapacity; // Unused fields for potential future use regarding capacity limits.
   // int maxCapacity;
 
+  @Override
+  public String toString(){
+    return players.toString();
+  }
+
   /**
    * Constructs a new PlayersCollection instance. Initial setup can be placed here if needed.
    */

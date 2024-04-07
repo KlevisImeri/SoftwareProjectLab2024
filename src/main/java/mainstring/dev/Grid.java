@@ -29,6 +29,28 @@ public class Grid {
   private Pipe selectedPipe;
   // private Pump selectedPump; // Uncomment if needed for game logic.
 
+  @Override
+  public String toString() {
+    String selectedElementString = selectedElement.toString().replace("\n", "\n  ");
+    String selectedActiveElementString = selectedActiveElement.toString().replace("\n", "\n  ");
+    String selectedPipeString = (selectedPipe != null) ? selectedPipe.toString().replace("\n", "\n  ") : "null";
+    String activeElementsString = activeElements.toString().replace("\n", "\n  ");
+    return """
+        Grid{
+          Selected Element: %s
+
+          Selected ActiveElement: %s
+
+          Selected Pipe: %s
+
+          Water in Desert: %s
+          
+          ActiveElemetns: %s
+        }
+        """.formatted(selectedElementString, selectedActiveElementString, selectedPipeString,
+        waterInDesert, activeElementsString);
+  }
+
   /**
    * Constructs a Grid object and initializes it with a set of players. It sets up the grid based on
    * user input and assigns players to their starting locations.
@@ -39,6 +61,7 @@ public class Grid {
     for (Player p : players.getPlayers()) {
       p.setGrid(this);
     }
+
     Output.println("|-----------------------Setting Up the Grid------------------------|",
         Color.LIGHT_BLUE);
     System.out.println("Grid(players)");
@@ -90,6 +113,7 @@ public class Grid {
         setupP1(players);
         break;
     }
+    Output.println(toString(), Color.LIGHT_MAGENTA);
     Output.println("|---------------------------------------------------------------------|",
         Color.LIGHT_BLUE);
 
