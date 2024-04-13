@@ -73,7 +73,7 @@ public class Pump extends ActiveElement {
 
   @Override
   public String toString(){
-    return "[P,%s,%s,%s,%s,%s]".formatted(super.toString(),reservoir,state,in,out);
+    return "P,%s,%s,%s,%s,%s".formatted(super.toString(),reservoir,state,in,out);
   }
 
   /**

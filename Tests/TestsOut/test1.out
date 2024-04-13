@@ -1,15 +1,11 @@
-Players:
-P,Klevis,null,null,null
-S,Ibrahim,null
-S,Diamond,null
-P,Murad,null,null,null
-
 Pipes:
 p,ID:0,[Klevis],HEALTHY,EMPTY
+p,ID:1,[],HEALTHY,EMPTY
 
 Active Elements:
-C,ID:1,[Diamond, Murad],[3],[2]
-S,ID:4,[Ibrahim]
+C,ID:2,[Diamond],[4],[3]
+S,ID:5,[Ibrahim]
+P,ID:6,[Murad],[R,10,0],BROKEN,null,null
 
 Selected Element: null
 Selected ActiveElement: null

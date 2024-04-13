@@ -44,7 +44,6 @@ public class Grid {
         Selected Pipe: %s
 
         Water in Desert: %s
-        
         """.formatted(
             Output.toString(pipes),
             Output.toString(activeElements),

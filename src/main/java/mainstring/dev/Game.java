@@ -22,7 +22,9 @@ public class Game {
    */
   Game() {
     Input.game=this;
-    menu = new Menu((e) -> startGame());
+    menu = new Menu();
+    menu.start();
+    startGame();
   }
 
   /**

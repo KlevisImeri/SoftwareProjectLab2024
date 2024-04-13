@@ -45,12 +45,12 @@ public abstract class Output {
   // Return a string containing only the hash codes of the elements in the collection
   public static String toStringID(Collection<? extends Object> elements) {
     return elements.stream().map(Object::hashCode).map(String::valueOf)
-        .collect(Collectors.joining(", ", "[", "]"));
+        .collect(Collectors.joining(",", "[", "]"));
   }
 
   // Return a string containing only the hash codes of the elements in the collection
   public static String toString(Collection<? extends Object> elements) {
-    return elements.stream().map(Object::toString).collect(Collectors.joining("\n"));
+    return elements.stream().map(Object::toString).collect(Collectors.joining("\n", "", ""));
   }
 
   /**

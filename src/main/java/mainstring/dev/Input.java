@@ -29,8 +29,7 @@ public abstract class Input {
         Output.println(input, Color.LIGHT_RED);
 
         if (check(input)) {
-          getInt(lowerBound, upperBound);
-          break;
+          return getInt(lowerBound, upperBound);
         }
 
         choice = Integer.parseInt(input);
@@ -63,8 +62,7 @@ public abstract class Input {
         Output.println(input, Color.LIGHT_RED);
 
         if (check(input)) {
-          getChar(allowedChars);
-          break;
+          return getChar(allowedChars);
         }
 
         if (input.length() == 1 && allowedChars.indexOf(input.charAt(0)) != -1) {
@@ -98,8 +96,7 @@ public abstract class Input {
         Output.println(input, Color.LIGHT_RED);
 
         if (check(input)) {
-          getLine();
-          break;
+          return getLine();
         }
 
         clearPreviousLine();
@@ -157,59 +154,6 @@ public abstract class Input {
     }
     return input.split(",(?![^\\[]*\\])");
   }
-
-  // public static List<String> split(String input) {
-  // List<String> result = new ArrayList<>();
-  // input = input.trim(); // Assign the trimmed input back to input variable
-  // String content = input; // Initialize content with the input
-
-  // if (input.startsWith("[") && input.endsWith("]")) {
-  // // Extract the content between '[' and ']'
-  // content = input.substring(1, input.length() - 1);
-  // }
-
-  // // Split the content by comma
-  // String[] arrayContent = content.split(",");
-
-  // // Add each element to the result list
-  // result.addAll(Arrays.asList(arrayContent));
-
-  // // Print the result for debugging
-  // System.out.println(result);
-
-  // return result;
-  // }
-
-
-
-  // public static List<Object> getListLine() {
-  // String input = scanner.nextLine();
-  // List<Object> result = new ArrayList<>();
-
-  // // Split the input line by commas
-  // String[] elements = input.split(",");
-
-  // // Process each element
-  // for (String element : elements) {
-  // element = element.trim(); // Remove leading and trailing whitespace
-
-  // // If the element starts with '[' and ends with ']', it's an array
-  // if (element.startsWith("[") && element.endsWith("]")) {
-  // // Extract the content between '[' and ']', split it by comma, and add to result
-  // String content = element.substring(1, element.length() - 1);
-  // String[] arrayContent = content.split(",");
-  // result.add(Arrays.asList(arrayContent)); // Convert array content to list
-  // } else {
-  // // Otherwise, add the element as is
-  // result.add(element);
-  // }
-  // }
-
-  // clearPreviousLine();
-  // Output.println(input, Color.GREEN);
-
-  // return result;
-  // }
 
 
   /**

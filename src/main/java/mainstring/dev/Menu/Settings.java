@@ -18,6 +18,10 @@ public class Settings {
    */
   private int playerTime = 30; // Default value is 30 seconds.
 
+  @Override
+  public String toString() {
+    return "[Game Time: %s, Player Time: %s]".formatted(endTime,playerTime);
+  }
   /**
    * Updates the game settings for end time and player time.
    * 
@@ -25,7 +29,6 @@ public class Settings {
    * @param playerTime The new player time to be set, in seconds.
    */
   public void setSettings(int endTime, int playerTime) {
-    System.out.println("setSettings(" + endTime + "," + playerTime + ")");
     this.endTime = endTime;
     this.playerTime = playerTime;
   }
@@ -37,7 +40,6 @@ public class Settings {
    *         integer values.
    */
   public Map<String, Integer> getSettings() {
-    System.out.println("getSettings()");
     Map<String, Integer> settings = new HashMap<>();
     settings.put("endTime", endTime);
     settings.put("playerTime", playerTime);
