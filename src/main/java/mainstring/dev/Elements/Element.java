@@ -27,7 +27,7 @@ public abstract class Element {
 
   @Override
   public String toString() {
-    return "ID:%s,%s".formatted(ID,players.toStringID(),Output.toStringID(neighbors));
+    return "ID:%s,%s,%s".formatted(ID,players.toStringID(),Output.toStringID(neighbors));
   }
 
   /**

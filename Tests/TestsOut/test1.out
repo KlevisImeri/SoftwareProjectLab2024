@@ -1,11 +1,11 @@
 Pipes:
-p,ID:0,[Klevis],HEALTHY,EMPTY
-p,ID:1,[],HEALTHY,EMPTY
+p,ID:0,[Klevis],[2,6],HEALTHY,EMPTY
+p,ID:1,[],[5,6],HEALTHY,EMPTY
 
 Active Elements:
-C,ID:2,[Diamond],[4],[3]
-S,ID:5,[Ibrahim]
-P,ID:6,[Murad],[R,10,0],BROKEN,null,null
+C,ID:2,[Diamond],[0],[4],[3]
+S,ID:5,[Ibrahim],[1]
+P,ID:6,[Murad],[0,1],[R,10,0],BROKEN,1,0
 
 Selected Element: null
 Selected ActiveElement: null

@@ -20,6 +20,7 @@ public class Grid {
   // Active elements include both pipes and potentially other interactable game elements.
   private List<Pipe> pipes = new ArrayList<>();
   private List<ActiveElement> activeElements = new ArrayList<>();
+  private PlayersCollection players;
 
   // Tracks the amount of water that has ended up in the desert (unusable water).
   private int waterInDesert = 0;
@@ -33,10 +34,10 @@ public class Grid {
   @Override
   public String toString() {
     return """
-        Pipes: 
+        Pipes:
         %s
 
-        Active Elements: 
+        Active Elements:
         %s
 
         Selected Element: %s
@@ -44,14 +45,10 @@ public class Grid {
         Selected Pipe: %s
 
         Water in Desert: %s
-        """.formatted(
-            Output.toString(pipes),
-            Output.toString(activeElements),
-            selectedElement != null ? Integer.toString(selectedElement.hashCode()) : "null",
-            selectedActiveElement != null ? Integer.toString(selectedActiveElement.hashCode()) : "null",
-            selectedPipe != null ? Integer.toString(selectedPipe.hashCode()) : "null",
-            waterInDesert
-        );
+        """.formatted(Output.toString(pipes), Output.toString(activeElements),
+        selectedElement != null ? Integer.toString(selectedElement.hashCode()) : "null",
+        selectedActiveElement != null ? Integer.toString(selectedActiveElement.hashCode()) : "null",
+        selectedPipe != null ? Integer.toString(selectedPipe.hashCode()) : "null", waterInDesert);
   }
 
   /**
@@ -64,6 +61,7 @@ public class Grid {
     try {
       Output.println("\n[Setting Up the Grid]", Color.LIGHT_BLUE);
 
+      this.players = players;
       for (Player p : players.getPlayers()) {
         p.setGrid(this);
       }
@@ -71,14 +69,7 @@ public class Grid {
       // get the pipes
       int numberOfPipes = Input.getInt(1, 100);
       for (int i = 0; i < numberOfPipes; i++) {
-        Pipe pipe = new Pipe(this);
-        String[] names = Input.split(Input.getLine());
-        for (String name : names) {
-          if (name != "") {
-            pipe.addPlayer(players.get(name));
-          }
-        }
-        pipes.add(pipe);
+        setUpPipe();
       }
 
       // get the ActiveElements
@@ -87,39 +78,16 @@ public class Grid {
         String[] activeElem = Input.split(Input.getLine());
         switch (activeElem[0]) {
           case "C":
-            // C,[1,3...n],[player1...player2],2,3
-            this.cistern = new Cistern(this);
-            for (String pipeIndx : Input.split(activeElem[1])) {
-              cistern.addNeighbor(pipes.get(Integer.parseInt(pipeIndx)));
-            }
-
-            for (String player : Input.split(activeElem[2])) {
-              System.out.println(player);
-              cistern.addPlayer(players.get(player));
-            }
-            for (int j = 0; j < Integer.parseInt(activeElem[3]); j++) {
-              cistern.createPump();
-            }
-            for (int j = 0; j < Integer.parseInt(activeElem[4]); j++) {
-              cistern.createPipe();
-            }
-            activeElements.add(cistern);
+            setUpCistern(activeElem);
             break;
           case "S":
-            // S,[1,3...n],[player1...player2]
-            this.spring = new Spring(this);
-            for (String pipeIndx : Input.split(activeElem[1])) {
-              spring.addNeighbor(pipes.get(Integer.parseInt(pipeIndx)));
-            }
-            for (String player : Input.split(activeElem[2])) {
-              spring.addPlayer(players.get(player));
-            }
-            activeElements.add(spring);
+            setUpSpring(activeElem);
             break;
           case "P":
             // The first two pipes (1,3) in this case are the in and out pipe respectevely
-            // P,[1,3...n],[player1...player2],HEALTHY
+            // P,[1,3...n],[player1...player2],HEALTHY,1,3
             Pump pump = new Pump(this);
+            activeElements.add(pump);
             for (String pipeIndx : Input.split(activeElem[1])) {
               pump.addNeighbor(pipes.get(Integer.parseInt(pipeIndx)));
             }
@@ -128,13 +96,14 @@ public class Grid {
             }
             switch (activeElem[3]) {
               case "HEALTHY":
-                pump.state = Pump.PumpState.HEALTHY;
-                break;
+              pump.state = Pump.PumpState.HEALTHY;
+              break;
               case "BROKEN":
-                pump.state = Pump.PumpState.BROKEN;
-                break;
+              pump.state = Pump.PumpState.BROKEN;
+              break;
             }
-            activeElements.add(pump);
+            pump.setInPipe(pipes.get(Integer.parseInt(activeElem[4])));
+            pump.setOutPipe(pipes.get(Integer.parseInt(activeElem[5])));
             break;
         }
 
@@ -147,6 +116,54 @@ public class Grid {
   }
 
   /*---------------------------------------Setups---------------------------------------------*/
+  private void setUpPipe() {
+    Pipe pipe = new Pipe(this);
+    String[] names = Input.split(Input.getLine());
+    for (String name : names) {
+      if (name != "") {
+        pipe.addPlayer(players.get(name));
+      }
+    }
+    pipes.add(pipe);
+  }
+
+  private void setUpCistern(String[] activeElem) {
+    // C,[1,3...n],[player1...player2],2,3
+    this.cistern = new Cistern(this);
+    for (String pipeIndx : Input.split(activeElem[1])) {
+      cistern.addNeighbor(pipes.get(Integer.parseInt(pipeIndx)));
+    }
+
+    for (String player : Input.split(activeElem[2])) {
+      System.out.println(player);
+      cistern.addPlayer(players.get(player));
+    }
+    for (int j = 0; j < Integer.parseInt(activeElem[3]); j++) {
+      cistern.createPump();
+    }
+    for (int j = 0; j < Integer.parseInt(activeElem[4]); j++) {
+      cistern.createPipe();
+    }
+    activeElements.add(cistern);
+  }
+
+  private void setUpSpring(String[] activeElem) {
+    // S,[1,3...n],[player1...player2]
+    this.spring = new Spring(this);
+    for (String pipeIndx : Input.split(activeElem[1])) {
+      spring.addNeighbor(pipes.get(Integer.parseInt(pipeIndx)));
+    }
+    for (String player : Input.split(activeElem[2])) {
+      spring.addPlayer(players.get(player));
+    }
+    activeElements.add(spring);
+  }
+
+  private void setUpPump(String[] activeElem) {
+
+  }
+
+
   /**
    * Retrieves the currently selected element within the grid.
    *

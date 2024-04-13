@@ -60,7 +60,7 @@ public class Pump extends ActiveElement {
 
     @Override
     public String toString() {
-      return "[R,%s,%s]".formatted(capacity,totalWater);
+      return "[R,%s,%s]".formatted(capacity, totalWater);
     }
   }
 
@@ -72,8 +72,10 @@ public class Pump extends ActiveElement {
   private Timer timer = new Timer(); // A timer used to schedule pump failure simulations
 
   @Override
-  public String toString(){
-    return "P,%s,%s,%s,%s,%s".formatted(super.toString(),reservoir,state,in,out);
+  public String toString() {
+    return "P,%s,%s,%s,%s,%s".formatted(super.toString(), reservoir, state,
+        in != null ? Integer.toString(in.hashCode()) : "null",
+        out != null ? Integer.toString(out.hashCode()) : "null");
   }
 
   /**

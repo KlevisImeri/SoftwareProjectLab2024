@@ -32,7 +32,7 @@ public abstract class Player {
    */
   @Override
   public String toString(){
-    return "%s,%s".formatted(name,location);
+    return "%s,%s".formatted(name,location != null ? location.hashCode() : "null");
   }
   
   /**
