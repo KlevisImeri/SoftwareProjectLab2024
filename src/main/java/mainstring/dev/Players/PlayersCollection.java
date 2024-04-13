@@ -17,6 +17,15 @@ public class PlayersCollection {
     return playersMap.values().toString();
   }
 
+  // Return a string containing only the names of the players
+  public String toStringID() {
+    List<String> playerNames = new ArrayList<>();
+    for (Player player : playersMap.values()) {
+      playerNames.add(player.getName());
+    }
+    return "[" + String.join(", ", playerNames) + "]";
+  }
+
   /**
    * Constructs a new PlayersCollection instance. Initial setup can be placed here if needed.
    */

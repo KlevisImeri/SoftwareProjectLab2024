@@ -59,6 +59,14 @@ public class Pump extends ActiveElement {
     }
   }
 
+  
+  public PumpState state = PumpState.HEALTHY; // The current operational state of the pump
+  private Reservoir reservoir = new Reservoir(); // The reservoir associated with this pump
+  private Pipe in; // The input pipe connected to this pump
+  private Pipe out; // The output pipe connected to this pump
+  private Timer timer = new Timer(); // A timer used to schedule pump failure simulations
+
+
   /**
    * A scheduled task that simulates the pump breaking down. When executed, it changes the pump's
    * state to BROKEN and schedules another execution to simulate future failures.
@@ -70,13 +78,7 @@ public class Pump extends ActiveElement {
       schedulePipeBreak();
     }
   }
-
-  public PumpState state = PumpState.HEALTHY; // The current operational state of the pump
-  private Reservoir reservoir = new Reservoir(); // The reservoir associated with this pump
-  private Pipe in; // The input pipe connected to this pump
-  private Pipe out; // The output pipe connected to this pump
-  private Timer timer = new Timer(); // A timer used to schedule pump failure simulations
-
+  
   /**
    * Schedules the next pump failure simulation, randomly determining the time until the pump breaks
    * down again.
@@ -94,7 +96,6 @@ public class Pump extends ActiveElement {
    */
   public Pump(Grid grid) {
     super(grid);
-    System.out.println("Pump()");
     schedulePipeBreak();
   }
 

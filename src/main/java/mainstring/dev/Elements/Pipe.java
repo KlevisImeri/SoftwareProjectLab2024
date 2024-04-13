@@ -23,16 +23,12 @@ public class Pipe extends Element {
     FULL, EMPTY
   }
 
-  private PipeHealthState healthState; // Current health state of the pipe
-  private PipeFlowState flowState; // Current flow state of the pipe
+  private PipeHealthState healthState = PipeHealthState.HEALTHY; // Current health state of the pipe
+  private PipeFlowState flowState = PipeFlowState.EMPTY; // Current flow state of the pipe
 
   @Override 
   public String toString() {
-    return """
-        Pipe{
-          Health State: %s
-          Flow State: %s
-        }""".formatted(healthState,flowState);
+    return "[p,%s,%s,%s,]".formatted(super.toString(),healthState,flowState);
   }
 
   /**
@@ -43,10 +39,7 @@ public class Pipe extends Element {
    */
   public Pipe(Grid grid) {
     super(grid);
-    System.out.println("Pipe()");
     neighborType = ActiveElement.class;
-    healthState = PipeHealthState.HEALTHY;
-    flowState = PipeFlowState.EMPTY;
   }
 
   /**

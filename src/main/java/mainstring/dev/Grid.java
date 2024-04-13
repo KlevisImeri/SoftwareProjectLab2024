@@ -32,17 +32,19 @@ public class Grid {
 
   @Override
   public String toString() {
-    String selectedElementString =
-        selectedElement != null ? selectedElement.toString().replace("\n", "\n  ") : null;
-    String selectedActiveElementString =
+    String s0 = pipes != null ? pipes.toString().replace("\n", "\n  ") : null;
+    String s1 = activeElements != null ? activeElements.toString().replace("\n", "\n  ") : null;
+    String s2 = selectedElement != null ? selectedElement.toString().replace("\n", "\n  ") : null;
+    String s3 =
         selectedActiveElement != null ? selectedActiveElement.toString().replace("\n", "\n  ")
             : null;
-    String selectedPipeString =
-        selectedPipe != null ? selectedPipe.toString().replace("\n", "\n  ") : "null";
-    String activeElementsString =
-        activeElements != null ? activeElements.toString().replace("\n", "\n  ") : null;
+    String s4 = selectedPipe != null ? selectedPipe.toString().replace("\n", "\n  ") : "null";
     return """
         Grid{
+          Pipes: %s
+
+          ActiveElements: %s
+
           Selected Element: %s
 
           Selected ActiveElement: %s
@@ -50,11 +52,8 @@ public class Grid {
           Selected Pipe: %s
 
           Water in Desert: %s
-
-          ActiveElemetns: %s
         }
-        """.formatted(selectedElementString, selectedActiveElementString, selectedPipeString,
-        waterInDesert, activeElementsString);
+        """.formatted(s0, s1, s2, s3, s4, waterInDesert);
   }
 
   /**

@@ -2,6 +2,7 @@ package mainstring.dev.Elements;
 
 import java.util.*;
 import mainstring.dev.Grid;
+import mainstring.dev.Output;
 import mainstring.dev.Players.Player;
 import mainstring.dev.Players.PlayersCollection;
 
@@ -11,23 +12,22 @@ import mainstring.dev.Players.PlayersCollection;
  * interactions between them.
  */
 public abstract class Element {
+  static int FreeID = 0;
+  protected int ID;
   protected Grid grid; // The grid this element is part of
-  protected PlayersCollection players; // Collection of players currently on this element
+  protected PlayersCollection players = new PlayersCollection(); // Collection of players currently on this element
   protected Class<?> neighborType; // The type of elements that can be neighbors to this element
-  protected Set<Element> neighbors; // The set of neighboring elements
   protected int capacityOfNeighbors; // Capacity of neighboring elements, not explicitly used
+  protected Set<Element> neighbors =  new HashSet<>();// The set of neighboring elements
+
+  @Override
+  public int hashCode() {
+    return ID;
+  }
 
   @Override
   public String toString() {
-    String playersString = players.toString().replace("\n", "\n  ");
-    String neighborsString = neighbors.toString().replace("\n", "\n  ");
-    return """
-      
-        Element{
-          Players: %s
-          Max Capacity: %s
-          Neighbors: %s
-        }""".formatted(playersString, capacityOfNeighbors, neighborsString);
+    return "[ID,%s,%s]".formatted(ID,players.toStringID(),Output.toStringID(neighbors));
   }
 
   /**
@@ -36,9 +36,8 @@ public abstract class Element {
    * @param grid The grid this element is part of.
    */
   public Element(Grid grid) {
+    this.ID = FreeID++;
     this.grid = grid;
-    this.players = new PlayersCollection(); // Initialize with default capacity
-    this.neighbors = new HashSet<>();
   }
 
   /**
@@ -55,11 +54,12 @@ public abstract class Element {
     }
   }
 
-  public void addPlayers(Collection<Player> players){
-    for(Player p : players){
+  public void addPlayers(Collection<Player> players) {
+    for (Player p : players) {
       addPlayer(p);
     }
   }
+
   /**
    * Removes a player from this element.
    * 
