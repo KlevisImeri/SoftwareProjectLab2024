@@ -80,9 +80,8 @@ public class Cistern extends ActiveElement {
    */
   public Cistern(Grid grid) {
     super(grid);
-    System.out.println("Cistern()");
-    schedulePipeCreation();
-    schedulePumpCreation();
+    // schedulePipeCreation();
+    // schedulePumpCreation();
   }
 
   /**

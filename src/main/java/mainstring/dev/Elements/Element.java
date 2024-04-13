@@ -1,9 +1,6 @@
 package mainstring.dev.Elements;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
+import java.util.*;
 import mainstring.dev.Grid;
 import mainstring.dev.Players.Player;
 import mainstring.dev.Players.PlayersCollection;
@@ -50,7 +47,6 @@ public abstract class Element {
    * @param player The player to add to this element.
    */
   public void addPlayer(Player player) {
-    System.out.println("addPlayer()");
     try {
       player.setLocation(this); // Set the player's location to this element
       players.add(player); // Add the player to the collection
@@ -59,6 +55,11 @@ public abstract class Element {
     }
   }
 
+  public void addPlayers(Collection<Player> players){
+    for(Player p : players){
+      addPlayer(p);
+    }
+  }
   /**
    * Removes a player from this element.
    * 

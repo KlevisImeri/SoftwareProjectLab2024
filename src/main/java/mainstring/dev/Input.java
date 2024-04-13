@@ -9,34 +9,8 @@ import mainstring.dev.Output.Color;
  * using real-time inputs from the console.
  */
 public abstract class Input {
-
-  // List to hold simulated inputs
-  private static List<String> in = new ArrayList<>();
-
-  // Scanner object for reading input
-  public static Scanner scanner;
-
-  /**
-   * Simulates user input by adding a string to the list of inputs.
-   *
-   * @param input The simulated input string to be added.
-   */
-  public static void in(String input) {
-    in.add(input); // Append input to simulate user entry
-  }
-
-  /**
-   * Sets up the scanner for reading inputs. If there are simulated inputs available, it uses those;
-   * otherwise, it reads from the standard input stream (System.in).
-   */
-  public static void setUpScanner() {
-    if (!in.isEmpty()) {
-      Output.println(in.get(0), Color.LIGHT_RED);
-      scanner = new Scanner(in.remove(0));
-    } else {
-      scanner = new Scanner(System.in);
-    }
-  }
+  static Scanner scanner = new Scanner(System.in);
+  public static Game game;
 
   /**
    * Gets an integer input from the user that falls within a specified range. If the input is not an
@@ -48,20 +22,15 @@ public abstract class Input {
    * @return The user's choice as an integer within the specified bounds.
    */
   public static int getInt(int lowerBound, int upperBound) {
-    setUpScanner();
-
     int choice = 0;
     while (true) {
       try {
         String input = scanner.next();
-        clearPreviousLine();
         Output.println(input, Color.LIGHT_RED);
 
-        if ("exit".equalsIgnoreCase(input)) {
-          Output.println(
-              "|-------------------------Application Exited--------------------------|\n",
-              Color.LIGHT_BLUE);
-          System.exit(1);
+        if (check(input)) {
+          getInt(lowerBound, upperBound);
+          break;
         }
 
         choice = Integer.parseInt(input);
@@ -78,6 +47,7 @@ public abstract class Input {
     return choice;
   }
 
+
   /**
    * Prompts the user for a single character input that must be within the allowed characters
    * specified. If the input is "exit" (case-insensitive), the application will terminate.
@@ -86,20 +56,15 @@ public abstract class Input {
    * @return The chosen character if it is within the allowed characters; '\0' otherwise.
    */
   public static char getChar(String allowedChars) {
-    setUpScanner();
-
     char choice = '\0';
     while (true) {
       try {
         String input = scanner.next();
-        clearPreviousLine();
         Output.println(input, Color.LIGHT_RED);
 
-        if ("exit".equalsIgnoreCase(input)) {
-          Output.println(
-              "|---------------------------Application Exited----------------------------|\n",
-              Color.LIGHT_BLUE);
-          System.exit(1);
+        if (check(input)) {
+          getChar(allowedChars);
+          break;
         }
 
         if (input.length() == 1 && allowedChars.indexOf(input.charAt(0)) != -1) {
@@ -126,22 +91,18 @@ public abstract class Input {
    * @return The input line as a string.
    */
   public static String getLine() {
-    setUpScanner();
-
     String input = "";
     while (true) {
       try {
-        input = scanner.nextLine();
-        clearPreviousLine();
+        input = scanner.next();
+        Output.println(input, Color.LIGHT_RED);
 
-
-        if ("exit".equalsIgnoreCase(input)) {
-          Output.println(input, Color.LIGHT_RED);
-          Output.println(
-              "|---------------------------Application Exited----------------------------|\n",
-              Color.LIGHT_BLUE);
-          System.exit(1);
+        if (check(input)) {
+          getLine();
+          break;
         }
+
+        clearPreviousLine();
         Output.println(input, Color.LIGHT_GREEN);
 
         break; // Exit the loop after successfully reading a line
@@ -153,6 +114,100 @@ public abstract class Input {
 
     return input;
   }
+
+
+
+  private static boolean check(String input) {
+    String lowerCaseInput = input.toLowerCase();
+    boolean print = false;
+
+    switch (lowerCaseInput) {
+      case "prints":
+        System.err.println(game.menu.settings);
+        print = true;
+        break;
+      case "printp":
+        System.err.println(game.players);
+        print = true;
+        break;
+      case "printg":
+        System.err.println(game.grid);
+        print = true;
+        break;
+      case "exit":
+        Output.println("|-------------------------Application Exited--------------------------|\n",
+            Color.LIGHT_BLUE);
+        System.exit(1);
+        break;
+    }
+
+    clearPreviousLine();
+    Output.println(input, Color.LIGHT_YELLOW);
+
+    return print;
+  }
+
+  public static String[] split(String input) {
+    boolean hasSquareBrackets = input.startsWith("[") && input.endsWith("]");
+    if (hasSquareBrackets) {
+      input = input.substring(1, input.length() - 1);
+    }
+    return input.split(",(?![^\\[]*\\])");
+  }
+
+  // public static List<String> split(String input) {
+  // List<String> result = new ArrayList<>();
+  // input = input.trim(); // Assign the trimmed input back to input variable
+  // String content = input; // Initialize content with the input
+
+  // if (input.startsWith("[") && input.endsWith("]")) {
+  // // Extract the content between '[' and ']'
+  // content = input.substring(1, input.length() - 1);
+  // }
+
+  // // Split the content by comma
+  // String[] arrayContent = content.split(",");
+
+  // // Add each element to the result list
+  // result.addAll(Arrays.asList(arrayContent));
+
+  // // Print the result for debugging
+  // System.out.println(result);
+
+  // return result;
+  // }
+
+
+
+  // public static List<Object> getListLine() {
+  // String input = scanner.nextLine();
+  // List<Object> result = new ArrayList<>();
+
+  // // Split the input line by commas
+  // String[] elements = input.split(",");
+
+  // // Process each element
+  // for (String element : elements) {
+  // element = element.trim(); // Remove leading and trailing whitespace
+
+  // // If the element starts with '[' and ends with ']', it's an array
+  // if (element.startsWith("[") && element.endsWith("]")) {
+  // // Extract the content between '[' and ']', split it by comma, and add to result
+  // String content = element.substring(1, element.length() - 1);
+  // String[] arrayContent = content.split(",");
+  // result.add(Arrays.asList(arrayContent)); // Convert array content to list
+  // } else {
+  // // Otherwise, add the element as is
+  // result.add(element);
+  // }
+  // }
+
+  // clearPreviousLine();
+  // Output.println(input, Color.GREEN);
+
+  // return result;
+  // }
+
 
   /**
    * Attempts to clear the previous line in the console. This method uses ANSI escape codes to move

@@ -33,7 +33,6 @@ public class Saboteur extends Player {
    * @param name The name of the Saboteur.
    */
   public Saboteur(String name) {
-    System.out.println("Saboteur()");
     this.name = name;
   }
 

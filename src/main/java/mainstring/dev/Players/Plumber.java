@@ -49,7 +49,6 @@ public class Plumber extends Player {
    * @param name The name of the Plumber.
    */
   public Plumber(String name) {
-    System.out.println("Plumber()");
     this.name = name;
   }
 

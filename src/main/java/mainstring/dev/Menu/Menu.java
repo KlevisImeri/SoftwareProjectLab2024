@@ -26,9 +26,8 @@ public class Menu {
    * @param startGame An ActionListener that is triggered to start the game when option 1 is chosen.
    */
   public Menu(ActionListener startGame) {
-    Output.println("\n|-----------------5.2.2.1 The user uses the menu ------------------|",
+    Output.println("\n[Menu]",
         Color.LIGHT_BLUE);
-    System.out.println("Menu()");
     while (true) {
       System.out.println("Choose:");
       System.out.println("1. Start Game");
@@ -36,8 +35,6 @@ public class Menu {
 
       int in = Input.getInt(1, 2);
       if (in == 1) {
-        Output.println("|--------------------------------------------------------------------|\n",
-            Color.LIGHT_BLUE);
         startGame.actionPerformed(null);
         break;
       } else if (in == 2) {
@@ -52,10 +49,4 @@ public class Menu {
       }
     }
   }
-
-  /**
-   * A placeholder method for showing a confirmation dialog. This could be implemented to confirm
-   * the user's choices or actions in a GUI-based version of the menu.
-   */
-  public void showConfirmationDialog() {}
 }

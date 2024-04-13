@@ -1,0 +1,14 @@
+1
+Klevis
+Murad
+Diamond
+Ibrahim
+n
+2
+[Klevis]
+[]
+3
+C,[0],[Diamond],1,1
+S,[1],[Ibrahim]
+P,[0,1],[Murad],BROKEN
+printG

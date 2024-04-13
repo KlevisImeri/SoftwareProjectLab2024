@@ -71,7 +71,7 @@ public class Pump extends ActiveElement {
     }
   }
 
-  private PumpState state = PumpState.HEALTHY; // The current operational state of the pump
+  public PumpState state = PumpState.HEALTHY; // The current operational state of the pump
   private Reservoir reservoir = new Reservoir(); // The reservoir associated with this pump
   private Pipe in; // The input pipe connected to this pump
   private Pipe out; // The output pipe connected to this pump
@@ -168,34 +168,6 @@ public class Pump extends ActiveElement {
         out.fill();
       }
     }
-
-    // This is how it looks if you want to ask the tester
-    // System.out.println(" Is the incoming Pipe full? [y]es\\[n]o");
-    // switch (Input.getChar("yn")) {
-    // case 'y':
-    // System.out.println(" Is the pump broken? [y]es\\[n]o");
-    // switch (Input.getChar("yn")) {
-    // case 'y':
-    // reservoir.addWater();
-    // break;
-    // case 'b':
-    // out.fill();
-    // break;
-    // }
-    // in.empty();
-    // break;
-    // case 'n':
-    // System.out.println("Is the reservoir empty? [y]es\\[n]o");
-    // switch (Input.getChar("yn")) {
-    // case 'y':
-    // reservoir.removeWater();
-    // break;
-    // case 'b':
-    // out.fill();
-    // break;
-    // }
-    // break;
-    // }
     Output.println("|--------------------------------------------------------------------|\n",
         Color.LIGHT_BLUE);
   }
