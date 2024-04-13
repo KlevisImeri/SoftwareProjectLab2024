@@ -30,17 +30,11 @@ public class Plumber extends Player {
    */
   @Override
   public String toString() {
-    String superString = super.toString().replace("\n", "\n  ");
-    String pipeString = (carryPipe != null) ? carryPipe.toString().replace("\n", "\n  ") : "null";
-    String pumpString = (carryPump != null) ? carryPump.toString().replace("\n", "\n  ") : "null";
-    return """
-      
-        Plumber{
-          %s,
-          carryPump: %s,
-          carryPipe: %s
-        }""".formatted(superString, pipeString, pumpString);
+    return "P,%s,%s,%s".formatted(super.toString(),
+        carryPump != null ? carryPump.hashCode() : "null",
+        carryPipe != null ? carryPipe.hashCode() : "null");
   }
+
 
 
   /**
@@ -150,7 +144,7 @@ public class Plumber extends Player {
         newPipe.addNeighbor(carryPump);
         newPipe.addNeighbor(pumps.get(1));
         location = carryPump;
-        grid.addPump(carryPump);
+        // grid.addPump(carryPump);
         carryPump = null;
       } else {
         Output.println("You can't insert a Pump here!", Color.LIGHT_RED);

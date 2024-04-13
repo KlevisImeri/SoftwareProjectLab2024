@@ -20,11 +20,7 @@ public class Saboteur extends Player {
   @Override
   public String toString() {
     String superString = super.toString().replace("\n", "\n  ");
-    return """
-      
-      Saboteur{
-        %s
-      }""".formatted(superString);
+    return "S,%s".formatted(superString);
   }
 
   /**

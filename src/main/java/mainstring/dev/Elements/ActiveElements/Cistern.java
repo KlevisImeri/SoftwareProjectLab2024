@@ -15,20 +15,19 @@ import mainstring.dev.Grid;
  * grid it is part of.
  */
 public class Cistern extends ActiveElement {
-  // List of pumps created and managed by this cistern
-  protected List<Pump> newPumps = new ArrayList<>();
+  protected List<Pump> newPumps = new ArrayList<>(); // List of pumps created and managed by this
+                                                     // cistern
+  protected List<Pipe> newPipes = new ArrayList<>(); // List of pipes created and managed by this
+                                                     // cistern
+  protected int waterAmount;// The amount of water currently stored in this cistern
+  protected Timer timerPipe = new Timer(); // Timer for creating pipes
+  protected Timer timerPump = new Timer(); // Timer for creating pumps
 
-  // List of pipes created and managed by this cistern
-  protected List<Pipe> newPipes = new ArrayList<>();
-
-  // The amount of water currently stored in this cistern
-  protected int waterAmount;
-
-  // Timer for creating pipes
-  protected Timer timerPipe = new Timer();
-
-  // Timer for creating pumps
-  protected Timer timerPump = new Timer();
+  @Override
+  public String toString() {
+    return "C,%s,%s,%s".formatted(super.toString(), Output.toStringID(newPipes),
+        Output.toStringID(newPumps), waterAmount);
+  }
 
   /**
    * Instantly creates a new pipe and adds it to the list of managed pipes.

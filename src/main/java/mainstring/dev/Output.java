@@ -1,6 +1,7 @@
 package mainstring.dev;
 
 import java.util.*;
+import java.util.stream.Collectors;
 
 /**
  * Provides utilities for colored output to the console. This class supports printing messages in
@@ -43,11 +44,13 @@ public abstract class Output {
 
   // Return a string containing only the hash codes of the elements in the collection
   public static String toStringID(Collection<? extends Object> elements) {
-    List<String> IDs = new ArrayList<>();
-    for (Object element : elements) {
-      IDs.add(String.valueOf(element.hashCode()));
-    }
-    return "[" + String.join(", ", IDs) + "]";
+    return elements.stream().map(Object::hashCode).map(String::valueOf)
+        .collect(Collectors.joining(", ", "[", "]"));
+  }
+
+  // Return a string containing only the hash codes of the elements in the collection
+  public static String toString(Collection<? extends Object> elements) {
+    return elements.stream().map(Object::toString).collect(Collectors.joining("\n"));
   }
 
   /**

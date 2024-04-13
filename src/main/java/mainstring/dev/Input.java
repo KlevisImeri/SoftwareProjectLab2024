@@ -123,26 +123,29 @@ public abstract class Input {
 
     switch (lowerCaseInput) {
       case "prints":
+        clearPreviousLine();
+        Output.println(input, Color.LIGHT_GREEN);
         System.err.println(game.menu.settings);
         print = true;
         break;
       case "printp":
+        clearPreviousLine();
+        Output.println(input, Color.LIGHT_GREEN);
         System.err.println(game.players);
         print = true;
         break;
       case "printg":
+        clearPreviousLine();
+        Output.println(input, Color.LIGHT_GREEN);
         System.err.println(game.grid);
         print = true;
         break;
       case "exit":
-        Output.println("|-------------------------Application Exited--------------------------|\n",
-            Color.LIGHT_BLUE);
+        Output.println("[Application Exited]\n", Color.LIGHT_BLUE);
         System.exit(1);
         break;
     }
 
-    clearPreviousLine();
-    Output.println(input, Color.LIGHT_YELLOW);
 
     return print;
   }

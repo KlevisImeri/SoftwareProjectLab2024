@@ -58,4 +58,9 @@ public class Spring extends ActiveElement {
   public String type() {
     return "spring";
   }
+
+  @Override
+  public String toString() {
+    return "S,%s".formatted(super.toString());
+  }
 }

@@ -32,12 +32,7 @@ public abstract class Player {
    */
   @Override
   public String toString(){
-    String locationString = (location != null) ? location.toString().replace("\n", "\n  ") : "null";
-    return """ 
-      Player{
-        Name: %s,
-        Location: %s
-      }""".formatted(name,locationString);
+    return "%s,%s".formatted(name,location);
   }
   
   /**

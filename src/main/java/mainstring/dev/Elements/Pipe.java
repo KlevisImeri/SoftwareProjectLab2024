@@ -28,7 +28,7 @@ public class Pipe extends Element {
 
   @Override 
   public String toString() {
-    return "[p,%s,%s,%s,]".formatted(super.toString(),healthState,flowState);
+    return "[p,%s,%s,%s]".formatted(super.toString(),healthState,flowState);
   }
 
   /**

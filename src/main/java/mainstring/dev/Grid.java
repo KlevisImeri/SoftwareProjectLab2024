@@ -32,28 +32,27 @@ public class Grid {
 
   @Override
   public String toString() {
-    String s0 = pipes != null ? pipes.toString().replace("\n", "\n  ") : null;
-    String s1 = activeElements != null ? activeElements.toString().replace("\n", "\n  ") : null;
-    String s2 = selectedElement != null ? selectedElement.toString().replace("\n", "\n  ") : null;
-    String s3 =
-        selectedActiveElement != null ? selectedActiveElement.toString().replace("\n", "\n  ")
-            : null;
-    String s4 = selectedPipe != null ? selectedPipe.toString().replace("\n", "\n  ") : "null";
     return """
-        Grid{
-          Pipes: %s
+        Pipes: 
+        %s
 
-          ActiveElements: %s
+        Active Elements: 
+        %s
 
-          Selected Element: %s
+        Selected Element: %s
+        Selected ActiveElement: %s
+        Selected Pipe: %s
 
-          Selected ActiveElement: %s
-
-          Selected Pipe: %s
-
-          Water in Desert: %s
-        }
-        """.formatted(s0, s1, s2, s3, s4, waterInDesert);
+        Water in Desert: %s
+        
+        """.formatted(
+            Output.toString(pipes),
+            Output.toString(activeElements),
+            selectedElement != null ? Integer.toString(selectedElement.hashCode()) : "null",
+            selectedActiveElement != null ? Integer.toString(selectedActiveElement.hashCode()) : "null",
+            selectedPipe != null ? Integer.toString(selectedPipe.hashCode()) : "null",
+            waterInDesert
+        );
   }
 
   /**
@@ -105,7 +104,7 @@ public class Grid {
             for (int j = 0; j < Integer.parseInt(activeElem[4]); j++) {
               cistern.createPipe();
             }
-
+            activeElements.add(cistern);
             break;
           case "S":
             // S,[1,3...n],[player1...player2]
@@ -116,6 +115,7 @@ public class Grid {
             for (String player : Input.split(activeElem[2])) {
               spring.addPlayer(players.get(player));
             }
+            activeElements.add(spring);
             break;
           case "P":
             // The first two pipes (1,3) in this case are the in and out pipe respectevely
@@ -135,6 +135,7 @@ public class Grid {
                 pump.state = Pump.PumpState.BROKEN;
                 break;
             }
+            activeElements.add(pump);
             break;
         }
 
@@ -226,6 +227,11 @@ public class Grid {
   public void addPump(Pump pump) {
     activeElements.add(pump);
   }
+
+  public void addPipe(Pipe pipe) {
+    pipes.add(pipe);
+  }
+
 
   /**
    * Increases the water count in the desert by one. This simulates water loss to the desert.

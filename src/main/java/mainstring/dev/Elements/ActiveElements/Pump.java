@@ -57,15 +57,24 @@ public class Pump extends ActiveElement {
       System.out.println("removeWater()");
       totalWater--;
     }
+
+    @Override
+    public String toString() {
+      return "[R,%s,%s]".formatted(capacity,totalWater);
+    }
   }
 
-  
+
   public PumpState state = PumpState.HEALTHY; // The current operational state of the pump
   private Reservoir reservoir = new Reservoir(); // The reservoir associated with this pump
   private Pipe in; // The input pipe connected to this pump
   private Pipe out; // The output pipe connected to this pump
   private Timer timer = new Timer(); // A timer used to schedule pump failure simulations
 
+  @Override
+  public String toString(){
+    return "[P,%s,%s,%s,%s,%s]".formatted(super.toString(),reservoir,state,in,out);
+  }
 
   /**
    * A scheduled task that simulates the pump breaking down. When executed, it changes the pump's
@@ -78,7 +87,7 @@ public class Pump extends ActiveElement {
       schedulePipeBreak();
     }
   }
-  
+
   /**
    * Schedules the next pump failure simulation, randomly determining the time until the pump breaks
    * down again.

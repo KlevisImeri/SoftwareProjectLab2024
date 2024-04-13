@@ -14,7 +14,10 @@ public class PlayersCollection {
 
   @Override
   public String toString() {
-    return playersMap.values().toString();
+    return """
+        Players:
+        %s
+        """.formatted(Output.toString(playersMap.values()));
   }
 
   // Return a string containing only the names of the players
