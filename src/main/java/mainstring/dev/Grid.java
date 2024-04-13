@@ -84,26 +84,7 @@ public class Grid {
             setUpSpring(activeElem);
             break;
           case "P":
-            // The first two pipes (1,3) in this case are the in and out pipe respectevely
-            // P,[1,3...n],[player1...player2],HEALTHY,1,3
-            Pump pump = new Pump(this);
-            activeElements.add(pump);
-            for (String pipeIndx : Input.split(activeElem[1])) {
-              pump.addNeighbor(pipes.get(Integer.parseInt(pipeIndx)));
-            }
-            for (String player : Input.split(activeElem[2])) {
-              pump.addPlayer(players.get(player));
-            }
-            switch (activeElem[3]) {
-              case "HEALTHY":
-              pump.state = Pump.PumpState.HEALTHY;
-              break;
-              case "BROKEN":
-              pump.state = Pump.PumpState.BROKEN;
-              break;
-            }
-            pump.setInPipe(pipes.get(Integer.parseInt(activeElem[4])));
-            pump.setOutPipe(pipes.get(Integer.parseInt(activeElem[5])));
+            setUpPump(activeElem);
             break;
         }
 
@@ -160,9 +141,28 @@ public class Grid {
   }
 
   private void setUpPump(String[] activeElem) {
-
+    // The first two pipes (1,3) in this case are the in and out pipe respectevely
+    // P,[1,3...n],[player1...player2],HEALTHY,1,3
+    Pump pump = new Pump(this);
+    activeElements.add(pump);
+    for (String pipeIndx : Input.split(activeElem[1])) {
+      pump.addNeighbor(pipes.get(Integer.parseInt(pipeIndx)));
+    }
+    for (String player : Input.split(activeElem[2])) {
+      pump.addPlayer(players.get(player));
+    }
+    switch (activeElem[3]) {
+      case "HEALTHY":
+        pump.state = Pump.PumpState.HEALTHY;
+        break;
+      case "BROKEN":
+        pump.state = Pump.PumpState.BROKEN;
+        break;
+    }
+    pump.setInPipe(pipes.get(Integer.parseInt(activeElem[4])));
+    pump.setOutPipe(pipes.get(Integer.parseInt(activeElem[5])));
   }
-
+  /*------------------------------------------------------------------------------------------*/
 
   /**
    * Retrieves the currently selected element within the grid.
