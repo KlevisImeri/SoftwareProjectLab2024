@@ -5,10 +5,10 @@ S,Diamond,1
 P,Murad,1,null,null
 
 Pipes:
-p,ID:0,[Klevis],[1,4],HEALTHY,EMPTY
+p,ID:0,[Klevis],[1,4],LEAKING,EMPTY
 
 Active Elements:
-C,ID:1,[Diamond, Murad],[0],[3],[2]
+C,ID:1,[Diamond, Murad],[0],[3],[2],0
 S,ID:4,[Ibrahim],[0]
 
 Selected Element: null

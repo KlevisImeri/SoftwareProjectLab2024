@@ -29,6 +29,7 @@ public class Grid {
   private Element selectedElement;
   private ActiveElement selectedActiveElement;
   private Pipe selectedPipe;
+  private Pipe previousSelectedPipe;
   // private Pump selectedPump; // Uncomment if needed for game logic.
 
   @Override
@@ -99,13 +100,27 @@ public class Grid {
   /*---------------------------------------Setups---------------------------------------------*/
   private void setUpPipe() {
     Pipe pipe = new Pipe(this);
-    String[] names = Input.split(Input.getLine());
-    for (String name : names) {
+    pipes.add(pipe);
+    String[] pipeS = Input.split(Input.getLine());
+    for (String name : Input.split(pipeS[0])) {
       if (name != "") {
         pipe.addPlayer(players.get(name));
       }
     }
-    pipes.add(pipe);
+    switch (pipeS[1]) {
+      case "HEALTHY":
+        break; // default
+      case "LEAKING":
+        pipe.puncture();
+        break;
+    }
+    switch (pipeS[2]) {
+      case "EMPTY":
+        break; // default
+      case "FULL":
+        pipe.fill();
+        break;
+    }
   }
 
   private void setUpCistern(String[] activeElem) {
@@ -170,6 +185,17 @@ public class Grid {
    * @return The currently selected Element.
    */
   public Element getSelectedElement() {
+    int ID = Input.getInt(0, 1000);
+    for (Pipe pipe : pipes) {
+      if (pipe.getID() == ID) {
+        return pipe;
+      }
+    }
+    for (ActiveElement element : activeElements) {
+      if (element.getID() == ID) {
+        return element;
+      }
+    }
     return selectedElement;
   }
 

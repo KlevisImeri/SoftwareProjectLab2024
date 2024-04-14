@@ -13,16 +13,15 @@ import mainstring.dev.Players.Saboteur;
  * termination of the game. It manages player selection, game loop, and displaying results.
  */
 public class Game {
-  public PlayersCollection players;
+  public PlayersCollection players  = new PlayersCollection();
   public Grid grid;
-  public Menu menu;
+  public Menu menu = new Menu();
 
   /**
    * Constructor for Game. Initializes the game menu and sets up the callback for starting the game.
    */
   Game() {
-    Input.game=this;
-    menu = new Menu();
+    Input.game = this;
     menu.start();
     startGame();
   }
@@ -47,10 +46,8 @@ public class Game {
    * Selects teams by asking the user to input players for Plumbers and Saboteurs. It supports
    * adding additional players based on user input.
    */
-  public void selectTeams() {
-    players = new PlayersCollection();
-    Output.println("\n[Adding Players into the teams]",
-        Color.LIGHT_BLUE);
+  private void selectTeams() {
+    Output.println("\n[Adding Players into the teams]", Color.LIGHT_BLUE);
     askForPlumber();
     askForPlumber();
     askForSaboteur();
@@ -74,7 +71,7 @@ public class Game {
    * Prompts the user to input a name for a Plumber player and adds the player to the players
    * collection.
    */
-  public void askForPlumber() {
+  private void askForPlumber() {
     while (true) {
       System.out.println("Enter the name of the " + numOfPlumbers + " plumber:");
       if (players.add(new Plumber(Input.getLine()))) {
@@ -88,7 +85,7 @@ public class Game {
    * Prompts the user to input a name for a Saboteur player and adds the player to the players
    * collection.
    */
-  public void askForSaboteur() {
+  private void askForSaboteur() {
     while (true) {
       System.out.println("Enter the name of the " + numOfSaboteurs + " saboteur:");
       if (players.add(new Saboteur(Input.getLine()))) {
@@ -105,9 +102,8 @@ public class Game {
    * Executes the main game loop, repeatedly allowing each player to take active and passive actions
    * until the game ends, as determined by user input.
    */
-  public void mainLoop() {
-    Output.println("\n|--------------------The main loop of the game--------------------|",
-        Color.LIGHT_BLUE);
+  private void mainLoop() {
+    Output.println("\n[Game Started]", Color.LIGHT_BLUE);
     System.out.println("Did the game end? [y]es/[n]o");
     while (Input.getChar("yn") == 'n') {
       Player player = players.selectRandom();
@@ -116,8 +112,6 @@ public class Game {
       grid.caculateFlow();
       System.out.println("Did the game end? [y]es/[n]o");
     }
-    Output.println("|--------------------------------------------------------------------|\n",
-        Color.LIGHT_BLUE);
   }
   /*---------------------------------------------main Loop------------------------------------------- */
 
@@ -126,12 +120,9 @@ public class Game {
    * Concludes the game, displaying the final results including the amounts of water gathered by
    * Plumbers and leaked by Saboteurs.
    */
-  public void endGame() {
-    Output.println("\n|---------------The game end and the display of results-------------|",
-        Color.LIGHT_BLUE);
+  private void endGame() {
+    Output.println("\n[Game Ended]", Color.LIGHT_BLUE);
     displayResults(grid.getWaterAtCistern(), grid.getWaterAtDesert());
-    Output.println("|--------------------------------------------------------------------|\n",
-        Color.LIGHT_BLUE);
   }
 
   /**
@@ -140,7 +131,7 @@ public class Game {
    * @param plumberResult The amount of water gathered by Plumbers.
    * @param saboteurResult The amount of water leaked by Saboteurs.
    */
-  public void displayResults(int plumberResult, int saboteurResult) {
+  private void displayResults(int plumberResult, int saboteurResult) {
     Output.println("The plumber gathered: " + plumberResult + "liters of water",
         Color.LIGHT_MAGENTA);
     Output.println("The saboteurs leaked: " + saboteurResult + "liters of water",

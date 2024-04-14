@@ -1,11 +1,16 @@
+java.lang.ArrayIndexOutOfBoundsException: Index 1 out of bounds for length 1
+	at mainstring.dev.Grid.setUpPipe(Grid.java:110)
+	at mainstring.dev.Grid.<init>(Grid.java:73)
+	at mainstring.dev.Game.startGame(Game.java:35)
+	at mainstring.dev.Game.<init>(Game.java:26)
+	at mainstring.dev.Main.main(Main.java:5)
+	at org.codehaus.mojo.exec.ExecJavaMojo$1.run(ExecJavaMojo.java:254)
+	at java.base/java.lang.Thread.run(Thread.java:1623)
 Pipes:
-p,ID:0,[Klevis],[2,6],HEALTHY,EMPTY
-p,ID:1,[],[5,6],HEALTHY,EMPTY
+p,ID:0,[Klevis],[],HEALTHY,EMPTY
 
 Active Elements:
-C,ID:2,[Diamond],[0],[4],[3]
-S,ID:5,[Ibrahim],[1]
-P,ID:6,[Murad],[0,1],[R,10,0],BROKEN,1,0
+
 
 Selected Element: null
 Selected ActiveElement: null

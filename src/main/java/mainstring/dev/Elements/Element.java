@@ -15,10 +15,11 @@ public abstract class Element {
   static int FreeID = 0;
   protected int ID;
   protected Grid grid; // The grid this element is part of
-  protected PlayersCollection players = new PlayersCollection(); // Collection of players currently on this element
+  protected PlayersCollection players = new PlayersCollection(); // Collection of players currently
+                                                                 // on this element
   protected Class<?> neighborType; // The type of elements that can be neighbors to this element
   protected int capacityOfNeighbors; // Capacity of neighboring elements, not explicitly used
-  protected Set<Element> neighbors =  new HashSet<>();// The set of neighboring elements
+  protected Set<Element> neighbors = new HashSet<>();// The set of neighboring elements
 
   @Override
   public int hashCode() {
@@ -27,7 +28,7 @@ public abstract class Element {
 
   @Override
   public String toString() {
-    return "ID:%s,%s,%s".formatted(ID,players.toStringID(),Output.toStringID(neighbors));
+    return "ID:%s,%s,%s".formatted(ID, players.toStringID(), Output.toStringID(neighbors));
   }
 
   /**
@@ -66,7 +67,6 @@ public abstract class Element {
    * @param player The player to remove from this element.
    */
   public void removePlayer(Player player) {
-    System.out.println("removePlayer(" + player.type() + ")");
     players.remove(player); // Remove the player from the collection
   }
 
@@ -76,7 +76,6 @@ public abstract class Element {
    * @param neighbor The element to be added as a neighbor.
    */
   public void addNeighbor(Element neighbor) /* throws Exception */ {
-    System.out.println("addNeighbor(" + neighbor.type() + ")");
     if (neighborType.isInstance(neighbor)) {
       neighbors.add(neighbor); // Add the neighbor
       if (!neighbor.isConnected(this)) { // Check if the neighbor is already connected
@@ -93,7 +92,6 @@ public abstract class Element {
    * @param neighbor The neighbor to remove.
    */
   public void removeNeighbor(Element neighbor) {
-    System.out.println("removeNeighbor(" + neighbor.type() + ")");
     neighbors.remove(neighbor); // Remove the neighbor
   }
 
@@ -104,7 +102,6 @@ public abstract class Element {
    * @return true if the element is a neighbor, false otherwise.
    */
   public boolean isConnected(Element element) {
-    System.out.println("isConnected(" + element.type() + ")");
     return neighbors.contains(element); // Check if the element is in the neighbors set
   }
 
@@ -114,21 +111,7 @@ public abstract class Element {
    * @return A list of neighboring elements.
    */
   public List<Element> getNeighbors() {
-    System.out.println("getNeighbors()");
     return new ArrayList<>(neighbors); // Return a new list containing all neighbors
-  }
-
-  /**
-   * Checks if an element is a second-level neighbor to this element. Currently always returns true,
-   * but intended for future use.
-   * 
-   * @param element The element to check.
-   * @return true always in this implementation.
-   */
-  public boolean isSecoundNeighbor(Element element) {
-    System.out.println("isSecoundNeighbor(" + element.type() + ")");
-    // Placeholder implementation
-    return true;
   }
 
   /**
@@ -138,4 +121,8 @@ public abstract class Element {
    * @return A string representing the type of this element.
    */
   public abstract String type();
+
+  public int getID() {
+    return ID;
+  }
 }

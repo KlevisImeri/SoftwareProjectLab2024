@@ -19,13 +19,13 @@ public class Cistern extends ActiveElement {
                                                      // cistern
   protected List<Pipe> newPipes = new ArrayList<>(); // List of pipes created and managed by this
                                                      // cistern
-  protected int waterAmount;// The amount of water currently stored in this cistern
+  protected int waterAmount = 0;// The amount of water currently stored in this cistern
   protected Timer timerPipe = new Timer(); // Timer for creating pipes
   protected Timer timerPump = new Timer(); // Timer for creating pumps
 
   @Override
   public String toString() {
-    return "C,%s,%s,%s".formatted(super.toString(), Output.toStringID(newPipes),
+    return "C,%s,%s,%s,%s".formatted(super.toString(), Output.toStringID(newPipes),
         Output.toStringID(newPumps), waterAmount);
   }
 
