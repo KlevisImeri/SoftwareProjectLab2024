@@ -3,12 +3,12 @@ p,ID:0,[],[5,9],HEALTHY,EMPTY
 p,ID:1,[],[5,10],HEALTHY,EMPTY
 p,ID:2,[Klevis],[6,10],HEALTHY,EMPTY
 p,ID:3,[Ibrahim],[6,9],HEALTHY,EMPTY
-p,ID:4,[],[9,10],HEALTHY,EMPTY
+p,ID:4,[],[10],HEALTHY,EMPTY
 
 Active Elements:
 S,ID:5,[Diamond],[0,1]
 C,ID:6,[Murad],[2,3],[8],[7]
-P,ID:9,[Alban],[0,3,4],[R,10,0],HEALTHY,3,0
+P,ID:9,[Alban],[0,3],[R,10,0],HEALTHY,3,0
 P,ID:10,[],[1,2,4],[R,10,0],HEALTHY,1,2
 
 Selected Element: null
