@@ -1,13 +1,2 @@
-Pipes:						
-p,ID:0,[],[1,3],HEALTHY,FULL	
-p,ID:5,[],[4,3],HEALTHY,FULL
-
-Active Elements:				
-C,ID:1,[Diamond, Murad],[0],[3],[2],2
-S,ID:4,[Ibrahim],[0]
-
-Selected Element: null
-Selected ActiveElement: null
-Selected Pipe: null
-
-Water in Desert: 0
+[Game Time: 5, Player Time: 30]
+[Game Time: 123, Player Time: 23]
