@@ -1,0 +1,20 @@
+Pipes:
+p,ID:0,[],[5,9],HEALTHY,EMPTY
+p,ID:1,[],[5,10],HEALTHY,EMPTY
+p,ID:2,[Klevis],[8,10],HEALTHY,EMPTY
+p,ID:3,[Ibrahim],[6,9],HEALTHY,EMPTY
+p,ID:4,[],[9,10],HEALTHY,EMPTY
+p,ID:11,[],[8,6]HEALTHY
+
+Active Elements:
+S,ID:5,[Diamond],[0,1]
+C,ID:6,[],[2,3],[1],[1]p
+P,ID:9,[Alban],[0,3,4],[R,10,0],HEALTHY,0,3
+P,ID:10,[Yen,Klevis],[1,2,4],[R,10,0],HEALTHY,1,2
+P,ID:8,[Murad],[2,11],[R,10,0],HEALTHY,2,11
+
+Selected Element: null
+Selected ActiveElement: null
+Selected Pipe: null
+
+Water in Desert: 0
