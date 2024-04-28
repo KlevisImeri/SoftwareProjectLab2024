@@ -1,0 +1,72 @@
+java.lang.NullPointerException: Cannot invoke "mainstring.dev.Players.Player.getLocation()" because "player" is null
+	at mainstring.dev.Elements.Element.addPlayer(Element.java:54)
+	at mainstring.dev.Grid.setUpPump(Grid.java:175)
+	at mainstring.dev.Grid.<init>(Grid.java:91)
+	at mainstring.dev.Game.startGame(Game.java:35)
+	at mainstring.dev.Game.<init>(Game.java:26)
+	at mainstring.dev.Main.main(Main.java:5)
+	at org.codehaus.mojo.exec.ExecJavaMojo$1.run(ExecJavaMojo.java:254)
+	at java.base/java.lang.Thread.run(Thread.java:1623)
+Pipes:
+p,ID:0,[],[8,9],HEALTHY,EMPTY
+p,ID:1,[],[8,10],HEALTHY,FULL
+p,ID:2,[Klevis],[5,10],HEALTHY,EMPTY
+p,ID:3,[Ibrahim],[5,9],HEALTHY,EMPTY
+p,ID:4,[],[9,10],HEALTHY,EMPTY
+
+Active Elements:
+C,ID:5,[Murad],[2,3],[],[7],1
+S,ID:8,[Diamond],[0,1]
+P,ID:9,[Alban],[0,3,4],[R,10,0],HEALTHY,0,3
+P,ID:10,[],[1,2,4],[R,10,0],HEALTHY,null,null
+
+Selected Element: null
+Selected ActiveElement: null
+Selected Pipe: null
+
+Water in Desert: 0
+
+Pipes:
+p,ID:0,[],[8,9],HEALTHY,EMPTY
+p,ID:1,[],[8,10],HEALTHY,FULL
+p,ID:2,[],[5,6],HEALTHY,EMPTY
+p,ID:3,[Ibrahim],[5,9],HEALTHY,EMPTY
+p,ID:4,[],[9,10],HEALTHY,EMPTY
+p,ID:11,[],[6,10],HEALTHY,EMPTY
+
+Active Elements:
+C,ID:5,[],[2,3],[],[7],5
+S,ID:8,[Diamond],[0,1]
+P,ID:9,[Alban],[0,3,4],[R,10,0],HEALTHY,0,3
+P,ID:10,[Klevis],[1,4,11],[R,10,0],HEALTHY,null,null
+P,ID:6,[Murad],[2,11],[R,10,0],HEALTHY,11,2
+
+Selected Element: 2
+Selected ActiveElement: null
+Selected Pipe: null
+
+Water in Desert: 0
+
+java.util.NoSuchElementException
+	at java.base/java.util.Scanner.throwFor(Scanner.java:945)
+	at java.base/java.util.Scanner.next(Scanner.java:1486)
+	at mainstring.dev.Input.getChar(Input.java:61)
+	at mainstring.dev.Input.getChar(Input.java:65)
+	at mainstring.dev.Players.Plumber.keyTyped(Plumber.java:201)
+	at mainstring.dev.Players.Plumber.active(Plumber.java:173)
+	at mainstring.dev.Game.mainLoop(Game.java:110)
+	at mainstring.dev.Game.startGame(Game.java:36)
+	at mainstring.dev.Game.<init>(Game.java:26)
+	at mainstring.dev.Main.main(Main.java:5)
+	at org.codehaus.mojo.exec.ExecJavaMojo$1.run(ExecJavaMojo.java:254)
+	at java.base/java.lang.Thread.run(Thread.java:1623)
+java.util.NoSuchElementException
+	at java.base/java.util.Scanner.throwFor(Scanner.java:945)
+	at java.base/java.util.Scanner.next(Scanner.java:1486)
+	at mainstring.dev.Input.getChar(Input.java:61)
+	at mainstring.dev.Game.mainLoop(Game.java:108)
+	at mainstring.dev.Game.startGame(Game.java:36)
+	at mainstring.dev.Game.<init>(Game.java:26)
+	at mainstring.dev.Main.main(Main.java:5)
+	at org.codehaus.mojo.exec.ExecJavaMojo$1.run(ExecJavaMojo.java:254)
+	at java.base/java.lang.Thread.run(Thread.java:1623)

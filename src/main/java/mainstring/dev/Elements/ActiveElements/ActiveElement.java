@@ -37,5 +37,5 @@ public abstract class ActiveElement extends Element {
    * provide a specific implementation of how the element interacts with its environment,
    * particularly in terms of moving or processing water within the grid.
    */
-  public abstract void Flow();
+  public abstract void Flow(Pipe iniciator);
 }

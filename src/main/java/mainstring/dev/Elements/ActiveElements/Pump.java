@@ -107,7 +107,7 @@ public class Pump extends ActiveElement {
   public Pump(Grid grid) {
     super(grid);
     // This is turn off for prototype
-    // schedulePipeBreak(); 
+    // schedulePipeBreak();
   }
 
   /**
@@ -115,7 +115,7 @@ public class Pump extends ActiveElement {
    * 
    * @param pipe The pipe to be set as the input for this pump.
    */
-  public void setInPipe(Pipe pipe) {
+  public void setInPipe(Pipe pipe) throws Exception {
     addNeighbor(pipe);
     this.in = pipe;
   }
@@ -125,7 +125,7 @@ public class Pump extends ActiveElement {
    * 
    * @param pipe The pipe to be set as the output for this pump.
    */
-  public void setOutPipe(Pipe pipe) {
+  public void setOutPipe(Pipe pipe) throws Exception {
     addNeighbor(pipe);
     this.out = pipe;
   }
@@ -156,28 +156,30 @@ public class Pump extends ActiveElement {
    * pump, taking into account potential failures and the need for a reservoir.
    */
   @Override
-  public void Flow() {
-    Output.println("[Water flowing at [P,ID:" + getID() +"]]", Color.LIGHT_BLUE);
+  public void Flow(Pipe iniciator) {
+    if (iniciator != in) return;
+    String before = this.toString();
     if (in.isFull()) {
       if (state == PumpState.BROKEN || out.isFull()) {
         // If the pump is broken and the input pipe is full, water is added to the reservoir or
-        // If the out pipe is full  water is added to the reservoir;
+        // If the out pipe is full water is added to the reservoir;
         reservoir.addWater();
       } else {
         // If the pump is healthy and the input pipe is full, water is transferred to the output
         // pipe
-        out.fill();
+        out.fill(this);
       }
       // After handling water transfer, the input pipe is emptied
       in.empty();
     } else {
-      if (state != PumpState.BROKEN && reservoir.totalWater!=0) {
-        // If the pump is healthy and the reservoir is not empty, water is 
+      if (state != PumpState.BROKEN && reservoir.totalWater != 0) {
+        // If the pump is healthy and the reservoir is not empty, water is
         // removed from the reservoir and transferred to the output pipe
         reservoir.removeWater();
-        out.fill();
+        out.fill(this);
       }
     }
+    Output.printChange(before, this.toString());
   }
 
   /**

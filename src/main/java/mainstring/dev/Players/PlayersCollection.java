@@ -101,4 +101,8 @@ public class PlayersCollection {
   public Collection<Player> getPlayers() {
     return playersMap.values();
   }
+
+  public int size() {
+    return playersMap.size();
+  }
 }

@@ -1,7 +1,9 @@
 package mainstring.dev;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
+import java.util.Queue;
 import mainstring.dev.Elements.ActiveElements.*;
 import mainstring.dev.Output.Color;
 import mainstring.dev.Players.*;
@@ -21,6 +23,7 @@ public class Grid {
   private List<Pipe> pipes = new ArrayList<>();
   private List<ActiveElement> activeElements = new ArrayList<>();
   private PlayersCollection players;
+  private Queue<Element> flowQueue = new LinkedList<>();
 
   // Tracks the amount of water that has ended up in the desert (unusable water).
   private int waterInDesert = 0;
@@ -60,7 +63,7 @@ public class Grid {
    */
   public Grid(PlayersCollection players) {
     try {
-      Output.print("\n[Setting Up the Grid]", Color.LIGHT_BLUE);
+      Output.println("\n[Setting Up the Grid]", Color.LIGHT_BLUE);
 
       this.players = players;
       for (Player p : players.getPlayers()) {
@@ -96,7 +99,7 @@ public class Grid {
   }
 
   /*---------------------------------------Setups---------------------------------------------*/
-  private void setUpPipe() {
+  private void setUpPipe() throws Exception {
     Pipe pipe = new Pipe(this);
     pipes.add(pipe);
     String[] pipeS = Input.split(Input.getLine());
@@ -116,12 +119,12 @@ public class Grid {
       case "EMPTY":
         break; // default
       case "FULL":
-        pipe.fill();
+        pipe.fill(null);
         break;
     }
   }
 
-  private void setUpCistern(String[] activeElem) {
+  private void setUpCistern(String[] activeElem) throws Exception {
     // C,[1,3...n],[player1...player2],2,3
     this.cistern = new Cistern(this);
     for (String pipeIndx : Input.split(activeElem[1])) {
@@ -144,7 +147,7 @@ public class Grid {
     activeElements.add(cistern);
   }
 
-  private void setUpSpring(String[] activeElem) {
+  private void setUpSpring(String[] activeElem) throws Exception {
     // S,[1,3...n],[player1...player2]
     this.spring = new Spring(this);
     for (String pipeIndx : Input.split(activeElem[1])) {
@@ -160,7 +163,7 @@ public class Grid {
     activeElements.add(spring);
   }
 
-  private void setUpPump(String[] activeElem) {
+  private void setUpPump(String[] activeElem) throws Exception {
     // The first two pipes (1,3) in this case are the in and out pipe respectevely
     // P,[1,3...n],[player1...player2],HEALTHY,1,3
     Pump pump = new Pump(this);
@@ -184,23 +187,14 @@ public class Grid {
   }
   /*------------------------------------------------------------------------------------------*/
 
+
+  /*------------------------------------get/set Elements--------------------------------------*/
   /**
    * Retrieves the currently selected element within the grid.
    *
    * @return The currently selected Element.
    */
   public Element getSelectedElement() {
-    int ID = Input.getInt(0, 1000);
-    for (Pipe pipe : pipes) {
-      if (pipe.getID() == ID) {
-        return pipe;
-      }
-    }
-    for (ActiveElement element : activeElements) {
-      if (element.getID() == ID) {
-        return element;
-      }
-    }
     return selectedElement;
   }
 
@@ -209,8 +203,18 @@ public class Grid {
    *
    * @param selectedElement The Element to be set as selected.
    */
-  public void setSelectedElement(Element selectedElement) {
-    this.selectedElement = selectedElement;
+  public void setSelectedElement() {
+    int ID = Input.getInt(0, Element.FreeID);
+    for (Pipe p : pipes) {
+      if (p.getID() == ID) {
+        this.selectedElement = p;
+      }
+    }
+    for (ActiveElement a : activeElements) {
+      if (a.getID() == ID) {
+        this.selectedElement = a;
+      }
+    }
   }
 
   /**
@@ -222,14 +226,15 @@ public class Grid {
     return selectedActiveElement;
   }
 
-  /**
-   * Sets the currently selected active element within the grid.
-   *
-   * @param selectedActiveElement The ActiveElement to be set as selected.
-   */
-  public void setSelectedActiveElement(ActiveElement selectedActiveElement) {
-    this.selectedElement = selectedActiveElement;
-    this.selectedActiveElement = selectedActiveElement;
+
+  public void setSelectedActiveElement() {
+    int ID = Input.getInt(0, Element.FreeID);
+    for (ActiveElement a : activeElements) {
+      if (a.getID() == ID) {
+        this.selectedElement = a;
+        this.selectedActiveElement = a;
+      }
+    }
   }
 
   /**
@@ -250,16 +255,23 @@ public class Grid {
     this.selectedElement = selectedPipe;
     this.selectedPipe = selectedPipe;
   }
+  /*------------------------------------get/set Elements--------------------------------------*/
 
+  /*---------------------------------------Flow---------------------------------------------*/
   /**
    * Calculates and processes the flow through all active elements in the grid.
    */
   public void caculateFlow() {
-    Output.println("[Flowing]", Color.LIGHT_BLUE);
-    for (ActiveElement e : activeElements) {
-      e.Flow();
-    }
+    Output.println("\n[Flowing]", Color.LIGHT_BLUE);
+    spring.Flow(null);
+    System.out.println();
   }
+
+  public void QueueFlow(Element e) {
+    if(e == null) return;
+    flowQueue.offer(e);
+  }
+  /*---------------------------------------Flow---------------------------------------------*/
 
   /**
    * Adds a Pump to the list of active elements within the grid.

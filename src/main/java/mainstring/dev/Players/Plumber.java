@@ -51,23 +51,22 @@ public class Plumber extends Player {
    * carrying the disconnected pipe.
    */
   public void disconnectPipe() {
-    Output.println("|-------------5.2.9 Disconnect pipe from " + location.type() + "-------------|",
-        Color.LIGHT_BLUE);
-    System.out.println("disconnectPipe()");
-    Pipe sp = grid.getSelectedPipe();
-    if (location.isConnected(sp)) {
-      if (carryPipe == null) {
-        location.removeNeighbor(sp);
-        sp.removeNeighbor(location);
-        carryPipe = sp;
+    try {
+      Pipe sp = grid.getSelectedPipe();
+      if (location.isConnected(sp)) {
+        if (carryPipe == null) {
+          location.removeNeighbor(sp);
+          sp.removeNeighbor(location);
+          carryPipe = sp;
+        } else {
+          Output.println("You are already carrying  a pipe!", Color.LIGHT_RED);
+        }
       } else {
-        Output.println("You are already carrying  a pipe!", Color.LIGHT_RED);
-      }
-    } else {
-      Output.println("The pipe is too far away!", Color.LIGHT_RED);
+        Output.println("The pipe is too far away!", Color.LIGHT_RED);
+      }    
+    } catch (Exception e) {
+      Output.println(e.getMessage(), Color.LIGHT_RED);
     }
-    Output.println("|--------------------------------------------------------------------|\n",
-        Color.LIGHT_BLUE);
   }
 
   /**
@@ -75,31 +74,13 @@ public class Plumber extends Player {
    * pipe, it connects that pipe to the location.
    */
   public void connectPipe() {
-    Output.println(
-        "|----------------5.2.9 Connect pipe with " + location.type() + "-----------------|",
-        Color.LIGHT_BLUE);
-    System.out.println("connectPipe()");
-    if (carryPipe != null) {
-      if (location instanceof ActiveElement) {
-        System.out.println("Can more pipes be connected to the location? [y]es/[n]no");
-        switch (Input.getChar("yn")) {
-          case 'y':
-            carryPipe.addNeighbor(location);
-            location.addNeighbor(carryPipe);
-            carryPipe = null;
-            break;
-          case 'n':
-            Output.println("The location is saturated with pipes!", Color.LIGHT_RED);
-            break;
-        }
-      } else {
-        Output.println("You can't connect a pipe to a pipe!", Color.LIGHT_RED);
-      }
-    } else {
-      Output.println("The plumber is not carrying any pipe!", Color.LIGHT_RED);
+    try {
+      location.addNeighbor(carryPipe);
+      grid.addPipe(carryPipe);
+      carryPipe = null;
+    } catch (Exception e) {
+      Output.println(e.getMessage(), Color.LIGHT_RED);
     }
-    Output.println("|--------------------------------------------------------------------|\n",
-        Color.LIGHT_BLUE);
   }
 
   /**
@@ -122,33 +103,31 @@ public class Plumber extends Player {
    * (i.e., a Pipe) and the Plumber is carrying a pump.
    */
   public void insertPump() {
-    Output.println(
-        "|------------------5.2.5.1 The Plumber inserts the pump at a pipe Setup--------------------|",
-        Color.LIGHT_BLUE);
-    System.out.println("insertPump()");
-    if (carryPump != null) {
-      if (location instanceof Pipe) {
-        Pipe newPipe = new Pipe(grid);
-        List<Element> pumps = location.getNeighbors();
-        carryPump.setInPipe((Pipe) location);
-        carryPump.setOutPipe(newPipe);
-        carryPump.addPlayer(this);
-        location.removeNeighbor(pumps.get(1));
-        location.addNeighbor(carryPump);
-        location.removePlayer(this);
-        newPipe.addNeighbor(carryPump);
-        newPipe.addNeighbor(pumps.get(1));
-        location = carryPump;
-        // grid.addPump(carryPump);
-        carryPump = null;
+    try {
+      if (carryPump != null) {
+        if (location instanceof Pipe) {
+          Pipe newPipe = new Pipe(grid);
+          List<Element> neighbors = location.getNeighbors();
+          location.removeNeighbor(neighbors.get(1)); 
+          
+          
+          carryPump.setInPipe(newPipe);
+          carryPump.setOutPipe((Pipe) location);
+          carryPump.addPlayer(this);
+          newPipe.addNeighbor(neighbors.get(1));
+
+          grid.addPipe(newPipe);
+          grid.addPump(carryPump);
+          carryPump = null;
+        } else {
+          throw new Exception("[You can't insert a Pump at a " + location.type() + "]");
+        }
       } else {
-        Output.println("You can't insert a Pump here!", Color.LIGHT_RED);
+        throw new Exception("[You don't have a Pump!]");
       }
-    } else {
-      Output.println("You don't have a Pump", Color.LIGHT_RED);
+    } catch (Exception e) {
+      Output.println(e.getMessage(), Color.LIGHT_RED);
     }
-    Output.println("|--------------------------------------------------------------------|\n",
-        Color.LIGHT_BLUE);
   }
 
   /**
@@ -157,16 +136,14 @@ public class Plumber extends Player {
    * is displayed.
    */
   public void pickPump() {
-    Output.println("|-------------5.2.6 The Plumber picks up the pump-------------|",
-        Color.LIGHT_BLUE);
-    System.out.println("pickPump()");
-    if (location instanceof Cistern) {
+    try {
+      if (!(location instanceof Cistern)) throw new Exception("[You are not at the cistern!]");
+      String before = toString();
       carryPump = ((Cistern) location).getPump();
-    } else {
-      Output.println("You are not at the cistern!", Color.LIGHT_RED);
+      Output.printChange(before, toString());
+    } catch (Exception e) {
+      Output.println(e.getMessage(), Color.LIGHT_RED);
     }
-    Output.println("|--------------------------------------------------------------------|\n",
-        Color.LIGHT_BLUE);
   }
 
   /**
@@ -175,16 +152,15 @@ public class Plumber extends Player {
    * is displayed.
    */
   public void pickPipe() {
-    Output.println("|-------------5.2.7.1 The Plumber picks up the pipe at Cistern-------------|",
-        Color.LIGHT_BLUE);
-    System.out.println("pickPipe()");
-    if (location instanceof Cistern) {
+    try {
+      if (!(location instanceof Cistern))
+        throw new Exception("[You are not at the cistern!]");
+      String before = toString();
       carryPipe = ((Cistern) location).getPipe();
-    } else {
-      Output.println("You are not at the cistern!", Color.LIGHT_RED);
+      Output.printChange(before, toString());
+    } catch (Exception e) {
+      Output.println(e.getMessage(), Color.LIGHT_RED);
     }
-    Output.println("|--------------------------------------------------------------------|\n",
-        Color.LIGHT_BLUE);
   }
 
   /**
@@ -202,7 +178,7 @@ public class Plumber extends Player {
    * any specific behavior. This is for future implementatoin when gui is needed.
    */
   @Override
-  public void passive() { }
+  public void passive() {}
 
   /**
    * Processes player input to determine the action the plumber should take. This method allows the
@@ -220,7 +196,7 @@ public class Plumber extends Player {
     System.out.println(lightMagenta + "[f]" + resetColor + "ix()");
     System.out.println(lightMagenta + "[i]" + resetColor + "nsertPump()");
     System.out.println(lightMagenta + "[p]" + resetColor + "ickPump()");
-    System.out.println(lightMagenta + "[P]" + resetColor + "ipe()");
+    System.out.println(lightMagenta + "[P]" + resetColor + "ickPipe()");
 
     switch (Input.getChar("DmdcfipP")) {
       case 'm':

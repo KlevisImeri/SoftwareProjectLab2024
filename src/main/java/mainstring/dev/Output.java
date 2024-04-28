@@ -70,4 +70,10 @@ public abstract class Output {
     System.out.print(s); // Print the string
     System.out.print(Color.RESET.Code()); // Reset color to default
   }
+
+  public static void printChange(String before, String after) {
+    System.out.print(before);
+    print(" -> ", Color.LIGHT_RED);
+    System.out.println(after);
+  }
 }

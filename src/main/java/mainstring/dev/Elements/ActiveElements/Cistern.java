@@ -3,6 +3,7 @@ package mainstring.dev.Elements.ActiveElements;
 import java.util.Timer;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Stack;
 import mainstring.dev.Input;
 import mainstring.dev.Output;
 import mainstring.dev.Output.Color;
@@ -15,9 +16,9 @@ import mainstring.dev.Grid;
  * grid it is part of.
  */
 public class Cistern extends ActiveElement {
-  protected List<Pump> newPumps = new ArrayList<>(); // List of pumps created and managed by this
+  protected Stack<Pump> newPumps = new Stack<>(); // List of pumps created and managed by this
                                                      // cistern
-  protected List<Pipe> newPipes = new ArrayList<>(); // List of pipes created and managed by this
+  protected Stack<Pipe> newPipes = new Stack<>(); // List of pipes created and managed by this
                                                      // cistern
   protected int waterAmount = 0;// The amount of water currently stored in this cistern
   protected Timer timerPipe = new Timer(); // Timer for creating pipes
@@ -25,8 +26,8 @@ public class Cistern extends ActiveElement {
 
   @Override
   public String toString() {
-    return "C,%s,%s,%s,%s".formatted(super.toString(), Output.toStringID(newPipes),
-        Output.toStringID(newPumps), waterAmount);
+    return "C,%s,%s,%s,%s".formatted(super.toString(), Output.toStringID(newPumps),
+        Output.toStringID(newPipes), waterAmount);
   }
 
   /**
@@ -47,28 +48,29 @@ public class Cistern extends ActiveElement {
    * Adds a new Pump object to the list of new pumps.
    */
   public void createPump() {
-    newPumps.add(new Pump(grid));
+    newPumps.push(new Pump(grid));
   }
 
   /**
    * Adds a new Pipe object to the list of new pipes.
    */
   public void createPipe() {
-    newPipes.add(new Pipe(grid));
+    newPipes.push(new Pipe(grid));
   }
 
   /**
    * Adds water to the cistern, ensuring the water amount does not become negative.
    */
   private void addWater() {
-    System.out.println("addWater()");
+  waterAmount++;
   }
 
   /**
    * Removes water from the cistern, ensuring the water amount does not become negative.
    */
   private void removewater() {
-    System.out.println("removeWater()");
+    if(waterAmount == 0) return;
+    waterAmount--;
   }
 
   /**
@@ -89,16 +91,12 @@ public class Cistern extends ActiveElement {
    * 
    * @return The first new pump if available, or null if no new pumps are available.
    */
-  public Pump getPump() {
-    System.out.println("getPump()");
-    System.out.println("Does the cistern have new pumps?  [y]es/[n]o");
-    switch (Input.getChar("yn")) {
-      case 'y':
-        return newPumps.get(0);
-      case 'n':
-        Output.println("No More Pumps!", Color.LIGHT_RED);
-    }
-    return null;
+  public Pump getPump() throws Exception {
+    String before = toString();
+    if(newPumps.size()==0) throw new Exception("[No More Pumps!]");
+    Pump p = newPumps.pop();
+    Output.printChange(before, toString());
+    return p;
   }
 
   /**
@@ -108,17 +106,12 @@ public class Cistern extends ActiveElement {
    * 
    * @return The first new pipe if available, otherwise null.
    */
-  public Pipe getPipe() {
-    System.out.println("getPipe()");
-    System.out.println("Does the cistern have new pipes?  [y]es/[n]o");
-    switch (Input.getChar("yn")) {
-      case 'y':
-        return newPipes.get(0);
-      case 'n':
-        Output.println("No More Pipes!", Color.LIGHT_RED);
-        return null;
-    }
-    return null;
+  public Pipe getPipe()  throws Exception {
+    String before = toString();
+    if(newPipes.size()==0) throw new Exception("[No More Pipes!]");
+    Pipe p = newPipes.pop();
+    Output.printChange(before, toString());
+    return p;
   }
 
   /**
@@ -128,22 +121,13 @@ public class Cistern extends ActiveElement {
    * water distribution system.
    */
   @Override
-  public void Flow() {
-    Output.println(
-        "|----------------5.2.14.2 Calculation of the flow at a cistern-----------------|",
-        Color.LIGHT_BLUE);
-    System.out.println("Flow()");
-    for (Element element : neighbors) {
-      if (((Pipe) element).isFull()) {
-        ((Pipe) element).empty();
-        addWater();
-      }
+  public void Flow(Pipe iniciator) {
+    String before = this.toString();
+    if(iniciator.isFull()) {
+      iniciator.empty();
+      addWater();
     }
-    for (int i = 0; i < newPipes.size(); i++) {
-      removewater();
-    }
-    Output.println("|--------------------------------------------------------------------|\n",
-        Color.LIGHT_BLUE);
+    Output.printChange(before, this.toString());
   }
 
   /**
@@ -152,7 +136,6 @@ public class Cistern extends ActiveElement {
    * @return The current water amount in the cistern.
    */
   public int getWaterAmount() {
-    System.out.println("getWaterAmount()");
     return this.waterAmount;
   }
 
@@ -164,8 +147,6 @@ public class Cistern extends ActiveElement {
    * @return The newly set water amount.
    */
   public int setWaterAmount(int waterAmount) {
-    System.out.println("setWaterAmount()");
-    this.waterAmount = 20; // Note: This sets the water amount to 20, ignoring the input parameter.
     return this.waterAmount;
   }
 

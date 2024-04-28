@@ -1,6 +1,7 @@
 package mainstring.dev.Elements;
 
 import mainstring.dev.Elements.ActiveElements.ActiveElement;
+import mainstring.dev.Elements.ActiveElements.Pump;
 import mainstring.dev.Grid;
 import mainstring.dev.Output;
 import mainstring.dev.Output.Color;
@@ -22,15 +23,15 @@ public class Pipe extends Element {
    * Enumerates the possible flow states of a Pipe.
    */
   public enum PipeFlowState {
-    FULL, EMPTY
+    EMPTY, FULL
   }
 
   private PipeHealthState healthState = PipeHealthState.HEALTHY; // Current health state of the pipe
   private PipeFlowState flowState = PipeFlowState.EMPTY; // Current flow state of the pipe
 
-  @Override 
+  @Override
   public String toString() {
-    return "p,%s,%s,%s".formatted(super.toString(),healthState,flowState);
+    return "p,%s,%s,%s".formatted(super.toString(), healthState, flowState);
   }
 
   /**
@@ -42,13 +43,16 @@ public class Pipe extends Element {
   public Pipe(Grid grid) {
     super(grid);
     neighborType = ActiveElement.class;
+    capacityOfNeighbors = 2;
   }
 
   /**
    * Sets the pipe's health state to LEAKING, indicating damage.
    */
   public void puncture() {
+    String before = toString();
     healthState = PipeHealthState.LEAKING;
+    Output.printChange(before, toString());
   }
 
   /**
@@ -56,29 +60,31 @@ public class Pipe extends Element {
    * details are not provided, so additional logic may be needed.
    */
   public void fix() {
-    System.out.print(this);
+    String before = this.toString();
     healthState = PipeHealthState.HEALTHY;
-    Output.print("  ->  ", Color.LIGHT_RED);
-    System.out.println(this);
+    Output.printChange(before,this.toString());
   }
 
-  /**
-   * Attempts to fill the pipe with water. If the pipe is LEAKING, water is added to the desert
-   * instead. Otherwise, the pipe's flow state is set to FULL.
-   */
-  public void fill() {
+
+  public void fill(ActiveElement iniciator) {
+    String before = toString();
     if (healthState == PipeHealthState.LEAKING) {
       grid.addWaterToDesert();
-      return;
+    } else {
+      flowState = PipeFlowState.FULL;
     }
-    flowState = PipeFlowState.FULL;
+    Output.printChange(before, toString());
+    if(iniciator==null) return; //grid set it up
+    getOtherNeighbor(iniciator).Flow(this);
   }
 
   /**
    * Empties the pipe, setting its flow state to EMPTY.
    */
   public void empty() {
+    String before = toString();
     flowState = PipeFlowState.EMPTY;
+    Output.printChange(before, toString());
   }
 
   /**
@@ -100,4 +106,10 @@ public class Pipe extends Element {
     return "pipe";
   }
 
+  private ActiveElement getOtherNeighbor(ActiveElement e) {
+    for(Element elem : getNeighbors()){
+      if(elem != e) return (ActiveElement) elem;
+    }
+    return null;
+  }
 }

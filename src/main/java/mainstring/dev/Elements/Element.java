@@ -12,13 +12,14 @@ import mainstring.dev.Players.PlayersCollection;
  * interactions between them.
  */
 public abstract class Element {
-  static int FreeID = 0;
+  public static int FreeID = 0;
   protected int ID;
   protected Grid grid; // The grid this element is part of
   protected PlayersCollection players = new PlayersCollection(); // Collection of players currently
                                                                  // on this element
   protected Class<?> neighborType; // The type of elements that can be neighbors to this element
-  protected int capacityOfNeighbors; // Capacity of neighboring elements, not explicitly used
+  protected int capacityOfNeighbors = Integer.MAX_VALUE; // Capacity of neighboring elements, not
+                                                         // explicitly used
   protected Set<Element> neighbors = new HashSet<>();// The set of neighboring elements
 
   @Override
@@ -46,16 +47,18 @@ public abstract class Element {
    * 
    * @param player The player to add to this element.
    */
-  public void addPlayer(Player player) {
-    try {
-      player.setLocation(this); // Set the player's location to this element
-      players.add(player); // Add the player to the collection
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
+  public void addPlayer(Player player) throws Exception {
+    if (players.size() == capacityOfNeighbors)
+      throw new Exception("[The element has to many players standing on it!]");
+    String before = toString();
+    if (player.getLocation() != null)
+      player.getLocation().removePlayer(player); // remove player from previous location
+    player.setLocation(this); // Set the player's location to this element
+    players.add(player); // Add the player to the collection
+    Output.printChange(before, toString());
   }
 
-  public void addPlayers(Collection<Player> players) {
+  public void addPlayers(Collection<Player> players) throws Exception {
     for (Player p : players) {
       addPlayer(p);
     }
@@ -67,7 +70,9 @@ public abstract class Element {
    * @param player The player to remove from this element.
    */
   public void removePlayer(Player player) {
+    String before = toString();
     players.remove(player); // Remove the player from the collection
+    Output.printChange(before, toString());
   }
 
   /**
@@ -75,14 +80,17 @@ public abstract class Element {
    * 
    * @param neighbor The element to be added as a neighbor.
    */
-  public void addNeighbor(Element neighbor) /* throws Exception */ {
+  public void addNeighbor(Element neighbor) throws Exception {
     if (neighborType.isInstance(neighbor)) {
+      String before = toString();
       neighbors.add(neighbor); // Add the neighbor
       if (!neighbor.isConnected(this)) { // Check if the neighbor is already connected
         neighbor.addNeighbor(this); // Add this element as a neighbor to the neighbor
       }
+      Output.printChange(before, toString());
     } else {
-      // throw new IllegalArgumentException("Invalid neighbor type");
+      throw new IllegalArgumentException(
+          "[You cant add " + neighbor.type() + " into " + this.type() + "!]");
     }
   }
 
@@ -91,8 +99,18 @@ public abstract class Element {
    * 
    * @param neighbor The neighbor to remove.
    */
-  public void removeNeighbor(Element neighbor) {
-    neighbors.remove(neighbor); // Remove the neighbor
+  public void removeNeighbor(Element neighbor) throws Exception {
+    if (neighborType.isInstance(neighbor)) {
+      String before = toString();
+      neighbors.remove(neighbor);
+      if (neighbor.isConnected(this)) { // Check if the neighbor is already connected
+        neighbor.removeNeighbor(this); // Add this element as a neighbor to the neighbor
+      }
+      Output.printChange(before, toString());
+    } else {
+      throw new IllegalArgumentException(
+          "[You cant remove " + neighbor.type() + " from " + this.type() + "!]");
+    }
   }
 
   /**
@@ -121,7 +139,7 @@ public abstract class Element {
    * @return A string representing the type of this element.
    */
   public abstract String type();
-  
+
   public int getID() {
     return ID;
   }

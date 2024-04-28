@@ -25,16 +25,16 @@ public abstract class Player {
   protected Grid grid;
 
   /**
-   * Provides a string representation of the player, typically used for debugging purposes.
-   * This is also used as outptu for the tests.
+   * Provides a string representation of the player, typically used for debugging purposes. This is
+   * also used as outptu for the tests.
    * 
    * @return A string representation of the player, including the player's name and location.
    */
   @Override
-  public String toString(){
-    return "%s,%s".formatted(name,location != null ? location.hashCode() : "null");
+  public String toString() {
+    return "%s,%s".formatted(name, location != null ? location.hashCode() : "null");
   }
-  
+
   /**
    * Generates a hash code based on the player's name. This method is overridden to ensure that
    * players can be effectively used in collections that rely on hash codes.
@@ -65,26 +65,6 @@ public abstract class Player {
     return Objects.equals(name, other.name);
   }
 
-  /**
-   * An empty implementation of the keyTyped method from the KeyListener interface.
-   * 
-   * @param e The KeyEvent triggered when a key is typed.
-   */
-  public void keyTyped(KeyEvent e) {}
-
-  /**
-   * An empty implementation of the keyPressed method from the KeyListener interface.
-   * 
-   * @param e The KeyEvent triggered when a key is pressed.
-   */
-  public void keyPressed(KeyEvent e) {}
-
-  /**
-   * An empty implementation of the keyReleased method from the KeyListener interface.
-   * 
-   * @param e The KeyEvent triggered when a key is released.
-   */
-  public void keyReleased(KeyEvent e) {}
 
   /**
    * Default constructor for creating a player without initial properties.
@@ -111,26 +91,20 @@ public abstract class Player {
    * location and not being occupied by too many players.
    */
   public void move() {
-    Output.println("|-------------5.2.9 The " + type() + " moves from " + location.type() + " to "
-        + grid.getSelectedElement().type() + "-------------|", Color.LIGHT_BLUE);
-    System.out.println("move()");
     try {
-      if (location.isConnected(grid.getSelectedElement())) {
-        System.out.println("Is the destination element free of players? [y]es/[n]o");
-        if (Input.getChar("yn") == 'y') {
-          grid.getSelectedElement().addPlayer(this);
-          location.removePlayer(this);
-          location = grid.getSelectedElement();
-        } else {
-          Output.println("The element has to many players standing on it!", Color.LIGHT_RED);
-        }
-      } else {
-        Output.println("The destination is too far!", Color.LIGHT_RED);
-      }
+      grid.setSelectedElement();
+      Element destination = grid.getSelectedElement();
+      if (!location.isConnected(destination))
+        throw new Exception("[The destination is too far!]");
+
+      String before = toString();
+      destination.addPlayer(this);
+      Output.printChange(before, toString());
+
+
     } catch (Exception e) {
+      Output.println(e.getMessage(), Color.LIGHT_RED);
     }
-    Output.println("|--------------------------------------------------------------------|\n",
-        Color.LIGHT_BLUE);
   }
 
   /**
@@ -203,5 +177,9 @@ public abstract class Player {
    */
   public void setLocation(Element location) {
     this.location = location;
+  }
+
+  public Element getLocation() {
+    return location;
   }
 }

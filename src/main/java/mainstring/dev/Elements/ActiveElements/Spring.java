@@ -34,18 +34,11 @@ public class Spring extends ActiveElement {
    * process of water flowing into pipes from the spring.
    */
   @Override
-  public void Flow() {
-    Output.println(
-        "|----------------5.2.14.2 Calculation of the flow at a spring-----------------|",
-        Color.LIGHT_BLUE);
-    System.out.println("Flow()");
+  public void Flow(Pipe iniciator) {
+    System.out.println(this);
     for (Element neighbor : neighbors) {
-      if (neighbor instanceof Pipe) {
-        ((Pipe) neighbor).fill();
-      }
+      ((Pipe) neighbor).fill(this);
     }
-    Output.println("|--------------------------------------------------------------------|\n",
-        Color.LIGHT_BLUE);
   }
 
   /**

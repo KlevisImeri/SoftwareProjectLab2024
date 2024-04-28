@@ -1,0 +1,38 @@
+java.lang.NullPointerException: Cannot invoke "mainstring.dev.Players.Player.getLocation()" because "player" is null
+	at mainstring.dev.Elements.Element.addPlayer(Element.java:54)
+	at mainstring.dev.Grid.setUpSpring(Grid.java:161)
+	at mainstring.dev.Grid.<init>(Grid.java:88)
+	at mainstring.dev.Game.startGame(Game.java:35)
+	at mainstring.dev.Game.<init>(Game.java:26)
+	at mainstring.dev.Main.main(Main.java:5)
+	at org.codehaus.mojo.exec.ExecJavaMojo$1.run(ExecJavaMojo.java:254)
+	at java.base/java.lang.Thread.run(Thread.java:1623)
+Pipes:
+p,ID:0,[],[8],HEALTHY,EMPTY
+p,ID:1,[],[8],HEALTHY,EMPTY
+p,ID:2,[Klevis],[5],HEALTHY,EMPTY
+p,ID:3,[Ibrahim],[5],HEALTHY,EMPTY
+p,ID:4,[],[],HEALTHY,EMPTY
+
+Active Elements:
+C,ID:5,[Murad],[2,3],[6],[7],0
+
+Selected Element: null
+Selected ActiveElement: null
+Selected Pipe: null
+
+Water in Desert: 0
+
+java.util.NoSuchElementException
+	at java.base/java.util.Scanner.throwFor(Scanner.java:945)
+	at java.base/java.util.Scanner.next(Scanner.java:1486)
+	at mainstring.dev.Input.getChar(Input.java:61)
+	at mainstring.dev.Input.getChar(Input.java:65)
+	at mainstring.dev.Players.Plumber.keyTyped(Plumber.java:201)
+	at mainstring.dev.Players.Plumber.active(Plumber.java:173)
+	at mainstring.dev.Game.mainLoop(Game.java:110)
+	at mainstring.dev.Game.startGame(Game.java:36)
+	at mainstring.dev.Game.<init>(Game.java:26)
+	at mainstring.dev.Main.main(Main.java:5)
+	at org.codehaus.mojo.exec.ExecJavaMojo$1.run(ExecJavaMojo.java:254)
+	at java.base/java.lang.Thread.run(Thread.java:1623)
