@@ -4,12 +4,11 @@ Murad
 Diamond
 Ibrahim
 n
+1	
+[Klevis],null,null
 2
-Klevis
-[]
-3
-C,[0],[Diamond],1,1
-S,[1],[Ibrahim]
-P,[0,1],[Murad],BROKEN,1,0
+C,[0],[Diamond,Murad],1,1
+S,[0],[Ibrahim]
+printP
 printG
 exit
