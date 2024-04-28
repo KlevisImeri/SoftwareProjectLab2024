@@ -121,7 +121,7 @@ public abstract class Element {
    * @return A string representing the type of this element.
    */
   public abstract String type();
-
+  
   public int getID() {
     return ID;
   }

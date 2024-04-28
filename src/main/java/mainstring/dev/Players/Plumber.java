@@ -106,20 +106,15 @@ public class Plumber extends Player {
    * Fixes the element at the Plumber's current location if it is a Pump or Pipe.
    */
   public void fix() { // used
-    Output.println(
-        "|-----------------------5.2.11 Fixing " + location.type() + "--------------------------|",
-        Color.LIGHT_BLUE);
     if (location instanceof Pump) {
       ((Pump) location).fix();
     } else if (location instanceof Pipe) {
       ((Pipe) location).fix();
     } else if (location instanceof Cistern) {
-      Output.println("You can't fix a cistern", Color.LIGHT_RED);
+      Output.println("[You can't fix a cistern!]", Color.LIGHT_RED);
     } else if (location instanceof Spring) {
-      Output.println("You can't fix a spring", Color.LIGHT_RED);
+      Output.println("[You can't fix a spring!]", Color.LIGHT_RED);
     }
-    Output.println("|--------------------------------------------------------------------|\n",
-        Color.LIGHT_BLUE);
   }
 
   /**
@@ -199,18 +194,15 @@ public class Plumber extends Player {
    */
   @Override
   public void active() {
-    System.out.println("active()");
     keyTyped();
   }
 
   /**
    * Defines the plumber's passive behavior in the game. Currently, this method does not implement
-   * any specific behavior.
+   * any specific behavior. This is for future implementatoin when gui is needed.
    */
   @Override
-  public void passive() {
-    System.out.println("passive()");
-  }
+  public void passive() { }
 
   /**
    * Processes player input to determine the action the plumber should take. This method allows the
@@ -219,14 +211,17 @@ public class Plumber extends Player {
    */
   public void keyTyped() {
     System.out.println("What does the player do?");
-    System.out.println("[m]ove");
-    System.out.println("changePump[D]irection()");
-    System.out.println("[d]isnnectPipe()");
-    System.out.println("[c]onnectPipe()");
-    System.out.println("[f]ix()");
-    System.out.println("[i]nsertPump()");
-    System.out.println("[p]ickPump()");
-    System.out.println("pick[P]ipe()");
+    String lightMagenta = "\u001B[95m";
+    String resetColor = "\u001B[0m";
+    System.out.println(lightMagenta + "[m]" + resetColor + "ove");
+    System.out.println("changePump" + lightMagenta + "[D]" + resetColor + "irection()");
+    System.out.println(lightMagenta + "[d]" + resetColor + "isconnectPipe()");
+    System.out.println(lightMagenta + "[c]" + resetColor + "onnectPipe()");
+    System.out.println(lightMagenta + "[f]" + resetColor + "ix()");
+    System.out.println(lightMagenta + "[i]" + resetColor + "nsertPump()");
+    System.out.println(lightMagenta + "[p]" + resetColor + "ickPump()");
+    System.out.println(lightMagenta + "[P]" + resetColor + "ipe()");
+
     switch (Input.getChar("DmdcfipP")) {
       case 'm':
         move();

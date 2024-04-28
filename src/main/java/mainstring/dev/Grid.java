@@ -60,7 +60,7 @@ public class Grid {
    */
   public Grid(PlayersCollection players) {
     try {
-      Output.println("\n[Setting Up the Grid]", Color.LIGHT_BLUE);
+      Output.print("\n[Setting Up the Grid]", Color.LIGHT_BLUE);
 
       this.players = players;
       for (Player p : players.getPlayers()) {
@@ -90,8 +90,6 @@ public class Grid {
         }
 
       }
-
-      Output.println("[Grid is Setup]", Color.LIGHT_GREEN);
     } catch (Exception e) {
       e.printStackTrace();
     }
@@ -127,11 +125,14 @@ public class Grid {
     // C,[1,3...n],[player1...player2],2,3
     this.cistern = new Cistern(this);
     for (String pipeIndx : Input.split(activeElem[1])) {
+      if (pipeIndx.isEmpty())
+        continue;
       cistern.addNeighbor(pipes.get(Integer.parseInt(pipeIndx)));
     }
 
     for (String player : Input.split(activeElem[2])) {
-      System.out.println(player);
+      if (player.isEmpty())
+        continue;
       cistern.addPlayer(players.get(player));
     }
     for (int j = 0; j < Integer.parseInt(activeElem[3]); j++) {
@@ -147,9 +148,13 @@ public class Grid {
     // S,[1,3...n],[player1...player2]
     this.spring = new Spring(this);
     for (String pipeIndx : Input.split(activeElem[1])) {
+      if (pipeIndx.isEmpty())
+        continue;
       spring.addNeighbor(pipes.get(Integer.parseInt(pipeIndx)));
     }
     for (String player : Input.split(activeElem[2])) {
+      if (player.isEmpty())
+        continue;
       spring.addPlayer(players.get(player));
     }
     activeElements.add(spring);
@@ -250,15 +255,10 @@ public class Grid {
    * Calculates and processes the flow through all active elements in the grid.
    */
   public void caculateFlow() {
-    Output.println(
-        "|-------------------------------5.2.14.1 Calculation of general flow----------------------------|",
-        Color.LIGHT_BLUE);
-    System.out.println("cacualteFlow()");
+    Output.println("[Flowing]", Color.LIGHT_BLUE);
     for (ActiveElement e : activeElements) {
       e.Flow();
     }
-    Output.println("|--------------------------------------------------------------------|\n",
-        Color.LIGHT_BLUE);
   }
 
   /**

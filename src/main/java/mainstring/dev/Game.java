@@ -13,7 +13,7 @@ import mainstring.dev.Players.Saboteur;
  * termination of the game. It manages player selection, game loop, and displaying results.
  */
 public class Game {
-  public PlayersCollection players  = new PlayersCollection();
+  public PlayersCollection players = new PlayersCollection();
   public Grid grid;
   public Menu menu = new Menu();
 
@@ -104,13 +104,13 @@ public class Game {
    */
   private void mainLoop() {
     Output.println("\n[Game Started]", Color.LIGHT_BLUE);
-    System.out.println("Did the game end? [y]es/[n]o");
+    Output.println("Did the game end? [y]es/[n]o",  Color.WHITE);
     while (Input.getChar("yn") == 'n') {
       Player player = players.selectRandom();
       player.active();
       player.passive();
       grid.caculateFlow();
-      System.out.println("Did the game end? [y]es/[n]o");
+      Output.println("Did the game end? [y]es/[n]o", Color.WHITE);
     }
   }
   /*---------------------------------------------main Loop------------------------------------------- */

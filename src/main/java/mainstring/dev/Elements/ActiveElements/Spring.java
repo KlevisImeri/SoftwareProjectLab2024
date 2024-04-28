@@ -23,7 +23,6 @@ public class Spring extends ActiveElement {
    */
   public Spring(Grid grid) {
     super(grid);
-    System.out.println("Spring()");
   }
 
   /**

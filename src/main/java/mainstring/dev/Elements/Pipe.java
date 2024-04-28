@@ -2,6 +2,8 @@ package mainstring.dev.Elements;
 
 import mainstring.dev.Elements.ActiveElements.ActiveElement;
 import mainstring.dev.Grid;
+import mainstring.dev.Output;
+import mainstring.dev.Output.Color;
 
 /**
  * Represents a Pipe element within the grid, extending the functionalities of an Element. Pipes can
@@ -46,7 +48,6 @@ public class Pipe extends Element {
    * Sets the pipe's health state to LEAKING, indicating damage.
    */
   public void puncture() {
-    System.out.println("puncture()");
     healthState = PipeHealthState.LEAKING;
   }
 
@@ -55,8 +56,10 @@ public class Pipe extends Element {
    * details are not provided, so additional logic may be needed.
    */
   public void fix() {
-    System.out.println("fix()");
-    // Implementation details for fixing the pipe should go here
+    System.out.print(this);
+    healthState = PipeHealthState.HEALTHY;
+    Output.print("  ->  ", Color.LIGHT_RED);
+    System.out.println(this);
   }
 
   /**
@@ -64,12 +67,10 @@ public class Pipe extends Element {
    * instead. Otherwise, the pipe's flow state is set to FULL.
    */
   public void fill() {
-    System.out.println("fill()");
     if (healthState == PipeHealthState.LEAKING) {
       grid.addWaterToDesert();
       return;
     }
-    System.out.println("The pipe is filled");
     flowState = PipeFlowState.FULL;
   }
 
@@ -77,7 +78,6 @@ public class Pipe extends Element {
    * Empties the pipe, setting its flow state to EMPTY.
    */
   public void empty() {
-    System.out.println("empty()");
     flowState = PipeFlowState.EMPTY;
   }
 
@@ -87,7 +87,6 @@ public class Pipe extends Element {
    * @return true if the pipe's flow state is FULL, false otherwise.
    */
   public boolean isFull() {
-    System.out.println("isFull()");
     return flowState == PipeFlowState.FULL;
   }
 

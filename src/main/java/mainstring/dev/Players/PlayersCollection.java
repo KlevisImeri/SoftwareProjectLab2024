@@ -46,7 +46,7 @@ public class PlayersCollection {
    */
   public boolean add(Player player) {
     if (playersMap.containsKey(player.getName())) {
-      Output.println("The player has been added before!", Color.LIGHT_RED);
+      Output.println("[The player has been added before!]", Color.LIGHT_RED);
       return false;
     } else {
       playersMap.put(player.getName(), player);
@@ -80,10 +80,9 @@ public class PlayersCollection {
    * @return The player corresponding to the entered name.
    */
   public Player selectRandom() {
-    System.out.println("selectRandom()");
-    System.out.println("What player do you want to return? [name]");
+    Output.println("Who's turn? [name]", Color.WHITE);
     for (Player p : playersMap.values()) {
-      Output.println(p.toString(), Color.LIGHT_MAGENTA);
+      Output.println(p.getName(), Color.LIGHT_MAGENTA);
     }
     while (true) {
       String name = Input.getLine();

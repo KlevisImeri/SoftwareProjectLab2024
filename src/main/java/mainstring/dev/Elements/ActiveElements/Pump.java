@@ -3,6 +3,7 @@ package mainstring.dev.Elements.ActiveElements;
 
 // import mainstring.dev.Grid;
 import mainstring.dev.Elements.Pipe;
+import mainstring.dev.Elements.Pipe.PipeHealthState;
 // import mainstring.dev.UI.GUI.PumpGUI;
 // import java.awt.event.ActionListener;
 // import java.awt.event.MouseListener;
@@ -105,7 +106,8 @@ public class Pump extends ActiveElement {
    */
   public Pump(Grid grid) {
     super(grid);
-    schedulePipeBreak();
+    // This is turn off for prototype
+    // schedulePipeBreak(); 
   }
 
   /**
@@ -132,7 +134,10 @@ public class Pump extends ActiveElement {
    * Simulates repairing the pump, potentially changing its state from BROKEN to HEALTHY.
    */
   public void fix() {
-    this.state = PumpState.HEALTHY;
+    System.out.print(this);
+    state = PumpState.HEALTHY;
+    Output.print("  ->  ", Color.LIGHT_RED);
+    System.out.println(this);
   }
 
   /**
@@ -140,7 +145,6 @@ public class Pump extends ActiveElement {
    * output pipes, but the specifics are not defined in this method's body.
    */
   public void changeDirection() {
-    System.out.println("changeDirection()");
     // The implementation of flow direction change logic goes here
   }
 
@@ -155,8 +159,9 @@ public class Pump extends ActiveElement {
   public void Flow() {
     Output.println("[Water flowing at [P,ID:" + getID() +"]]", Color.LIGHT_BLUE);
     if (in.isFull()) {
-      if (state == PumpState.BROKEN) {
-        // If the pump is broken and the input pipe is full, water is added to the reservoir
+      if (state == PumpState.BROKEN || out.isFull()) {
+        // If the pump is broken and the input pipe is full, water is added to the reservoir or
+        // If the out pipe is full  water is added to the reservoir;
         reservoir.addWater();
       } else {
         // If the pump is healthy and the input pipe is full, water is transferred to the output
@@ -167,8 +172,8 @@ public class Pump extends ActiveElement {
       in.empty();
     } else {
       if (state != PumpState.BROKEN && reservoir.totalWater!=0) {
-        // If the pump is healthy and the reservoir is not full, water is removed from the reservoir
-        // and transferred to the output pipe
+        // If the pump is healthy and the reservoir is not empty, water is 
+        // removed from the reservoir and transferred to the output pipe
         reservoir.removeWater();
         out.fill();
       }
