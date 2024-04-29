@@ -12,7 +12,7 @@ run_test() {
     # Check if both files exist before comparing
     if [[ -f "Tests/TestsIn/test$i.in" && -f "Tests/TestsOut/test$i.out" ]]; then
         # Compile and redirect error stream
-        mvn -q exec:java < "Tests/TestsIn/test$i.in" 2> "Tests/Out/$i.out"
+        mvn -q exec:java < "Tests/TestsIn/test$i.in" > /dev/null 2> "Tests/Out/$i.out"
         # Compare files using diff
         if diff -b -Z -B "Tests/Out/$i.out" "Tests/TestsOut/test$i.out"; then
             echo -e "\e[32mTest $i passed\e[0m"  # Output "Test passed" in green
