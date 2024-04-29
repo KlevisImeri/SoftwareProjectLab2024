@@ -22,11 +22,22 @@ public abstract class Element {
                                                          // explicitly used
   protected Set<Element> neighbors = new HashSet<>();// The set of neighboring elements
 
+  /**
+   * Returns a hash code value for the element based on its unique identifier.
+   * 
+   * @return The hash code value for the element.
+   */
   @Override
   public int hashCode() {
     return ID;
   }
 
+  /**
+   * Returns a string representation of the element including its identifier, associated players,
+   * and neighboring elements.
+   * 
+   * @return A string representation of the element.
+   */
   @Override
   public String toString() {
     return "ID:%s,%s,%s".formatted(ID, players.toStringID(), Output.toStringID(neighbors));
@@ -58,6 +69,12 @@ public abstract class Element {
     Output.printChange(before, toString());
   }
 
+  /**
+   * Adds multiple players to the collection of players associated with the element.
+   * 
+   * @param players The collection of players to add.
+   * @throws Exception If an error occurs while adding a player.
+   */
   public void addPlayers(Collection<Player> players) throws Exception {
     for (Player p : players) {
       addPlayer(p);
@@ -140,6 +157,11 @@ public abstract class Element {
    */
   public abstract String type();
 
+  /**
+   * Retrieves the unique identifier (ID) of the element.
+   * 
+   * @return The unique identifier (ID) of the element.
+   */
   public int getID() {
     return ID;
   }

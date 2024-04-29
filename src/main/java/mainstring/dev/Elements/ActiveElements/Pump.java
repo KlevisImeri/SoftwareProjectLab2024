@@ -51,6 +51,11 @@ public class Pump extends ActiveElement {
       totalWater--;
     }
 
+    /**
+     * Returns a string representation of the reservoir.
+     *
+     * @return A string representing the reservoir, including its capacity and total water.
+     */
     @Override
     public String toString() {
       return "[R,%s,%s]".formatted(capacity, totalWater);
@@ -64,6 +69,13 @@ public class Pump extends ActiveElement {
   private Pipe out; // The output pipe connected to this pump
   private Timer timer = new Timer(); // A timer used to schedule pump failure simulations
 
+  /**
+   * Returns a string representation of the pump, including its state, reservoir details, and
+   * connected pipes.
+   *
+   * @return A string representing the pump, including its state, reservoir details, and connected
+   *         pipes.
+   */
   @Override
   public String toString() {
     return "P,%s,%s,%s,%s,%s".formatted(super.toString(), reservoir, state,
@@ -111,7 +123,8 @@ public class Pump extends ActiveElement {
    */
   public void setInPipe(Pipe pipe) throws Exception {
     String before = toString();
-    if(!isConnected(pipe)) addNeighbor(pipe);
+    if (!isConnected(pipe))
+      addNeighbor(pipe);
     this.in = pipe;
     Output.printChange(before, toString());
   }
@@ -123,7 +136,8 @@ public class Pump extends ActiveElement {
    */
   public void setOutPipe(Pipe pipe) throws Exception {
     String before = toString();
-    if(!isConnected(pipe)) addNeighbor(pipe);
+    if (!isConnected(pipe))
+      addNeighbor(pipe);
     this.out = pipe;
     Output.printChange(before, toString());
   }
@@ -137,17 +151,22 @@ public class Pump extends ActiveElement {
     Output.printChange(before, toString());
   }
 
-
+  /**
+   * Changes the direction of the pump by setting new input and output pipes based on the selected
+   * pipe. If the selected pipe is far away or not connected, it throws an exception.
+   * 
+   * @throws Exception If the selected pipe is far away or not connected.
+   */
   public void changeDirection() {
     try {
       grid.setSelectedPipe();
-      if(isConnected(grid.getSelectedPipe())){
+      if (isConnected(grid.getSelectedPipe())) {
         setInPipe(grid.getSelectedPipe());
       } else {
         throw new Exception("[The selected Pipe is far away]");
       }
       grid.setSelectedPipe();
-      if(isConnected(grid.getSelectedPipe())){
+      if (isConnected(grid.getSelectedPipe())) {
         setOutPipe(grid.getSelectedPipe());
       } else {
         throw new Exception("[The selected Pipe is far away]");
@@ -166,7 +185,8 @@ public class Pump extends ActiveElement {
    */
   @Override
   public void Flow(Pipe iniciator) {
-    if (iniciator != in) return;
+    if (iniciator != in)
+      return;
     String before = this.toString();
     if (in.isFull()) {
       if (state == PumpState.BROKEN || out.isFull()) {
@@ -176,7 +196,7 @@ public class Pump extends ActiveElement {
         reservoir.addWater();
       } else {
         // If the pump is healthy and the input pipe is full, water is transferred to the output
-        // pipe        
+        // pipe
         in.empty();
         Output.printChange(before, this.toString());
         out.fill(this);
@@ -190,7 +210,7 @@ public class Pump extends ActiveElement {
         out.fill(this);
       }
     }
-    
+
   }
 
   /**

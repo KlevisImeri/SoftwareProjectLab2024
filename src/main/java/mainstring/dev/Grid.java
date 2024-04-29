@@ -31,6 +31,12 @@ public class Grid {
   private Pipe selectedPipe;
   // private Pump selectedPump; // Uncomment if needed for game logic.
 
+  /**
+   * Returns a string representation of the grid, including information about pipes, active
+   * elements, selected elements, selected active elements, selected pipe, and water in the desert.
+   * 
+   * @return A formatted string representing the grid.
+   */
   @Override
   public String toString() {
     return """
@@ -95,6 +101,12 @@ public class Grid {
   }
 
   /*---------------------------------------Setups---------------------------------------------*/
+  /**
+   * Sets up a pipe based on user input, adding it to the grid and configuring its properties such
+   * as players associated with the pipe, health state, and flow state.
+   * 
+   * @throws Exception If an error occurs during the setup process.
+   */
   private void setUpPipe() throws Exception {
     Pipe pipe = new Pipe(this);
     pipes.add(pipe);
@@ -120,6 +132,13 @@ public class Grid {
     }
   }
 
+  /**
+   * Sets up a cistern based on the provided information, adding it to the grid and configuring its
+   * properties such as neighboring pipes, associated players, and the creation of pumps and pipes.
+   * 
+   * @param activeElem An array containing the information needed to set up the cistern.
+   * @throws Exception If an error occurs during the setup process.
+   */
   private void setUpCistern(String[] activeElem) throws Exception {
     // C,[1,3...n],[player1...player2],2,3
     this.cistern = new Cistern(this);
@@ -143,6 +162,13 @@ public class Grid {
     activeElements.add(cistern);
   }
 
+  /**
+   * Sets up a spring based on the provided information, adding it to the grid and configuring its
+   * properties such as neighboring pipes and associated players.
+   * 
+   * @param activeElem An array containing the information needed to set up the spring.
+   * @throws Exception If an error occurs during the setup process.
+   */
   private void setUpSpring(String[] activeElem) throws Exception {
     // S,[1,3...n],[player1...player2]
     this.spring = new Spring(this);
@@ -159,6 +185,13 @@ public class Grid {
     activeElements.add(spring);
   }
 
+  /**
+   * Sets up a pump based on the provided information, adding it to the grid and configuring its
+   * properties such as neighboring pipes, associated players, and current state.
+   * 
+   * @param activeElem An array containing the information needed to set up the pump.
+   * @throws Exception If an error occurs during the setup process.
+   */
   private void setUpPump(String[] activeElem) throws Exception {
     // The first two pipes (1,3) in this case are the in and out pipe respectevely
     // P,[1,3...n],[player1...player2],HEALTHY,1,3
@@ -222,7 +255,11 @@ public class Grid {
     return selectedActiveElement;
   }
 
-
+  /**
+   * Sets the selected active element based on the user input ID. If the ID matches an active
+   * element's ID, sets both the selected element and selected active element to that active
+   * element.
+   */
   public void setSelectedActiveElement() {
     int ID = Input.getInt(0, Element.FreeID);
     for (ActiveElement a : activeElements) {
@@ -279,6 +316,11 @@ public class Grid {
     activeElements.add(pump);
   }
 
+  /**
+   * Adds a pipe to the list of pipes.
+   * 
+   * @param pipe The pipe to be added.
+   */
   public void addPipe(Pipe pipe) {
     pipes.add(pipe);
   }

@@ -65,12 +65,24 @@ public abstract class Output {
     System.out.print(Color.RESET.Code()); // Reset color to default
   }
 
+  /**
+   * Prints a string with the specified color.
+   * 
+   * @param s The string to be printed.
+   * @param c The color of the text to be printed.
+   */
   public static void print(Object s, Color c) {
     System.out.print(c.Code());
     System.out.print(s); // Print the string
     System.out.print(Color.RESET.Code()); // Reset color to default
   }
 
+  /**
+   * Prints the change between two strings, highlighting the difference.
+   * 
+   * @param before The string before the change.
+   * @param after The string after the change.
+   */
   public static void printChange(String before, String after) {
     System.out.print(before);
     print(" -> ", Color.LIGHT_RED);

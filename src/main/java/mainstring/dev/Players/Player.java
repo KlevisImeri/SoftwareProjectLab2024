@@ -172,6 +172,11 @@ public abstract class Player {
     this.location = location;
   }
 
+  /**
+   * Retrieves the location of the player.
+   * 
+   * @return The location of the player.
+   */
   public Element getLocation() {
     return location;
   }

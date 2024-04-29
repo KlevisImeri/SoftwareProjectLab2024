@@ -13,9 +13,9 @@ import mainstring.dev.Grid;
  */
 public class Cistern extends ActiveElement {
   protected Stack<Pump> newPumps = new Stack<>(); // List of pumps created and managed by this
-                                                     // cistern
+                                                  // cistern
   protected Stack<Pipe> newPipes = new Stack<>(); // List of pipes created and managed by this
-                                                     // cistern
+                                                  // cistern
   protected int waterAmount = 0;// The amount of water currently stored in this cistern
   // For future use timers:
   // protected Timer timerPipe = new Timer(); // Timer for creating pipes
@@ -59,14 +59,15 @@ public class Cistern extends ActiveElement {
    * Adds water to the cistern, ensuring the water amount does not become negative.
    */
   private void addWater() {
-  waterAmount++;
+    waterAmount++;
   }
 
   /**
    * Removes water from the cistern, ensuring the water amount does not become negative.
    */
   private void removewater() {
-    if(waterAmount == 0) return;
+    if (waterAmount == 0)
+      return;
     waterAmount--;
   }
 
@@ -90,7 +91,8 @@ public class Cistern extends ActiveElement {
    */
   public Pump getPump() throws Exception {
     String before = toString();
-    if(newPumps.size()==0) throw new Exception("[No More Pumps!]");
+    if (newPumps.size() == 0)
+      throw new Exception("[No More Pumps!]");
     Pump p = newPumps.pop();
     Output.printChange(before, toString());
     return p;
@@ -103,9 +105,10 @@ public class Cistern extends ActiveElement {
    * 
    * @return The first new pipe if available, otherwise null.
    */
-  public Pipe getPipe()  throws Exception {
+  public Pipe getPipe() throws Exception {
     String before = toString();
-    if(newPipes.size()==0) throw new Exception("[No More Pipes!]");
+    if (newPipes.size() == 0)
+      throw new Exception("[No More Pipes!]");
     Pipe p = newPipes.pop();
     Output.printChange(before, toString());
     return p;
@@ -120,7 +123,7 @@ public class Cistern extends ActiveElement {
   @Override
   public void Flow(Pipe iniciator) {
     String before = this.toString();
-    if(iniciator.isFull()) {
+    if (iniciator.isFull()) {
       iniciator.empty();
       addWater();
     }

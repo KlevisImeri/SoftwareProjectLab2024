@@ -53,7 +53,7 @@ public class Plumber extends Player {
   public void disconnectPipe() {
     try {
       grid.setSelectedPipe();
-      
+
       Pipe sp = grid.getSelectedPipe();
       if (location.isConnected(sp)) {
         if (carryPipe == null) {
@@ -66,7 +66,7 @@ public class Plumber extends Player {
         }
       } else {
         throw new Exception("[The pipe is too far away!]");
-      }    
+      }
     } catch (Exception e) {
       Output.println(e.getMessage(), Color.LIGHT_RED);
     }
@@ -78,7 +78,7 @@ public class Plumber extends Player {
    */
   public void connectPipe() {
     try {
-      if(carryPipe == null) {
+      if (carryPipe == null) {
         String before = toString();
         location.addNeighbor(carryPipe);
         grid.addPipe(carryPipe);
@@ -119,9 +119,9 @@ public class Plumber extends Player {
 
           Pipe newPipe = new Pipe(grid);
           List<Element> neighbors = location.getNeighbors();
-          location.removeNeighbor(neighbors.get(1)); 
-          
-          
+          location.removeNeighbor(neighbors.get(1));
+
+
           carryPump.setInPipe(newPipe);
           carryPump.setOutPipe((Pipe) location);
           carryPump.addPlayer(this);
@@ -150,7 +150,8 @@ public class Plumber extends Player {
    */
   public void pickPump() {
     try {
-      if (!(location instanceof Cistern)) throw new Exception("[You are not at the cistern!]");
+      if (!(location instanceof Cistern))
+        throw new Exception("[You are not at the cistern!]");
       String before = toString();
       carryPump = ((Cistern) location).getPump();
       Output.printChange(before, toString());

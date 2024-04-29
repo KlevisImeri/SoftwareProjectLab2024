@@ -51,7 +51,7 @@ public class Pipe extends Element {
   public void puncture() {
     String before = toString();
     healthState = PipeHealthState.LEAKING;
-    if(flowState == PipeFlowState.FULL){
+    if (flowState == PipeFlowState.FULL) {
       flowState = PipeFlowState.EMPTY;
       grid.addWaterToDesert();
     }
@@ -65,10 +65,16 @@ public class Pipe extends Element {
   public void fix() {
     String before = this.toString();
     healthState = PipeHealthState.HEALTHY;
-    Output.printChange(before,this.toString());
+    Output.printChange(before, this.toString());
   }
 
-
+  /**
+   * Fills the pipe with water, changing its flow state to FULL. If the pipe is leaking, water is
+   * added to the desert grid instead. After filling the pipe, the method triggers the flow of water
+   * from the initiating active element to its neighboring pipes.
+   * 
+   * @param initiator The active element that initiated the flow of water into this pipe.
+   */
   public void fill(ActiveElement iniciator) {
     String before = toString();
     if (healthState == PipeHealthState.LEAKING) {
@@ -77,7 +83,8 @@ public class Pipe extends Element {
       flowState = PipeFlowState.FULL;
     }
     Output.printChange(before, toString());
-    if(iniciator==null) return; //grid set it up
+    if (iniciator == null)
+      return; // grid set it up
     getOtherNeighbor(iniciator).Flow(this);
   }
 
@@ -109,9 +116,17 @@ public class Pipe extends Element {
     return "pipe";
   }
 
+  /**
+   * Retrieves the neighboring active element that is not equal to the specified active element.
+   * 
+   * @param e The active element for which to find the other neighboring active element.
+   * @return The neighboring active element that is not equal to the specified active element, or
+   *         null if no such element is found.
+   */
   private ActiveElement getOtherNeighbor(ActiveElement e) {
-    for(Element elem : getNeighbors()){
-      if(elem != e) return (ActiveElement) elem;
+    for (Element elem : getNeighbors()) {
+      if (elem != e)
+        return (ActiveElement) elem;
     }
     return null;
   }

@@ -113,7 +113,12 @@ public abstract class Input {
   }
 
 
-
+  /**
+   * Checks the input for specific commands and performs corresponding actions.
+   * 
+   * @param input The input string to be checked.
+   * @return true if a command was found and executed; false otherwise.
+   */
   private static boolean check(String input) {
     String lowerCaseInput = input.toLowerCase();
     boolean print = false;
@@ -147,6 +152,12 @@ public abstract class Input {
     return print;
   }
 
+  /**
+   * Splits a string into an array of substrings, considering square brackets as delimiters.
+   * 
+   * @param input The input string to be split.
+   * @return An array of substrings after splitting the input string.
+   */
   public static String[] split(String input) {
     boolean hasSquareBrackets = input.startsWith("[") && input.endsWith("]");
     if (hasSquareBrackets) {

@@ -102,6 +102,11 @@ public class PlayersCollection {
     return playersMap.values();
   }
 
+  /**
+   * Returns the number of players in the playersMap.
+   * 
+   * @return The size of the playersMap.
+   */
   public int size() {
     return playersMap.size();
   }
