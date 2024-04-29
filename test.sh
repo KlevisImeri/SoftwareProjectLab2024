@@ -32,7 +32,7 @@ if [[ "$choice" == "all" ]]; then
     done
 else
     # Check if user input is within range
-    if [[ "$choice" =~ ^[0-$n]+$ ]]; then
+    if [[ "$choice" =~ ^[0-9]+$ ]]; then
         run_test $choice
     else
         echo "Invalid choice. Please enter a number between 1 and $n or 'all' for running all tests."

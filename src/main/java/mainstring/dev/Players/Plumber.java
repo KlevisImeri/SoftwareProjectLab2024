@@ -52,17 +52,20 @@ public class Plumber extends Player {
    */
   public void disconnectPipe() {
     try {
+      grid.setSelectedPipe();
+      
       Pipe sp = grid.getSelectedPipe();
       if (location.isConnected(sp)) {
         if (carryPipe == null) {
+          String before = toString();
           location.removeNeighbor(sp);
-          sp.removeNeighbor(location);
           carryPipe = sp;
+          Output.printChange(before, toString());
         } else {
-          Output.println("You are already carrying  a pipe!", Color.LIGHT_RED);
+          throw new Exception("[You are already carrying a pipe!]");
         }
       } else {
-        Output.println("The pipe is too far away!", Color.LIGHT_RED);
+        throw new Exception("[The pipe is too far away!]");
       }    
     } catch (Exception e) {
       Output.println(e.getMessage(), Color.LIGHT_RED);
@@ -75,9 +78,15 @@ public class Plumber extends Player {
    */
   public void connectPipe() {
     try {
-      location.addNeighbor(carryPipe);
-      grid.addPipe(carryPipe);
-      carryPipe = null;
+      if(carryPipe == null) {
+        String before = toString();
+        location.addNeighbor(carryPipe);
+        grid.addPipe(carryPipe);
+        carryPipe = null;
+        Output.printChange(before, toString());
+      } else {
+        throw new Exception("[You don't have a pump!]");
+      }
     } catch (Exception e) {
       Output.println(e.getMessage(), Color.LIGHT_RED);
     }
@@ -106,6 +115,8 @@ public class Plumber extends Player {
     try {
       if (carryPump != null) {
         if (location instanceof Pipe) {
+          String before = toString();
+
           Pipe newPipe = new Pipe(grid);
           List<Element> neighbors = location.getNeighbors();
           location.removeNeighbor(neighbors.get(1)); 
@@ -119,6 +130,8 @@ public class Plumber extends Player {
           grid.addPipe(newPipe);
           grid.addPump(carryPump);
           carryPump = null;
+
+          Output.printChange(before, toString());
         } else {
           throw new Exception("[You can't insert a Pump at a " + location.type() + "]");
         }

@@ -123,6 +123,7 @@ public class Game {
   private void endGame() {
     Output.println("\n[Game Ended]", Color.LIGHT_BLUE);
     displayResults(grid.getWaterAtCistern(), grid.getWaterAtDesert());
+    System.exit(1);
   }
 
   /**

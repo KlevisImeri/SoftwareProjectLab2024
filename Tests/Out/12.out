@@ -1,0 +1,9 @@
+java.lang.NullPointerException: Cannot invoke "mainstring.dev.Players.Player.getLocation()" because "player" is null
+	at mainstring.dev.Elements.Element.addPlayer(Element.java:54)
+	at mainstring.dev.Grid.setUpSpring(Grid.java:157)
+	at mainstring.dev.Grid.<init>(Grid.java:84)
+	at mainstring.dev.Game.startGame(Game.java:35)
+	at mainstring.dev.Game.<init>(Game.java:26)
+	at mainstring.dev.Main.main(Main.java:5)
+	at org.codehaus.mojo.exec.ExecJavaMojo$1.run(ExecJavaMojo.java:254)
+	at java.base/java.lang.Thread.run(Thread.java:1623)

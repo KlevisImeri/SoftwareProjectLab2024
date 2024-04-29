@@ -1,12 +1,8 @@
 package mainstring.dev.Elements.ActiveElements;
 
 import java.util.Timer;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.Stack;
-import mainstring.dev.Input;
 import mainstring.dev.Output;
-import mainstring.dev.Output.Color;
 import mainstring.dev.Elements.*;
 import mainstring.dev.Grid;
 
@@ -21,8 +17,9 @@ public class Cistern extends ActiveElement {
   protected Stack<Pipe> newPipes = new Stack<>(); // List of pipes created and managed by this
                                                      // cistern
   protected int waterAmount = 0;// The amount of water currently stored in this cistern
-  protected Timer timerPipe = new Timer(); // Timer for creating pipes
-  protected Timer timerPump = new Timer(); // Timer for creating pumps
+  // For future use timers:
+  // protected Timer timerPipe = new Timer(); // Timer for creating pipes
+  // protected Timer timerPump = new Timer(); // Timer for creating pumps
 
   @Override
   public String toString() {

@@ -37,16 +37,11 @@ public class Saboteur extends Player {
    * performed if the Saboteur is located on a Pipe element.
    */
   public void puncturePipe() {
-    Output.println("|-----------------5.2.8.1 The Saboteur punctures the pipe-------------------|",
-        Color.LIGHT_BLUE);
-    System.out.println("puncturePipe()");
     if (location instanceof Pipe) {
       ((Pipe) location).puncture();
     } else {
       Output.println("You can only puncture Pipes!", Color.LIGHT_RED);
     }
-    Output.println("|--------------------------------------------------------------------|\n",
-        Color.LIGHT_BLUE);
   }
 
   /**
@@ -56,7 +51,6 @@ public class Saboteur extends Player {
    */
   @Override
   public void active() {
-    System.out.println("active()");
     keyTyped();
   }
 
@@ -65,9 +59,7 @@ public class Saboteur extends Player {
    * any specific behavior.
    */
   @Override
-  public void passive() {
-    System.out.println("passive()");
-  }
+  public void passive() {}
 
   /**
    * Processes player input to determine the action the saboteur should take. This method allows the

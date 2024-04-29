@@ -1,9 +1,7 @@
 package mainstring.dev;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
 import java.util.List;
-import java.util.Queue;
 import mainstring.dev.Elements.ActiveElements.*;
 import mainstring.dev.Output.Color;
 import mainstring.dev.Players.*;
@@ -23,7 +21,6 @@ public class Grid {
   private List<Pipe> pipes = new ArrayList<>();
   private List<ActiveElement> activeElements = new ArrayList<>();
   private PlayersCollection players;
-  private Queue<Element> flowQueue = new LinkedList<>();
 
   // Tracks the amount of water that has ended up in the desert (unusable water).
   private int waterInDesert = 0;
@@ -32,7 +29,6 @@ public class Grid {
   private Element selectedElement;
   private ActiveElement selectedActiveElement;
   private Pipe selectedPipe;
-  private Pipe previousSelectedPipe;
   // private Pump selectedPump; // Uncomment if needed for game logic.
 
   @Override
@@ -251,9 +247,14 @@ public class Grid {
    *
    * @param selectedPipe The Pipe to be set as selected.
    */
-  public void setSelectedPipe(Pipe selectedPipe) {
-    this.selectedElement = selectedPipe;
-    this.selectedPipe = selectedPipe;
+  public void setSelectedPipe() {
+    int ID = Input.getInt(0, Element.FreeID);
+    for (Pipe p : pipes) {
+      if (p.getID() == ID) {
+        this.selectedElement = p;
+        this.selectedPipe = p;
+      }
+    }
   }
   /*------------------------------------get/set Elements--------------------------------------*/
 
@@ -267,10 +268,6 @@ public class Grid {
     System.out.println();
   }
 
-  public void QueueFlow(Element e) {
-    if(e == null) return;
-    flowQueue.offer(e);
-  }
   /*---------------------------------------Flow---------------------------------------------*/
 
   /**

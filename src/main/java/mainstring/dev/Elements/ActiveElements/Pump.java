@@ -1,16 +1,10 @@
 package mainstring.dev.Elements.ActiveElements;
 
 
-// import mainstring.dev.Grid;
 import mainstring.dev.Elements.Pipe;
-import mainstring.dev.Elements.Pipe.PipeHealthState;
-// import mainstring.dev.UI.GUI.PumpGUI;
-// import java.awt.event.ActionListener;
-// import java.awt.event.MouseListener;
 import java.util.Timer;
 import java.util.TimerTask;
 import mainstring.dev.Grid;
-import mainstring.dev.Input;
 import mainstring.dev.Output;
 import mainstring.dev.Output.Color;
 
@@ -116,8 +110,10 @@ public class Pump extends ActiveElement {
    * @param pipe The pipe to be set as the input for this pump.
    */
   public void setInPipe(Pipe pipe) throws Exception {
-    addNeighbor(pipe);
+    String before = toString();
+    if(!isConnected(pipe)) addNeighbor(pipe);
     this.in = pipe;
+    Output.printChange(before, toString());
   }
 
   /**
@@ -126,26 +122,39 @@ public class Pump extends ActiveElement {
    * @param pipe The pipe to be set as the output for this pump.
    */
   public void setOutPipe(Pipe pipe) throws Exception {
-    addNeighbor(pipe);
+    String before = toString();
+    if(!isConnected(pipe)) addNeighbor(pipe);
     this.out = pipe;
+    Output.printChange(before, toString());
   }
 
   /**
    * Simulates repairing the pump, potentially changing its state from BROKEN to HEALTHY.
    */
   public void fix() {
-    System.out.print(this);
+    String before = toString();
     state = PumpState.HEALTHY;
-    Output.print("  ->  ", Color.LIGHT_RED);
-    System.out.println(this);
+    Output.printChange(before, toString());
   }
 
-  /**
-   * Changes the direction of water flow through the pump. This could involve swapping the input and
-   * output pipes, but the specifics are not defined in this method's body.
-   */
+
   public void changeDirection() {
-    // The implementation of flow direction change logic goes here
+    try {
+      grid.setSelectedPipe();
+      if(isConnected(grid.getSelectedPipe())){
+        setInPipe(grid.getSelectedPipe());
+      } else {
+        throw new Exception("[The selected Pipe is far away]");
+      }
+      grid.setSelectedPipe();
+      if(isConnected(grid.getSelectedPipe())){
+        setOutPipe(grid.getSelectedPipe());
+      } else {
+        throw new Exception("[The selected Pipe is far away]");
+      }
+    } catch (Exception e) {
+      Output.println(e.getMessage(), Color.LIGHT_RED);
+    }
   }
 
   /**
@@ -163,23 +172,25 @@ public class Pump extends ActiveElement {
       if (state == PumpState.BROKEN || out.isFull()) {
         // If the pump is broken and the input pipe is full, water is added to the reservoir or
         // If the out pipe is full water is added to the reservoir;
+        in.empty();
         reservoir.addWater();
       } else {
         // If the pump is healthy and the input pipe is full, water is transferred to the output
-        // pipe
+        // pipe        
+        in.empty();
+        Output.printChange(before, this.toString());
         out.fill(this);
       }
-      // After handling water transfer, the input pipe is emptied
-      in.empty();
     } else {
       if (state != PumpState.BROKEN && reservoir.totalWater != 0) {
         // If the pump is healthy and the reservoir is not empty, water is
         // removed from the reservoir and transferred to the output pipe
         reservoir.removeWater();
+        Output.printChange(before, this.toString());
         out.fill(this);
       }
     }
-    Output.printChange(before, this.toString());
+    
   }
 
   /**

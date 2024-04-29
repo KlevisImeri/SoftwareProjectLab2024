@@ -1,11 +1,10 @@
 package mainstring.dev.Players;
 
-import java.awt.event.*;
+
 import java.util.Objects;
 import mainstring.dev.Elements.*;
 import mainstring.dev.Elements.ActiveElements.*;
 import mainstring.dev.Grid;
-import mainstring.dev.Input;
 import mainstring.dev.Output;
 import mainstring.dev.Output.Color;
 
@@ -113,10 +112,6 @@ public abstract class Player {
    * changing direction is not applicable.
    */
   public void changePumpDirection() {
-    Output.println(
-        "|--------------5.2.8 The " + type() + " changes the pump direction-------------|",
-        Color.LIGHT_BLUE);
-    System.out.println("changePumpDirection()");
     if (location instanceof Pump) {
       ((Pump) location).changeDirection();
     } else if (location instanceof Pipe) {
@@ -126,8 +121,6 @@ public abstract class Player {
     } else if (location instanceof Spring) {
       Output.println("You can't change the direction of spring!", Color.LIGHT_RED);
     }
-    Output.println("|--------------------------------------------------------------------|\n",
-        Color.LIGHT_BLUE);
   }
 
   /**

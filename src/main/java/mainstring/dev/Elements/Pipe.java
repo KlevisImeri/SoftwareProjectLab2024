@@ -1,10 +1,9 @@
 package mainstring.dev.Elements;
 
 import mainstring.dev.Elements.ActiveElements.ActiveElement;
-import mainstring.dev.Elements.ActiveElements.Pump;
 import mainstring.dev.Grid;
 import mainstring.dev.Output;
-import mainstring.dev.Output.Color;
+
 
 /**
  * Represents a Pipe element within the grid, extending the functionalities of an Element. Pipes can
@@ -52,6 +51,10 @@ public class Pipe extends Element {
   public void puncture() {
     String before = toString();
     healthState = PipeHealthState.LEAKING;
+    if(flowState == PipeFlowState.FULL){
+      flowState = PipeFlowState.EMPTY;
+      grid.addWaterToDesert();
+    }
     Output.printChange(before, toString());
   }
 
