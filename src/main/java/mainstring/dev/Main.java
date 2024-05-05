@@ -1,8 +1,8 @@
 package mainstring.dev;
 
-import mainstring.dev.Controller.GameController;
-import mainstring.dev.Model.Game;
-import mainstring.dev.View.GameView;
+import mainstring.dev.Game.Game;
+import mainstring.dev.Game.GameController;
+import mainstring.dev.Game.GameView;
 
 /**
  * The Main class contains the entry point of the application. It initializes and starts the game.
