@@ -1,11 +1,11 @@
-package mainstring.dev;
+package mainstring.dev.Model;
 
 import java.util.ArrayList;
 import java.util.List;
-import mainstring.dev.Elements.ActiveElements.*;
-import mainstring.dev.Output.Color;
-import mainstring.dev.Players.*;
-import mainstring.dev.Elements.*;
+import mainstring.dev.Model.Elements.*;
+import mainstring.dev.Model.Elements.ActiveElements.*;
+import mainstring.dev.Model.Output.Color;
+import mainstring.dev.Model.Players.*;
 
 /**
  * The Grid class represents the game board where various elements are placed and interacted with.

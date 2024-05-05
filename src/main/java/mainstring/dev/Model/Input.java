@@ -1,7 +1,7 @@
-package mainstring.dev;
+package mainstring.dev.Model;
 
 import java.util.*;
-import mainstring.dev.Output.Color;
+import mainstring.dev.Model.Output.Color;
 
 /**
  * Provides utility methods for handling user input in a flexible way, allowing for both real-time
@@ -127,19 +127,19 @@ public abstract class Input {
       case "prints":
         clearPreviousLine();
         Output.println(input, Color.LIGHT_GREEN);
-        System.err.println(game.menu.settings);
+        System.err.println(game.getMenu().settings);
         print = true;
         break;
       case "printp":
         clearPreviousLine();
         Output.println(input, Color.LIGHT_GREEN);
-        System.err.println(game.players);
+        System.err.println(game.getPlayers());
         print = true;
         break;
       case "printg":
         clearPreviousLine();
         Output.println(input, Color.LIGHT_GREEN);
-        System.err.println(game.grid);
+        System.err.println(game.getGrid());
         print = true;
         break;
       case "exit":

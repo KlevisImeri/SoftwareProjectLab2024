@@ -1,10 +1,10 @@
-package mainstring.dev.Elements.ActiveElements;
+package mainstring.dev.Model.Elements.ActiveElements;
 
 import java.util.Timer;
+import mainstring.dev.Model.Grid;
+import mainstring.dev.Model.Output;
+import mainstring.dev.Model.Elements.*;
 import java.util.Stack;
-import mainstring.dev.Output;
-import mainstring.dev.Elements.*;
-import mainstring.dev.Grid;
 
 /**
  * Represents a cistern in a water flow simulation, capable of storing water and dynamically

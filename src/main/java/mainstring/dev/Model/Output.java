@@ -1,4 +1,4 @@
-package mainstring.dev;
+package mainstring.dev.Model;
 
 import java.util.*;
 import java.util.stream.Collectors;

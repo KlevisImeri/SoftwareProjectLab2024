@@ -1,10 +1,10 @@
-package mainstring.dev.Elements;
+package mainstring.dev.Model.Elements;
 
 import java.util.*;
-import mainstring.dev.Grid;
-import mainstring.dev.Output;
-import mainstring.dev.Players.Player;
-import mainstring.dev.Players.PlayersCollection;
+import mainstring.dev.Model.Grid;
+import mainstring.dev.Model.Output;
+import mainstring.dev.Model.Players.Player;
+import mainstring.dev.Model.Players.PlayersCollection;
 
 /**
  * Represents an abstract element within a grid. This class serves as a base for different types of

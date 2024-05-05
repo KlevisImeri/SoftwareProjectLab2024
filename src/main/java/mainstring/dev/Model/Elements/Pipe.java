@@ -1,8 +1,8 @@
-package mainstring.dev.Elements;
+package mainstring.dev.Model.Elements;
 
-import mainstring.dev.Elements.ActiveElements.ActiveElement;
-import mainstring.dev.Grid;
-import mainstring.dev.Output;
+import mainstring.dev.Model.Grid;
+import mainstring.dev.Model.Output;
+import mainstring.dev.Model.Elements.ActiveElements.ActiveElement;
 
 
 /**

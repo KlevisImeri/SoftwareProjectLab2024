@@ -1,8 +1,9 @@
-package mainstring.dev.Elements.ActiveElements;
+package mainstring.dev.Model.Elements.ActiveElements;
 
-import mainstring.dev.Elements.*;
 import mainstring.dev.*;
-import mainstring.dev.Output.Color;
+import mainstring.dev.Model.Grid;
+import mainstring.dev.Model.Elements.*;
+import mainstring.dev.Model.Output.Color;
 
 /**
  * Represents a Spring element within the grid, an active element that can initiate water flow. When

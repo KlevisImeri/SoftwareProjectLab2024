@@ -1,11 +1,11 @@
-package mainstring.dev.Players;
+package mainstring.dev.Model.Players;
 
-import mainstring.dev.Elements.ActiveElements.*;
-import mainstring.dev.Output.Color;
-import mainstring.dev.Input;
-import mainstring.dev.Output;
-import mainstring.dev.Elements.*;
 import java.util.List;
+import mainstring.dev.Model.Input;
+import mainstring.dev.Model.Output;
+import mainstring.dev.Model.Elements.*;
+import mainstring.dev.Model.Elements.ActiveElements.*;
+import mainstring.dev.Model.Output.Color;
 
 /**
  * Represents a Plumber, a specialized type of player in the game. Plumbers can carry, connect,

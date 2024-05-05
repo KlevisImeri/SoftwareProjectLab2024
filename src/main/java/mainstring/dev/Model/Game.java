@@ -1,11 +1,11 @@
-package mainstring.dev;
+package mainstring.dev.Model;
 
-import mainstring.dev.Output.Color;
-import mainstring.dev.Menu.*;
-import mainstring.dev.Players.Player;
-import mainstring.dev.Players.PlayersCollection;
-import mainstring.dev.Players.Plumber;
-import mainstring.dev.Players.Saboteur;
+import mainstring.dev.Model.Menu.*;
+import mainstring.dev.Model.Output.Color;
+import mainstring.dev.Model.Players.Player;
+import mainstring.dev.Model.Players.PlayersCollection;
+import mainstring.dev.Model.Players.Plumber;
+import mainstring.dev.Model.Players.Saboteur;
 
 
 /**
@@ -13,17 +13,16 @@ import mainstring.dev.Players.Saboteur;
  * termination of the game. It manages player selection, game loop, and displaying results.
  */
 public class Game {
-  public PlayersCollection players = new PlayersCollection();
-  public Grid grid;
-  public Menu menu = new Menu();
+  private PlayersCollection players = new PlayersCollection();
+  private Grid grid;
+  private Menu menu = new Menu();
 
   /**
    * Constructor for Game. Initializes the game menu and sets up the callback for starting the game.
    */
-  Game() {
+  public Game() {
     Input.game = this;
-    menu.start();
-    startGame();
+    menu.game = this;
   }
 
   /**
@@ -139,4 +138,18 @@ public class Game {
         Color.LIGHT_MAGENTA);
   }
   /*---------------------------------------------end Game------------------------------------------- */
+
+
+  public PlayersCollection getPlayers() {
+    return players;
+  }
+
+  public Menu getMenu() {
+    return menu;
+  }
+
+  public Grid getGrid() {
+    return grid;
+  }
+
 }

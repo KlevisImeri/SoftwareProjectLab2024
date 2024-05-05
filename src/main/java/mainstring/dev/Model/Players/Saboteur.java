@@ -1,9 +1,9 @@
-package mainstring.dev.Players;
+package mainstring.dev.Model.Players;
 
-import mainstring.dev.Input;
-import mainstring.dev.Output;
-import mainstring.dev.Output.Color;
-import mainstring.dev.Elements.Pipe;
+import mainstring.dev.Model.Input;
+import mainstring.dev.Model.Output;
+import mainstring.dev.Model.Elements.Pipe;
+import mainstring.dev.Model.Output.Color;
 
 /**
  * Represents a Saboteur, a specialized type of player in the game. Saboteurs have the unique

@@ -1,12 +1,12 @@
-package mainstring.dev.Players;
+package mainstring.dev.Model.Players;
 
 
 import java.util.Objects;
-import mainstring.dev.Elements.*;
-import mainstring.dev.Elements.ActiveElements.*;
-import mainstring.dev.Grid;
-import mainstring.dev.Output;
-import mainstring.dev.Output.Color;
+import mainstring.dev.Model.Grid;
+import mainstring.dev.Model.Output;
+import mainstring.dev.Model.Elements.*;
+import mainstring.dev.Model.Elements.ActiveElements.*;
+import mainstring.dev.Model.Output.Color;
 
 
 /**

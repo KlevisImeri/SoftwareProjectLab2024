@@ -1,9 +1,9 @@
-package mainstring.dev.Players;
+package mainstring.dev.Model.Players;
 
-import mainstring.dev.Input;
-import mainstring.dev.Output;
-import mainstring.dev.Output.Color;
 import java.util.*;
+import mainstring.dev.Model.Input;
+import mainstring.dev.Model.Output;
+import mainstring.dev.Model.Output.Color;
 
 /**
  * Represents a collection of Player objects. This class provides functionality to add and remove

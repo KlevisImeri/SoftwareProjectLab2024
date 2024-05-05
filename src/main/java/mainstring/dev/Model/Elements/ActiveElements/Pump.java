@@ -1,12 +1,12 @@
-package mainstring.dev.Elements.ActiveElements;
+package mainstring.dev.Model.Elements.ActiveElements;
 
 
-import mainstring.dev.Elements.Pipe;
 import java.util.Timer;
 import java.util.TimerTask;
-import mainstring.dev.Grid;
-import mainstring.dev.Output;
-import mainstring.dev.Output.Color;
+import mainstring.dev.Model.Grid;
+import mainstring.dev.Model.Output;
+import mainstring.dev.Model.Elements.Pipe;
+import mainstring.dev.Model.Output.Color;
 
 /**
  * Represents a pump within a water flow simulation, capable of transferring water from an input to
