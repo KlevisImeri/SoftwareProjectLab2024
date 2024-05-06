@@ -1,12 +1,9 @@
 package mainstring.dev.Menus.StartMenu;
 
-import javax.swing.JPanel;
-import mainstring.dev.Game.GameController;
 
-public class MenuController extends JPanel  {
+public class MenuController {
   Menu menu;
   MenuView view;
-  GameController gameController;
 
   public MenuController(Menu menu, MenuView view) {
     this.menu = menu;

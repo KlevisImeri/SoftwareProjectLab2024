@@ -31,4 +31,17 @@ public class GameController {
     view.repaint();
   }
 
+  public void openSettings() {
+    view.remove(view.menuView);
+    view.add(view.menuView.settingsView);
+    view.revalidate();
+    view.repaint();
+  }
+
+  public void closeSettings() {
+    view.remove(view.menuView.settingsView);
+    view.add(view.menuView);
+    view.revalidate();
+    view.repaint();
+  }
 }

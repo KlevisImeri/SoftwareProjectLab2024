@@ -24,6 +24,9 @@ public class GameView extends JFrame {
     playersCollectionView.backButton.addActionListener(e -> controller.hideTeams());
     menuView.selectTeamsButton.addActionListener(e -> controller.displayTeams());
     menuView.startGameButton.addActionListener(e -> controller.startGame());
+    menuView.settingsButton.addActionListener(e -> controller.openSettings());
+    menuView.settingsView.backButton.addActionListener(e -> controller.closeSettings());
+    
 
     setName("Pipes In The Desert");
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

@@ -67,157 +67,26 @@ public class Grid {
    * @param players A collection of players that will be participating in the game.
    */
   public Grid(PlayersCollection players) {
-    try {
-      Output.println("\n[Setting Up the Grid]", Color.LIGHT_BLUE);
+    try{
+      cistern = new Cistern(this); activeElements.add(spring);
+      spring = new Spring(this); activeElements.add(spring);
+      Pump pump = new Pump(this); activeElements.add(pump);
+      Pipe pipe1 = new Pipe(this); pipes.add(pipe1);
+      Pipe pipe2 = new Pipe(this); pipes.add(pipe2);
 
-      this.players = players;
-      for (Player p : players.getPlayers()) {
-        p.setGrid(this);
-      }
+      cistern.addNeighbor(pipe1);
+      pump.addNeighbor(pipe1);
 
-      // get the pipes
-      int numberOfPipes = Input.getInt(1, 100);
-      for (int i = 0; i < numberOfPipes; i++) {
-        setUpPipe();
-      }
+      spring.addNeighbor(pipe1);
+      pump.addNeighbor(pipe2);
 
-      // get the ActiveElements
-      int numberOfActiveElem = Input.getInt(2, 10);
-      for (int i = 0; i < numberOfActiveElem; i++) {
-        String[] activeElem = Input.split(Input.getLine());
-        switch (activeElem[0]) {
-          case "C":
-            setUpCistern(activeElem);
-            break;
-          case "S":
-            setUpSpring(activeElem);
-            break;
-          case "P":
-            setUpPump(activeElem);
-            break;
-        }
-
-      }
+      
+      cistern.addPlayers(players.getPlayers());
+      
     } catch (Exception e) {
       e.printStackTrace();
     }
   }
-
-  /*---------------------------------------Setups---------------------------------------------*/
-  /**
-   * Sets up a pipe based on user input, adding it to the grid and configuring its properties such
-   * as players associated with the pipe, health state, and flow state.
-   * 
-   * @throws Exception If an error occurs during the setup process.
-   */
-  private void setUpPipe() throws Exception {
-    Pipe pipe = new Pipe(this);
-    pipes.add(pipe);
-    String[] pipeS = Input.split(Input.getLine());
-    for (String name : Input.split(pipeS[0])) {
-      if (name != "") {
-        pipe.addPlayer(players.get(name));
-      }
-    }
-    switch (pipeS[1]) {
-      case "HEALTHY":
-        break; // default
-      case "LEAKING":
-        pipe.puncture();
-        break;
-    }
-    switch (pipeS[2]) {
-      case "EMPTY":
-        break; // default
-      case "FULL":
-        pipe.fill(null);
-        break;
-    }
-  }
-
-  /**
-   * Sets up a cistern based on the provided information, adding it to the grid and configuring its
-   * properties such as neighboring pipes, associated players, and the creation of pumps and pipes.
-   * 
-   * @param activeElem An array containing the information needed to set up the cistern.
-   * @throws Exception If an error occurs during the setup process.
-   */
-  private void setUpCistern(String[] activeElem) throws Exception {
-    // C,[1,3...n],[player1...player2],2,3
-    this.cistern = new Cistern(this);
-    for (String pipeIndx : Input.split(activeElem[1])) {
-      if (pipeIndx.isEmpty())
-        continue;
-      cistern.addNeighbor(pipes.get(Integer.parseInt(pipeIndx)));
-    }
-
-    for (String player : Input.split(activeElem[2])) {
-      if (player.isEmpty())
-        continue;
-      cistern.addPlayer(players.get(player));
-    }
-    for (int j = 0; j < Integer.parseInt(activeElem[3]); j++) {
-      cistern.createPump();
-    }
-    for (int j = 0; j < Integer.parseInt(activeElem[4]); j++) {
-      cistern.createPipe();
-    }
-    activeElements.add(cistern);
-  }
-
-  /**
-   * Sets up a spring based on the provided information, adding it to the grid and configuring its
-   * properties such as neighboring pipes and associated players.
-   * 
-   * @param activeElem An array containing the information needed to set up the spring.
-   * @throws Exception If an error occurs during the setup process.
-   */
-  private void setUpSpring(String[] activeElem) throws Exception {
-    // S,[1,3...n],[player1...player2]
-    this.spring = new Spring(this);
-    for (String pipeIndx : Input.split(activeElem[1])) {
-      if (pipeIndx.isEmpty())
-        continue;
-      spring.addNeighbor(pipes.get(Integer.parseInt(pipeIndx)));
-    }
-    for (String player : Input.split(activeElem[2])) {
-      if (player.isEmpty())
-        continue;
-      spring.addPlayer(players.get(player));
-    }
-    activeElements.add(spring);
-  }
-
-  /**
-   * Sets up a pump based on the provided information, adding it to the grid and configuring its
-   * properties such as neighboring pipes, associated players, and current state.
-   * 
-   * @param activeElem An array containing the information needed to set up the pump.
-   * @throws Exception If an error occurs during the setup process.
-   */
-  private void setUpPump(String[] activeElem) throws Exception {
-    // The first two pipes (1,3) in this case are the in and out pipe respectevely
-    // P,[1,3...n],[player1...player2],HEALTHY,1,3
-    Pump pump = new Pump(this);
-    activeElements.add(pump);
-    for (String pipeIndx : Input.split(activeElem[1])) {
-      pump.addNeighbor(pipes.get(Integer.parseInt(pipeIndx)));
-    }
-    for (String player : Input.split(activeElem[2])) {
-      pump.addPlayer(players.get(player));
-    }
-    switch (activeElem[3]) {
-      case "HEALTHY":
-        pump.state = Pump.PumpState.HEALTHY;
-        break;
-      case "BROKEN":
-        pump.state = Pump.PumpState.BROKEN;
-        break;
-    }
-    pump.setInPipe(pipes.get(Integer.parseInt(activeElem[4])));
-    pump.setOutPipe(pipes.get(Integer.parseInt(activeElem[5])));
-  }
-  /*------------------------------------------------------------------------------------------*/
 
 
   /*------------------------------------get/set Elements--------------------------------------*/

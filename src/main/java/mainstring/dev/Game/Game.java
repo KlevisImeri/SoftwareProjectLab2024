@@ -5,6 +5,8 @@ import mainstring.dev.Output;
 import mainstring.dev.Grid.Grid;
 import mainstring.dev.Menus.StartMenu.Menu;
 import mainstring.dev.Output.Color;
+import mainstring.dev.Players.Plumber;
+import mainstring.dev.Players.Saboteur;
 import mainstring.dev.Players.Player.Player;
 import mainstring.dev.Players.PlayersCollection.PlayersCollection;
 
@@ -22,7 +24,10 @@ public class Game {
    * Constructor for Game. Initializes the game menu and sets up the callback for starting the game.
    */
   public Game() {
-    Input.game = this;
+    players.add(new Plumber("Klevis"));
+    players.add(new Plumber("Diamond"));
+    players.add(new Saboteur("Murad"));
+    players.add(new Saboteur("Ibrahim"));
   }
 
   /**

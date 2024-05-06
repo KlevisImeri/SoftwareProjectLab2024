@@ -1,9 +1,10 @@
 package mainstring.dev.Players.PlayersCollection;
 
-import java.awt.BorderLayout;
+
 import mainstring.dev.Players.Plumber;
 import mainstring.dev.Players.Saboteur;
-import mainstring.dev.Players.Player.PlayerTextFieldView;
+import mainstring.dev.Players.PlayersCollection.PlayersCollectionView.PlayerField;
+
 
 public class PlayersCollectionController {
   PlayersCollection players;
@@ -17,7 +18,7 @@ public class PlayersCollectionController {
   public void addPlumber() {
     Plumber p = new Plumber(null);
     players.add(p);
-    view.plumbersPanel.add(new PlayerTextFieldView(p), BorderLayout.CENTER);
+    view.plumbersPanel.add(view.new PlayerField(p));
     view.revalidate();
     view.repaint();
   }
@@ -25,8 +26,20 @@ public class PlayersCollectionController {
   public void addSaboteur() {
     Saboteur s = new Saboteur(null);
     players.add(s);
-    view.saboteursPanel.add(new PlayerTextFieldView(s), BorderLayout.CENTER);
+    view.saboteursPanel.add(view.new PlayerField(s));
     view.revalidate();
     view.repaint();
   }
+
+  public void removePlayer(PlayerField playerField) {
+    players.remove(playerField.textField.player);
+    if (playerField.textField.player instanceof Plumber) {
+        view.plumbersPanel.remove(playerField);
+    } else {
+        view.saboteursPanel.remove(playerField);
+    }
+    view.revalidate();
+    view.repaint();
+  }
+
 }

@@ -49,6 +49,7 @@ public class PlayersCollection {
     players.remove(player);
   }
 
+
   /**
    * Retrieves a player by their name.
    *
@@ -91,7 +92,7 @@ public class PlayersCollection {
    *
    * @return A set containing all the players.
    */
-  public Collection<Player> getPlayers() {
+  public List<Player> getPlayers() {
     return players;
   }
 
