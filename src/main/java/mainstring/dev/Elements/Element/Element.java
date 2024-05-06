@@ -1,4 +1,4 @@
-package mainstring.dev.Elements;
+package mainstring.dev.Elements.Element;
 
 import java.util.*;
 import mainstring.dev.Output;

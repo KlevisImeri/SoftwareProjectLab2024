@@ -1,14 +1,15 @@
 package mainstring.dev.Game;
 
+import java.util.Timer;
 import mainstring.dev.Input;
 import mainstring.dev.Output;
 import mainstring.dev.Grid.Grid;
 import mainstring.dev.Menus.StartMenu.Menu;
 import mainstring.dev.Output.Color;
-import mainstring.dev.Players.Plumber;
-import mainstring.dev.Players.Saboteur;
 import mainstring.dev.Players.Player.Player;
 import mainstring.dev.Players.PlayersCollection.PlayersCollection;
+import mainstring.dev.Players.Plumber.Plumber;
+import mainstring.dev.Players.Saboteur.Saboteur;
 
 
 /**
@@ -16,9 +17,10 @@ import mainstring.dev.Players.PlayersCollection.PlayersCollection;
  * termination of the game. It manages player selection, game loop, and displaying results.
  */
 public class Game {
-  private PlayersCollection players = new PlayersCollection();
-  private Grid grid;
-  private Menu menu = new Menu();
+  PlayersCollection players = new PlayersCollection();
+  Grid grid = new Grid();
+  Menu menu = new Menu();
+  Timer timer = new Timer();
 
   /**
    * Constructor for Game. Initializes the game menu and sets up the callback for starting the game.
@@ -35,15 +37,9 @@ public class Game {
    * eventually calling for the game to end and display results.
    */
   public void startGame() {
-    grid = new Grid(players);
-    mainLoop();
-    endGame();
+    grid.addPlayers(players);
+    new Thread(() -> mainLoop());
   }
-
-
-
-
-
 
   /*---------------------------------------------main Loop------------------------------------------- */
 
@@ -52,14 +48,19 @@ public class Game {
    * until the game ends, as determined by user input.
    */
   private void mainLoop() {
-    Output.println("\n[Game Started]", Color.LIGHT_BLUE);
-    Output.println("Did the game end? [y]es/[n]o",  Color.WHITE);
-    while (Input.getChar("yn") == 'n') {
-      Player player = players.selectRandom();
-      player.active();
-      player.passive();
-      grid.caculateFlow();
-      Output.println("Did the game end? [y]es/[n]o", Color.WHITE);
+    try {
+      Output.println("\n[Game Started]", Color.LIGHT_BLUE);
+      long endTime = System.currentTimeMillis() + menu.settings.getEndTime() * 60 * 1000;
+      while (System.currentTimeMillis() >= endTime) {
+        Player player = players.selectRandom();
+        player.active();
+        Thread.sleep(menu.settings.getPlayerTime() * 1000);
+        player.passive();
+        grid.caculateFlow();
+      }
+      endGame();
+    } catch (InterruptedException e) {
+      e.printStackTrace();
     }
   }
   /*---------------------------------------------main Loop------------------------------------------- */

@@ -1,8 +1,8 @@
 package mainstring.dev.Players.PlayersCollection;
 
-import mainstring.dev.Players.Plumber;
-import mainstring.dev.Players.Saboteur;
 import mainstring.dev.Players.Player.*;
+import mainstring.dev.Players.Plumber.Plumber;
+import mainstring.dev.Players.Saboteur.Saboteur;
 import javax.swing.*;
 import java.awt.*;
 

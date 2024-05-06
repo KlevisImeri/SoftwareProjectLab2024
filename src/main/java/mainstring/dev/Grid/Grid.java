@@ -4,10 +4,13 @@ import java.util.ArrayList;
 import java.util.List;
 import mainstring.dev.Input;
 import mainstring.dev.Output;
-import mainstring.dev.Elements.*;
-import mainstring.dev.Elements.ActiveElements.*;
+import mainstring.dev.Elements.ActiveElements.ActiveElement.ActiveElement;
+import mainstring.dev.Elements.ActiveElements.Cistern.Cistern;
+import mainstring.dev.Elements.ActiveElements.Pump.Pump;
+import mainstring.dev.Elements.ActiveElements.Spring.Spring;
+import mainstring.dev.Elements.Element.Element;
+import mainstring.dev.Elements.Pipe.Pipe;
 import mainstring.dev.Output.Color;
-import mainstring.dev.Players.Player.Player;
 import mainstring.dev.Players.PlayersCollection.PlayersCollection;
 
 /**
@@ -18,11 +21,11 @@ import mainstring.dev.Players.PlayersCollection.PlayersCollection;
  */
 public class Grid {
   // Fields
-  private Cistern cistern;
-  private Spring spring;
+  public Cistern cistern;
+  public Spring spring;
   // Active elements include both pipes and potentially other interactable game elements.
-  private List<Pipe> pipes = new ArrayList<>();
-  private List<ActiveElement> activeElements = new ArrayList<>();
+  public List<Pipe> pipes = new ArrayList<>();
+  public List<Pump> pumps = new ArrayList<>();
   private PlayersCollection players;
 
   // Tracks the amount of water that has ended up in the desert (unusable water).
@@ -48,13 +51,15 @@ public class Grid {
 
         Active Elements:
         %s
+        %s
+        %s
 
         Selected Element: %s
-        Selected ActiveElement: %s
+        Selected elements: %s
         Selected Pipe: %s
 
         Water in Desert: %s
-        """.formatted(Output.toString(pipes), Output.toString(activeElements),
+        """.formatted(Output.toString(pipes), cistern, spring, Output.toString(pumps),
         selectedElement != null ? Integer.toString(selectedElement.hashCode()) : "null",
         selectedActiveElement != null ? Integer.toString(selectedActiveElement.hashCode()) : "null",
         selectedPipe != null ? Integer.toString(selectedPipe.hashCode()) : "null", waterInDesert);
@@ -66,11 +71,11 @@ public class Grid {
    *
    * @param players A collection of players that will be participating in the game.
    */
-  public Grid(PlayersCollection players) {
+  public Grid() {
     try{
-      cistern = new Cistern(this); activeElements.add(spring);
-      spring = new Spring(this); activeElements.add(spring);
-      Pump pump = new Pump(this); activeElements.add(pump);
+      cistern = new Cistern(this); 
+      spring = new Spring(this); 
+      Pump pump = new Pump(this); pumps.add(pump);
       Pipe pipe1 = new Pipe(this); pipes.add(pipe1);
       Pipe pipe2 = new Pipe(this); pipes.add(pipe2);
 
@@ -80,9 +85,6 @@ public class Grid {
       spring.addNeighbor(pipe1);
       pump.addNeighbor(pipe2);
 
-      
-      cistern.addPlayers(players.getPlayers());
-      
     } catch (Exception e) {
       e.printStackTrace();
     }
@@ -104,24 +106,14 @@ public class Grid {
    *
    * @param selectedElement The Element to be set as selected.
    */
-  public void setSelectedElement() {
-    int ID = Input.getInt(0, Element.FreeID);
-    for (Pipe p : pipes) {
-      if (p.getID() == ID) {
-        this.selectedElement = p;
-      }
-    }
-    for (ActiveElement a : activeElements) {
-      if (a.getID() == ID) {
-        this.selectedElement = a;
-      }
-    }
+  public void setSelectedElement(Element element) {
+    selectedElement = element;
   }
 
   /**
    * Retrieves the currently selected active element within the grid.
    *
-   * @return The currently selected ActiveElement.
+   * @return The currently selected elements.
    */
   public ActiveElement getSelectedActiveElement() {
     return selectedActiveElement;
@@ -132,14 +124,9 @@ public class Grid {
    * element's ID, sets both the selected element and selected active element to that active
    * element.
    */
-  public void setSelectedActiveElement() {
-    int ID = Input.getInt(0, Element.FreeID);
-    for (ActiveElement a : activeElements) {
-      if (a.getID() == ID) {
-        this.selectedElement = a;
-        this.selectedActiveElement = a;
-      }
-    }
+  public void setSelectedActiveElement(ActiveElement activeElement) {
+    this.selectedElement = activeElement;
+    this.selectedActiveElement = activeElement;
   }
 
   /**
@@ -185,7 +172,7 @@ public class Grid {
    * @param pump The Pump to be added to the grid.
    */
   public void addPump(Pump pump) {
-    activeElements.add(pump);
+    pumps.add(pump);
   }
 
   /**
@@ -221,5 +208,13 @@ public class Grid {
    */
   public int getWaterAtCistern() {
     return this.cistern.getWaterAmount();
+  }
+
+  public void addPlayers(PlayersCollection players) {
+    try {
+      cistern.addPlayers(players.getPlayers());  
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
   }
 }

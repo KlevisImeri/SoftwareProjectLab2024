@@ -26,9 +26,9 @@ public class GameController {
   public void startGame() {
     view.remove(view.menuView);
     view.add(view.gridView);
-    game.startGame();
     view.revalidate();
     view.repaint();
+    // game.startGame();
   }
 
   public void openSettings() {

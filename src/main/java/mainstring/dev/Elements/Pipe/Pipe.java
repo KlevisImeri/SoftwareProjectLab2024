@@ -1,7 +1,8 @@
-package mainstring.dev.Elements;
+package mainstring.dev.Elements.Pipe;
 
 import mainstring.dev.Output;
-import mainstring.dev.Elements.ActiveElements.ActiveElement;
+import mainstring.dev.Elements.ActiveElements.ActiveElement.ActiveElement;
+import mainstring.dev.Elements.Element.Element;
 import mainstring.dev.Grid.Grid;
 
 

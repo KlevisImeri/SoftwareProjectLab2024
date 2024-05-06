@@ -1,9 +1,9 @@
 package mainstring.dev.Players.PlayersCollection;
 
 
-import mainstring.dev.Players.Plumber;
-import mainstring.dev.Players.Saboteur;
 import mainstring.dev.Players.PlayersCollection.PlayersCollectionView.PlayerField;
+import mainstring.dev.Players.Plumber.Plumber;
+import mainstring.dev.Players.Saboteur.Saboteur;
 
 
 public class PlayersCollectionController {

@@ -5,6 +5,11 @@ import java.util.Objects;
 import mainstring.dev.Output;
 import mainstring.dev.Elements.*;
 import mainstring.dev.Elements.ActiveElements.*;
+import mainstring.dev.Elements.ActiveElements.Cistern.Cistern;
+import mainstring.dev.Elements.ActiveElements.Pump.Pump;
+import mainstring.dev.Elements.ActiveElements.Spring.Spring;
+import mainstring.dev.Elements.Element.Element;
+import mainstring.dev.Elements.Pipe.Pipe;
 import mainstring.dev.Grid.Grid;
 import mainstring.dev.Output.Color;
 

@@ -1,8 +1,8 @@
-package mainstring.dev.Players;
+package mainstring.dev.Players.Saboteur;
 
 import mainstring.dev.Input;
 import mainstring.dev.Output;
-import mainstring.dev.Elements.Pipe;
+import mainstring.dev.Elements.Pipe.Pipe;
 import mainstring.dev.Output.Color;
 import mainstring.dev.Players.Player.Player;
 

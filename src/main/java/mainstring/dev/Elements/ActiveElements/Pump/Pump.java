@@ -1,10 +1,11 @@
-package mainstring.dev.Elements.ActiveElements;
+package mainstring.dev.Elements.ActiveElements.Pump;
 
 
 import java.util.Timer;
 import java.util.TimerTask;
 import mainstring.dev.Output;
-import mainstring.dev.Elements.Pipe;
+import mainstring.dev.Elements.ActiveElements.ActiveElement.ActiveElement;
+import mainstring.dev.Elements.Pipe.Pipe;
 import mainstring.dev.Grid.Grid;
 import mainstring.dev.Output.Color;
 

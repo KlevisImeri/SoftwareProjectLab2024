@@ -1,8 +1,8 @@
-package mainstring.dev.Elements.ActiveElements;
+package mainstring.dev.Elements.ActiveElements.ActiveElement;
 
 import java.util.Random;
-import mainstring.dev.Elements.Element;
-import mainstring.dev.Elements.Pipe;
+import mainstring.dev.Elements.Element.Element;
+import mainstring.dev.Elements.Pipe.Pipe;
 import mainstring.dev.Grid.Grid;
 
 

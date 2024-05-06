@@ -1,10 +1,11 @@
 package mainstring.dev.Menus.StartMenu;
 
 import javax.swing.*;
+import mainstring.dev.JImage;
 import mainstring.dev.Menus.Settings.SettingsView;
 import java.awt.*;
 
-public class MenuView extends JPanel {
+public class MenuView extends JImage {
   Menu menu;
   MenuController controller = new MenuController(menu, this);
 
@@ -27,6 +28,7 @@ public class MenuView extends JPanel {
   public SettingsView settingsView;
 
   public MenuView(Menu menu) {
+    super("/Images/desert.png");
     this.menu = menu;
     settingsView = new SettingsView(menu.settings);
     setLayout(new GridLayout(2, 1));
