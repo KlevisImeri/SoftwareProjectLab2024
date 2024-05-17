@@ -9,5 +9,4 @@ public class SpringView extends ActiveElementView {
     super(spring, "/Images/spring.png");
   }
 
-  
 }

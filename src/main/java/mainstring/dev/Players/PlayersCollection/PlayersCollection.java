@@ -1,107 +1,126 @@
 package mainstring.dev.Players.PlayersCollection;
 
 import java.util.ArrayList;
-import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 import mainstring.dev.Input;
 import mainstring.dev.Output;
 import mainstring.dev.Output.Color;
 import mainstring.dev.Players.Player.Player;
+import mainstring.dev.Players.Plumber.Plumber;
+import mainstring.dev.Players.Saboteur.Saboteur;
 
 public class PlayersCollection {
-  private List<Player> players = new ArrayList<>();
+  private List<Plumber> plumbers = new ArrayList<>();
+  private List<Saboteur> saboteurs = new ArrayList<>();
 
   @Override
   public String toString() {
     return """
         Players:
-        %s
-        """.formatted(Output.toString(players));
+        Plumbers: %s
+        Saboteurs: %s
+        """.formatted(Output.toString(plumbers), Output.toString(saboteurs));
   }
 
   // Return a string containing only the names of the players
   public String toStringID() {
     List<String> playerNames = new ArrayList<>();
-    for (Player player : players) {
-      playerNames.add(player.getName());
+    for (Plumber plumber : plumbers) {
+      playerNames.add(plumber.getName());
+    }
+    for (Saboteur saboteur : saboteurs) {
+      playerNames.add(saboteur.getName());
     }
     return "[" + String.join(", ", playerNames) + "]";
   }
 
-  /**
-   * Constructs a new PlayersCollection instance. Initial setup can be placed here if needed.
-   */
-  public PlayersCollection() {
-    // System.out.println("PlayersCollection()");
-  }
-
-
   public void add(Player player) {
-    players.add(player);
+    if(player instanceof Plumber) {
+      plumbers.add((Plumber)player);
+    } else if (player instanceof Saboteur) {
+      saboteurs.add((Saboteur)player);
+    }
   }
 
-  /**
-   * Removes a player from the collection.
-   *
-   * @param player The player to be removed.
-   */
-  public void remove(Player player) {
-    players.remove(player);
+  public void add(Plumber plumber) {
+    plumbers.add(plumber);
   }
 
+  public void add(Saboteur saboteur) {
+    saboteurs.add(saboteur);
+  }
 
-  /**
-   * Retrieves a player by their name.
-   *
-   * @param name The name of the player to retrieve.
-   * @return The player object corresponding to the name, or null if no such player exists.
-   */
+  public void remove(Plumber plumber) {
+    plumbers.remove(plumber);
+  }
+
+  public void remove(Saboteur saboteur) {
+    saboteurs.remove(saboteur);
+  }
+
   public Player get(String name) {
-    for (Player player : players) {
-      if (player.getName().equals(name)) {
-        return player;
+    for (Plumber plumber : plumbers) {
+      if (plumber.getName().equals(name)) {
+        return plumber;
+      }
+    }
+    for (Saboteur saboteur : saboteurs) {
+      if (saboteur.getName().equals(name)) {
+        return saboteur;
       }
     }
     return null;
   }
 
-  /**
-   * Selects a random player from the collection based on user input. Continuously prompts for a
-   * player's name until a valid name is entered.
-   *
-   * @return The player corresponding to the entered name.
-   */
+  public void remove(Player player) {
+    if (player instanceof Plumber) {
+      plumbers.remove(player);
+    } else if (player instanceof Saboteur) {
+      saboteurs.remove(player);
+    }
+  }
+
   public Player selectRandom() {
     Output.println("Who's turn? [name]", Color.WHITE);
-    for (Player p : players) {
-      Output.println(p.getName(), Color.LIGHT_MAGENTA);
+    for (Plumber plumber : plumbers) {
+      Output.println(plumber.getName(), Color.LIGHT_MAGENTA);
+    }
+    for (Saboteur saboteur : saboteurs) {
+      Output.println(saboteur.getName(), Color.LIGHT_MAGENTA);
     }
     while (true) {
       String name = Input.getLine();
-      for (Player player : players) {
-        if (player.getName().equals(name)) {
-          return player;
+      for (Plumber plumber : plumbers) {
+        if (plumber.getName().equals(name)) {
+          return plumber;
+        }
+      }
+      for (Saboteur saboteur : saboteurs) {
+        if (saboteur.getName().equals(name)) {
+          return saboteur;
         }
       }
       Input.clearPreviousLine();
     }
   }
 
-  /**
-   * Retrieves the set of players currently in the collection.
-   *
-   * @return A set containing all the players.
-   */
   public List<Player> getPlayers() {
-    return players;
+    List<Player> allPlayers = new ArrayList<>();
+    allPlayers.addAll(plumbers);
+    allPlayers.addAll(saboteurs);
+    return allPlayers;
   }
 
-  /**
-   * Returns the number of players in the players.
-   * 
-   * @return The size of the players.
-   */
+  public List<Plumber> getPlumbers() {
+    return Collections.unmodifiableList(plumbers);
+  }
+
+  public List<Saboteur> getSaboteurs() {
+    return Collections.unmodifiableList(saboteurs);
+  }
+
   public int size() {
-    return players.size();
+    return plumbers.size() + saboteurs.size();
   }
 }
