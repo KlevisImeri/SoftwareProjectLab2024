@@ -4,6 +4,7 @@ import mainstring.dev.Players.Player.*;
 import mainstring.dev.Players.Plumber.Plumber;
 import mainstring.dev.Players.Saboteur.Saboteur;
 import javax.swing.*;
+import javax.swing.border.LineBorder;
 import java.awt.*;
 
 public class PlayersCollectionView extends JPanel {
@@ -17,7 +18,7 @@ public class PlayersCollectionView extends JPanel {
   }};
   public JLabel plumberLabel = new JLabel("Plumbers", SwingConstants.CENTER){{
     setFont(new Font("Arial", Font.BOLD, 30)); // Set font and size
-    setForeground(Color.WHITE); // Set font color to black
+    setForeground(Color.BLUE); // Set font color to black
   }};
   public JButton addPlumberButton = new JButton("Add Plumber") {{
     setBackground(Color.gray);
@@ -31,14 +32,13 @@ public class PlayersCollectionView extends JPanel {
     setOpaque(false); // Make panel transparent
   }};
 
-
   public JPanel saboteursPanel = new JPanel(){{
     setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
     setOpaque(false); // Make panel transparent
   }};
   public JLabel saboteurLabel = new JLabel("Saboteurs", SwingConstants.CENTER){{
     setFont(new Font("Arial", Font.BOLD, 30)); // Set font and size
-    setForeground(Color.WHITE); // Set font color to black
+    setForeground(Color.RED); // Set font color to black
   }};
   public JButton addSaboteurButton = new JButton("Add Saboteur"){{
     setBackground(Color.gray);
@@ -59,7 +59,7 @@ public class PlayersCollectionView extends JPanel {
   }};
   
   public JButton backButton = new JButton("Back"){{
-    setBackground(new Color(144, 238, 144));
+    setBackground(new Color(247, 154, 96));
   }};
 
   public class PlayerField extends JPanel {
@@ -68,13 +68,16 @@ public class PlayersCollectionView extends JPanel {
       setBackground(new Color(245, 69, 69));
     }};
     public PlayerField(Player player) {
-      textField = new PlayerTextFieldView(player);
-      setLayout(new BorderLayout());
-      setMaximumSize(new Dimension(Integer.MAX_VALUE, 40)); 
-      xButton.addActionListener(e -> controller.removePlayer(this));
-      add(textField, BorderLayout.CENTER);
-      add(xButton,BorderLayout.EAST);
-      setOpaque(false); // Make panel transparent
+        textField = new PlayerTextFieldView(player);
+        textField.setBackground(Color.DARK_GRAY); // Set background color to dark gray
+        textField.setForeground(Color.WHITE); // Set text color to white
+        textField.setBorder(new LineBorder(Color.BLACK, 1)); // Add border for better visibility
+        setLayout(new BorderLayout());
+        setMaximumSize(new Dimension(Integer.MAX_VALUE, 40)); 
+        xButton.addActionListener(e -> controller.removePlayer(this));
+        add(textField, BorderLayout.CENTER);
+        add(xButton,BorderLayout.EAST);
+        setOpaque(false); // Make panel transparent
     }
   }
 

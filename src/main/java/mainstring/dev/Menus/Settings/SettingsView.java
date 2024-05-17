@@ -12,9 +12,15 @@ public class SettingsView extends JPanel {
   public ImageIcon backgroundImage;
   Dimension buttonSize = new Dimension(200, 50);
 
+  public JLabel titleLabel = new JLabel("Setting") {{
+    setFont(new Font("Arial", Font.BOLD, 80));
+    setForeground(new Color(247, 154, 96));
+    setAlignmentX(CENTER_ALIGNMENT); // Center the title horizontally
+}};
+
   public JLabel endTimeLabel = new JLabel("End Time:") {{
         setFont(new Font("Arial", Font.BOLD, 30));
-        setForeground(Color.BLACK); 
+        setForeground(new Color(247, 154, 96)); 
     }};
     public JTextField endTimeText = new JTextField() {{
         setFont(new Font("Arial", Font.PLAIN, 30));
@@ -25,7 +31,7 @@ public class SettingsView extends JPanel {
     }};
     public JLabel endPlayerLabel = new JLabel("Player Time:") {{
         setFont(new Font("Arial", Font.BOLD, 30));
-        setForeground(Color.BLACK); 
+        setForeground(new Color(247, 154, 96)); 
     }};
     public JTextField endPlayerText = new JTextField() {{
         setFont(new Font("Arial", Font.PLAIN, 30));
@@ -44,7 +50,7 @@ public class SettingsView extends JPanel {
     }};
     public JButton backButton = new JButton("Back") {{
         setPreferredSize(buttonSize);
-        setBackground(Color.YELLOW);
+        setBackground(new Color(247, 154, 96));
     }};
 
   public SettingsView(Settings settings) {
@@ -72,10 +78,18 @@ public class SettingsView extends JPanel {
     };
     backgroundPanel.setLayout(new BoxLayout(backgroundPanel, BoxLayout.Y_AXIS));
 
-    backgroundPanel.add(Box.createVerticalStrut(80)); // Add a vertical strut at the top to move components higher
+    // Panel to center the back button
+    JPanel backButtonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER)) {{
+        setOpaque(false); // Make panel transparent
+        add(backButton);
+    }};
+
+    backgroundPanel.add(Box.createVerticalStrut(50)); // Add a vertical strut at the top to move components higher
+    backgroundPanel.add(titleLabel); // Add title label
+    backgroundPanel.add(Box.createVerticalStrut(30)); // Add some space between title and settings panel
     backgroundPanel.add(settingsPanel);
     backgroundPanel.add(Box.createVerticalStrut(50));
-    backgroundPanel.add(backButton);
+    backgroundPanel.add(backButtonPanel);
     backgroundPanel.add(Box.createVerticalGlue());
 
     add(backgroundPanel);
