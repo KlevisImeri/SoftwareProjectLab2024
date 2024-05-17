@@ -9,12 +9,15 @@ import java.awt.*;
 public class PlayersCollectionView extends JPanel {
   PlayersCollection players;
   PlayersCollectionController controller;
+  ImageIcon backgroundImage = new ImageIcon(getClass().getResource("/Images/desertBackground.png"));
 
   public JPanel plumbersPanel = new JPanel(){{
     setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+    setOpaque(false); // Make panel transparent
   }};
   public JLabel plumberLabel = new JLabel("Plumbers", SwingConstants.CENTER){{
     setFont(new Font("Arial", Font.BOLD, 30)); // Set font and size
+    setForeground(Color.WHITE); // Set font color to black
   }};
   public JButton addPlumberButton = new JButton("Add Plumber") {{
     setBackground(Color.gray);
@@ -25,14 +28,17 @@ public class PlayersCollectionView extends JPanel {
     add(plumberLabel, BorderLayout.NORTH); // Align label to center
     add(plumbersPanel, BorderLayout.CENTER);
     add(addPlumberButton, BorderLayout.SOUTH);
+    setOpaque(false); // Make panel transparent
   }};
 
 
   public JPanel saboteursPanel = new JPanel(){{
     setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+    setOpaque(false); // Make panel transparent
   }};
   public JLabel saboteurLabel = new JLabel("Saboteurs", SwingConstants.CENTER){{
     setFont(new Font("Arial", Font.BOLD, 30)); // Set font and size
+    setForeground(Color.WHITE); // Set font color to black
   }};
   public JButton addSaboteurButton = new JButton("Add Saboteur"){{
     setBackground(Color.gray);
@@ -43,11 +49,13 @@ public class PlayersCollectionView extends JPanel {
     add(saboteurLabel, BorderLayout.NORTH); // Align label to center
     add(saboteursPanel, BorderLayout.CENTER);
     add(addSaboteurButton, BorderLayout.SOUTH);
+    setOpaque(false); // Make panel transparent
   }};
   
   public JPanel teamsPanel = new JPanel(new GridLayout(1, 2)) {{
     add(plumberPanel);
     add(saboteurPanel);
+    setOpaque(false); // Make panel transparent
   }};
   
   public JButton backButton = new JButton("Back"){{
@@ -66,6 +74,7 @@ public class PlayersCollectionView extends JPanel {
       xButton.addActionListener(e -> controller.removePlayer(this));
       add(textField, BorderLayout.CENTER);
       add(xButton,BorderLayout.EAST);
+      setOpaque(false); // Make panel transparent
     }
   }
 
@@ -86,7 +95,18 @@ public class PlayersCollectionView extends JPanel {
     }
 
     setLayout(new BorderLayout());
-    add(teamsPanel, BorderLayout.CENTER);
-    add(backButton, BorderLayout.SOUTH);
+    // Custom panel with background image
+    JPanel backgroundPanel = new JPanel() {
+        @Override
+        protected void paintComponent(Graphics g) {
+          super.paintComponent(g);
+          g.drawImage(backgroundImage.getImage(), 0, 0, getWidth(), getHeight(), this);
+        }
+      };
+      backgroundPanel.setLayout(new BorderLayout());
+      backgroundPanel.add(teamsPanel, BorderLayout.CENTER);
+      backgroundPanel.add(backButton, BorderLayout.SOUTH);
+      
+      add(backgroundPanel);
   }
 }
