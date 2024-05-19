@@ -160,14 +160,8 @@ public class Pump extends ActiveElement {
    */
   public void changeDirection() {
     try {
-      grid.setSelectedPipe();
-      if (isConnected(grid.getSelectedPipe())) {
-        setInPipe(grid.getSelectedPipe());
-      } else {
-        throw new Exception("[The selected Pipe is far away]");
-      }
-      grid.setSelectedPipe();
-      if (isConnected(grid.getSelectedPipe())) {
+      if (isConnected(grid.getPreviousSelectedPipe()) && isConnected(grid.getSelectedPipe())) {
+        setInPipe(grid.getPreviousSelectedPipe());
         setOutPipe(grid.getSelectedPipe());
       } else {
         throw new Exception("[The selected Pipe is far away]");

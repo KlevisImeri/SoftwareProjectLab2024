@@ -1,5 +1,7 @@
 package mainstring.dev.Game;
 
+import mainstring.dev.Grid.GridView;
+
 public class GameController {
   Game game;
   GameView view;
@@ -7,6 +9,12 @@ public class GameController {
   public GameController(Game game, GameView view) {
     this.game = game;
     this.view = view;
+
+    view.playersCollectionView.backButton.addActionListener(e -> hideTeams());
+    view.menuView.selectTeamsButton.addActionListener(e -> displayTeams());
+    view.menuView.startGameButton.addActionListener(e -> startGame());
+    view.menuView.settingsButton.addActionListener(e -> openSettings());
+    view.menuView.settingsView.backButton.addActionListener(e -> closeSettings());
   }
 
   public void displayTeams() {
@@ -25,10 +33,12 @@ public class GameController {
 
   public void startGame() {
     view.remove(view.menuView);
-    view.add(view.gridView);
+    // Start game bfore new GridView So the players are added
+    // Should be fixed in the future
+    game.startGame(); 
+    view.add(new GridView(game.grid));
     view.revalidate();
     view.repaint();
-    // game.startGame();
   }
 
   public void openSettings() {

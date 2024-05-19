@@ -10,7 +10,6 @@ public class PlayerTextFieldView extends JTextField {
   public PlayerTextFieldView(Player player) {
     this.player = player;
     controller = new PlayerTextFieldController(player, this);
-    addActionListener(e -> controller.setName());
     setText(player.getName());
     setLayout(new GridLayout(1,2));
     setMaximumSize(new Dimension(Integer.MAX_VALUE, 40)); 

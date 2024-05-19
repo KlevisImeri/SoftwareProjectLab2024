@@ -1,14 +1,14 @@
-package mainstring.dev.Elements.Element;
+package mainstring.dev.Elements.ActiveElements.ActiveElement;
 
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
-public class ElementController implements MouseListener {
-  Element element;
-  ElementView view;
+public class ActiveElementController implements MouseListener {
+  ActiveElement activeElement;
+  ActiveElementView view;
 
-  public ElementController(Element element, ElementView view) {
-    this.element = element;
+  public ActiveElementController(ActiveElement activeElement, ActiveElementView view) {
+    this.activeElement = activeElement;
     this.view = view;
 
     view.addMouseListener(this);
@@ -16,8 +16,7 @@ public class ElementController implements MouseListener {
 
   @Override
   public void mouseClicked(MouseEvent e) {
-    element.grid.setSelectedElement(element);
-    view.gridView.selectedElementView = view;
+    activeElement.grid.setSelectedActiveElement(activeElement);
   }
 
   @Override

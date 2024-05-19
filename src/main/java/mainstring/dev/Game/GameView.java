@@ -7,34 +7,31 @@ import java.awt.BorderLayout;
 import javax.swing.JFrame;
 
 public class GameView extends JFrame {
-  public Game game;
-  public GameController controller;
+  public static final int WIN_WIDTH = 1600;
+  public static final int WIN_HEIGHT = 900;
 
+  public Game game;
+  
   public GridView gridView;
   public PlayersCollectionView playersCollectionView;
   public MenuView menuView;
 
   public GameView(Game game) {
     this.game = game;
-    controller = new GameController(game, this);
-
-    playersCollectionView = new PlayersCollectionView(game.getPlayers());
-    gridView = new GridView(game.getGrid());
-    menuView = new MenuView(game.getMenu());
-    playersCollectionView.backButton.addActionListener(e -> controller.hideTeams());
-    menuView.selectTeamsButton.addActionListener(e -> controller.displayTeams());
-    menuView.startGameButton.addActionListener(e -> controller.startGame());
-    menuView.settingsButton.addActionListener(e -> controller.openSettings());
-    menuView.settingsView.backButton.addActionListener(e -> controller.closeSettings());
     
-
+    playersCollectionView = new PlayersCollectionView(game.getPlayers());
+    menuView = new MenuView(game.getMenu());
+    
     setName("Pipes In The Desert");
     setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-    setSize(1200, 675);
+    setSize(WIN_WIDTH, WIN_HEIGHT);
     setLocationRelativeTo(null);
     setLayout(new BorderLayout());
     add(menuView);
     setVisible(true);
+
+    //Contoller should be set after the object is inicilized
+    new GameController(game, this); 
   }
 }
 

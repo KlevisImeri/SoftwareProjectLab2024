@@ -37,6 +37,7 @@ public class Game {
    * eventually calling for the game to end and display results.
    */
   public void startGame() {
+    System.out.println(players);
     grid.addPlayers(players);
     new Thread(() -> mainLoop());
   }
@@ -51,7 +52,7 @@ public class Game {
     try {
       Output.println("\n[Game Started]", Color.LIGHT_BLUE);
       long endTime = System.currentTimeMillis() + menu.settings.getEndTime() * 60 * 1000;
-      while (System.currentTimeMillis() >= endTime) {
+      while (System.currentTimeMillis() >= endTime) { //thread sleeps later so no continos checking
         Player player = players.selectRandom();
         player.active();
         Thread.sleep(menu.settings.getPlayerTime() * 1000);

@@ -14,7 +14,7 @@ import mainstring.dev.Players.PlayersCollection.PlayersCollection;
 public abstract class Element {
   public static int FreeID = 0;
   protected int ID;
-  protected Grid grid; // The grid this element is part of
+  public Grid grid; // The grid this element is part of
   protected PlayersCollection players = new PlayersCollection(); // Collection of players currently
                                                                  // on this element
   protected Class<?> neighborType; // The type of elements that can be neighbors to this element

@@ -2,6 +2,7 @@ package mainstring.dev.Players.Player;
 
 
 import java.util.Objects;
+import javax.print.attribute.standard.Destination;
 import mainstring.dev.Output;
 import mainstring.dev.Elements.*;
 import mainstring.dev.Elements.ActiveElements.*;
@@ -94,10 +95,11 @@ public abstract class Player {
    * possible. The movement is contingent upon the destination being connected to the current
    * location and not being occupied by too many players.
    */
-  public void move() {
+  public void move() throws Exception {
     try {
-      grid.setSelectedElement();
       Element destination = grid.getSelectedElement();
+      System.out.println(destination);
+      System.out.println(location);
       if (!location.isConnected(destination))
         throw new Exception("[The destination is too far!]");
 
@@ -108,6 +110,7 @@ public abstract class Player {
 
     } catch (Exception e) {
       Output.println(e.getMessage(), Color.LIGHT_RED);
+      throw e;
     }
   }
 

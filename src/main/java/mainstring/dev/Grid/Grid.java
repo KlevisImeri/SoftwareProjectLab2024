@@ -12,6 +12,7 @@ import mainstring.dev.Elements.Element.Element;
 import mainstring.dev.Elements.Pipe.Pipe;
 import mainstring.dev.Output.Color;
 import mainstring.dev.Players.PlayersCollection.PlayersCollection;
+import mainstring.dev.Players.Plumber.Plumber;
 
 /**
  * The Grid class represents the game board where various elements are placed and interacted with.
@@ -26,7 +27,6 @@ public class Grid {
   // Active elements include both pipes and potentially other interactable game elements.
   public List<Pipe> pipes = new ArrayList<>();
   public List<Pump> pumps = new ArrayList<>();
-  private PlayersCollection players;
 
   // Tracks the amount of water that has ended up in the desert (unusable water).
   private int waterInDesert = 0;
@@ -34,6 +34,7 @@ public class Grid {
   // Selection fields for user interactions or game logic.
   private Element selectedElement;
   private ActiveElement selectedActiveElement;
+  private Pipe previousSelectedPipe;
   private Pipe selectedPipe;
   // private Pump selectedPump; // Uncomment if needed for game logic.
 
@@ -82,14 +83,13 @@ public class Grid {
       cistern.addNeighbor(pipe1);
       pump.addNeighbor(pipe1);
 
-      spring.addNeighbor(pipe1);
+      spring.addNeighbor(pipe2);
       pump.addNeighbor(pipe2);
 
     } catch (Exception e) {
       e.printStackTrace();
     }
   }
-
 
   /*------------------------------------get/set Elements--------------------------------------*/
   /**
@@ -138,20 +138,21 @@ public class Grid {
     return selectedPipe;
   }
 
+  public Pipe getPreviousSelectedPipe(){
+    return previousSelectedPipe;
+  }
+
   /**
    * Sets the currently selected pipe within the grid.
    *
    * @param selectedPipe The Pipe to be set as selected.
    */
-  public void setSelectedPipe() {
-    int ID = Input.getInt(0, Element.FreeID);
-    for (Pipe p : pipes) {
-      if (p.getID() == ID) {
-        this.selectedElement = p;
-        this.selectedPipe = p;
-      }
-    }
+  public void setSelectedPipe(Pipe pipe) {
+    this.selectedElement = pipe;
+    if(selectedPipe != pipe) this.previousSelectedPipe = selectedPipe;
+    this.selectedPipe = pipe;
   }
+
   /*------------------------------------get/set Elements--------------------------------------*/
 
   /*---------------------------------------Flow---------------------------------------------*/
@@ -212,7 +213,11 @@ public class Grid {
 
   public void addPlayers(PlayersCollection players) {
     try {
-      cistern.addPlayers(players.getPlayers());  
+      // pipes.get(0).addPlayer(new Plumber("asdfasdf"));
+      for(var player : players.getPlayers()){
+        cistern.addPlayer(player);  
+        player.setGrid(this);
+      }
     } catch (Exception e) {
       e.printStackTrace();
     }

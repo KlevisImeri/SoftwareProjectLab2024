@@ -1,7 +1,6 @@
 package mainstring.dev;
 
 import mainstring.dev.Game.Game;
-import mainstring.dev.Game.GameController;
 import mainstring.dev.Game.GameView;
 
 /**
@@ -16,8 +15,7 @@ public class Main {
    */
   public static void main(String[] args) {
     // Initialize and start the frame of the game
-    Game game = new Game();
-    GameController frame = new GameController(game, new GameView(game));
+    new GameView(new Game());
   }
 }
 
