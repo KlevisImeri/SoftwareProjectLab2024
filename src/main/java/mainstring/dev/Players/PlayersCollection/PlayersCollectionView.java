@@ -14,48 +14,48 @@ public class PlayersCollectionView extends JPanel {
 
   public JPanel plumbersPanel = new JPanel(){{
     setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-    setOpaque(false); // Make panel transparent
+    setOpaque(false); 
   }};
   public JLabel plumberLabel = new JLabel("Plumbers", SwingConstants.CENTER){{
-    setFont(new Font("Arial", Font.BOLD, 30)); // Set font and size
-    setForeground(Color.BLUE); // Set font color to black
+    setFont(new Font("Arial", Font.BOLD, 30)); 
+    setForeground(Color.BLUE); 
   }};
   public JButton addPlumberButton = new JButton("Add Plumber") {{
     setBackground(Color.gray);
   }};
   public JPanel plumberPanel = new JPanel(new BorderLayout()) {{
-    setBackground(new Color(173, 216, 230)); // Light blue background color
-    setForeground(Color.BLACK); // Set font color to black
-    add(plumberLabel, BorderLayout.NORTH); // Align label to center
+    setBackground(new Color(173, 216, 230)); 
+    setForeground(Color.BLACK); 
+    add(plumberLabel, BorderLayout.NORTH); 
     add(plumbersPanel, BorderLayout.CENTER);
     add(addPlumberButton, BorderLayout.SOUTH);
-    setOpaque(false); // Make panel transparent
+    setOpaque(false); 
   }};
 
   public JPanel saboteursPanel = new JPanel(){{
     setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-    setOpaque(false); // Make panel transparent
+    setOpaque(false); 
   }};
   public JLabel saboteurLabel = new JLabel("Saboteurs", SwingConstants.CENTER){{
-    setFont(new Font("Arial", Font.BOLD, 30)); // Set font and size
-    setForeground(Color.RED); // Set font color to black
+    setFont(new Font("Arial", Font.BOLD, 30)); 
+    setForeground(Color.RED); 
   }};
   public JButton addSaboteurButton = new JButton("Add Saboteur"){{
     setBackground(Color.gray);
   }};
   public JPanel saboteurPanel = new JPanel(new BorderLayout()){{
-    setBackground(new Color(255, 192, 203)); // Light red background color
-    setForeground(Color.BLACK); // Set font color to black
-    add(saboteurLabel, BorderLayout.NORTH); // Align label to center
+    setBackground(new Color(255, 192, 203)); 
+    setForeground(Color.BLACK); 
+    add(saboteurLabel, BorderLayout.NORTH); 
     add(saboteursPanel, BorderLayout.CENTER);
     add(addSaboteurButton, BorderLayout.SOUTH);
-    setOpaque(false); // Make panel transparent
+    setOpaque(false); 
   }};
   
   public JPanel teamsPanel = new JPanel(new GridLayout(1, 2)) {{
     add(plumberPanel);
     add(saboteurPanel);
-    setOpaque(false); // Make panel transparent
+    setOpaque(false); 
   }};
   
   public JButton backButton = new JButton("Back"){{
@@ -69,15 +69,15 @@ public class PlayersCollectionView extends JPanel {
     }};
     public PlayerField(Player player) {
         textField = new PlayerTextFieldView(player);
-        textField.setBackground(Color.DARK_GRAY); // Set background color to dark gray
-        textField.setForeground(Color.WHITE); // Set text color to white
-        textField.setBorder(new LineBorder(Color.BLACK, 1)); // Add border for better visibility
+        textField.setBackground(Color.DARK_GRAY); 
+        textField.setForeground(Color.WHITE); 
+        textField.setBorder(new LineBorder(Color.BLACK, 1)); 
         setLayout(new BorderLayout());
         setMaximumSize(new Dimension(Integer.MAX_VALUE, 40)); 
         xButton.addActionListener(e -> controller.removePlayer(this));
         add(textField, BorderLayout.CENTER);
         add(xButton,BorderLayout.EAST);
-        setOpaque(false); // Make panel transparent
+        setOpaque(false); 
     }
   }
 
@@ -98,7 +98,7 @@ public class PlayersCollectionView extends JPanel {
     }
 
     setLayout(new BorderLayout());
-    // Custom panel with background image
+    
     JPanel backgroundPanel = new JPanel() {
         @Override
         protected void paintComponent(Graphics g) {

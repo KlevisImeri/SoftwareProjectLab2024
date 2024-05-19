@@ -13,16 +13,19 @@ public class MenuView extends JImage {
   public JButton startGameButton = new JButton("Start Game") {{
       setPreferredSize(buttonSize);
       setBackground(new Color(144, 238, 144));
+      setFont(new Font("Arial", Font.BOLD, 16));
   }};
 
   public JButton selectTeamsButton = new JButton("Select Teams") {{
       setPreferredSize(buttonSize);
       setBackground(Color.orange);
+      setFont(new Font("Arial", Font.BOLD, 16));
   }};
 
   public JButton settingsButton = new JButton("Open Settings") {{
       setPreferredSize(buttonSize);
       setBackground(Color.lightGray);
+      setFont(new Font("Arial", Font.BOLD, 16));
     }};
   public ImageIcon backgroundImage = new ImageIcon(getClass().getResource("/Images/desert.png"));
   public SettingsView settingsView;
@@ -39,7 +42,7 @@ public class MenuView extends JImage {
     GridBagConstraints gbc = new GridBagConstraints();
     gbc.gridx = 0;
     gbc.gridy = 10;
-    gbc.insets = new Insets(5, 5, 5, 5);
+    gbc.insets = new Insets(10, 10, 10, 10);
     panel.add(startGameButton, gbc);
     gbc.gridy++;
     panel.add(selectTeamsButton, gbc);

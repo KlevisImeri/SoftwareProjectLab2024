@@ -46,11 +46,12 @@ public class SettingsView extends JPanel {
         add(endPlayerLabel);
         add(endPlayerText);
         setMaximumSize(getPreferredSize());
-        setOpaque(false); // Make panel transparent
+        setOpaque(false); 
     }};
     public JButton backButton = new JButton("Back") {{
         setPreferredSize(buttonSize);
         setBackground(new Color(247, 154, 96));
+        setFont(new Font("Arial", Font.BOLD, 16));
     }};
 
   public SettingsView(Settings settings) {
@@ -58,7 +59,6 @@ public class SettingsView extends JPanel {
     
     controller = new SettingsController(settings, this);
 
-    // Load background image
     backgroundImage = new ImageIcon(getClass().getResource("/Images/desertBackground.png"));
     
     endTimeText.setText(""+settings.getEndTime());
@@ -67,8 +67,7 @@ public class SettingsView extends JPanel {
     endPlayerText.addActionListener(e -> controller.setPlayerTime());
   
     setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-    
-    // Custom panel with background image
+
     JPanel backgroundPanel = new JPanel() {
         @Override
         protected void paintComponent(Graphics g) {
@@ -78,15 +77,14 @@ public class SettingsView extends JPanel {
     };
     backgroundPanel.setLayout(new BoxLayout(backgroundPanel, BoxLayout.Y_AXIS));
 
-    // Panel to center the back button
     JPanel backButtonPanel = new JPanel(new FlowLayout(FlowLayout.CENTER)) {{
-        setOpaque(false); // Make panel transparent
+        setOpaque(false);
         add(backButton);
     }};
 
-    backgroundPanel.add(Box.createVerticalStrut(50)); // Add a vertical strut at the top to move components higher
-    backgroundPanel.add(titleLabel); // Add title label
-    backgroundPanel.add(Box.createVerticalStrut(30)); // Add some space between title and settings panel
+    backgroundPanel.add(Box.createVerticalStrut(50)); 
+    backgroundPanel.add(titleLabel);
+    backgroundPanel.add(Box.createVerticalStrut(30)); 
     backgroundPanel.add(settingsPanel);
     backgroundPanel.add(Box.createVerticalStrut(50));
     backgroundPanel.add(backButtonPanel);
