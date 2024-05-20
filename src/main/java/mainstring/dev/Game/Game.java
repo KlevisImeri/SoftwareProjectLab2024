@@ -33,6 +33,7 @@ public class Game {
   }
 
   public void setUp() {
+    grid = new Grid();
     grid.addPlayers(players);
   }
 
