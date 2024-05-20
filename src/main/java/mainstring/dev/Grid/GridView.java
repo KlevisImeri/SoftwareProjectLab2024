@@ -3,8 +3,10 @@ package mainstring.dev.Grid;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Image;
 import java.util.ArrayList;
 import java.util.List;
+import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.text.html.parser.Element;
 import mainstring.dev.Elements.ActiveElements.ActiveElement.ActiveElement;
@@ -30,6 +32,8 @@ public class GridView extends JPanel {
   public ActiveElementView selectedActiveElementView;
   public PumpView selectedPumpView;
   public PipeView selectedPipeView;
+  public ImageIcon textureImageIcon = new ImageIcon(getClass().getResource("/Images/texture.png"));
+  public Image textureImage = textureImageIcon.getImage();
 
   public GridView(Grid grid) {
     this.grid = grid;
@@ -53,7 +57,6 @@ public class GridView extends JPanel {
 
     
     setLayout(null);
-    // setBackground(new Color(255, 233, 135));
     add(springView);
     add(cisternView);
     for(var pumpView : pumpViews){ add(pumpView);}
@@ -72,6 +75,10 @@ public class GridView extends JPanel {
   @Override
   public void paintComponent(Graphics g) {
     super.paintComponent(g);
+    if (textureImage != null) 
+    {
+        g.drawImage(textureImage, 0, 0, getWidth(), getHeight(), this);
+    }
     // In the future here we will just call repaint
     // Because we will have to implement percantages
     // As locatoin
