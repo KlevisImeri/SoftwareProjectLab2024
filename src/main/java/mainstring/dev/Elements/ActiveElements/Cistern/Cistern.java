@@ -83,7 +83,7 @@ public class Cistern extends ActiveElement {
    * Schedules the creation of a new pipe at a random interval.
    */
   private void schedulePipeCreation() {
-    int interval = random.nextInt(5000) + 1000; // Random interval between 1 and 6 seconds
+    int interval = random.nextInt(60000) + 1000; // Random interval between 1 and 60 seconds
     timerPipe.schedule(new TimerTask() {
       @Override
       public void run() {
@@ -96,7 +96,7 @@ public class Cistern extends ActiveElement {
    * Schedules the creation of a new pump at a random interval.
    */
   private void schedulePumpCreation() {
-    int interval = random.nextInt(5000) + 1000; // Random interval between 1 and 6 seconds
+    int interval = random.nextInt(60000) + 1000; // Random interval between 1 and 60 seconds
     timerPump.schedule(new TimerTask() {
       @Override
       public void run() {

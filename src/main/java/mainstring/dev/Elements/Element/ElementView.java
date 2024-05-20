@@ -21,6 +21,7 @@ public class ElementView extends JImage {
   public List<PlayerView> playerViews = new ArrayList<>();
   public List<ElementView> neighborViews = new ArrayList<>();
   public GridView gridView;
+  protected GridBagConstraints gbc;
 
   public ElementView(Element element, String image, GridView gridView) {
     super(image);
@@ -29,7 +30,7 @@ public class ElementView extends JImage {
     controller = new ElementController(element, this);
 
     setLayout(new GridBagLayout());
-    GridBagConstraints gbc = new GridBagConstraints();
+    gbc = new GridBagConstraints();
     gbc.gridx = 0;
     gbc.gridy = 0;
     gbc.weightx = 0.0;
@@ -57,5 +58,5 @@ public class ElementView extends JImage {
     neighborViews.add(elemView);
     elemView.neighborViews.add(this);
   }
-  
+
 }
