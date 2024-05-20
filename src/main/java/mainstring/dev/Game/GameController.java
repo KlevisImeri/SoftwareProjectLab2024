@@ -1,5 +1,6 @@
 package mainstring.dev.Game;
 
+import java.sql.Time;
 import java.util.Random;
 import javax.swing.Timer;
 import mainstring.dev.Output;
@@ -38,30 +39,62 @@ public class GameController {
 
   public void startGame() {
     view.remove(view.menuView);
-    game.setUp(); 
+    game.setUp();
     view.add(new GridView(game.grid));
     view.revalidate();
     view.repaint();
     Output.println("\n[Game Started]", Color.LIGHT_BLUE);
-    new Timer(10, (e) -> mainLoop());
-    new Timer(10, (e) -> game.grid.caculateFlow());
+    endTime = game.menu.settings.getEndTime() * 60 * 1000;
+    playerTime = game.menu.settings.getPlayerTime() * 1000;
+    mainLoopTimer = new Timer(1000, (e) -> mainLoop());
+    flowCalculationTimer = new Timer(1000, (e) -> game.grid.caculateFlow());
+    mainLoopTimer.start();
+    flowCalculationTimer.start();
   }
 
-  int endTime = game.menu.settings.getEndTime() * 60 * 1000; //millisecounds.
-  int playerTime = game.menu.settings.getPlayerTime() * 1000;
-  int currentPlayerTime = playerTime;
-  void mainLoop() {
-      if(endTime <= 0) {
-        stop(); 
-        endGame();
-        return;
-      }
-      endTime-=10;
-      if(playerTime <= 0) { 
-        currentPlayerTime = playerTime;
-        view.gridView.playerViews.get(new Random());
-      }
+  Timer mainLoopTimer;
+  Timer flowCalculationTimer;
+  int endTime; // millisecounds.
+  int playerTime;
+  int currentPlayerTime = 0;
+  Player currentPlayer;
+
+  private void mainLoop() {
+    if (endTime <= 0) {
+      mainLoopTimer.stop();
+      flowCalculationTimer.stop();
+      endGame();
+      return;
     }
+    endTime -= 1000;
+    view.endTimer.setText("Time: " + formatTime(endTime));
+    if(currentPlayer!=null) currentPlayer.active();
+    if (currentPlayerTime <= 0) {
+      currentPlayerTime = playerTime;
+      currentPlayer = game.players.selectRandom();
+      currentPlayer.active();
+    }
+    currentPlayerTime -= 1000;
+    view.playerTimer.setText(currentPlayer.getName()+": " + formatTime(currentPlayerTime));
+  }
+
+  private String formatTime(int milliseconds) {
+    int seconds = milliseconds / 1000;
+    int hours = seconds / 3600;
+    int minutes = (seconds % 3600) / 60;
+    seconds = seconds % 60;
+    return String.format("%02d:%02d:%02d", hours, minutes, seconds);
+  }
+
+  private void endGame() {
+    game.endGame();
+    view.endGameLabelPlumber
+        .setText("The plumber gathered: " + game.grid.getWaterAtCistern() + "liters of water");
+    view.endGameLabelSaboteur
+        .setText("The saboteurs leaked: " + game.grid.getWaterAtDesert() + "liters of water");
+    view.remove(view.gridView);
+    view.add(view.endGameView);
+    view.repaint();
   }
 
   public void openSettings() {

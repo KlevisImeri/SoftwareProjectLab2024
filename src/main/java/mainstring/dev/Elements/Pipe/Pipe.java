@@ -1,5 +1,6 @@
 package mainstring.dev.Elements.Pipe;
 
+import javax.swing.Timer;
 import mainstring.dev.Output;
 import mainstring.dev.Elements.ActiveElements.ActiveElement.ActiveElement;
 import mainstring.dev.Elements.Element.Element;
@@ -44,6 +45,7 @@ public class Pipe extends Element {
     super(grid);
     neighborType = ActiveElement.class;
     capacityOfNeighbors = 2;
+    capacityOfPlayers = 1;
   }
 
   /**
@@ -57,6 +59,7 @@ public class Pipe extends Element {
       grid.addWaterToDesert();
     }
     Output.printChange(before, toString());
+    updateViews();
   }
 
   /**
@@ -67,6 +70,7 @@ public class Pipe extends Element {
     String before = this.toString();
     healthState = PipeHealthState.HEALTHY;
     Output.printChange(before, this.toString());
+    updateViews();
   }
 
   /**
@@ -84,9 +88,15 @@ public class Pipe extends Element {
       flowState = PipeFlowState.FULL;
     }
     Output.printChange(before, toString());
-    if (iniciator == null)
-      return; // grid set it up
-    getOtherNeighbor(iniciator).Flow(this);
+    updateViews();
+    Timer timer = new Timer(100, e -> {
+      if (iniciator == null) {
+        return; // grid set it up
+      }
+      getOtherNeighbor(iniciator).Flow(this);
+    });
+    timer.setRepeats(false); // Ensure it only runs once
+    timer.start();
   }
 
   /**
@@ -96,6 +106,7 @@ public class Pipe extends Element {
     String before = toString();
     flowState = PipeFlowState.EMPTY;
     Output.printChange(before, toString());
+    updateViews();
   }
 
   /**
@@ -105,6 +116,10 @@ public class Pipe extends Element {
    */
   public boolean isFull() {
     return flowState == PipeFlowState.FULL;
+  }
+
+  public boolean isHealthy() {
+    return this.healthState == PipeHealthState.HEALTHY;
   }
 
   /**
@@ -118,7 +133,7 @@ public class Pipe extends Element {
   }
 
   /**
-   * Retrieves the neighboring active element that is not equal to the specified active element.
+   * p Retrieves the neighboring active element that is not equal to the specified active element.
    * 
    * @param e The active element for which to find the other neighboring active element.
    * @return The neighboring active element that is not equal to the specified active element, or

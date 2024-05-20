@@ -8,7 +8,6 @@ public class Model {
   List<Component> views = new ArrayList<>();
   public Component focusedView;
 
-
   public void updateViews() {
     for (var view : views) {
       view.invalidate();
@@ -20,4 +19,11 @@ public class Model {
     focusedView.requestFocusInWindow();
   };
 
+  public void addView(Component view) {
+    views.add(view);
+  }
+
+  public void setFocusable(Component view) {
+    focusedView = view;
+  }
 }

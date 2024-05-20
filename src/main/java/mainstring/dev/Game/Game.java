@@ -50,10 +50,9 @@ public class Game {
    * Concludes the game, displaying the final results including the amounts of water gathered by
    * Plumbers and leaked by Saboteurs.
    */
-  private void endGame() {
+  public void endGame() {
     Output.println("\n[Game Ended]", Color.LIGHT_BLUE);
     displayResults(grid.getWaterAtCistern(), grid.getWaterAtDesert());
-    System.exit(1);
   }
 
   /**
@@ -62,7 +61,7 @@ public class Game {
    * @param plumberResult The amount of water gathered by Plumbers.
    * @param saboteurResult The amount of water leaked by Saboteurs.
    */
-  private void displayResults(int plumberResult, int saboteurResult) {
+  public void displayResults(int plumberResult, int saboteurResult) {
     Output.println("The plumber gathered: " + plumberResult + "liters of water",
         Color.LIGHT_MAGENTA);
     Output.println("The saboteurs leaked: " + saboteurResult + "liters of water",

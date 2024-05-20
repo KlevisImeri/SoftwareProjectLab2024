@@ -92,6 +92,7 @@ public class Pump extends ActiveElement {
     @Override
     public void run() {
       state = PumpState.BROKEN;
+      updateViews();
       schedulePipeBreak();
     }
   }
@@ -101,7 +102,7 @@ public class Pump extends ActiveElement {
    * down again.
    */
   private void schedulePipeBreak() {
-    long delay = (long) (Math.random() * 11) * 1000; // Random delay between 0 and 10 seconds
+    long delay = (long) (Math.random() * 70) * 1000; // Random delay between 0 and 70 seconds
     timer.schedule(new PipeBreakTask(), delay);
   }
 
@@ -114,7 +115,7 @@ public class Pump extends ActiveElement {
   public Pump(Grid grid) {
     super(grid);
     // This is turn off for prototype
-    // schedulePipeBreak();
+    schedulePipeBreak();
   }
 
   /**
@@ -150,6 +151,7 @@ public class Pump extends ActiveElement {
     String before = toString();
     state = PumpState.HEALTHY;
     Output.printChange(before, toString());
+    updateViews();
   }
 
   /**
@@ -194,6 +196,7 @@ public class Pump extends ActiveElement {
         // pipe
         in.empty();
         Output.printChange(before, this.toString());
+        updateViews();
         out.fill(this);
       }
     } else {
@@ -202,10 +205,15 @@ public class Pump extends ActiveElement {
         // removed from the reservoir and transferred to the output pipe
         reservoir.removeWater();
         Output.printChange(before, this.toString());
+        updateViews();
         out.fill(this);
       }
     }
 
+  }
+
+  public boolean isHealthy() {
+    return state == PumpState.HEALTHY;
   }
 
   /**

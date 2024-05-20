@@ -33,6 +33,10 @@ public class JImage extends JPanel {
     );
   }
 
+  public void setBackgroundImage(String image) {
+    backgroundImage = new ImageIcon(getClass().getResource(image));
+  }
+
   public void setImageSize(int x, int y) {
     imageSize = new Dimension(x, y);
   }

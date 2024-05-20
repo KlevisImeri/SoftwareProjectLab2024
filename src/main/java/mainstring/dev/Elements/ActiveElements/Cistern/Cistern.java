@@ -1,12 +1,14 @@
 package mainstring.dev.Elements.ActiveElements.Cistern;
 
 import java.util.Timer;
+import java.util.TimerTask;
 import mainstring.dev.Output;
 import mainstring.dev.Elements.*;
 import mainstring.dev.Elements.ActiveElements.ActiveElement.ActiveElement;
 import mainstring.dev.Elements.ActiveElements.Pump.Pump;
 import mainstring.dev.Elements.Pipe.Pipe;
 import mainstring.dev.Grid.Grid;
+import java.util.Random;
 import java.util.Stack;
 
 /**
@@ -15,14 +17,15 @@ import java.util.Stack;
  * grid it is part of.
  */
 public class Cistern extends ActiveElement {
-  protected Stack<Pump> newPumps = new Stack<>(); // List of pumps created and managed by this
-                                                  // cistern
-  protected Stack<Pipe> newPipes = new Stack<>(); // List of pipes created and managed by this
-                                                  // cistern
+  Stack<Pump> newPumps = new Stack<>(); // List of pumps created and managed by this
+                                        // cistern
+  Stack<Pipe> newPipes = new Stack<>(); // List of pipes created and managed by this
+                                        // cistern
   protected int waterAmount = 0;// The amount of water currently stored in this cistern
-  // For future use timers:
-  // protected Timer timerPipe = new Timer(); // Timer for creating pipes
-  // protected Timer timerPump = new Timer(); // Timer for creating pumps
+  private Timer timerPipe = new Timer(); // Timer for creating pipes
+  private Timer timerPump = new Timer(); // Timer for creating pumps
+  private Random random = new Random();
+
 
   @Override
   public String toString() {
@@ -31,24 +34,12 @@ public class Cistern extends ActiveElement {
   }
 
   /**
-   * Instantly creates a new pipe and adds it to the list of managed pipes.
-   */
-  private void schedulePipeCreation() {
-    createPipe();
-  }
-
-  /**
-   * Instantly creates a new pump and adds it to the list of managed pumps.
-   */
-  private void schedulePumpCreation() {
-    createPump();
-  }
-
-  /**
    * Adds a new Pump object to the list of new pumps.
    */
   public void createPump() {
     newPumps.push(new Pump(grid));
+    updateViews();
+    schedulePumpCreation();
   }
 
   /**
@@ -56,6 +47,8 @@ public class Cistern extends ActiveElement {
    */
   public void createPipe() {
     newPipes.push(new Pipe(grid));
+    updateViews();
+    schedulePipeCreation();
   }
 
   /**
@@ -82,8 +75,34 @@ public class Cistern extends ActiveElement {
    */
   public Cistern(Grid grid) {
     super(grid);
-    // schedulePipeCreation();
-    // schedulePumpCreation();
+    schedulePipeCreation();
+    schedulePumpCreation();
+  }
+
+  /**
+   * Schedules the creation of a new pipe at a random interval.
+   */
+  private void schedulePipeCreation() {
+    int interval = random.nextInt(5000) + 1000; // Random interval between 1 and 6 seconds
+    timerPipe.schedule(new TimerTask() {
+      @Override
+      public void run() {
+        createPipe();
+      }
+    }, interval);
+  }
+
+  /**
+   * Schedules the creation of a new pump at a random interval.
+   */
+  private void schedulePumpCreation() {
+    int interval = random.nextInt(5000) + 1000; // Random interval between 1 and 6 seconds
+    timerPump.schedule(new TimerTask() {
+      @Override
+      public void run() {
+        createPump();
+      }
+    }, interval);
   }
 
   /**

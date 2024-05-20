@@ -1,25 +1,25 @@
 package mainstring.dev.Elements.Pipe;
 
-import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
 import java.awt.Point;
 import mainstring.dev.Elements.Element.ElementView;
 import mainstring.dev.Grid.GridView;
-import mainstring.dev.Players.Player.PlayerView;
+
 
 
 public class PipeView extends ElementView {
   Pipe pipe;
-  String healthyImage = "/Images/pipe1.png";
+  String healthyImage = "/Images/pipe.png";
+  String healthyImageFull = "/Images/fullpipe.png";
   String brokenImage = "/Images/brokenpipe.png";
 
   public PipeView(Pipe pipe, GridView gridView) {
-    super(pipe, "/Images/pipe1.png", gridView);
+    super(pipe, "/Images/pipe.png", gridView);
     this.pipe = pipe;
-    setPreferredSize(new Dimension(400, 200));
+    pipe.addView(this);
+    setPreferredSize(new Dimension(40, 40));
     setSize(getPreferredSize());
     setImageSize(getPreferredSize());
     
@@ -29,7 +29,15 @@ public class PipeView extends ElementView {
   //https://www.reddit.com/r/learnprogramming/comments/1xz70r/javahow_can_i_rotate_a_jpanel_i_found_one_way_to/
   @Override
   public void paint(Graphics g) {
-  
+    if(pipe.isHealthy() && pipe.isFull()) {
+      setBackgroundImage(healthyImageFull);
+    } else if (pipe.isHealthy() && !pipe.isFull()) {
+      setBackgroundImage(healthyImage);
+    } else {
+      setBackgroundImage(brokenImage);
+    }
+    
+    if(neighborViews.size() == 2) {
     Dimension d1  = neighborViews.get(0).getSize();
     Dimension d2  = neighborViews.get(1).getSize();
     Point p1 = neighborViews.get(0).getLocation();
@@ -54,14 +62,15 @@ public class PipeView extends ElementView {
     setImageLocation(0,getHeight()/2-20);
 
     
-    Graphics2D g2d = (Graphics2D) g;
-    double angle = Math.atan2(dy, dx);
-    int w2 = getWidth() / 2;
-    int h2 = getHeight() / 2;
-    g2d.rotate(angle, w2, h2);
-    
-    super.paint(g);
-    
-    g2d.dispose();
+      Graphics2D g2d = (Graphics2D) g;
+      double angle = Math.atan2(dy, dx);
+      int w2 = getWidth() / 2;
+      int h2 = getHeight() / 2;
+      g2d.rotate(angle, w2, h2);
+      super.paint(g);
+      g2d.dispose();
+    } else {
+      super.paint(g);
+    }
   }
 }

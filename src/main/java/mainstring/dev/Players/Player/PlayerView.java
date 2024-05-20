@@ -22,6 +22,8 @@ public class PlayerView extends JImage {
   public PlayerView(Player player, String playerImage, ElementView location) {
     super(playerImage);
     this.location = location;
+    player.addView(this);
+    player.setFocusable(this);
     name.setText(player.getName());
     setLayout(null); // Use null layout to allow absolute positioning
     add(name);

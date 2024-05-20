@@ -6,6 +6,7 @@ import mainstring.dev.Players.PlayersCollection.PlayersCollectionView;
 import java.awt.BorderLayout;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 public class GameView extends JFrame {
   public static final int WIN_WIDTH = 1600;
@@ -17,7 +18,20 @@ public class GameView extends JFrame {
   public PlayersCollectionView playersCollectionView;
   public MenuView menuView;
 
-  private JLabel timer;
+  public JLabel endGameLabelPlumber = new JLabel();
+  public JLabel endGameLabelSaboteur = new JLabel();
+  public JPanel endGameView = new JPanel() {{
+    add(new JLabel("Game Ended!"));
+    add(endGameLabelPlumber);
+    add(endGameLabelSaboteur);
+  }};
+
+  public JLabel endTimer = new JLabel();
+  public JLabel playerTimer = new JLabel();
+  public JPanel timerPanel = new JPanel() {{
+    add(endTimer);
+    add(playerTimer);
+  }};
 
   public GameView(Game game) {
     this.game = game;
@@ -30,7 +44,7 @@ public class GameView extends JFrame {
     setSize(WIN_WIDTH, WIN_HEIGHT);
     setLocationRelativeTo(null);
     setLayout(new BorderLayout());
-    add(timer, BorderLayout.NORTH);
+    add(timerPanel, BorderLayout.NORTH);
     add(menuView);
     setVisible(true);
 

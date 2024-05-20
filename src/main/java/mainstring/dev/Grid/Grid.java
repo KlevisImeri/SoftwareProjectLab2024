@@ -81,10 +81,11 @@ public class Grid {
       Pipe pipe2 = new Pipe(this); pipes.add(pipe2);
 
       cistern.addNeighbor(pipe1);
-      pump.addNeighbor(pipe1);
+      pump.setOutPipe(pipe1);
 
       spring.addNeighbor(pipe2);
-      pump.addNeighbor(pipe2);
+      pump.setInPipe(pipe2);
+      
 
     } catch (Exception e) {
       e.printStackTrace();

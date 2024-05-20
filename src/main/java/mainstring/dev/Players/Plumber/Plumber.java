@@ -58,8 +58,6 @@ public class Plumber extends Player {
    */
   public void disconnectPipe() {
     try {
-      grid.setSelectedPipe();
-
       Pipe sp = grid.getSelectedPipe();
       if (location.isConnected(sp)) {
         if (carryPipe == null) {
@@ -180,69 +178,6 @@ public class Plumber extends Player {
       Output.printChange(before, toString());
     } catch (Exception e) {
       Output.println(e.getMessage(), Color.LIGHT_RED);
-    }
-  }
-
-  /**
-   * Defines the plumber's active behavior in the game. This method prompts the player to choose an
-   * action from a predefined list of possible actions, including moving, changing pump direction,
-   * and more.
-   */
-  @Override
-  public void active() {
-    keyTyped();
-  }
-
-  /**
-   * Defines the plumber's passive behavior in the game. Currently, this method does not implement
-   * any specific behavior. This is for future implementatoin when gui is needed.
-   */
-  @Override
-  public void passive() {}
-
-  /**
-   * Processes player input to determine the action the plumber should take. This method allows the
-   * player to choose from moving, changing pump direction, disconnecting/connecting pipes, fixing
-   * elements, and more.
-   */
-  public void keyTyped(char key) {
-    System.out.println("What does the player do?");
-    String lightMagenta = "\u001B[95m";
-    String resetColor = "\u001B[0m";
-    System.out.println(lightMagenta + "[m]" + resetColor + "ove");
-    System.out.println("changePump" + lightMagenta + "[D]" + resetColor + "irection()");
-    System.out.println(lightMagenta + "[d]" + resetColor + "isconnectPipe()");
-    System.out.println(lightMagenta + "[c]" + resetColor + "onnectPipe()");
-    System.out.println(lightMagenta + "[f]" + resetColor + "ix()");
-    System.out.println(lightMagenta + "[i]" + resetColor + "nsertPump()");
-    System.out.println(lightMagenta + "[p]" + resetColor + "ickPump()");
-    System.out.println(lightMagenta + "[P]" + resetColor + "ickPipe()");
-
-    switch (key) {
-      case 'm':
-        move();
-        break;
-      case 'D':
-        changePumpDirection();
-        break;
-      case 'd':
-        disconnectPipe();
-        break;
-      case 'c':
-        connectPipe();
-        break;
-      case 'f':
-        fix();
-        break;
-      case 'i':
-        insertPump();
-        break;
-      case 'p':
-        pickPump();
-        break;
-      case 'P':
-        pickPipe();
-        break;
     }
   }
 

@@ -1,6 +1,7 @@
 package mainstring.dev.Elements.Element;
 
 import java.util.*;
+import mainstring.dev.Model;
 import mainstring.dev.Output;
 import mainstring.dev.Grid.Grid;
 import mainstring.dev.Players.Player.Player;
@@ -11,15 +12,15 @@ import mainstring.dev.Players.PlayersCollection.PlayersCollection;
  * elements that can exist in a grid. It manages players located on the element, its neighbors, and
  * interactions between them.
  */
-public abstract class Element {
+public abstract class Element extends Model {
   public static int FreeID = 0;
   protected int ID;
   public Grid grid; // The grid this element is part of
-  protected PlayersCollection players = new PlayersCollection(); // Collection of players currently
+  public PlayersCollection players = new PlayersCollection(); // Collection of players currently
                                                                  // on this element
   protected Class<?> neighborType; // The type of elements that can be neighbors to this element
-  protected int capacityOfNeighbors = Integer.MAX_VALUE; // Capacity of neighboring elements, not
-                                                         // explicitly used
+  protected int capacityOfNeighbors = Integer.MAX_VALUE; // Capacity of neighboring elements, not explicitly used
+  protected int capacityOfPlayers = Integer.MAX_VALUE;
   protected Set<Element> neighbors = new HashSet<>();// The set of neighboring elements
 
   /**
@@ -59,7 +60,7 @@ public abstract class Element {
    * @param player The player to add to this element.
    */
   public void addPlayer(Player player) throws Exception {
-    if (players.size() == capacityOfNeighbors)
+    if (players.size() == capacityOfPlayers)
       throw new Exception("[The element has to many players standing on it!]");
     String before = toString();
     if (player.getLocation() != null)
@@ -128,6 +129,10 @@ public abstract class Element {
       throw new IllegalArgumentException(
           "[You cant remove " + neighbor.type() + " from " + this.type() + "!]");
     }
+  }
+
+  public boolean hasNeighbor() {
+    return !neighbors.isEmpty();
   }
 
   /**

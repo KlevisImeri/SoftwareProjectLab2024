@@ -3,6 +3,7 @@ package mainstring.dev.Players.PlayersCollection;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import java.util.Random;
 import mainstring.dev.Input;
 import mainstring.dev.Output;
 import mainstring.dev.Output.Color;
@@ -36,10 +37,10 @@ public class PlayersCollection {
   }
 
   public void add(Player player) {
-    if(player instanceof Plumber) {
-      plumbers.add((Plumber)player);
+    if (player instanceof Plumber) {
+      plumbers.add((Plumber) player);
     } else if (player instanceof Saboteur) {
-      saboteurs.add((Saboteur)player);
+      saboteurs.add((Saboteur) player);
     }
   }
 
@@ -82,27 +83,17 @@ public class PlayersCollection {
   }
 
   public Player selectRandom() {
-    Output.println("Who's turn? [name]", Color.WHITE);
-    for (Plumber plumber : plumbers) {
-      Output.println(plumber.getName(), Color.LIGHT_MAGENTA);
+    List<Player> allPlayers = new ArrayList<>();
+    allPlayers.addAll(plumbers);
+    allPlayers.addAll(saboteurs);
+
+    if (allPlayers.isEmpty()) {
+      throw new RuntimeException("No players available to select.");
     }
-    for (Saboteur saboteur : saboteurs) {
-      Output.println(saboteur.getName(), Color.LIGHT_MAGENTA);
-    }
-    while (true) {
-      String name = Input.getLine();
-      for (Plumber plumber : plumbers) {
-        if (plumber.getName().equals(name)) {
-          return plumber;
-        }
-      }
-      for (Saboteur saboteur : saboteurs) {
-        if (saboteur.getName().equals(name)) {
-          return saboteur;
-        }
-      }
-      Input.clearPreviousLine();
-    }
+    
+    Random random = new Random();
+    int randomIndex = random.nextInt(allPlayers.size());
+    return allPlayers.get(randomIndex);
   }
 
   public List<Player> getPlayers() {
