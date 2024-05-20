@@ -48,7 +48,7 @@ public class GameController {
     view.revalidate();
     view.repaint();
     Output.println("\n[Game Started]", Color.LIGHT_BLUE);
-    endTime = game.menu.settings.getEndTime() * 60 * 10;
+    endTime = game.menu.settings.getEndTime() * 60 * 1000;
     playerTime = game.menu.settings.getPlayerTime() * 1000;
     mainLoopTimer = new Timer(1000, (e) -> mainLoop());
     flowCalculationTimer = new Timer(1000, (e) -> game.grid.caculateFlow());
@@ -78,6 +78,7 @@ public class GameController {
       currentPlayerTime = playerTime;
       currentPlayer = game.players.selectRandom();
       currentPlayer.active();
+      if(playerView != null) view.remove(playerView);
       playerView = new PlayerCommandView(currentPlayer);
       view.add(playerView, BorderLayout.EAST);
     }
@@ -103,6 +104,7 @@ public class GameController {
     view.remove(view.timerPanel);
     view.remove(playerView);
     view.add(view.endGameView, BorderLayout.CENTER);
+    view.endGameView.setImageSize(view.getSize());
     view.revalidate();
     view.repaint();
   }
