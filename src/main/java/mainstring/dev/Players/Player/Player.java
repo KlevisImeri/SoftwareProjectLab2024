@@ -116,16 +116,18 @@ public abstract class Player extends Model {
    * changes its direction. If the player is located on a Pipe, Cistern, or Spring, it notifies that
    * changing direction is not applicable.
    */
-  public void changePumpDirection() {
+  public void changePumpDirection() throws Exception {
     if (location instanceof Pump) {
       ((Pump) location).changeDirection();
     } else if (location instanceof Pipe) {
-      Output.println("You can't change the direction Pipe!", Color.LIGHT_RED);
+      throw new Exception("You can't change the direction Pipe!");
     } else if (location instanceof Cistern) {
-      Output.println("You can't change the direction of cistern!", Color.LIGHT_RED);
+      throw new Exception("You can't change the direction of cistern!");
     } else if (location instanceof Spring) {
-      Output.println("You can't change the direction of spring!", Color.LIGHT_RED);
+      throw new Exception("You can't change the direction of spring!");
     }
+
+    System.out.println(grid);
   }
 
   /**

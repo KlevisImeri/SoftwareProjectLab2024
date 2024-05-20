@@ -136,7 +136,7 @@ public class Pump extends ActiveElement {
    * 
    * @param pipe The pipe to be set as the output for this pump.
    */
-  public void setOutPipe(Pipe pipe) throws Exception {
+  public void  setOutPipe(Pipe pipe) throws Exception {
     String before = toString();
     if (!isConnected(pipe))
       addNeighbor(pipe);

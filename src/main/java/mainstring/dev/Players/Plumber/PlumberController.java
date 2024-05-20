@@ -67,13 +67,14 @@ public class PlumberController implements KeyListener {
           ElementView neighbor = view.location.neighborViews.get(1);
 
           view.location.removeNeighborView(neighbor);  
-          view.carryPumpView.addNeighborView(view.location);
-
-          newPipe.addNeighborView(view.carryPumpView);  
+          view.carryPumpView.setOutPipeView((PipeView) view.location);
+          view.carryPumpView.setInPipeView(newPipe);
+          // newPipe.addNeighborView(view.carryPumpView);  
           newPipe.addNeighborView(neighbor);
           
-
+          //order acyllu matters without the z component
           view.location.gridView.add(view.carryPumpView);
+          view.location.gridView.setComponentZOrder(view.carryPumpView, 0); 
           view.location.gridView.add(newPipe);
 
           view.location.gridView.repaint();

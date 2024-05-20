@@ -4,6 +4,7 @@ import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
+import mainstring.dev.Elements.ActiveElements.Pump.PumpView;
 
 public class PlayerController implements KeyListener, MouseListener {
   Player player;
@@ -19,6 +20,7 @@ public class PlayerController implements KeyListener, MouseListener {
 
   @Override
   public void mouseClicked(MouseEvent e) {}
+
   @Override
   public void mousePressed(MouseEvent e) {}
 
@@ -33,21 +35,26 @@ public class PlayerController implements KeyListener, MouseListener {
 
   @Override
   public void keyTyped(KeyEvent e) {
-    switch (e.getKeyChar()) {
-      case 'm': 
-        try {
-          player.move(); 
-          //ore you can set it up se yuu repaint the whole thing
+    try {
+      switch (e.getKeyChar()) {
+        case 'm':
+          player.move();
+          // ore you can set it up se yuu repaint the whole thing
           view.location.remove(view);
           view.location.playerViews.remove(view);
           view.location = view.location.gridView.selectedElementView;
           view.location.add(view);
           view.location.playerViews.add(view);
           view.location.gridView.repaint();
+          break;
+        case 'D':
+          player.changePumpDirection();
+          ((PumpView) view.location).changeDirectionViews();
+          break;
+      }
 
-        } catch(Exception exp) {}
-        break;
-      case 'D': player.changePumpDirection(); break;
+    } catch (Exception exp) {
+      exp.printStackTrace();
     }
   }
 

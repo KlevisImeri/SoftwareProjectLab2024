@@ -47,6 +47,9 @@ public class Grid {
   @Override
   public String toString() {
     return """
+
+        
+        [GRID]
         Pipes:
         %s
 
@@ -60,6 +63,8 @@ public class Grid {
         Selected Pipe: %s
 
         Water in Desert: %s
+
+
         """.formatted(Output.toString(pipes), cistern, spring, Output.toString(pumps),
         selectedElement != null ? Integer.toString(selectedElement.hashCode()) : "null",
         selectedActiveElement != null ? Integer.toString(selectedActiveElement.hashCode()) : "null",

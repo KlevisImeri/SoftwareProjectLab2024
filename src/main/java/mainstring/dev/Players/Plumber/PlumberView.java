@@ -9,8 +9,8 @@ import mainstring.dev.Players.Player.PlayerView;
 public class PlumberView extends PlayerView {
   Plumber plumber;
   
-  PipeView carryPipeView;
-  PumpView carryPumpView;
+  public PipeView carryPipeView;
+  public PumpView carryPumpView;
 
   public PlumberView(Plumber plumber, ElementView location) {
     super(plumber, "/Images/plumer.png", location);

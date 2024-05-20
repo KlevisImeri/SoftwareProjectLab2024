@@ -134,13 +134,17 @@ public class Plumber extends Player {
           carryPump.setInPipe(newPipe);
           carryPump.setOutPipe((Pipe) location);
           // carryPump.addPlayer(this);
-          newPipe.addNeighbor(neighbors.get(1));
+          ((Pump)neighbors.get(1)).setOutPipe(newPipe);
+          // here in som cases also the in pipe should be updated
+          
 
           grid.addPipe(newPipe);
           grid.addPump(carryPump);
           carryPump = null;
 
           Output.printChange(before, toString());
+
+          System.out.println(grid);
           return newPipe;
         } else {
           throw new Exception("[You can't insert a Pump at a " + location.type() + "]");

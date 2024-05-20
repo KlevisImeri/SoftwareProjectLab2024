@@ -35,6 +35,7 @@ public class PipeController implements ComponentListener, MouseListener {
   public void mouseClicked(MouseEvent e) {
     pipe.grid.setSelectedPipe(pipe);
     view.gridView.selectedElementView = view;
+    view.gridView.previousSelectPipeView = view.gridView.selectedPipeView;
     view.gridView.selectedPipeView = view;
   }
 

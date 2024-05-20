@@ -1,12 +1,9 @@
 package mainstring.dev.Elements.Element;
 
-import java.awt.Color;
-import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.util.ArrayList;
 import java.util.List;
-import javax.swing.border.LineBorder;
 import mainstring.dev.JImage;
 import mainstring.dev.Grid.GridView;
 import mainstring.dev.Players.Player.PlayerView;

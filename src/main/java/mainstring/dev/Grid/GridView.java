@@ -21,11 +21,12 @@ public class GridView extends JImage {
   GridController controller;
   SpringView springView;
   CisternView cisternView;
-  List<PumpView> pumpViews = new ArrayList<>();
-  List<PipeView> pipeViews = new ArrayList<>();
+  public List<PumpView> pumpViews = new ArrayList<>();
+  public List<PipeView> pipeViews = new ArrayList<>();
   public ElementView selectedElementView;
   public ActiveElementView selectedActiveElementView;
   public PumpView selectedPumpView;
+  public PipeView previousSelectPipeView;
   public PipeView selectedPipeView;
 
   public GridView(Grid grid) {
@@ -44,10 +45,10 @@ public class GridView extends JImage {
     }
 
     cisternView.addNeighborView(pipeViews.get(0));
-    pumpViews.get(0).addNeighborView(pipeViews.get(0));
+    pumpViews.get(0).setOutPipeView(pipeViews.get(0));
 
     springView.addNeighborView(pipeViews.get(1));
-    pumpViews.get(0).addNeighborView(pipeViews.get(1));
+    pumpViews.get(0).setInPipeView(pipeViews.get(1));
 
     
     setLayout(null);
