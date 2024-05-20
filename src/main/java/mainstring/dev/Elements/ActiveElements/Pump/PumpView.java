@@ -12,15 +12,33 @@ import mainstring.dev.Elements.ActiveElements.ActiveElement.ActiveElementView;
 import mainstring.dev.Elements.Pipe.PipeView;
 import mainstring.dev.Grid.GridView;
 
+/**
+ * The PumpView class extends ActiveElementView to provide a visual representation
+ * of a Pump element. It manages the display of the pump's state and its connections
+ * to input and output pipes.
+ */
 public class PumpView extends ActiveElementView {
+  // The Pump instance being represented by this view.
   Pump pump;
+
+  // Images representing the healthy and broken states of the pump.
   String healthyImage = "/Images/pump.png";
   String brokenImage = "/Images/brokenpump.png";
+
+  // Flag to track if the size has been set after a neighbor is added.
   Boolean sizeSet = false;
 
+  // Views representing the input and output pipes connected to the pump.
   public PipeView inView;
   public PipeView outView;
 
+  /**
+   * Constructs a PumpView with the specified Pump and GridView.
+   * Sets up the controller and initializes the view with the default pump image.
+   *
+   * @param pump the Pump associated with this view
+   * @param gridView the GridView in which this pump is displayed
+   */
   public PumpView(Pump pump, GridView gridView) {
     super(pump, "/Images/pump.png", gridView);
     this.pump = pump;
@@ -31,30 +49,53 @@ public class PumpView extends ActiveElementView {
     setImageSize(getPreferredSize());
   }
 
+  /**
+   * Sets the input PipeView for this pump.
+   *
+   * @param view the input PipeView to set
+   */   
   public void setInPipeView(PipeView view) {
     addNeighborView(view);
     inView = view;
   }
 
+  /**
+   * Sets the output PipeView for this pump.
+   *
+   * @param view the output PipeView to set
+   */
   public void setOutPipeView(PipeView view) {
     addNeighborView(view);
     outView = view;
   }
 
+  /**
+   * Changes the direction of the views based on the selected and previous pipe views in the grid.
+   */
   public void changeDirectionViews() {
     inView = gridView.previousSelectPipeView;
     outView = gridView.selectedPipeView;
   }
 
+  /**
+   * Paints the PumpView, including the connections to the input and output pipes.
+   * Updates the background image based on the pump's health status and adjusts the size
+   * if the pump has a neighbor.
+   *
+   * @param g the Graphics object to protect
+   */
   @Override
   public void paint(Graphics g) {
+    // Ensure the input and output views are valid neighbors.
     if(!neighborViews.contains(inView)) inView = null;
     if(!neighborViews.contains(outView)) outView = null;
+    // Update the background image based on the pump's health status.
     if (pump.isHealthy()) {
       setBackgroundImage(healthyImage);
     } else {
       setBackgroundImage(brokenImage);
     }
+    // Adjust the size if the pump has a neighbor and the size has not been set.
     if (pump.hasNeighbor() && !sizeSet) {
       setPreferredSize(new Dimension(200, 200));
       setSize(getPreferredSize());
@@ -63,9 +104,11 @@ public class PumpView extends ActiveElementView {
       sizeSet = true;
     }
 
+    // Call the superclass's paint method.
     super.paint(g);
-    Point center = new Point(getX() + getWidth() / 2, getY() + getHeight() / 2);
 
+    // Draw connections to the input and output pipes.
+    Point center = new Point(getX() + getWidth() / 2, getY() + getHeight() / 2);
     Graphics2D g2d = (Graphics2D) g;
     g2d.setColor(Color.GREEN);
     g2d.setStroke(new BasicStroke(5));

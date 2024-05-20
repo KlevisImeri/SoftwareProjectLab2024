@@ -9,6 +9,7 @@ import java.awt.Color;
 import java.awt.Font;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -24,6 +25,7 @@ public class GameView extends JFrame {
 
   public PlayersCollectionView playersCollectionView;
   public MenuView menuView;
+
 
         JLabel gameEndedLabel = new JLabel("Game Ended!") {{
             setFont(new Font("Arial", Font.BOLD, 80));
@@ -43,8 +45,9 @@ public class GameView extends JFrame {
 
         JPanel endGameView = new JPanel() {{
             setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-            setOpaque(false); // Make it transparent to see the background
 
+            setBackground(Color.BLACK);
+            add(Box.createVerticalStrut(80));
             add(gameEndedLabel);
             add(Box.createVerticalStrut(30)); // Add spacing
             add(endGameLabelPlumber);
