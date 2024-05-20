@@ -18,17 +18,7 @@ public class PlayerController implements KeyListener, MouseListener {
   }
 
   @Override
-  public void mouseClicked(MouseEvent e) {
-    // Component clickedComponent = e.getComponent();
-    // if(clickedComponent derivedfrom ActiveElementView) {
-    // player.grid.setSelectedActiveElement((ActiveElementView)component.activeElement);
-    // } else (if clickedComponent instanceof PipeView) {
-    // player.grid.setSelectedPipe((PipeView)component.pipe);
-    // }
-    // view.setFocusable(true);
-    view.requestFocusInWindow();
-  }
-
+  public void mouseClicked(MouseEvent e) {}
   @Override
   public void mousePressed(MouseEvent e) {}
 

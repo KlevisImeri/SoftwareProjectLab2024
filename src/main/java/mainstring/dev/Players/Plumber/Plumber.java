@@ -56,15 +56,17 @@ public class Plumber extends Player {
    * Attempts to disconnect a pipe from its current location. If successful, the Plumber starts
    * carrying the disconnected pipe.
    */
-  public void disconnectPipe() {
+  public void disconnectPipe() throws Exception {
     try {
       Pipe sp = grid.getSelectedPipe();
       if (location.isConnected(sp)) {
         if (carryPipe == null) {
+          System.out.println("[Disconecting]");
           String before = toString();
           location.removeNeighbor(sp);
           carryPipe = sp;
           Output.printChange(before, toString());
+          updateViews();
         } else {
           throw new Exception("[You are already carrying a pipe!]");
         }
@@ -73,6 +75,7 @@ public class Plumber extends Player {
       }
     } catch (Exception e) {
       Output.println(e.getMessage(), Color.LIGHT_RED);
+      throw e;
     }
   }
 
@@ -80,19 +83,20 @@ public class Plumber extends Player {
    * Attempts to connect a pipe to the Plumber's current location. If the Plumber is carrying a
    * pipe, it connects that pipe to the location.
    */
-  public void connectPipe() {
+  public void connectPipe()  throws Exception {
     try {
-      if (carryPipe == null) {
+      if (carryPipe != null) {
         String before = toString();
         location.addNeighbor(carryPipe);
         grid.addPipe(carryPipe);
         carryPipe = null;
         Output.printChange(before, toString());
       } else {
-        throw new Exception("[You don't have a pump!]");
+        throw new Exception("[You don't have a pipe!]");
       }
     } catch (Exception e) {
       Output.println(e.getMessage(), Color.LIGHT_RED);
+      throw e;
     }
   }
 
@@ -115,7 +119,7 @@ public class Plumber extends Player {
    * Inserts a pump into the grid at the Plumber's current location if the location is suitable
    * (i.e., a Pipe) and the Plumber is carrying a pump.
    */
-  public void insertPump() {
+  public Pipe insertPump() throws Exception {
     try {
       if (carryPump != null) {
         if (location instanceof Pipe) {
@@ -128,7 +132,7 @@ public class Plumber extends Player {
 
           carryPump.setInPipe(newPipe);
           carryPump.setOutPipe((Pipe) location);
-          carryPump.addPlayer(this);
+          // carryPump.addPlayer(this);
           newPipe.addNeighbor(neighbors.get(1));
 
           grid.addPipe(newPipe);
@@ -136,6 +140,7 @@ public class Plumber extends Player {
           carryPump = null;
 
           Output.printChange(before, toString());
+          return newPipe;
         } else {
           throw new Exception("[You can't insert a Pump at a " + location.type() + "]");
         }
@@ -144,6 +149,7 @@ public class Plumber extends Player {
       }
     } catch (Exception e) {
       Output.println(e.getMessage(), Color.LIGHT_RED);
+      throw e;
     }
   }
 
@@ -152,15 +158,19 @@ public class Plumber extends Player {
    * a Cistern. If the plumber is not at a Cistern or there are no available pumps, an error message
    * is displayed.
    */
-  public void pickPump() {
+  public void pickPump()  throws Exception {
     try {
       if (!(location instanceof Cistern))
         throw new Exception("[You are not at the cistern!]");
+      if(carryPump != null) 
+        throw new Exception("[You are already carrying a pump!]");
       String before = toString();
       carryPump = ((Cistern) location).getPump();
       Output.printChange(before, toString());
+      updateViews();
     } catch (Exception e) {
       Output.println(e.getMessage(), Color.LIGHT_RED);
+      throw e;
     }
   }
 
@@ -169,15 +179,20 @@ public class Plumber extends Player {
    * a Cistern. If the plumber is not at a Cistern or there are no available pipes, an error message
    * is displayed.
    */
-  public void pickPipe() {
+  public void pickPipe() throws Exception {
     try {
       if (!(location instanceof Cistern))
         throw new Exception("[You are not at the cistern!]");
+      if(carryPipe != null)
+        throw new Exception("[You are already carrying a pipe!]");
       String before = toString();
       carryPipe = ((Cistern) location).getPipe();
+      location.addNeighbor(carryPipe);
       Output.printChange(before, toString());
+      updateViews();
     } catch (Exception e) {
       Output.println(e.getMessage(), Color.LIGHT_RED);
+      throw e;
     }
   }
 

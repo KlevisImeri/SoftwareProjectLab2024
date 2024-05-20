@@ -22,7 +22,7 @@ public class PumpView extends ActiveElementView {
   }
 
   @Override
-  public void paintComponent(Graphics g) {
+  public void paint(Graphics g) {
     if(pump.isHealthy()) {
       setBackgroundImage(healthyImage);
     } else {
@@ -35,6 +35,6 @@ public class PumpView extends ActiveElementView {
       setImageLocation(50, 50);
       sizeSet = true;
     }
-    super.paintComponent(g);
+    super.paint(g);
   }
 }

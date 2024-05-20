@@ -22,46 +22,46 @@ public class PipeView extends ElementView {
     setPreferredSize(new Dimension(40, 40));
     setSize(getPreferredSize());
     setImageSize(getPreferredSize());
-    
+
     new PipeController(pipe, this);
   }
 
-  //https://www.reddit.com/r/learnprogramming/comments/1xz70r/javahow_can_i_rotate_a_jpanel_i_found_one_way_to/
+  // https://www.reddit.com/r/learnprogramming/comments/1xz70r/javahow_can_i_rotate_a_jpanel_i_found_one_way_to/
   @Override
   public void paint(Graphics g) {
-    if(pipe.isHealthy() && pipe.isFull()) {
+    if (pipe.isHealthy() && pipe.isFull()) {
       setBackgroundImage(healthyImageFull);
     } else if (pipe.isHealthy() && !pipe.isFull()) {
       setBackgroundImage(healthyImage);
     } else {
       setBackgroundImage(brokenImage);
     }
-    
-    if(neighborViews.size() == 2) {
-    Dimension d1  = neighborViews.get(0).getSize();
-    Dimension d2  = neighborViews.get(1).getSize();
-    Point p1 = neighborViews.get(0).getLocation();
-    Point p2 = neighborViews.get(1).getLocation();
-    
 
-    p1.setLocation(p1.getX()+d1.getWidth()/2, p1.getY()+d1.getHeight()/2);
-    p2.setLocation(p2.getX()+d2.getWidth()/2, p2.getY()+d2.getHeight()/2);
-    double dx = p2.getX() - p1.getX();
-    double dy = p2.getY() - p1.getY();
-    double dis = Math.sqrt(dx*dx + dy*dy);
+    if (neighborViews.size() >= 2) {
+      Dimension d1 = neighborViews.get(0).getSize();
+      Dimension d2 = neighborViews.get(1).getSize();
+      Point p1 = neighborViews.get(0).getLocation();
+      Point p2 = neighborViews.get(1).getLocation();
 
-    // Padding is needed so when the size becomes small, the image which has 40 width
-    // doesn't disappera becuause the saize fo the panel is [0,0].
-    int padding = 70;
-    setSize((int) Math.abs(dx)+padding, (int)(Math.abs(dy))+padding); 
-    setLocation(
-      (int)((p1.getX() + p2.getX())/2 - getWidth()/2),
-      (int)((p1.getY() + p2.getY())/2 - getHeight()/2)
-    );
-    setImageSize((int)dis, 40);
-    setImageLocation(0,getHeight()/2-20);
 
-    
+      p1.setLocation(p1.getX() + d1.getWidth() / 2, p1.getY() + d1.getHeight() / 2);
+      p2.setLocation(p2.getX() + d2.getWidth() / 2, p2.getY() + d2.getHeight() / 2);
+      double dx = p2.getX() - p1.getX();
+      double dy = p2.getY() - p1.getY();
+      double dis = Math.sqrt(dx * dx + dy * dy);
+
+      // Padding is needed so when the size becomes small, the image which has 40 width
+      // doesn't disappera becuause the saize fo the panel is [0,0].
+      int padding = 70;
+      setSize((int) Math.abs(dx) + padding, (int) (Math.abs(dy)) + padding);
+      setLocation(
+        (int) ((p1.getX() + p2.getX()) / 2 - getWidth() / 2),
+        (int) ((p1.getY() + p2.getY()) / 2 - getHeight() / 2)
+      );
+      setImageSize((int) dis, 40);
+      setImageLocation(0, getHeight() / 2 - 20);
+
+
       Graphics2D g2d = (Graphics2D) g;
       double angle = Math.atan2(dy, dx);
       int w2 = getWidth() / 2;
@@ -69,7 +69,11 @@ public class PipeView extends ElementView {
       g2d.rotate(angle, w2, h2);
       super.paint(g);
       g2d.dispose();
-    } else {
+    } else if (neighborViews.size() < 2) {
+      setLocation(0, 0);
+      setPreferredSize(new Dimension(40, 40));
+      setSize(getPreferredSize());
+      setImageSize(getPreferredSize());
       super.paint(g);
     }
   }

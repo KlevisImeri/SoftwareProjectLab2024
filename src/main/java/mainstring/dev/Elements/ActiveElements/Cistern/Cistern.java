@@ -133,6 +133,7 @@ public class Cistern extends ActiveElement {
       throw new Exception("[No More Pipes!]");
     Pipe p = newPipes.pop();
     Output.printChange(before, toString());
+    updateViews();
     return p;
   }
 

@@ -90,7 +90,7 @@ public class Pipe extends Element {
     Output.printChange(before, toString());
     updateViews();
     Timer timer = new Timer(100, e -> {
-      if (iniciator == null) {
+      if (iniciator == null ||  getOtherNeighbor(iniciator)== null) {
         return; // grid set it up
       }
       getOtherNeighbor(iniciator).Flow(this);
