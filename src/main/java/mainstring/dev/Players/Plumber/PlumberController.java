@@ -9,18 +9,39 @@ import mainstring.dev.Elements.Element.ElementView;
 import mainstring.dev.Elements.Pipe.Pipe;
 import mainstring.dev.Elements.Pipe.PipeView;
 
+/**
+ * The PlumberController class implements KeyListener to handle key events
+ * for a Plumber. It processes different key inputs to perform actions
+ * such as disconnecting and connecting pipes, fixing, and inserting pumps.
+ */
 public class PlumberController implements KeyListener {
+  // The Plumber instance being controlled.
   Plumber plumber;
+
+  // The view associated with the Plumber.
   PlumberView view;
 
+  /**
+   * Constructs a PlumberController with the specified Plumber and PlumberView.
+   * Adds this controller as a key listener to the view.
+   *
+   * @param plumber the Plumber to control
+   * @param plumberView the PlumberView associated with the Plumber
+   */
   public PlumberController(Plumber plumber, PlumberView plumberView) {
     this.plumber = plumber;
     this.view = plumberView;
 
+    // Add this controller as a KeyListener to the view.
     view.addKeyListener(this);
   }
 
-
+  /**
+   * Invoked when a key is typed. Processes specific key actions
+   * to update the plumber's state and view.
+   *
+   * @param e the event to be processed
+   */
   @Override
   public void keyTyped(KeyEvent e) {
     try {
@@ -67,6 +88,7 @@ public class PlumberController implements KeyListener {
 
           ElementView neighbor = view.location.neighborViews.get(1);
 
+          // Add the components to the grid view
           view.location.removeNeighborView(neighbor);  
           view.carryPumpView.setOutPipeView((PipeView) view.location);
           view.carryPumpView.setInPipeView(newPipe);
@@ -104,6 +126,7 @@ public class PlumberController implements KeyListener {
     }
   }
 
+  // These methods are required by the KeyListener interface, but are not used in this implementation.
   @Override
   public void keyPressed(KeyEvent e) {}
 

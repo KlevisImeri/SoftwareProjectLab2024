@@ -7,28 +7,51 @@ import java.awt.Point;
 import mainstring.dev.Elements.Element.ElementView;
 import mainstring.dev.Grid.GridView;
 
-
-
+/**
+ * The PipeView class extends ElementView to provide a visual representation
+ * of a Pipe element. It manages the display of the pipe's state and handles
+ * the painting logic to visualize connections to neighboring elements.
+ */
 public class PipeView extends ElementView {
+  // The Pipe instance being represented by this view.
   Pipe pipe;
+
+  // Images representing the different states of the pipe.
   String healthyImage = "/Images/pipe.png";
   String healthyImageFull = "/Images/fullpipe.png";
   String brokenImage = "/Images/brokenpipe.png";
 
+  /**
+   * Constructs a PipeView with the specified Pipe and GridView.
+   * Sets the preferred size and initializes the view with the default pipe image.
+   *
+   * @param pipe the Pipe associated with this view
+   * @param gridView the GridView in which this pipe is displayed
+   */
   public PipeView(Pipe pipe, GridView gridView) {
     super(pipe, "/Images/pipe.png", gridView);
     this.pipe = pipe;
     pipe.addView(this);
+
+    // Set the preferred size for the pipe view.
     setPreferredSize(new Dimension(40, 40));
     setSize(getPreferredSize());
     setImageSize(getPreferredSize());
 
+    // Initialize the controller for this view.
     new PipeController(pipe, this);
   }
 
-  // https://www.reddit.com/r/learnprogramming/comments/1xz70r/javahow_can_i_rotate_a_jpanel_i_found_one_way_to/
+  /**
+   * Paints the PipeView, including the connections to neighboring elements.
+   * Updates the background image based on the pipe's state and adjusts the size
+   * and location if the pipe is connected to two neighbors.
+   *
+   * @param g the Graphics object to protect
+   */
   @Override
   public void paint(Graphics g) {
+    // Update the background image based on the pipe's state.
     if (pipe.isHealthy() && pipe.isFull()) {
       setBackgroundImage(healthyImageFull);
     } else if (pipe.isHealthy() && !pipe.isFull()) {
@@ -37,6 +60,7 @@ public class PipeView extends ElementView {
       setBackgroundImage(brokenImage);
     }
 
+    // Handle the painting logic if the pipe is connected to two neighbors.
     if (neighborViews.size() >= 2) {
       if (neighborViews.get(0) == neighborViews.get(1))
         System.out.println("Same Neighboor");
