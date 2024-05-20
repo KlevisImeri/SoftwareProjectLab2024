@@ -102,7 +102,7 @@ public class Pump extends ActiveElement {
    * down again.
    */
   private void schedulePipeBreak() {
-    long delay = (long) (Math.random() * 70) * 1000; // Random delay between 0 and 70 seconds
+    long delay = (long) (Math.random() * 200) * 1000; // Random delay between 0 and 200 seconds
     timer.schedule(new PipeBreakTask(), delay);
   }
 
@@ -186,7 +186,7 @@ public class Pump extends ActiveElement {
       return;
     String before = this.toString();
     if (in.isFull()) {
-      if (state == PumpState.BROKEN || out.isFull()) {
+      if (state == PumpState.BROKEN) {
         // If the pump is broken and the input pipe is full, water is added to the reservoir or
         // If the out pipe is full water is added to the reservoir;
         in.empty();
@@ -224,6 +224,10 @@ public class Pump extends ActiveElement {
   @Override
   public String type() {
     return "pump";
+  }
+
+  public void stopTimers() {
+    timer.cancel();
   }
 }
 

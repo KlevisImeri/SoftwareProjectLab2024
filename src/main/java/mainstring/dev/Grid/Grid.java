@@ -228,4 +228,11 @@ public class Grid {
       e.printStackTrace();
     }
   }
+
+  public void stopTimers() {
+    cistern.stopTimers();
+    for (Pump pump : pumps) {
+      pump.stopTimers();
+    }
+  }
 }

@@ -134,7 +134,11 @@ public class Plumber extends Player {
           carryPump.setInPipe(newPipe);
           carryPump.setOutPipe((Pipe) location);
           // carryPump.addPlayer(this);
-          ((Pump)neighbors.get(1)).setOutPipe(newPipe);
+          if(neighbors.get(1) instanceof Pump){
+            ((Pump)neighbors.get(1)).setOutPipe(newPipe);
+          } else {
+            neighbors.get(1).addNeighbor(newPipe);
+          }
           // here in som cases also the in pipe should be updated
           
 

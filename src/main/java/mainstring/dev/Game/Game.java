@@ -1,12 +1,10 @@
 package mainstring.dev.Game;
 
 import java.util.Timer;
-import mainstring.dev.Input;
 import mainstring.dev.Output;
 import mainstring.dev.Grid.Grid;
 import mainstring.dev.Menus.StartMenu.Menu;
 import mainstring.dev.Output.Color;
-import mainstring.dev.Players.Player.Player;
 import mainstring.dev.Players.PlayersCollection.PlayersCollection;
 import mainstring.dev.Players.Plumber.Plumber;
 import mainstring.dev.Players.Saboteur.Saboteur;
@@ -67,6 +65,8 @@ public class Game {
         Color.LIGHT_MAGENTA);
     Output.println("The saboteurs leaked: " + saboteurResult + "liters of water",
         Color.LIGHT_MAGENTA);
+    
+    grid.stopTimers();
   }
   /*---------------------------------------------end Game------------------------------------------- */
 

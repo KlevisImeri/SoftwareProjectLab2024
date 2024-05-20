@@ -48,6 +48,8 @@ public class PumpView extends ActiveElementView {
 
   @Override
   public void paint(Graphics g) {
+    if(!neighborViews.contains(inView)) inView = null;
+    if(!neighborViews.contains(outView)) outView = null;
     if (pump.isHealthy()) {
       setBackgroundImage(healthyImage);
     } else {

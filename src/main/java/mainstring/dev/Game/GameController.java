@@ -43,11 +43,12 @@ public class GameController {
     view.remove(view.menuView);
     view.add(view.timerPanel, BorderLayout.NORTH);
     game.setUp();
-    view.add(new GridView(game.grid));
+    view.gridView = new GridView(game.grid);
+    view.add(view.gridView);
     view.revalidate();
     view.repaint();
     Output.println("\n[Game Started]", Color.LIGHT_BLUE);
-    endTime = game.menu.settings.getEndTime() * 60 * 1000;
+    endTime = game.menu.settings.getEndTime() * 60 * 10;
     playerTime = game.menu.settings.getPlayerTime() * 1000;
     mainLoopTimer = new Timer(1000, (e) -> mainLoop());
     flowCalculationTimer = new Timer(1000, (e) -> game.grid.caculateFlow());
@@ -61,7 +62,7 @@ public class GameController {
   int playerTime;
   int currentPlayerTime = 0;
   Player currentPlayer;
-
+  PlayerCommandView playerView;
   private void mainLoop() {
     if (endTime <= 0) {
       mainLoopTimer.stop();
@@ -71,15 +72,17 @@ public class GameController {
     }
     endTime -= 1000;
     view.endTimer.setText("Time: " + formatTime(endTime));
-    if(currentPlayer!=null) currentPlayer.active();
+    if (currentPlayer != null)
+      currentPlayer.active();
     if (currentPlayerTime <= 0) {
       currentPlayerTime = playerTime;
       currentPlayer = game.players.selectRandom();
       currentPlayer.active();
-      view.add(new PlayerCommandView(currentPlayer), BorderLayout.EAST);
+      playerView = new PlayerCommandView(currentPlayer);
+      view.add(playerView, BorderLayout.EAST);
     }
     currentPlayerTime -= 1000;
-    view.playerTimer.setText(currentPlayer.getName()+": " + formatTime(currentPlayerTime));
+    view.playerTimer.setText(currentPlayer.getName() + ": " + formatTime(currentPlayerTime));
   }
 
   private String formatTime(int milliseconds) {
@@ -93,11 +96,14 @@ public class GameController {
   private void endGame() {
     game.endGame();
     view.endGameLabelPlumber
-        .setText("The plumber gathered: " + game.grid.getWaterAtCistern() + "liters of water");
+        .setText("The plumber gathered: " + game.grid.getWaterAtCistern() + " liters of water");
     view.endGameLabelSaboteur
-        .setText("The saboteurs leaked: " + game.grid.getWaterAtDesert() + "liters of water");
+        .setText("The saboteurs leaked: " + game.grid.getWaterAtDesert() + " liters of water");
     view.remove(view.gridView);
-    view.add(view.endGameView);
+    view.remove(view.timerPanel);
+    view.remove(playerView);
+    view.add(view.endGameView, BorderLayout.CENTER);
+    view.revalidate();
     view.repaint();
   }
 

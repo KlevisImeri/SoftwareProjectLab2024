@@ -50,6 +50,7 @@ public class PlayerController implements KeyListener, MouseListener {
         case 'D':
           player.changePumpDirection();
           ((PumpView) view.location).changeDirectionViews();
+          view.location.gridView.repaint();
           break;
       }
 

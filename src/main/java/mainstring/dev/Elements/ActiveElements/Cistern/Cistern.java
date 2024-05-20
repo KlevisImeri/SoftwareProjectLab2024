@@ -182,4 +182,9 @@ public class Cistern extends ActiveElement {
   public String type() {
     return "cistern";
   }
+
+  public void stopTimers() {
+    timerPipe.cancel();
+    timerPump.cancel();
+  }
 }

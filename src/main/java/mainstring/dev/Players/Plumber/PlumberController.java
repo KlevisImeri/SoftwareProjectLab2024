@@ -29,6 +29,7 @@ public class PlumberController implements KeyListener {
           plumber.disconnectPipe();
           view.carryPipeView = view.location.gridView.selectedPipeView;
           view.location.removeNeighborView(view.carryPipeView);
+          
           view.add(view.carryPipeView);
 
           view.location.gridView.repaint();
@@ -69,8 +70,13 @@ public class PlumberController implements KeyListener {
           view.location.removeNeighborView(neighbor);  
           view.carryPumpView.setOutPipeView((PipeView) view.location);
           view.carryPumpView.setInPipeView(newPipe);
-          // newPipe.addNeighborView(view.carryPumpView);  
-          newPipe.addNeighborView(neighbor);
+          if(neighbor instanceof PumpView){
+            ((PumpView)neighbor).setOutPipeView(newPipe);
+          } else {
+            System.out.println("Fuck You!");
+            neighbor.addNeighborView(newPipe);
+          }
+          // newPipe.addNeighborView(neighbor);
           
           //order acyllu matters without the z component
           view.location.gridView.add(view.carryPumpView);

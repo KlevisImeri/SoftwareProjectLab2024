@@ -5,6 +5,10 @@ import mainstring.dev.Grid.GridView;
 import mainstring.dev.Menus.StartMenu.MenuView;
 import mainstring.dev.Players.PlayersCollection.PlayersCollectionView;
 import java.awt.BorderLayout;
+import java.awt.Color;
+import java.awt.Font;
+import javax.swing.Box;
+import javax.swing.BoxLayout;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -21,13 +25,32 @@ public class GameView extends JFrame {
   public PlayersCollectionView playersCollectionView;
   public MenuView menuView;
 
-  public JLabel endGameLabelPlumber = new JLabel();
-  public JLabel endGameLabelSaboteur = new JLabel();
-  public JPanel endGameView = new JPanel() {{
-    add(new JLabel("Game Ended!"));
-    add(endGameLabelPlumber);
-    add(endGameLabelSaboteur);
-  }};
+        JLabel gameEndedLabel = new JLabel("Game Ended!") {{
+            setFont(new Font("Arial", Font.BOLD, 80));
+            setForeground(new Color(247, 154, 96));
+            setAlignmentX(CENTER_ALIGNMENT); // Center the title horizontally
+        }};
+
+        JLabel endGameLabelPlumber = new JLabel() {{
+            setFont(new Font("Arial", Font.BOLD, 30));
+            setForeground(new Color(247, 154, 96));
+        }};
+
+        JLabel endGameLabelSaboteur = new JLabel() {{
+            setFont(new Font("Arial", Font.BOLD, 30));
+            setForeground(new Color(247, 154, 96));
+        }};
+
+        JPanel endGameView = new JPanel() {{
+            setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+            setOpaque(false); // Make it transparent to see the background
+
+            add(gameEndedLabel);
+            add(Box.createVerticalStrut(30)); // Add spacing
+            add(endGameLabelPlumber);
+            add(Box.createVerticalStrut(20)); // Add spacing
+            add(endGameLabelSaboteur);
+        }};
 
   public JLabel endTimer = new JLabel();
   public JLabel playerTimer = new JLabel();

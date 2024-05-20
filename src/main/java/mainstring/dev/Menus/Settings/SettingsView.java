@@ -8,7 +8,7 @@ import java.awt.*;
 
 public class SettingsView extends JPanel {
   Settings settings;
-  SettingsController controller;
+
   public ImageIcon backgroundImage;
   Dimension buttonSize = new Dimension(200, 50);
 
@@ -16,7 +16,7 @@ public class SettingsView extends JPanel {
     setFont(new Font("Arial", Font.BOLD, 80));
     setForeground(new Color(247, 154, 96));
     setAlignmentX(CENTER_ALIGNMENT); // Center the title horizontally
-}};
+  }};
 
   public JLabel endTimeLabel = new JLabel("End Time:") {{
         setFont(new Font("Arial", Font.BOLD, 30));
@@ -57,14 +57,10 @@ public class SettingsView extends JPanel {
   public SettingsView(Settings settings) {
     this.settings = settings;
     
-    controller = new SettingsController(settings, this);
-
     backgroundImage = new ImageIcon(getClass().getResource("/Images/desertBackground.png"));
     
     endTimeText.setText(""+settings.getEndTime());
-    endTimeText.addActionListener(e -> controller.setEndTime());
     endPlayerText.setText(""+settings.getPlayerTime());
-    endPlayerText.addActionListener(e -> controller.setPlayerTime());
   
     setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
 
@@ -91,5 +87,7 @@ public class SettingsView extends JPanel {
     backgroundPanel.add(Box.createVerticalGlue());
 
     add(backgroundPanel);
+
+    new SettingsController(settings, this);
   }
 }

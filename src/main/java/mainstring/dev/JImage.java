@@ -17,7 +17,7 @@ public class JImage extends JPanel {
   public JImage(String image) {
     backgroundImage = new ImageIcon(getClass().getResource(image));
     setOpaque(false);
-    setBorder(new LineBorder(Color.MAGENTA, 3));
+    // setBorder(new LineBorder(Color.MAGENTA, 3));
   }
 
   @Override
