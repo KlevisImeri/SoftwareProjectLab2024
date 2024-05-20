@@ -24,20 +24,9 @@ public class PlayerCommandView extends JPanel {
   public PlayerCommandView(Player player) {
     // Set the layout to BoxLayout, arranged vertically.
     setLayout(new BoxLayout(this, BoxLayout.Y_AXIS)); // Set the layout to BoxLayout
-<<<<<<< HEAD
-    // Set the background color of the panel to black.
-    setBackground(Color.BLACK); // Set the background color of the panel
-    // Ensure the panel is opaque.
-    setOpaque(true); // Make sure the panel is opaque
-
-    // Create a label for the player's name and set its font color.
-    JLabel nameLabel = new JLabel(player.name);
-    nameLabel.setForeground(new Color(247, 154, 96)); // Set the font color for the name label
-=======
     JLabel nameLabel = new JLabel(player.name) {{
       setFont(new Font("Arial", Font.BOLD, 30)); // Set the font to Arial, bold, size 30
     }};
->>>>>>> ceabbed415a403ee18e63becc20fa42f05a48af8
     add(nameLabel);
 
     // Display commands specific to Plumber players.

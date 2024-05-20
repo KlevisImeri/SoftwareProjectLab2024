@@ -25,31 +25,18 @@ public class GameView extends JFrame {
   // The Game instance associated with this view.
   public Game game;
 
-<<<<<<< HEAD
   // Various views and panels used in the game.
-=======
-
->>>>>>> ceabbed415a403ee18e63becc20fa42f05a48af8
   public GridView gridView;
 
   public PlayersCollectionView playersCollectionView;
   public MenuView menuView;
 
 
-<<<<<<< HEAD
-        // Labels and panels for the end game view.
-        JLabel gameEndedLabel = new JLabel("Game Ended!") {{
-            setFont(new Font("Arial", Font.BOLD, 80));
-            setForeground(new Color(247, 154, 96));
-            setAlignmentX(CENTER_ALIGNMENT); // Center the title horizontally
-        }};
-=======
   JLabel gameEndedLabel = new JLabel("Game Ended!") {{
       setFont(new Font("Arial", Font.BOLD, 80));
       setForeground(new Color(247, 154, 96));
       setAlignmentX(CENTER_ALIGNMENT); // Center the title horizontally
   }};
->>>>>>> ceabbed415a403ee18e63becc20fa42f05a48af8
 
   JLabel endGameLabelPlumber = new JLabel() {{
       setFont(new Font("Arial", Font.BOLD, 30));
