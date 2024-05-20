@@ -1,18 +1,20 @@
 package mainstring.dev.Players.Player;
 
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.util.ArrayList;
+import java.util.List;
 import javax.swing.JLabel;
 import mainstring.dev.JImage;
 import mainstring.dev.Elements.Element.ElementView;
 
 public class PlayerView extends JImage {
-  JLabel name = new JLabel() {
-    {
+  
+  JLabel name = new JLabel() {{
       setForeground(new Color(227, 129, 54));
-    }
-  };
+  }};
 
   ElementView location;
 

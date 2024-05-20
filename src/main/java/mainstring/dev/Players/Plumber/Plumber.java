@@ -205,7 +205,7 @@ public class Plumber extends Player {
    * player to choose from moving, changing pump direction, disconnecting/connecting pipes, fixing
    * elements, and more.
    */
-  public void keyTyped() {
+  public void keyTyped(char key) {
     System.out.println("What does the player do?");
     String lightMagenta = "\u001B[95m";
     String resetColor = "\u001B[0m";
@@ -218,7 +218,7 @@ public class Plumber extends Player {
     System.out.println(lightMagenta + "[p]" + resetColor + "ickPump()");
     System.out.println(lightMagenta + "[P]" + resetColor + "ickPipe()");
 
-    switch (Input.getChar("DmdcfipP")) {
+    switch (key) {
       case 'm':
         move();
         break;

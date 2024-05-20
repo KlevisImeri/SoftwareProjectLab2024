@@ -32,14 +32,8 @@ public class Game {
     players.add(new Saboteur("Ibrahim"));
   }
 
-  /**
-   * Starts the game by selecting teams, initializing the grid, running the main game loop, and
-   * eventually calling for the game to end and display results.
-   */
-  public void startGame() {
-    System.out.println(players);
+  public void setUp() {
     grid.addPlayers(players);
-    new Thread(() -> mainLoop());
   }
 
   /*---------------------------------------------main Loop------------------------------------------- */
@@ -48,22 +42,7 @@ public class Game {
    * Executes the main game loop, repeatedly allowing each player to take active and passive actions
    * until the game ends, as determined by user input.
    */
-  private void mainLoop() {
-    try {
-      Output.println("\n[Game Started]", Color.LIGHT_BLUE);
-      long endTime = System.currentTimeMillis() + menu.settings.getEndTime() * 60 * 1000;
-      while (System.currentTimeMillis() >= endTime) { //thread sleeps later so no continos checking
-        Player player = players.selectRandom();
-        player.active();
-        Thread.sleep(menu.settings.getPlayerTime() * 1000);
-        player.passive();
-        grid.caculateFlow();
-      }
-      endGame();
-    } catch (InterruptedException e) {
-      e.printStackTrace();
-    }
-  }
+
   /*---------------------------------------------main Loop------------------------------------------- */
 
   /*---------------------------------------------end Game------------------------------------------- */

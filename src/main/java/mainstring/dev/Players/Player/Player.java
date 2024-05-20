@@ -1,11 +1,8 @@
 package mainstring.dev.Players.Player;
 
-
 import java.util.Objects;
-import javax.print.attribute.standard.Destination;
+import mainstring.dev.Model;
 import mainstring.dev.Output;
-import mainstring.dev.Elements.*;
-import mainstring.dev.Elements.ActiveElements.*;
 import mainstring.dev.Elements.ActiveElements.Cistern.Cistern;
 import mainstring.dev.Elements.ActiveElements.Pump.Pump;
 import mainstring.dev.Elements.ActiveElements.Spring.Spring;
@@ -19,7 +16,7 @@ import mainstring.dev.Output.Color;
  * Represents an abstract player in the game. This class provides the foundational attributes and
  * behavior for players, including movement, identification, and interaction within the game grid.
  */
-public abstract class Player {
+public abstract class Player extends Model {
   // Player's name as unique identifier for the player
   protected String name;
 
@@ -130,18 +127,6 @@ public abstract class Player {
       Output.println("You can't change the direction of spring!", Color.LIGHT_RED);
     }
   }
-
-  /**
-   * Abstract method that defines the active behavior of the player. This behavior must be
-   * implemented by subclasses to specify how the player acts when active in the game.
-   */
-  public abstract void active();
-
-  /**
-   * Abstract method that defines the passive behavior of the player. This behavior must be
-   * implemented by subclasses to specify how the player acts when passive in the game.
-   */
-  public abstract void passive();
 
   /**
    * Abstract method that returns the type of the player. Subclasses must implement this method to
