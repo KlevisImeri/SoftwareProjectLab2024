@@ -60,7 +60,7 @@ public class CisternView extends ActiveElementView {
         PipeView pipeView = new PipeView(pipe, gridView);
         pipeView.setLocation(xPosition, 40); // Place pipes at the top
         pipeViews.add(pipeView);
-        add(pipeView);
+        add(pipeView, gbc); //!!! gbc is important so you dont loose the players
         xPosition += 40; // Increment xPosition for the next PipeView
       }
     }
@@ -79,7 +79,7 @@ public class CisternView extends ActiveElementView {
         PumpView pumpView = new PumpView(pump, gridView);
         pumpView.setLocation(xPosition, 0); // Place pumps 40 pixels below the pipes
         pumpViews.add(pumpView);
-        add(pumpView);
+        add(pumpView, gbc);
         xPosition += 40; // Increment xPosition for the next PumpView
       }
     }
