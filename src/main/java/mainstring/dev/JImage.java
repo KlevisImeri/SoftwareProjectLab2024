@@ -1,12 +1,12 @@
 package mainstring.dev;
 
-import java.awt.Color;
+// import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Point;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
-import javax.swing.border.LineBorder;
+// import javax.swing.border.LineBorder;
 
 /**
  * A custom JPanel subclass designed to display an image with customizable size and location. This

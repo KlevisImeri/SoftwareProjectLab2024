@@ -1,8 +1,6 @@
 package mainstring.dev.Game;
 
 import java.awt.BorderLayout;
-import java.sql.Time;
-import java.util.Random;
 import javax.swing.Timer;
 import mainstring.dev.Output;
 import mainstring.dev.Output.Color;

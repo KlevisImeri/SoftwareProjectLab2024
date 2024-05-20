@@ -3,7 +3,6 @@ package mainstring.dev.Elements.ActiveElements.Cistern;
 import java.util.Timer;
 import java.util.TimerTask;
 import mainstring.dev.Output;
-import mainstring.dev.Elements.*;
 import mainstring.dev.Elements.ActiveElements.ActiveElement.ActiveElement;
 import mainstring.dev.Elements.ActiveElements.Pump.Pump;
 import mainstring.dev.Elements.Pipe.Pipe;

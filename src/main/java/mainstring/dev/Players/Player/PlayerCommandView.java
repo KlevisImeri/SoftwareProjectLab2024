@@ -1,6 +1,5 @@
 package mainstring.dev.Players.Player;
 
-import java.awt.Color;
 import java.awt.Font;
 import javax.swing.BoxLayout;
 import javax.swing.JLabel;

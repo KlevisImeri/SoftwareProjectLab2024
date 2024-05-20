@@ -2,7 +2,6 @@ package mainstring.dev.Grid;
 
 import java.util.ArrayList;
 import java.util.List;
-import mainstring.dev.Input;
 import mainstring.dev.Output;
 import mainstring.dev.Elements.ActiveElements.ActiveElement.ActiveElement;
 import mainstring.dev.Elements.ActiveElements.Cistern.Cistern;
@@ -12,7 +11,6 @@ import mainstring.dev.Elements.Element.Element;
 import mainstring.dev.Elements.Pipe.Pipe;
 import mainstring.dev.Output.Color;
 import mainstring.dev.Players.PlayersCollection.PlayersCollection;
-import mainstring.dev.Players.Plumber.Plumber;
 
 /**
  * The Grid class represents the game board where various elements are placed and interacted with.
