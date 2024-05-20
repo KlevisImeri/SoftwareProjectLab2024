@@ -69,6 +69,7 @@ public class GridView extends JImage {
   @Override
   public void paint(Graphics g) {
 
+    super.paint(g);
     
     // In the future here we will just call repaint
     // Because we will have to implement percantages
@@ -91,7 +92,6 @@ public class GridView extends JImage {
 
     
     this.setImageSize(getSize());
-    super.paint(g);
     // for(var pumpView : pumpViews){ 
     //   pumpView.setLocation(
     //     getWidth()/3 - pumpView.getWidth()/2,

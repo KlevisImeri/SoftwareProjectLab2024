@@ -123,6 +123,7 @@ public class Plumber extends Player {
     try {
       if (carryPump != null) {
         if (location instanceof Pipe) {
+          Output.println("[INSERTING PIPE]", Color.RED);
           String before = toString();
 
           Pipe newPipe = new Pipe(grid);

@@ -1,5 +1,6 @@
 package mainstring.dev.Game;
 
+import mainstring.dev.JImage;
 import mainstring.dev.Grid.GridView;
 import mainstring.dev.Menus.StartMenu.MenuView;
 import mainstring.dev.Players.PlayersCollection.PlayersCollectionView;
@@ -14,7 +15,9 @@ public class GameView extends JFrame {
 
   public Game game;
 
+  
   public GridView gridView;
+
   public PlayersCollectionView playersCollectionView;
   public MenuView menuView;
 
@@ -44,7 +47,7 @@ public class GameView extends JFrame {
     setSize(WIN_WIDTH, WIN_HEIGHT);
     setLocationRelativeTo(null);
     setLayout(new BorderLayout());
-    add(timerPanel, BorderLayout.NORTH);
+
     add(menuView);
     setVisible(true);
 

@@ -1,5 +1,6 @@
 package mainstring.dev.Game;
 
+import java.awt.BorderLayout;
 import java.sql.Time;
 import java.util.Random;
 import javax.swing.Timer;
@@ -7,6 +8,7 @@ import mainstring.dev.Output;
 import mainstring.dev.Output.Color;
 import mainstring.dev.Grid.GridView;
 import mainstring.dev.Players.Player.Player;
+import mainstring.dev.Players.Player.PlayerCommandView;
 
 public class GameController {
   Game game;
@@ -39,6 +41,7 @@ public class GameController {
 
   public void startGame() {
     view.remove(view.menuView);
+    view.add(view.timerPanel, BorderLayout.NORTH);
     game.setUp();
     view.add(new GridView(game.grid));
     view.revalidate();
@@ -73,6 +76,7 @@ public class GameController {
       currentPlayerTime = playerTime;
       currentPlayer = game.players.selectRandom();
       currentPlayer.active();
+      view.add(new PlayerCommandView(currentPlayer), BorderLayout.EAST);
     }
     currentPlayerTime -= 1000;
     view.playerTimer.setText(currentPlayer.getName()+": " + formatTime(currentPlayerTime));

@@ -17,11 +17,13 @@ public class PlayerView extends JImage {
         setFont(new Font("Arial", Font.BOLD, 10)); 
   }};
 
-  ElementView location;
+  Player player;
+  public ElementView location;
 
   public PlayerView(Player player, String playerImage, ElementView location) {
     super(playerImage);
     this.location = location;
+    this.player = player;
     player.addView(this);
     player.setFocusable(this);
     name.setText(player.getName());

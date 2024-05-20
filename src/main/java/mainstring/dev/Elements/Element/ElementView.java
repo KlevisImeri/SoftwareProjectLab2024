@@ -57,15 +57,15 @@ public class ElementView extends JImage {
   public void addNeighborView(ElementView elemView) {
     neighborViews.add(elemView);
     elemView.neighborViews.add(this);
-    elemView.repaint();
-    repaint();
+    // elemView.repaint();
+    // repaint();
   }
 
   public void removeNeighborView(ElementView elemView) {
     neighborViews.remove(elemView);
     elemView.neighborViews.remove(this);
-    elemView.repaint();
-    repaint();
+    // elemView.repaint();
+    // repaint();
   }
 
 }

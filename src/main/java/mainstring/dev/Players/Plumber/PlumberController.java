@@ -1,6 +1,7 @@
 package mainstring.dev.Players.Plumber;
 
-import java.util.List;
+import java.awt.Dimension;
+import java.awt.Point;
 import java.awt.event.KeyEvent;
 import java.awt.event.KeyListener;
 import mainstring.dev.Elements.ActiveElements.Pump.PumpView;
@@ -29,9 +30,8 @@ public class PlumberController implements KeyListener {
           view.carryPipeView = view.location.gridView.selectedPipeView;
           view.location.removeNeighborView(view.carryPipeView);
           view.add(view.carryPipeView);
-      
-          view.repaint();
-          view.carryPipeView.repaint();
+
+          view.location.gridView.repaint();
           break;
         case 'c':
           plumber.connectPipe();
@@ -41,29 +41,43 @@ public class PlumberController implements KeyListener {
           view.location.gridView.add(view.carryPipeView);
         
           view.carryPipeView.repaint();
-          //view.location.gridView.repaint();
+          
           view.carryPipeView = null;
-
           break;
         case 'f':
           plumber.fix();
+          view.location.gridView.repaint();
           break;
         case 'i':
           Pipe pipe = plumber.insertPump();
-          PipeView newPipe = new PipeView(pipe, view.location.gridView);
-          
-          List<ElementView> neighborViews = view.location.neighborViews;
+          // Calculate the midpoint of the current location
+          Point locationMid = view.location.getLocation();
+          Dimension locationSize = view.location.getSize();
+          locationMid.setLocation(
+              locationMid.getX() + locationSize.getWidth() / 2,
+              locationMid.getY() + locationSize.getHeight() / 2
+          );
+          view.carryPumpView.setLocation(
+              locationMid.x - view.carryPumpView.getWidth() / 2,
+              locationMid.y - view.carryPumpView.getHeight() / 2
+          );
 
-          view.location.removeNeighborView(neighborViews.get(1));
-          view.carryPumpView.addNeighborView(newPipe);
-          view.carryPipeView.addNeighborView(view.location);
-          view.carryPipeView.setLocation(500,500);
-          newPipe.addNeighborView(neighborViews.get(1));
+          PipeView newPipe = new PipeView(pipe, view.location.gridView);
+
+          ElementView neighbor = view.location.neighborViews.get(1);
+
+          view.location.removeNeighborView(neighbor);  
+          view.carryPumpView.addNeighborView(view.location);
+
+          newPipe.addNeighborView(view.carryPumpView);  
+          newPipe.addNeighborView(neighbor);
+          
 
           view.location.gridView.add(view.carryPumpView);
+          view.location.gridView.add(newPipe);
+
           view.location.gridView.repaint();
-          // view.location.gridView.add
-          // 
+
 
           view.carryPumpView = null;
           break;

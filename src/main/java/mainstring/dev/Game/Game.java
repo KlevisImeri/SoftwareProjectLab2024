@@ -28,8 +28,8 @@ public class Game {
   public Game() {
     players.add(new Plumber("Klevis"));
     players.add(new Plumber("Diamond"));
-    players.add(new Saboteur("Murad"));
-    players.add(new Saboteur("Ibrahim"));
+    // players.add(new Saboteur("Murad"));
+    // players.add(new Saboteur("Ibrahim"));
   }
 
   public void setUp() {
