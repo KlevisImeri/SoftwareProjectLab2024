@@ -13,6 +13,7 @@
 - [ ] [10 Prototype Program](https://docs.google.com/document/d/1SVMYX-XEAScg0v49ixZ8_5KrJVGaSWDze8_bsn_mCEc/edit?usp=sharing)
 - [ ] [11 User Interface Specification](https://docs.google.com/document/d/1_tRefSctOaP_SoO9lbbaTmRa1RocXgHx4CNtndMRkzs/edit?usp=sharing)
 - [ ] [13 Complete Program](https://docs.google.com/document/d/1uDvl_1DGnFQLz-xaKPivMc3-vUEddQpSBZ8Ni4EZCwo/edit?usp=sharing)
+- [ ] [14 Summary](https://docs.google.com/document/d/1V0Sjjyiy-aND1rzMPUHyyiBomBCqUi7b7UFzpCRTbn4/edit?usp=sharing)
 ## Compiling and Running 
 > Maven should be installed
 
