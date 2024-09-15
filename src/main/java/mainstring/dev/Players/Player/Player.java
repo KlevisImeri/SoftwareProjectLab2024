@@ -21,7 +21,7 @@ public abstract class Player extends Model {
   protected String name;
 
   // Current location of the player within the grid
-  protected Element location;
+	protected Element location;
 
   // The game grid to which the player belongs
   protected Grid grid;
