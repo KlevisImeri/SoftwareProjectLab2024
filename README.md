@@ -8,10 +8,16 @@
 - [ ] [0 Cover](https://docs.google.com/document/d/1Mn_KRn84DfLSgG2iLk20jxYhJ6C5N9aymsou-fHc8No/edit?usp=sharing)
 - [ ] [2 Project Definition](https://docs.google.com/document/d/1UcgfCvedrqtRvM-0aPniAHs13E5yTa5pBhLOkXDJq9U/edit?usp=sharing)
   - [Problem Definition](https://www.iit.bme.hu/targyak/BMEVIIIAB02/problem-definition)
-- [ ] [4.Analysis model](https://docs.google.com/document/d/1GQjKXtnZAlzHJznduEUlyZGJ1P08df4gseJaO8MnlUI/edit?usp=sharing)
-  - [3.Analysis model](https://docs.google.com/document/d/1u3uKtd4znwaEGchfAY2f_T9UO5kV2lVStRdBYzOEVvc/edit?usp=sharing)
-- [ ] [5.Plans for the skeleton](https://docs.google.com/document/d/1ualSxL9Me9Omed-CUEuVkHZgmbHVUMaHbaHxVlP3nj4/edit?usp=sharing)
-- [ ] [6.Skeleton program](https://docs.google.com/document/d/1gmOUeXACNhtO2WMVdW7eGF12_DoK4WY6V61Crw69BRU/edit?usp=sharing)
+- [ ] [4 Analysis model](https://docs.google.com/document/d/1GQjKXtnZAlzHJznduEUlyZGJ1P08df4gseJaO8MnlUI/edit?usp=sharing)
+  - [3 Analysis model](https://docs.google.com/document/d/1u3uKtd4znwaEGchfAY2f_T9UO5kV2lVStRdBYzOEVvc/edit?usp=sharing)
+- [ ] [5 Plans for the skeleton](https://docs.google.com/document/d/1ualSxL9Me9Omed-CUEuVkHZgmbHVUMaHbaHxVlP3nj4/edit?usp=sharing)
+- [ ] [6 Skeleton program](https://docs.google.com/document/d/1gmOUeXACNhtO2WMVdW7eGF12_DoK4WY6V61Crw69BRU/edit?usp=sharing)
+- [ ] [7 Concept of Prototype](https://docs.google.com/document/d/1ZT9VIiDTBR3EwCjKP2ztPzW3aNZWmylYPWSfbStwrfk/edit?usp=sharing)
+- [ ] [8 Detailed plans](https://docs.google.com/document/d/1Qm3B54_BemJprdrmZpIbRi-14yoKTzNqDrRBKgBphk8/edit?usp=sharing)
+- [ ] [10 Prototype Program](https://docs.google.com/document/d/1SVMYX-XEAScg0v49ixZ8_5KrJVGaSWDze8_bsn_mCEc/edit?usp=sharing)
+- [ ] [11 User Interface Specification](https://docs.google.com/document/d/1_tRefSctOaP_SoO9lbbaTmRa1RocXgHx4CNtndMRkzs/edit?usp=sharing)
+- [ ] [13 Complete Program](https://docs.google.com/document/d/1uDvl_1DGnFQLz-xaKPivMc3-vUEddQpSBZ8Ni4EZCwo/edit?usp=sharing)
+- [ ] [14 Summary](https://docs.google.com/document/d/1V0Sjjyiy-aND1rzMPUHyyiBomBCqUi7b7UFzpCRTbn4/edit?usp=sharing)
 ## Compiling and Running 
 > Maven should be installed
 
