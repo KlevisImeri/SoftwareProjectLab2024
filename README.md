@@ -1,4 +1,8 @@
-# SoftwareProjectLab2024
+<h1 align="center">Pipes In The Desert</h1>
+<p align="center"><i>Software Project Lab 2024</i></p>
+
+
+![How the Game looks](Game.png)
 
 ## Document Links
 - [ ] [0 Cover](https://docs.google.com/document/d/1Mn_KRn84DfLSgG2iLk20jxYhJ6C5N9aymsou-fHc8No/edit?usp=sharing)
