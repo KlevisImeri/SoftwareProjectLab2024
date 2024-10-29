@@ -1,58 +1,22 @@
 package mainstring.dev;
 
-import mainstring.dev.Menu.*;
-import mainstring.dev.Players.Player;
-import mainstring.dev.Players.PlayersCollection;
-import mainstring.dev.UI.GUI.*;
+import mainstring.dev.Game.Game;
+import mainstring.dev.Game.GameView;
+
 /**
- * The Main class represents the entry point of the application.
+ * The Main class serves as the entry point of the application. It is responsible for initializing and starting the game.
+ * This class orchestrates the creation of the game instance and its associated graphical interface.
  */
 public class Main {
-  private static MainFrame frame = new MainFrame();
-  private static Menu menu = new Menu();
-  private static PlayersCollection playersCollection = new PlayersCollection();
-  /*
-   * The main method is the entry point of the application.
-   * 
-   * @param args command-line arguments (not used in this application)
+
+  /**
+   * The main method acts as the entry point of the application. It initializes the game logic and the graphical user interface.
+   * Upon execution, this method creates a new instance of the game and its corresponding view, effectively launching the game.
+   *
+   * @param args Command-line arguments passed to the program. These arguments are not utilized in this simple example but can be used for various purposes such as specifying configuration options or controlling the game mode.
    */
   public static void main(String[] args) {
-    menu.setStartGameFunction((e)->startGame());
-    frame.add(new MenuGUI(menu));
-    frame.revalidate();
+    // Initialize and start the frame of the game by creating a new GameView instance with a new Game instance.
+    new GameView(new Game());
   }
-
-  public static void startGame(){
-    frame.getContentPane().removeAll();
-    frame.revalidate();
-    frame.repaint();
-
-    System.out.println("The game started");
-    
-    PlayersCollection players = new PlayersCollection();
-    frame.add(new PlayersCollectionGUI(players));
-
-    // frame.getContentPane().removeAll();
-    // frame.revalidate();
-    // frame.repaint();
-
-    // Grid grid = new Grid(players);
-    // frame.add(new GridGUI(grid));
-
-    // while(THe timer does not end){
-    //   mainLoop();
-    // }
-
-  }
-  public static void selectTeams(){}
-
-  public static void mainLoop(){
-    Player player =  playersCollection.selectRandom();
-    player.active();
-    //while(timer not ended){}
-  }
-  
-  public static void endGame(){}
-
-  public static void displayResults(){}
 }

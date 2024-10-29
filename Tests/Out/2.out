@@ -1,0 +1,45 @@
+Pipes:
+p,ID:0,[Sabo1],[2,4],LEAKING,EMPTY
+p,ID:1,[Sabo2],[3,4],LEAKING,EMPTY
+
+Active Elements:
+C,ID:2,[Plum1],[0],[],[],0
+S,ID:3,[],[1]
+P,ID:4,[Plum2],[0,1],[R,10,0],HEALTHY,1,0
+
+Selected Element: null
+Selected ActiveElement: null
+Selected Pipe: null
+
+Water in Desert: 5
+
+Pipes:
+p,ID:0,[Plum1],[2,4],LEAKING,EMPTY
+p,ID:1,[Plum2],[3,4],LEAKING,EMPTY
+
+Active Elements:
+C,ID:2,[],[0],[],[],0
+S,ID:3,[Sabo2],[1]
+P,ID:4,[Sabo1],[0,1],[R,10,0],HEALTHY,1,0
+
+Selected Element: 1
+Selected ActiveElement: null
+Selected Pipe: null
+
+Water in Desert: 9
+
+Pipes:
+p,ID:0,[Plum1],[2,4],HEALTHY,EMPTY
+p,ID:1,[Plum2],[3,4],HEALTHY,EMPTY
+
+Active Elements:
+C,ID:2,[],[0],[],[],3
+S,ID:3,[Sabo2],[1]
+P,ID:4,[Sabo1],[0,1],[R,10,0],HEALTHY,1,0
+
+Selected Element: 1
+Selected ActiveElement: null
+Selected Pipe: null
+
+Water in Desert: 10
+

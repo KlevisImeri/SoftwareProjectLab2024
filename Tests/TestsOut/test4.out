@@ -1,0 +1,20 @@
+Pipes:
+p,ID:0,[],[1,2],HEALTHY,EMPTY
+p,ID:5,[],[2,4],HEALTHY,EMPTY
+
+Active Elements:
+C,ID:1,[Diamond, Murad],[0],[],[3],4
+S,ID:4,[Ibrahim],[5]
+P,ID:2,[Klevis],[0,5],[R,10,0],HEALTHY,5,0
+
+Selected Element: 0
+Selected ActiveElement: null
+Selected Pipe: null
+
+Water in Desert: 0
+
+Players:
+P,Klevis,2,null,null
+S,Ibrahim,4
+S,Diamond,1
+P,Murad,1,null,null
